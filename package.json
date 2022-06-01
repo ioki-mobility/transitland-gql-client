@@ -1,0 +1,40 @@
+{
+  "name": "transitland-gql-client",
+  "version": "1.0.0-3",
+  "description": "gql client for transitland",
+  "repository": "git@github.com:boredland/transitland-gql-client.git",
+  "author": "Jonas Strassel <info@jonas-strassel.de>",
+  "license": "MIT",
+  "private": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "generate": "yarn run-s generate:* --print-label",
+    "generate:download": "curl -s https://raw.githubusercontent.com/interline-io/transitland-server/main/schema.graphqls > ./landing/schema.graphqls",
+    "generate:client": "yarn genql --schema landing/schema.graphqls --output src/_client --sort --esm-and-cjs",
+    "generate:bundle": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "generate:cp-schema": "cp src/_client/schema.graphql dist/schema.graphql",
+    "prepublishOnly": "yarn generate"
+  },
+  "devDependencies": {
+    "@genql/cli": "2.10.0",
+    "npm-run-all": "4.1.5",
+    "ts-node": "10.8.0",
+    "tsup": "6.0.1",
+    "typescript": "4.7.2"
+  },
+  "dependencies": {
+    "@genql/runtime": "2.10.0"
+  },
+  "peerDependencies": {
+    "graphql": "16.5.0"
+  }
+}
