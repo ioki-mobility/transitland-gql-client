@@ -22,6 +22,7 @@ var __copyProps = (to, from, except, desc) => {
   }
   return to;
 };
+var __reExport = (target, mod, secondTarget) => (__copyProps(target, mod, "default"), secondTarget && __copyProps(secondTarget, mod, "default"));
 var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target, mod));
 
 // src/_client/types.cjs.js
@@ -2857,8 +2858,5 @@ var require_client = __commonJS({
 });
 
 // src/index.ts
-var import_client = __toESM(require_client());
-var export_createTransitLandClient = import_client.createClient;
-export {
-  export_createTransitLandClient as createTransitLandClient
-};
+var src_exports = {};
+__reExport(src_exports, __toESM(require_client()));
