@@ -1,0 +1,36 @@
+{
+  "name": "transitland-gql-client",
+  "version": "0.0.1",
+  "description": "gql client for transitland",
+  "repository": "git@github.com:boredland/transitland-gql-client.git",
+  "author": "Jonas Strassel <info@jonas-strassel.de>",
+  "license": "MIT",
+  "private": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "generate": "ts-node genql.ts",
+    "bundle": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "prepublishOnly": "yarn generate && yarn run bundle"
+  },
+  "devDependencies": {
+    "@genql/cli": "2.10.0",
+    "ts-node": "10.8.0",
+    "tsup": "6.0.1",
+    "typescript": "4.7.2"
+  },
+  "dependencies": {
+    "@genql/runtime": "2.10.0"
+  },
+  "peerDependencies": {
+    "graphql": "16.5.0"
+  }
+}
