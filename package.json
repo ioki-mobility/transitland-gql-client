@@ -19,7 +19,7 @@
   "scripts": {
     "generate": "ts-node genql.ts",
     "bundle": "tsup src/index.ts --format cjs,esm --dts --clean",
-    "prepublishOnly": "yarn generate && yarn run bundle"
+    "prepublishOnly": "yarn generate && yarn run bundle && cp src/_client/schema.graphql dist/schema.graphql"
   },
   "devDependencies": {
     "@genql/cli": "2.10.0",
