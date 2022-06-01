@@ -1,3 +1,1 @@
-import { createClient } from './_client';
-
-export default createClient;
+export { createClient as createTransitLandClient } from './_client';
