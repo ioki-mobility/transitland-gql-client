@@ -2857,10 +2857,11 @@ var require_client = __commonJS({
 // src/index.ts
 var src_exports = {};
 __export(src_exports, {
-  default: () => src_default
+  createTransitLandClient: () => import_client.createClient
 });
 module.exports = __toCommonJS(src_exports);
 var import_client = __toESM(require_client());
-var src_default = import_client.createClient;
 // Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {});
+0 && (module.exports = {
+  createTransitLandClient
+});

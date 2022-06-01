@@ -2191,4 +2191,4 @@ interface Client {
   }
 }
 
-export { createClient as default };
+export { createClient as createTransitLandClient };

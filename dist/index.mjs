@@ -2858,7 +2858,7 @@ var require_client = __commonJS({
 
 // src/index.ts
 var import_client = __toESM(require_client());
-var src_default = import_client.createClient;
+var export_createTransitLandClient = import_client.createClient;
 export {
-  src_default as default
+  export_createTransitLandClient as createTransitLandClient
 };
