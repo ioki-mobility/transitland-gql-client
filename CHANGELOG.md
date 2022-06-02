@@ -1,5 +1,12 @@
 
 
+## [2022.7.0](https://github.com/boredland/transitland-gql-client/compare/2022.6.5...2022.7.0) (2022-06-02)
+
+
+### Features
+
+* distribute esm in separate dir ([2f80508](https://github.com/boredland/transitland-gql-client/commit/2f805086a75f9ac54fedf6a61e060e7a8a29ee75))
+
 ## [2022.6.5](https://github.com/boredland/transitland-gql-client/compare/2022.6.4...2022.6.5) (2022-06-02)
 
 ## [2022.6.4](https://github.com/boredland/transitland-gql-client/compare/2022.6.3...2022.6.4) (2022-06-02)
