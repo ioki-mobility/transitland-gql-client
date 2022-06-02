@@ -32,6 +32,8 @@ jobs:
         run: yarn --frozen-lockfile
       - name: generate
         run: yarn generate
+      - name: test
+        run: yarn test
       - id: changes
         name: detect changes
         uses: stefanzweifel/git-auto-commit-action@v4
