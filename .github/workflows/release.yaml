@@ -19,12 +19,12 @@ jobs:
     name: release
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
         with:
           token: ${{ github.token }}
           fetch-depth: 0
       - name: setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@17f8bd926464a1afa4c6a11669539e9c1ba77048 # tag=v3
         with:
           node-version: 'node'
           cache: 'yarn'
@@ -39,7 +39,7 @@ jobs:
           TRANSITLAND_URL: ${{ secrets.TRANSITLAND_URL }}
       - id: changes
         name: detect changes
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@49620cd3ed21ee620a48530e81dba0d139c9cb80 # tag=v4
         with:
           commit_message: "chore(update): automated client update"
       - name: release
