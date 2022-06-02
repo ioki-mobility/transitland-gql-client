@@ -1,4 +1,4 @@
-import { createClient } from "../src";
+import { createClient } from "../dist";
 
 const apiKey = process.env.TRANSITLAND_API_KEY!
 
