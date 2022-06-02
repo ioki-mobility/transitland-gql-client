@@ -1,5 +1,12 @@
 
 
+## [2022.7.0](https://github.com/boredland/transitland-gql-client/compare/2022.6.6...2022.7.0) (2022-06-02)
+
+
+### Features
+
+* distribute esm and cjs but make runtime a peerDependency ([0a32086](https://github.com/boredland/transitland-gql-client/commit/0a3208693bbb374735db4bf3564f74f5b14ac321))
+
 ## [2022.7.0](https://github.com/boredland/transitland-gql-client/compare/2022.6.5...2022.7.0) (2022-06-02)
 
 
