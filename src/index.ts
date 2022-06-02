@@ -13,6 +13,8 @@ export const createClient = ({ apiKey, ...options }: ClientOptions) => {
         ...options.headers,
         apiKey
     };
-    return originalCreateClient(options);
+    
+    const { mutation, ...client} = originalCreateClient(options);
+    return client;
 }
 export * from './_client';
