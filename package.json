@@ -7,12 +7,12 @@
   "license": "MIT",
   "private": false,
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "module": "./dist/esm/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
+      "import": "./dist/esm/index.mjs",
       "types": "./dist/index.d.ts"
     }
   },
@@ -24,7 +24,8 @@
     "generate": "yarn run-s generate:* --print-label",
     "generate:0-download": "curl -s https://raw.githubusercontent.com/interline-io/transitland-server/main/schema.graphqls > ./landing/schema.graphqls",
     "generate:1-client": "yarn genql --schema landing/schema.graphqls --output src/_client --sort --esm-and-cjs",
-    "generate:2-bundle": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "generate:2-0-bundle-cjs": "tsup src/index.ts --format cjs --dts --clean",
+    "generate:2-1-bundle-esm": "tsup src/index.ts --format esm --clean --out-dir dist/esm",
     "generate:3-cp-schema": "cp src/_client/schema.graphql dist/schema.graphql",
     "prepublishOnly": "yarn generate",
     "release": "release-it",
