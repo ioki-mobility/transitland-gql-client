@@ -2,6 +2,7 @@
 
 ![npm](https://img.shields.io/npm/dm/transitland-gql-client)
 ![GitHub](https://img.shields.io/github/license/boredland/transitland-gql-client)
+[![release](https://github.com/boredland/transitland-gql-client/actions/workflows/release.yaml/badge.svg)](https://github.com/boredland/transitland-gql-client/actions/workflows/release.yaml)
 
 ## About
 
