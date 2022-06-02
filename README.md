@@ -20,21 +20,19 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-First add the library to your `package.json` file:
+First add the library and its peer dependencies to your `package.json` file:
 
 * npm
 
   ```sh
-  npm install @ioki/transitland-gql-client@latest
+  npm install @ioki/transitland-gql-client@latest grapqhl @genql/runtime
   ```
 
 * yarn
 
   ```sh
-  yarn add @ioki/transitland-gql-client@latest
+  yarn add @ioki/transitland-gql-client@latest grapqhl @genql/runtime
   ```
-
-Keep in mind that the library has a peer dependency on graphql, so you will need to install that as well.
 
 ### Setup
 

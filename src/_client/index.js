@@ -1,17 +1,17 @@
-const {
+import {
   linkTypeMap,
-  createClient: createClientOriginal,
+  createClient as createClientOriginal,
   generateGraphqlOperation,
   assertSameVersion,
-} = require('@genql/runtime')
-var typeMap = linkTypeMap(require('./types.cjs'))
+} from '@genql/runtime'
+import types from './types.esm'
+var typeMap = linkTypeMap(types)
+export * from './guards.esm'
 
-var version = '2.10.0'
+export var version = '2.10.0'
 assertSameVersion(version)
 
-module.exports.version = version
-
-module.exports.createClient = function(options) {
+export var createClient = function(options) {
   options = options || {}
   var optionsCopy = {
     url: undefined,
@@ -25,16 +25,16 @@ module.exports.createClient = function(options) {
   return createClientOriginal(optionsCopy)
 }
 
-module.exports.enumDistanceUnit = {
+export const enumDistanceUnit = {
   KILOMETERS: 'KILOMETERS',
   MILES: 'MILES',
 }
 
-module.exports.enumDurationUnit = {
+export const enumDurationUnit = {
   SECONDS: 'SECONDS',
 }
 
-module.exports.enumFeedSourceUrlTypes = {
+export const enumFeedSourceUrlTypes = {
   gbfs_auto_discovery: 'gbfs_auto_discovery',
   mds_provider: 'mds_provider',
   realtime_alerts: 'realtime_alerts',
@@ -46,33 +46,33 @@ module.exports.enumFeedSourceUrlTypes = {
   static_planned: 'static_planned',
 }
 
-module.exports.enumFeedSpecTypes = {
+export const enumFeedSpecTypes = {
   GBFS: 'GBFS',
   GTFS: 'GTFS',
   GTFS_RT: 'GTFS_RT',
   MDS: 'MDS',
 }
 
-module.exports.enumImportStatus = {
+export const enumImportStatus = {
   ERROR: 'ERROR',
   IN_PROGRESS: 'IN_PROGRESS',
   SUCCESS: 'SUCCESS',
 }
 
-module.exports.enumRole = {
+export const enumRole = {
   ADMIN: 'ADMIN',
   ANON: 'ANON',
   USER: 'USER',
 }
 
-module.exports.enumScheduleRelationship = {
+export const enumScheduleRelationship = {
   ADDED: 'ADDED',
   CANCELED: 'CANCELED',
   SCHEDULED: 'SCHEDULED',
   UNSCHEDULED: 'UNSCHEDULED',
 }
 
-module.exports.enumStepMode = {
+export const enumStepMode = {
   AUTO: 'AUTO',
   BICYCLE: 'BICYCLE',
   LINE: 'LINE',
@@ -80,20 +80,15 @@ module.exports.enumStepMode = {
   WALK: 'WALK',
 }
 
-module.exports.generateQueryOp = function(fields) {
+export var generateQueryOp = function(fields) {
   return generateGraphqlOperation('query', typeMap.Query, fields)
 }
-module.exports.generateMutationOp = function(fields) {
+export var generateMutationOp = function(fields) {
   return generateGraphqlOperation('mutation', typeMap.Mutation, fields)
 }
-module.exports.generateSubscriptionOp = function(fields) {
+export var generateSubscriptionOp = function(fields) {
   return generateGraphqlOperation('subscription', typeMap.Subscription, fields)
 }
-module.exports.everything = {
+export var everything = {
   __scalar: true,
-}
-
-var schemaExports = require('./guards.cjs')
-for (var k in schemaExports) {
-  module.exports[k] = schemaExports[k]
 }

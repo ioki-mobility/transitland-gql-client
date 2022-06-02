@@ -23,7 +23,7 @@
   "scripts": {
     "generate": "yarn run-s generate:* --print-label",
     "generate:0-download": "curl -s https://raw.githubusercontent.com/interline-io/transitland-server/main/schema.graphqls > ./landing/schema.graphqls",
-    "generate:1-client": "yarn genql --schema landing/schema.graphqls --output src/_client --sort --esm-and-cjs",
+    "generate:1-client": "yarn genql --schema landing/schema.graphqls --output src/_client --esm --sort --clean",
     "generate:2-bundle": "tsup src/index.ts --format cjs,esm --dts --clean",
     "generate:3-cp-schema": "cp src/_client/schema.graphql dist/schema.graphql",
     "prepublishOnly": "yarn generate",
