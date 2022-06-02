@@ -42,7 +42,7 @@ Keep in mind that the library has a peer dependency on graphql, so you will need
 2. Create a client instance:
 
 ```ts
-import { createClient } from 'transitland-gql-client';
+import { createClient } from '@ioki/transitland-gql-client';
 
 const transitlandClient = createClient({
   apiKey: "YOUR_SUPER_SECRET_API_KEY"
