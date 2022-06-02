@@ -16,6 +16,10 @@
       "types": "./dist/index.d.ts"
     }
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
   "scripts": {
     "generate": "yarn run-s generate:* --print-label",
     "generate:0-download": "curl -s https://raw.githubusercontent.com/interline-io/transitland-server/main/schema.graphqls > ./landing/schema.graphqls",
