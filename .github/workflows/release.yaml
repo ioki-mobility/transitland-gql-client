@@ -16,7 +16,7 @@ on:
 jobs:
   release-action:
     runs-on: ubuntu-latest
-    name: release-it
+    name: release
     steps:
       - name: checkout
         uses: actions/checkout@v3
@@ -36,6 +36,7 @@ jobs:
         run: yarn test
         env:
           TRANSITLAND_API_KEY: ${{ secrets.TRANSITLAND_API_KEY }}
+          TRANSITLAND_URL: ${{ secrets.TRANSITLAND_URL }}
       - id: changes
         name: detect changes
         uses: stefanzweifel/git-auto-commit-action@v4
