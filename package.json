@@ -1,6 +1,6 @@
 {
   "name": "transitland-gql-client",
-  "version": "2022.6.0",
+  "version": "2022.6.1",
   "description": "gql client for transitland",
   "repository": "git@github.com:boredland/transitland-gql-client.git",
   "author": "Jonas Strassel <info@jonas-strassel.de>",
