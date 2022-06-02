@@ -25,13 +25,13 @@ First add the library to your `package.json` file:
 * npm
 
   ```sh
-  npm install transitland-gql-client@latest
+  npm install @ioki/transitland-gql-client@latest
   ```
 
 * yarn
 
   ```sh
-  yarn add transitland-gql-client@latest
+  yarn add @ioki/transitland-gql-client@latest
   ```
 
 Keep in mind that the library has a peer dependency on graphql, so you will need to install that as well.
