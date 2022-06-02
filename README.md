@@ -21,8 +21,6 @@ To get a local copy up and running follow these simple example steps.
 
 First add the library to your `package.json` file:
 
-```json
-
 * npm
 
   ```sh
@@ -62,4 +60,4 @@ Distributed under the MIT License. See `LICENSE.md` for more information.
 
 Jonas Strassel - [@boredland122](https://twitter.com/boredland122)
 
-Project Link: [https://github.com/boredland/transitland-gql-client](https://github.com/boredland/transitland-gql-client
+Project Link: [https://github.com/boredland/transitland-gql-client](https://github.com/boredland/transitland-gql-client)
