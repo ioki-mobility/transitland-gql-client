@@ -1,5 +1,12 @@
 
 
+## [2022.6.8](https://github.com/boredland/transitland-gql-client/compare/2022.6.7...2022.6.8) (2022-06-02)
+
+
+### Bug Fixes
+
+* leave esm-cjs splitting to tsup ([8db933c](https://github.com/boredland/transitland-gql-client/commit/8db933c13a274e60600273360c8f43908e28ff91))
+
 ## [2022.7.0](https://github.com/boredland/transitland-gql-client/compare/2022.6.6...2022.7.0) (2022-06-02)
 
 
