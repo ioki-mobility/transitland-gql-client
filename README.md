@@ -1,6 +1,6 @@
 # transitland-gql-client
 
-![npm](https://img.shields.io/npm/dm/transitland-gql-client)
+![npm](https://img.shields.io/npm/dm/@ioki/transitland-gql-client)
 ![GitHub](https://img.shields.io/github/license/boredland/transitland-gql-client)
 [![test](https://github.com/boredland/transitland-gql-client/actions/workflows/test.yaml/badge.svg)](https://github.com/boredland/transitland-gql-client/actions/workflows/test.yaml)
 [![release](https://github.com/boredland/transitland-gql-client/actions/workflows/release.yaml/badge.svg)](https://github.com/boredland/transitland-gql-client/actions/workflows/release.yaml)
@@ -38,7 +38,7 @@ Keep in mind that the library has a peer dependency on graphql, so you will need
 
 ### Setup
 
-1. Get a free API Key at [transit.land](https://www.transit.land/documentation/index#sign-up)
+1. Get an API key with access to the gql api at [transit.land](https://www.transit.land/documentation/index#sign-up)
 2. Create a client instance:
 
 ```ts
