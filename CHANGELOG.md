@@ -1,5 +1,12 @@
 
 
+## [2022.6.9](https://github.com/boredland/transitland-gql-client/compare/2022.6.8...2022.6.9) (2022-06-02)
+
+
+### Reverts
+
+* make graphql a peerDepenency again ([fe183b2](https://github.com/boredland/transitland-gql-client/commit/fe183b2e6bcb1a4e495215e69d74c04fa0791a83))
+
 ## [2022.6.8](https://github.com/boredland/transitland-gql-client/compare/2022.6.7...2022.6.8) (2022-06-02)
 
 
