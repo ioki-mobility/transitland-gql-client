@@ -1,0 +1,48 @@
+{
+    "automerge": true,
+    "enabled": true,
+    "extends": [
+      ":autodetectPinVersions",
+      ":dependencyDashboard",
+      ":semanticPrefixFixDepsChoreOthers",
+      "github>whitesource/merge-confidence:beta",
+      "group:monorepos",
+      "group:recommended",
+      "workarounds:all",
+      "helpers:pinGitHubActionDigests"
+    ],
+    "labels": ["dependency"],
+    "lockFileMaintenance": {
+      "automerge": true,
+      "enabled": true
+    },
+    "major": {
+      "dependencyDashboardApproval": true
+    },
+    "npm": {
+      "enabled": true
+    },
+    "github-actions": {
+      "enabled": true
+    },
+    "packageRules": [
+      {
+        "automerge": true,
+        "automergeStrategy": "squash",
+        "matchUpdateTypes": ["digest", "minor", "patch", "pin"]
+      },
+      {
+        "groupName": "conventional-changelog",
+        "matchSourceUrlPrefixes": [
+          "https://github.com/conventional-changelog/commitlint"
+        ]
+      },
+      {
+        "groupName": "genql",
+        "matchSourceUrlPrefixes": ["https://github.com/remorses/genql"]
+      }
+    ],
+    "prConcurrentLimit": 1,
+    "semanticCommits": "enabled"
+  }
+  
