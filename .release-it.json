@@ -1,0 +1,29 @@
+{
+    "git": {
+      "commit": true,
+      "commitMessage": "chore: release v${version}",
+      "tag": true,
+      "push": true,
+      "requireCleanWorkingDir": true,
+      "requireBranch": "main"
+    },
+    "npm": {
+      "tag": true,
+      "push": true,
+      "ignoreVersion": false,
+      "allowSameVersion": false
+    },
+    "github": {
+      "release": true
+    },
+    "plugins": {
+        "@csmith/release-it-calver-plugin": {
+          "format": "yyyy.mm.minor",
+          "increment": "calendar"
+        },
+        "@release-it/conventional-changelog": {
+          "preset": "conventionalcommits",
+          "infile": "CHANGELOG.md"
+        }
+    }
+  }

@@ -18,15 +18,22 @@
   },
   "scripts": {
     "generate": "yarn run-s generate:* --print-label",
-    "generate:download": "curl -s https://raw.githubusercontent.com/interline-io/transitland-server/main/schema.graphqls > ./landing/schema.graphqls",
-    "generate:client": "yarn genql --schema landing/schema.graphqls --output src/_client --sort --esm-and-cjs",
-    "generate:bundle": "tsup src/index.ts --format cjs,esm --dts --clean",
-    "generate:cp-schema": "cp src/_client/schema.graphql dist/schema.graphql",
-    "prepublishOnly": "yarn generate"
+    "generate:0-download": "curl -s https://raw.githubusercontent.com/interline-io/transitland-server/main/schema.graphqls > ./landing/schema.graphqls",
+    "generate:1-client": "yarn genql --schema landing/schema.graphqls --output src/_client --sort --esm-and-cjs",
+    "generate:2-bundle": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "generate:3-cp-schema": "cp src/_client/schema.graphql dist/schema.graphql",
+    "prepublishOnly": "yarn generate",
+    "release": "release-it"
   },
   "devDependencies": {
+    "@commitlint/cli": "17.0.2",
+    "@commitlint/config-conventional": "17.0.2",
+    "@csmith/release-it-calver-plugin": "2022.5.13",
     "@genql/cli": "2.10.0",
+    "@release-it/conventional-changelog": "5.0.0",
+    "husky": "8.0.1",
     "npm-run-all": "4.1.5",
+    "release-it": "15.0.0",
     "ts-node": "10.8.0",
     "tsup": "6.0.1",
     "typescript": "4.7.2"
