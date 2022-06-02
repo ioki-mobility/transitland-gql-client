@@ -2,8 +2,8 @@
 
 ![transitland-logo](https://images.squarespace-cdn.com/content/v1/59821760914e6b087ecd856b/1502488142465-3WJZB7YR40PXKKB77QYW/image-asset.png?format=500w)
 
-![npm](https://img.shields.io/npm/dm/@ioki/transitland-gql-client)
-![GitHub](https://img.shields.io/github/license/ioki-mobility/transitland-gql-client)
+[![npm](https://img.shields.io/npm/dm/@ioki/transitland-gql-client)](https://www.npmjs.com/package/@ioki/transitland-gql-client)
+[![github](https://img.shields.io/github/license/ioki-mobility/transitland-gql-client?)](./LICENSE.md)
 [![test](https://github.com/ioki-mobility/transitland-gql-client/actions/workflows/test.yaml/badge.svg)](https://github.com/ioki-mobility/transitland-gql-client/actions/workflows/test.yaml)
 [![release](https://github.com/ioki-mobility/transitland-gql-client/actions/workflows/release.yaml/badge.svg)](https://github.com/ioki-mobility/transitland-gql-client/actions/workflows/release.yaml)
 
