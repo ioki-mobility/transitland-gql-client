@@ -5,13 +5,16 @@
       "tag": true,
       "push": true,
       "requireCleanWorkingDir": true,
-      "requireBranch": "main"
+      "requireBranch": "main",
+      "requireUpstream": true,
+      "requireCommits": true
     },
     "npm": {
-      "tag": true,
+      "tag": "latest",
       "push": true,
       "ignoreVersion": false,
-      "allowSameVersion": false
+      "allowSameVersion": false,
+      "skipChecks": false
     },
     "github": {
       "release": true
