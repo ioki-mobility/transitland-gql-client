@@ -2911,7 +2911,8 @@ var createClient = (_a) => {
   options.headers = __spreadProps(__spreadValues({}, options.headers), {
     apiKey
   });
-  return (0, import_client.createClient)(options);
+  const _a2 = (0, import_client.createClient)(options), { mutation } = _a2, client = __objRest(_a2, ["mutation"]);
+  return client;
 };
 export {
   createClient
