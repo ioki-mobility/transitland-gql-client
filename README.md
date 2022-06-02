@@ -50,7 +50,7 @@ const transitlandClient = createClient({
 
 ## Usage
 
-GenQL provides a neat [converter](https://genql.vercel.app/converter) from GraphQL to TypeScript. So you can acutally just test the queries you want to use in the [playground](https://www.transit.land/documentation/api/graphql-console).
+GenQL provides a neat [converter](https://genql.vercel.app/converter) from GraphQL to TypeScript. So you can actually just test the queries you want to use in the [playground](https://www.transit.land/documentation/api/graphql-console).
 
 ## License
 
