@@ -1,5 +1,7 @@
 
 
+## [2022.6.5](https://github.com/boredland/transitland-gql-client/compare/2022.6.4...2022.6.5) (2022-06-02)
+
 ## [2022.6.4](https://github.com/boredland/transitland-gql-client/compare/2022.6.3...2022.6.4) (2022-06-02)
 
 ## [2022.7.0](https://github.com/boredland/transitland-gql-client/compare/2022.6.1...2022.7.0) (2022-06-02)
