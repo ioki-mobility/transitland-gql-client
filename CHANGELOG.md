@@ -1,5 +1,12 @@
 
 
+## [2022.6.14](https://github.com/ioki-mobility/transitland-gql-client/compare/2022.6.13...2022.6.14) (2022-06-03)
+
+
+### Bug Fixes
+
+* modify readme for npm publish ([032bc3a](https://github.com/ioki-mobility/transitland-gql-client/commit/032bc3a5dbf38d941a87963becb97091c69d58ba))
+
 ## [2022.6.13](https://github.com/ioki-mobility/transitland-gql-client/compare/2022.6.12...2022.6.13) (2022-06-03)
 
 ## [2022.6.12](https://github.com/ioki-mobility/transitland-gql-client/compare/2022.6.11...2022.6.12) (2022-06-02)
