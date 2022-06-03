@@ -68,8 +68,12 @@ Distributed under the MIT License. See `LICENSE.md` for more information.
 
 ## Contact
 
-![ioki-logo-dark](./assets/ioki-light.png#gh-dark-mode-only)
-![ioki-logo-light](./assets/ioki-dark.png#gh-light-mode-only)
+<a href="https://ioki.com/en/ioki-devs/">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/ioki-mobility/transitland-gql-client/blob/main/assets/ioki-light.png?raw=true">
+    <img alt="ioki logo" src="https://github.com/ioki-mobility/transitland-gql-client/blob/main/assets/ioki-dark.png?raw=true">
+  </picture>
+</a>
 
 ioki Mobility - [@ioki_mobility](https://twitter.com/ioki_mobility)
 
