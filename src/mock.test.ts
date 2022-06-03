@@ -36,8 +36,8 @@ const schemaWithMocks = addMocksToSchema({
         Query: () => {
             return {
                 /**
-                 * returning an empty array determines how many mocks of the Route scalar will be filled
-                 * without this, it would always return 2 elements for iterables
+                 * Returning an empty array determines how many mocked objects will be returned.
+                 * Without this the mock returns 2 elements for iterables.
                  */
                 routes: () => [...Array(5)]
             }
