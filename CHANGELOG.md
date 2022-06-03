@@ -1,5 +1,7 @@
 
 
+## [2022.6.13](https://github.com/ioki-mobility/transitland-gql-client/compare/2022.6.12...2022.6.13) (2022-06-03)
+
 ## [2022.6.12](https://github.com/ioki-mobility/transitland-gql-client/compare/2022.6.11...2022.6.12) (2022-06-02)
 
 ## [2022.6.11](https://github.com/ioki-mobility/transitland-gql-client/compare/2022.6.10...2022.6.11) (2022-06-02)
