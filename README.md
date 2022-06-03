@@ -53,6 +53,10 @@ const transitlandClient = createClient({
 
 GenQL provides a neat [converter](https://genql.vercel.app/converter) from GraphQL to TypeScript. So you can actually just test the queries you want to use in the [playground](https://www.transit.land/documentation/api/graphql-console).
 
+## Mocking
+
+Using GraphQL's strict type definitions, it is pretty easy to generate a mock server you could use during your tests. An extensive example is [stored as a test](src/mock.test.ts).
+
 ## License
 
 Distributed under the MIT License. See `LICENSE.md` for more information.
