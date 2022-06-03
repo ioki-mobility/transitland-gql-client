@@ -26,7 +26,8 @@
     "generate:1-client": "yarn genql --schema landing/schema.graphqls --output src/_client --esm --sort --clean",
     "generate:2-bundle": "tsup src/index.ts --format cjs,esm --dts --clean",
     "generate:3-cp-schema": "cp src/_client/schema.graphql dist/schema.graphql",
-    "prepublishOnly": "yarn generate",
+    "postpublish": "git checkout HEAD README.md",
+    "prepublishOnly": "node npmReadme.js",
     "release": "release-it",
     "test": "jest"
   },
