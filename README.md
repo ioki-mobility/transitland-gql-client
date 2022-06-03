@@ -1,6 +1,7 @@
 # TransitLand Graphql Client
 
-![transitland-logo](https://images.squarespace-cdn.com/content/v1/59821760914e6b087ecd856b/1502488142465-3WJZB7YR40PXKKB77QYW/image-asset.png?format=500w)
+![transitland-logo-light](./assets/transitland-dark.png#gh-light-mode-only)
+![transitland-logo-dark](./assets/transitland-light.png#gh-dark-mode-only)
 
 [![npm (scoped)](https://img.shields.io/npm/v/@ioki/transitland-gql-client)](https://www.npmjs.com/package/@ioki/transitland-gql-client)
 [![npm (downloads)](https://img.shields.io/npm/dm/@ioki/transitland-gql-client)](https://www.npmjs.com/package/@ioki/transitland-gql-client)
@@ -63,7 +64,8 @@ Distributed under the MIT License. See `LICENSE.md` for more information.
 
 ## Contact
 
-[![ioki-logo](https://avatars.githubusercontent.com/u/44803941?s=200&v=4)](https://github.com/ioki-mobility)
+![ioki-logo-dark](./assets/ioki-light.png#gh-dark-mode-only)
+![ioki-logo-light](./assets/ioki-dark.png#gh-light-mode-only)
 
 ioki Mobility - [@ioki_mobility](https://twitter.com/ioki_mobility)
 
