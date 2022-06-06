@@ -1,6 +1,5 @@
 import * as _genql_runtime from '@genql/runtime';
 import { FieldsSelection, Observable, GraphqlOperation, ClientOptions as ClientOptions$1 } from '@genql/runtime';
-import * as subscriptions_transport_ws from 'subscriptions-transport-ws';
 import { SubscriptionClient } from 'subscriptions-transport-ws';
 import { Optional } from 'utility-types';
 
@@ -5314,7 +5313,6 @@ declare type ClientOptions = Optional<ClientOptions$1, 'url' | 'batch'> & {
     apiKey: string;
 };
 declare const createClient: ({ apiKey, ...options }: ClientOptions) => {
-    wsClient?: subscriptions_transport_ws.SubscriptionClient | undefined;
     query<R extends QueryRequest>(request: R & {
         __name?: string | undefined;
     }): Promise<_genql_runtime.FieldsSelection<Query, R>>;
