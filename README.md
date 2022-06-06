@@ -13,7 +13,7 @@
 
 Since the [Transitland](https://www.transit.land/) released its new and shiny [GraphQL API](https://www.transit.land/documentation/graphql-api/), it is possible to query the API using [GraphQL](https://graphql.org/).
 
-The client is being built using [genql](https://genql.vercel.app/) and updated hourly, if there are upstream changes.
+The client is being built using [GenQL](https://genql.vercel.app/) and updated hourly, if there are upstream changes.
 
 ## Getting Started
 
