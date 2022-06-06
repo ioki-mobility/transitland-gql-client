@@ -17,11 +17,6 @@ The client is being built using [genql](https://genql.vercel.app/) and updated h
 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
 First add the library and its peerDependency `graphql` to your project:
 
 * npm
