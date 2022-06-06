@@ -1,5 +1,7 @@
 
 
+## 2022.6.16 (2022-06-06)
+
 ## 2022.6.15 (2022-06-03)
 
 ## [2022.6.14](https://github.com/ioki-mobility/transitland-gql-client/compare/2022.6.13...2022.6.14) (2022-06-03)
