@@ -37,3 +37,31 @@ it("can fetch feeds", async () => {
       }
     `);
 });
+
+it("can not batch queries", async () => {
+  /**
+   * batching does not work in gqlgen, the backend transitland uses.
+   * this test ensures nothing changed about that.
+   * https://github.com/99designs/gqlgen/discussions/1932
+   */
+  jest.useFakeTimers();
+  const batchClient = createClient({
+    apiKey: process.env.TRANSITLAND_API_KEY!,
+    url: process.env.TRANSITLAND_URL,
+    batch: true,
+    headers: {
+      Referer: 'https://www.transit.land/',
+    },
+  });
+  const batch = Array(10).fill(0).map((_v, idx) => {
+    return batchClient.query({
+      stops: [
+        { limit: 1, after: idx + 1 },
+        { 
+          onestop_id: true,
+        }
+      ]
+    })
+  });
+  expect(Promise.all(batch)).rejects.toEqual('error');
+});
