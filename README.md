@@ -58,12 +58,12 @@ Distributed under the MIT License. See `LICENSE.md` for more information.
 
 ## Contributing (complexity, asc)
 
-1. [join us @ioki](https://ioki.com/en/about-ioki/jobs/) and make this one of your projects
+1. [join us @ioki](https://ioki.com/about-ioki/jobs/) and make this one of your projects
 2. create issues and pull requests, we're happy to enhance this
 
 ## Contact
 
-<a href="https://ioki.com/en/ioki-devs/">
+<a href="https://ioki.com/ioki-devs/">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://github.com/ioki-mobility/transitland-gql-client/blob/main/assets/ioki-light.png?raw=true">
     <img alt="ioki logo" src="https://github.com/ioki-mobility/transitland-gql-client/blob/main/assets/ioki-dark.png?raw=true">
