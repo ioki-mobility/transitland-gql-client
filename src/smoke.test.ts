@@ -18,6 +18,11 @@ it('should have no mutations', () => {
   expect(transitlandClient).not.toHaveProperty('mutation')
 })
 
+it('should have no wsClient', () => {
+  expect(transitlandClient).not.toHaveProperty('wsClient')
+  expect(transitlandClient).not.toHaveProperty('subscription')
+})
+
 it("can fetch feeds", async () => {
   const result = await transitlandClient.query({
     feeds: [
