@@ -1,5 +1,12 @@
 
 
+## 2022.6.17 (2022-06-07)
+
+
+### Bug Fixes
+
+* uniform spelling of GenQL ([9238ad7](https://github.com/ioki-mobility/transitland-gql-client/commit/9238ad75302800c96f9da86b82477ce60900871a))
+
 ## 2022.6.16 (2022-06-06)
 
 ## 2022.6.15 (2022-06-03)
