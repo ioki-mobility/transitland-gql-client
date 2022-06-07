@@ -1505,7 +1505,7 @@ export interface StopTimeEventRequest{
     __scalar?: boolean | number
 }
 
-export interface StopTimeFilter {allow_previous_route_onestop_ids?: (Scalars['Boolean'] | null),end_time?: (Scalars['Int'] | null),exclude_first?: (Scalars['Boolean'] | null),exclude_last?: (Scalars['Boolean'] | null),next?: (Scalars['Int'] | null),route_onestop_ids?: (Scalars['String'][] | null),service_date?: (Scalars['Date'] | null),start_time?: (Scalars['Int'] | null),use_service_window?: (Scalars['Boolean'] | null)}
+export interface StopTimeFilter {allow_previous_route_onestop_ids?: (Scalars['Boolean'] | null),end?: (Scalars['Seconds'] | null),end_time?: (Scalars['Int'] | null),exclude_first?: (Scalars['Boolean'] | null),exclude_last?: (Scalars['Boolean'] | null),next?: (Scalars['Int'] | null),route_onestop_ids?: (Scalars['String'][] | null),service_date?: (Scalars['Date'] | null),start?: (Scalars['Seconds'] | null),start_time?: (Scalars['Int'] | null),use_service_window?: (Scalars['Boolean'] | null)}
 
 
 /** Record from a static GTFS [trips.txt](https://gtfs.org/schedule/reference/#tripstxt) file optionally enriched with by GTFS Realtime [TripUpdate](https://gtfs.org/reference/realtime/v2/#message-tripupdate) and [Alert](https://gtfs.org/reference/realtime/v2/#message-alert) messages. */

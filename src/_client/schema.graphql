@@ -871,12 +871,14 @@ type StopTimeEvent {
 
 input StopTimeFilter {
   allow_previous_route_onestop_ids: Boolean
+  end: Seconds
   end_time: Int
   exclude_first: Boolean
   exclude_last: Boolean
   next: Int
   route_onestop_ids: [String!]
   service_date: Date
+  start: Seconds
   start_time: Int
   use_service_window: Boolean
 }

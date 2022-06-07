@@ -2119,6 +2119,9 @@ export default {
             "allow_previous_route_onestop_ids": [
                 6
             ],
+            "end": [
+                73
+            ],
             "end_time": [
                 46
             ],
@@ -2136,6 +2139,9 @@ export default {
             ],
             "service_date": [
                 12
+            ],
+            "start": [
+                73
             ],
             "start_time": [
                 46

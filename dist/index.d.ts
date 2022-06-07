@@ -1559,12 +1559,14 @@ interface StopTimeEventRequest {
 }
 interface StopTimeFilter {
     allow_previous_route_onestop_ids?: (Scalars['Boolean'] | null);
+    end?: (Scalars['Seconds'] | null);
     end_time?: (Scalars['Int'] | null);
     exclude_first?: (Scalars['Boolean'] | null);
     exclude_last?: (Scalars['Boolean'] | null);
     next?: (Scalars['Int'] | null);
     route_onestop_ids?: (Scalars['String'][] | null);
     service_date?: (Scalars['Date'] | null);
+    start?: (Scalars['Seconds'] | null);
     start_time?: (Scalars['Int'] | null);
     use_service_window?: (Scalars['Boolean'] | null);
 }
