@@ -441,6 +441,7 @@ type FeedVersionFileInfo {
 input FeedVersionFilter {
   feed_ids: [Int!]
   feed_onestop_id: String
+  import_status: ImportStatus
   sha1: String
 }
 

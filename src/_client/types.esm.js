@@ -871,6 +871,9 @@ export default {
             "feed_onestop_id": [
                 82
             ],
+            "import_status": [
+                45
+            ],
             "sha1": [
                 82
             ],

@@ -1116,7 +1116,7 @@ export interface FeedVersionFileInfoRequest{
     __scalar?: boolean | number
 }
 
-export interface FeedVersionFilter {feed_ids?: (Scalars['Int'][] | null),feed_onestop_id?: (Scalars['String'] | null),sha1?: (Scalars['String'] | null)}
+export interface FeedVersionFilter {feed_ids?: (Scalars['Int'][] | null),feed_onestop_id?: (Scalars['String'] | null),import_status?: (ImportStatus | null),sha1?: (Scalars['String'] | null)}
 
 export interface FeedVersionGtfsImportRequest{
     created_at?: boolean | number

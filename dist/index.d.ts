@@ -1062,6 +1062,7 @@ interface FeedVersionFileInfoRequest {
 interface FeedVersionFilter {
     feed_ids?: (Scalars['Int'][] | null);
     feed_onestop_id?: (Scalars['String'] | null);
+    import_status?: (ImportStatus | null);
     sha1?: (Scalars['String'] | null);
 }
 interface FeedVersionGtfsImportRequest {
