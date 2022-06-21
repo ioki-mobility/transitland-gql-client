@@ -1,23 +1,24 @@
 import * as _genql_runtime from '@genql/runtime';
 import { FieldsSelection, Observable, GraphqlOperation, ClientOptions as ClientOptions$1 } from '@genql/runtime';
 import { SubscriptionClient } from 'subscriptions-transport-ws';
-import { Optional } from 'utility-types';
 
 declare type Scalars = {
     Any: any;
     Boolean: boolean;
-    Date: any;
+    Date: string;
     Float: number;
-    Geometry: any;
+    Geometry: GeoJSON.Geometry;
     Int: number;
-    LineString: any;
+    LineString: GeoJSON.LineString;
     Map: any;
-    Point: any;
-    Polygon: any;
-    Seconds: any;
+    Point: GeoJSON.Point;
+    Polygon: GeoJSON.Polygon;
+    Seconds: string;
     String: string;
-    Tags: any;
-    Time: any;
+    Tags: {
+        [k: string]: string;
+    };
+    Time: string;
     Upload: any;
 };
 /** See https://gtfs.org/schedule/reference/#agencytxt */
@@ -5312,6 +5313,7 @@ declare const enumStepMode: {
   readonly WALK: 'WALK'
 }
 
+declare type Optional<T extends object, K extends keyof T = keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 declare type ClientOptions = Optional<ClientOptions$1, 'url' | 'batch'> & {
     apiKey: string;
 };
