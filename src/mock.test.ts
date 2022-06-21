@@ -75,8 +75,8 @@ beforeAll(() => {
     transitlandServer();
 })
 
-afterAll(() => {
-    transitlandServer().close();
+afterAll(async () => {
+    await new Promise<void>(resolve => transitlandServer().close(() => resolve()));
 });
 
 
