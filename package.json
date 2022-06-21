@@ -24,7 +24,7 @@
     "generate": "yarn run-s generate:* --print-label",
     "generate:0-download": "curl -s https://raw.githubusercontent.com/interline-io/transitland-server/main/schema.graphqls > ./landing/schema.graphqls",
     "generate:1-client": "ts-node genql.ts",
-    "generate:2-bundle": "tsup src/index.ts --format cjs,esm --dts --clean --minify",
+    "generate:2-bundle": "tsup",
     "generate:3-cp-schema": "cp src/_client/schema.graphql dist/schema.graphql",
     "postpublish": "git checkout HEAD README.md",
     "prepublishOnly": "node npmReadme.js",
@@ -41,6 +41,7 @@
     "@release-it/conventional-changelog": "5.0.0",
     "@types/chance": "1.1.3",
     "@types/connect": "3.4.35",
+    "@types/geojson": "7946.0.8",
     "@types/jest": "28.1.2",
     "chance": "1.1.8",
     "connect": "3.7.0",
@@ -53,13 +54,26 @@
     "ts-jest": "28.0.5",
     "ts-node": "10.8.1",
     "tsup": "6.1.2",
-    "typescript": "4.7.4",
-    "utility-types": "3.10.0"
+    "typescript": "4.7.4"
   },
   "dependencies": {
     "@genql/runtime": "2.10.0"
   },
   "peerDependencies": {
+    "@types/geojson": "*",
     "graphql": "*"
+  },
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "splitting": true,
+    "sourcemap": true,
+    "clean": true,
+    "format": [
+      "cjs",
+      "esm"
+    ],
+    "dts": true
   }
 }

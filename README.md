@@ -17,18 +17,18 @@ The client is being built using [GenQL](https://genql.vercel.app/) and updated h
 
 ## Getting Started
 
-First add the library and its peerDependency `graphql` to your project:
+First add the library and its peerDependencies `graphql` and `@types/geojson` to your project:
 
 * npm
 
   ```sh
-  npm install @ioki/transitland-gql-client@latest grapqhl
+  npm i @ioki/transitland-gql-client@latest grapqhl && npm i -D @types/geojson
   ```
 
 * yarn
 
   ```sh
-  yarn add @ioki/transitland-gql-client@latest grapqhl
+  yarn add @ioki/transitland-gql-client@latest grapqhl && yarn add --dev @types/geojson
   ```
 
 ### Setup
