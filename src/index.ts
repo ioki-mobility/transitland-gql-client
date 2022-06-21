@@ -1,6 +1,7 @@
 import type { ClientOptions as OriginalClientOptions} from '@genql/runtime';
-import { Optional } from 'utility-types';
 import { createClient as originalCreateClient } from './_client';
+
+type Optional<T extends object, K extends keyof T = keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 
 type ClientOptions = Optional<OriginalClientOptions, 'url' | 'batch'> & {
     apiKey: string;

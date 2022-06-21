@@ -1,3 +1,4 @@
+import type { Geometry } from "geojson";
 import { createClient } from "../dist";
 
 it('needs TRANSITLAND_API_KEY to be set', () => {
