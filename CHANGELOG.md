@@ -1,5 +1,12 @@
 
 
+## 2022.7.0 (2022-06-21)
+
+
+### Features
+
+* typed scalars ([#20](https://github.com/ioki-mobility/transitland-gql-client/issues/20)) ([4caf6f6](https://github.com/ioki-mobility/transitland-gql-client/commit/4caf6f62fe396516fb10c1a36eb7b93c7287b011))
+
 ## 2022.6.19 (2022-06-20)
 
 ## 2022.6.18 (2022-06-10)
