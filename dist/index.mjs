@@ -1,5 +1,3 @@
-"use strict";
-
 // src/_client/index.js
 import {
   linkTypeMap,
