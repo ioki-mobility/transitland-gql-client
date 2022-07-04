@@ -1,5 +1,12 @@
 
 
+## [2022.6.21](https://github.com/ioki-mobility/transitland-gql-client/compare/2022.6.20...2022.6.21) (2022-07-04)
+
+
+### Bug Fixes
+
+* close mockserver properly ([ba9b255](https://github.com/ioki-mobility/transitland-gql-client/commit/ba9b255af2e7043c82d1d14b4591836316e01916))
+
 ## 2022.7.0 (2022-06-21)
 
 
