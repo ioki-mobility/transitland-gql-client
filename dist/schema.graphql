@@ -547,15 +547,6 @@ scalar LineString
 
 scalar Map
 
-type Mutation {
-  feed_version_delete(id: Int!): FeedVersionDeleteResult!
-  feed_version_fetch(feed_onestop_id: String!, file: Upload, url: String): FeedVersionFetchResult
-  feed_version_import(sha1: String!): FeedVersionImportResult!
-  feed_version_unimport(id: Int!): FeedVersionUnimportResult!
-  feed_version_update(id: Int!, set: FeedVersionSetInput!): FeedVersion
-  validate_gtfs(file: Upload, realtime_urls: [String!], url: String): ValidationResult
-}
-
 """
 An agency represents a single GTFS `agencies.txt` entity that was imported from a single feed version. The metadata, routes, etc., for an agency include only the data for that specific agency in that specific feed version. 
 

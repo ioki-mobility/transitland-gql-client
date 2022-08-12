@@ -14,8 +14,6 @@ export const createClient = ({ apiKey, ...options }: ClientOptions) => {
         ...options.headers,
         apiKey
     };
-    
-    const { mutation, wsClient, ...client} = originalCreateClient(options);
-    return client;
+    const { query, chain } = originalCreateClient(options)
+    return { query, chain };
 }
-export * from './_client';

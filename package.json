@@ -31,6 +31,7 @@
     "release": "release-it",
     "test": "jest"
   },
+  "sideEffects": true,
   "devDependencies": {
     "@commitlint/cli": "17.0.3",
     "@commitlint/config-conventional": "17.0.3",
@@ -47,6 +48,7 @@
     "connect": "3.7.0",
     "dotenv": "16.0.1",
     "express-graphql": "0.12.0",
+    "graphql": "^16.5.0",
     "husky": "8.0.1",
     "jest": "28.1.3",
     "npm-run-all": "4.1.5",
@@ -56,13 +58,6 @@
     "tsup": "6.2.2",
     "typescript": "4.7.4"
   },
-  "dependencies": {
-    "@genql/runtime": "2.10.0"
-  },
-  "peerDependencies": {
-    "@types/geojson": "*",
-    "graphql": "*"
-  },
   "tsup": {
     "entry": [
       "src/index.ts"
@@ -70,6 +65,7 @@
     "splitting": true,
     "sourcemap": true,
     "clean": true,
+    "minify": true,
     "format": [
       "cjs",
       "esm"

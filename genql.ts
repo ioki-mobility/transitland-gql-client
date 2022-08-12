@@ -1,11 +1,14 @@
-import path from 'path';
-import { exit } from 'process';
+import path from 'node:path';
+import { exit } from 'node:process';
 import { generate } from '@genql/cli';
+import fs from 'node:fs'
+
+const schema = fs.readFileSync(path.join(__dirname, 'landing/schema.graphqls'), 'utf-8');
 
 void (async function () {
     const generator = generate({
         sortProperties: true,
-        schema: path.join(__dirname, 'landing/schema.graphqls'),
+        schema: schema.replace(/type Mutation {[^}]*}/gm,  ''),
         output: path.join(__dirname, 'src/_client'),
         verbose: true,
         onlyEsModules: true,

@@ -231,14 +231,6 @@ export var isLevel = function(obj) {
 
 
 
-var Mutation_possibleTypes = ['Mutation']
-export var isMutation = function(obj) {
-  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isMutation"')
-  return Mutation_possibleTypes.includes(obj.__typename)
-}
-
-
-
 var Operator_possibleTypes = ['Operator']
 export var isOperator = function(obj) {
   if (!obj || !obj.__typename) throw new Error('__typename is missing in "isOperator"')
