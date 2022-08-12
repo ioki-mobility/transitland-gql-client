@@ -4,6 +4,7 @@
 ![transitland-logo-dark](./assets/transitland-light.png#gh-dark-mode-only)
 
 [![npm (scoped)](https://img.shields.io/npm/v/@ioki/transitland-gql-client)](https://www.npmjs.com/package/@ioki/transitland-gql-client)
+[![size](https://img.shields.io/bundlephobia/minzip/@ioki/transitland-gql-client)](https://bundlephobia.com/package/@ioki/transitland-gql-client@latest)
 [![npm (downloads)](https://img.shields.io/npm/dm/@ioki/transitland-gql-client)](https://www.npmjs.com/package/@ioki/transitland-gql-client)
 [![github](https://img.shields.io/github/license/ioki-mobility/transitland-gql-client?)](./LICENSE.md)
 [![test](https://github.com/ioki-mobility/transitland-gql-client/actions/workflows/test.yaml/badge.svg)](https://github.com/ioki-mobility/transitland-gql-client/actions/workflows/test.yaml)
