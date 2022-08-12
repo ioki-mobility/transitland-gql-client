@@ -410,16 +410,6 @@ export interface Level {
     __typename: 'Level'
 }
 
-export interface Mutation {
-    feed_version_delete: FeedVersionDeleteResult
-    feed_version_fetch?: FeedVersionFetchResult
-    feed_version_import: FeedVersionImportResult
-    feed_version_unimport: FeedVersionUnimportResult
-    feed_version_update?: FeedVersion
-    validate_gtfs?: ValidationResult
-    __typename: 'Mutation'
-}
-
 
 /**
  * An agency represents a single GTFS `agencies.txt` entity that was imported from a single feed version. The metadata, routes, etc., for an agency include only the data for that specific agency in that specific feed version. 
@@ -1216,17 +1206,6 @@ export interface LevelRequest{
     __scalar?: boolean | number
 }
 
-export interface MutationRequest{
-    feed_version_delete?: [{id: Scalars['Int']},FeedVersionDeleteResultRequest]
-    feed_version_fetch?: [{feed_onestop_id: Scalars['String'],file?: (Scalars['Upload'] | null),url?: (Scalars['String'] | null)},FeedVersionFetchResultRequest]
-    feed_version_import?: [{sha1: Scalars['String']},FeedVersionImportResultRequest]
-    feed_version_unimport?: [{id: Scalars['Int']},FeedVersionUnimportResultRequest]
-    feed_version_update?: [{id: Scalars['Int'],set: FeedVersionSetInput},FeedVersionRequest]
-    validate_gtfs?: [{file?: (Scalars['Upload'] | null),realtime_urls?: (Scalars['String'][] | null),url?: (Scalars['String'] | null)},ValidationResultRequest] | ValidationResultRequest
-    __typename?: boolean | number
-    __scalar?: boolean | number
-}
-
 
 /**
  * An agency represents a single GTFS `agencies.txt` entity that was imported from a single feed version. The metadata, routes, etc., for an agency include only the data for that specific agency in that specific feed version. 
@@ -1826,14 +1805,6 @@ const Level_possibleTypes: string[] = ['Level']
 export const isLevel = (obj?: { __typename?: any } | null): obj is Level => {
   if (!obj?.__typename) throw new Error('__typename is missing in "isLevel"')
   return Level_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const Mutation_possibleTypes: string[] = ['Mutation']
-export const isMutation = (obj?: { __typename?: any } | null): obj is Mutation => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isMutation"')
-  return Mutation_possibleTypes.includes(obj.__typename)
 }
 
 
@@ -2777,24 +2748,6 @@ export interface LevelObservableChain{
     level_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
     level_index: ({get: (request?: boolean|number, defaultValue?: Scalars['Float']) => Observable<Scalars['Float']>}),
     level_name: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>})
-}
-
-export interface MutationPromiseChain{
-    feed_version_delete: ((args: {id: Scalars['Int']}) => FeedVersionDeleteResultPromiseChain & {get: <R extends FeedVersionDeleteResultRequest>(request: R, defaultValue?: FieldsSelection<FeedVersionDeleteResult, R>) => Promise<FieldsSelection<FeedVersionDeleteResult, R>>}),
-    feed_version_fetch: ((args: {feed_onestop_id: Scalars['String'],file?: (Scalars['Upload'] | null),url?: (Scalars['String'] | null)}) => FeedVersionFetchResultPromiseChain & {get: <R extends FeedVersionFetchResultRequest>(request: R, defaultValue?: (FieldsSelection<FeedVersionFetchResult, R> | undefined)) => Promise<(FieldsSelection<FeedVersionFetchResult, R> | undefined)>}),
-    feed_version_import: ((args: {sha1: Scalars['String']}) => FeedVersionImportResultPromiseChain & {get: <R extends FeedVersionImportResultRequest>(request: R, defaultValue?: FieldsSelection<FeedVersionImportResult, R>) => Promise<FieldsSelection<FeedVersionImportResult, R>>}),
-    feed_version_unimport: ((args: {id: Scalars['Int']}) => FeedVersionUnimportResultPromiseChain & {get: <R extends FeedVersionUnimportResultRequest>(request: R, defaultValue?: FieldsSelection<FeedVersionUnimportResult, R>) => Promise<FieldsSelection<FeedVersionUnimportResult, R>>}),
-    feed_version_update: ((args: {id: Scalars['Int'],set: FeedVersionSetInput}) => FeedVersionPromiseChain & {get: <R extends FeedVersionRequest>(request: R, defaultValue?: (FieldsSelection<FeedVersion, R> | undefined)) => Promise<(FieldsSelection<FeedVersion, R> | undefined)>}),
-    validate_gtfs: ((args?: {file?: (Scalars['Upload'] | null),realtime_urls?: (Scalars['String'][] | null),url?: (Scalars['String'] | null)}) => ValidationResultPromiseChain & {get: <R extends ValidationResultRequest>(request: R, defaultValue?: (FieldsSelection<ValidationResult, R> | undefined)) => Promise<(FieldsSelection<ValidationResult, R> | undefined)>})&(ValidationResultPromiseChain & {get: <R extends ValidationResultRequest>(request: R, defaultValue?: (FieldsSelection<ValidationResult, R> | undefined)) => Promise<(FieldsSelection<ValidationResult, R> | undefined)>})
-}
-
-export interface MutationObservableChain{
-    feed_version_delete: ((args: {id: Scalars['Int']}) => FeedVersionDeleteResultObservableChain & {get: <R extends FeedVersionDeleteResultRequest>(request: R, defaultValue?: FieldsSelection<FeedVersionDeleteResult, R>) => Observable<FieldsSelection<FeedVersionDeleteResult, R>>}),
-    feed_version_fetch: ((args: {feed_onestop_id: Scalars['String'],file?: (Scalars['Upload'] | null),url?: (Scalars['String'] | null)}) => FeedVersionFetchResultObservableChain & {get: <R extends FeedVersionFetchResultRequest>(request: R, defaultValue?: (FieldsSelection<FeedVersionFetchResult, R> | undefined)) => Observable<(FieldsSelection<FeedVersionFetchResult, R> | undefined)>}),
-    feed_version_import: ((args: {sha1: Scalars['String']}) => FeedVersionImportResultObservableChain & {get: <R extends FeedVersionImportResultRequest>(request: R, defaultValue?: FieldsSelection<FeedVersionImportResult, R>) => Observable<FieldsSelection<FeedVersionImportResult, R>>}),
-    feed_version_unimport: ((args: {id: Scalars['Int']}) => FeedVersionUnimportResultObservableChain & {get: <R extends FeedVersionUnimportResultRequest>(request: R, defaultValue?: FieldsSelection<FeedVersionUnimportResult, R>) => Observable<FieldsSelection<FeedVersionUnimportResult, R>>}),
-    feed_version_update: ((args: {id: Scalars['Int'],set: FeedVersionSetInput}) => FeedVersionObservableChain & {get: <R extends FeedVersionRequest>(request: R, defaultValue?: (FieldsSelection<FeedVersion, R> | undefined)) => Observable<(FieldsSelection<FeedVersion, R> | undefined)>}),
-    validate_gtfs: ((args?: {file?: (Scalars['Upload'] | null),realtime_urls?: (Scalars['String'][] | null),url?: (Scalars['String'] | null)}) => ValidationResultObservableChain & {get: <R extends ValidationResultRequest>(request: R, defaultValue?: (FieldsSelection<ValidationResult, R> | undefined)) => Observable<(FieldsSelection<ValidationResult, R> | undefined)>})&(ValidationResultObservableChain & {get: <R extends ValidationResultRequest>(request: R, defaultValue?: (FieldsSelection<ValidationResult, R> | undefined)) => Observable<(FieldsSelection<ValidationResult, R> | undefined)>})
 }
 
 
