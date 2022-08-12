@@ -506,7 +506,7 @@
     rimraf "^2.6.3"
     yargs "^15.3.1"
 
-"@genql/runtime@^2.10.0":
+"@genql/runtime@2.10.0", "@genql/runtime@^2.10.0":
   version "2.10.0"
   resolved "https://registry.yarnpkg.com/@genql/runtime/-/runtime-2.10.0.tgz#7177a6ce7d6815873d5e668c5b72d94294b45fab"
   integrity sha512-hWy4fkHAk0OUW/cmjAOhbE3PnR9YfwaE8DRl5oEf7r9K6Owju8ogTDV3RMkG6Vm57H9xYxI5+am5ImAUbqPH8A==
