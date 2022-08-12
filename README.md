@@ -18,18 +18,18 @@ The client is being built using [GenQL](https://genql.vercel.app/) and updated h
 
 ## Getting Started
 
-First add the library to your project:
+First add the library and its peerDependency to your project:
 
 * npm
 
   ```sh
-  npm i @ioki/transitland-gql-client@latest
+  npm i @ioki/transitland-gql-client@latest @genql/runtime@latest
   ```
 
 * yarn
 
   ```sh
-  yarn add @ioki/transitland-gql-client@latest
+  yarn add @ioki/transitland-gql-client@latest @genql/runtime@latest
   ```
 
 ### Setup
