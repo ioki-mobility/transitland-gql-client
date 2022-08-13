@@ -1,5 +1,12 @@
 
 
+## [2022.8.24](https://github.com/ioki-mobility/transitland-gql-client/compare/2022.8.23...2022.8.24) (2022-08-13)
+
+
+### Bug Fixes
+
+* make graphql a peerDependency again ([4067b71](https://github.com/ioki-mobility/transitland-gql-client/commit/4067b716dd7babc8aad1aff8c06b57da439568a1))
+
 ## [2022.8.23](https://github.com/ioki-mobility/transitland-gql-client/compare/2022.8.22...2022.8.23) (2022-08-12)
 
 ## [2022.8.22](https://github.com/ioki-mobility/transitland-gql-client/compare/2022.8.21...2022.8.22) (2022-08-12)
