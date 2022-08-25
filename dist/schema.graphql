@@ -674,6 +674,7 @@ type Route {
   headways(limit: Int): [RouteHeadway!]!
   id: Int!
   onestop_id: String
+  patterns: [RouteStopPattern!]
   route_color: String!
   route_desc: String!
   route_id: String!
@@ -744,6 +745,13 @@ type RouteStopBuffer {
   stop_points: Geometry
 }
 
+type RouteStopPattern {
+  count: Int!
+  direction_id: Int!
+  stop_pattern_id: Int!
+  trips(limit: Int): [Trip!]
+}
+
 enum ScheduleRelationship {
   ADDED
   CANCELED
@@ -797,6 +805,7 @@ type Stop {
   id: Int!
   level: Level
   location_type: Int!
+  nearby_stops(limit: Int, radius: Float): [Stop!]
   onestop_id: String!
   parent: Stop
   pathways_from_stop(limit: Int): [Pathway!]!
@@ -909,6 +918,7 @@ input TripFilter {
   route_ids: [Int!]
   route_onestop_ids: [String!]
   service_date: Date
+  stop_pattern_id: Int
   trip_id: String
 }
 

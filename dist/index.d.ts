@@ -420,6 +420,7 @@ interface Route {
     headways: RouteHeadway[];
     id: Scalars['Int'];
     onestop_id?: Scalars['String'];
+    patterns?: RouteStopPattern[];
     route_color: Scalars['String'];
     route_desc: Scalars['String'];
     route_id: Scalars['String'];
@@ -472,6 +473,13 @@ interface RouteStopBuffer {
     stop_points?: Scalars['Geometry'];
     __typename: 'RouteStopBuffer';
 }
+interface RouteStopPattern {
+    count: Scalars['Int'];
+    direction_id: Scalars['Int'];
+    stop_pattern_id: Scalars['Int'];
+    trips?: Trip[];
+    __typename: 'RouteStopPattern';
+}
 declare type ScheduleRelationship = 'ADDED' | 'CANCELED' | 'SCHEDULED' | 'UNSCHEDULED';
 /** Record from a static GTFS [shapes.txt](https://gtfs.org/schedule/reference/#shapestxt) file. */
 interface Shape {
@@ -508,6 +516,7 @@ interface Stop {
     id: Scalars['Int'];
     level?: Level;
     location_type: Scalars['Int'];
+    nearby_stops?: Stop[];
     onestop_id: Scalars['String'];
     parent?: Stop;
     pathways_from_stop: Pathway[];
@@ -1181,6 +1190,7 @@ interface RouteRequest {
     }, RouteHeadwayRequest] | RouteHeadwayRequest;
     id?: boolean | number;
     onestop_id?: boolean | number;
+    patterns?: RouteStopPatternRequest;
     route_color?: boolean | number;
     route_desc?: boolean | number;
     route_id?: boolean | number;
@@ -1262,6 +1272,16 @@ interface RouteStopBufferRequest {
     __typename?: boolean | number;
     __scalar?: boolean | number;
 }
+interface RouteStopPatternRequest {
+    count?: boolean | number;
+    direction_id?: boolean | number;
+    stop_pattern_id?: boolean | number;
+    trips?: [{
+        limit?: (Scalars['Int'] | null);
+    }, TripRequest] | TripRequest;
+    __typename?: boolean | number;
+    __scalar?: boolean | number;
+}
 /** Record from a static GTFS [shapes.txt](https://gtfs.org/schedule/reference/#shapestxt) file. */
 interface ShapeRequest {
     generated?: boolean | number;
@@ -1315,6 +1335,10 @@ interface StopRequest {
     id?: boolean | number;
     level?: LevelRequest;
     location_type?: boolean | number;
+    nearby_stops?: [{
+        limit?: (Scalars['Int'] | null);
+        radius?: (Scalars['Float'] | null);
+    }, StopRequest] | StopRequest;
     onestop_id?: boolean | number;
     parent?: StopRequest;
     pathways_from_stop?: [{
@@ -1434,6 +1458,7 @@ interface TripFilter {
     route_ids?: (Scalars['Int'][] | null);
     route_onestop_ids?: (Scalars['String'][] | null);
     service_date?: (Scalars['Date'] | null);
+    stop_pattern_id?: (Scalars['Int'] | null);
     trip_id?: (Scalars['String'] | null);
 }
 interface WaypointRequest {

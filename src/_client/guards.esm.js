@@ -327,6 +327,14 @@ export var isRouteStopBuffer = function(obj) {
 
 
 
+var RouteStopPattern_possibleTypes = ['RouteStopPattern']
+export var isRouteStopPattern = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isRouteStopPattern"')
+  return RouteStopPattern_possibleTypes.includes(obj.__typename)
+}
+
+
+
 var Shape_possibleTypes = ['Shape']
 export var isShape = function(obj) {
   if (!obj || !obj.__typename) throw new Error('__typename is missing in "isShape"')

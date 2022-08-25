@@ -517,6 +517,7 @@ export interface Route {
     headways: RouteHeadway[]
     id: Scalars['Int']
     onestop_id?: Scalars['String']
+    patterns?: RouteStopPattern[]
     route_color: Scalars['String']
     route_desc: Scalars['String']
     route_id: Scalars['String']
@@ -574,6 +575,14 @@ export interface RouteStopBuffer {
     __typename: 'RouteStopBuffer'
 }
 
+export interface RouteStopPattern {
+    count: Scalars['Int']
+    direction_id: Scalars['Int']
+    stop_pattern_id: Scalars['Int']
+    trips?: Trip[]
+    __typename: 'RouteStopPattern'
+}
+
 export type ScheduleRelationship = 'ADDED' | 'CANCELED' | 'SCHEDULED' | 'UNSCHEDULED'
 
 
@@ -616,6 +625,7 @@ export interface Stop {
     id: Scalars['Int']
     level?: Level
     location_type: Scalars['Int']
+    nearby_stops?: Stop[]
     onestop_id: Scalars['String']
     parent?: Stop
     pathways_from_stop: Pathway[]
@@ -1324,6 +1334,7 @@ export interface RouteRequest{
     headways?: [{limit?: (Scalars['Int'] | null)},RouteHeadwayRequest] | RouteHeadwayRequest
     id?: boolean | number
     onestop_id?: boolean | number
+    patterns?: RouteStopPatternRequest
     route_color?: boolean | number
     route_desc?: boolean | number
     route_id?: boolean | number
@@ -1388,6 +1399,15 @@ export interface RouteStopBufferRequest{
     __scalar?: boolean | number
 }
 
+export interface RouteStopPatternRequest{
+    count?: boolean | number
+    direction_id?: boolean | number
+    stop_pattern_id?: boolean | number
+    trips?: [{limit?: (Scalars['Int'] | null)},TripRequest] | TripRequest
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
 
 /** Record from a static GTFS [shapes.txt](https://gtfs.org/schedule/reference/#shapestxt) file. */
 export interface ShapeRequest{
@@ -1428,6 +1448,7 @@ export interface StopRequest{
     id?: boolean | number
     level?: LevelRequest
     location_type?: boolean | number
+    nearby_stops?: [{limit?: (Scalars['Int'] | null),radius?: (Scalars['Float'] | null)},StopRequest] | StopRequest
     onestop_id?: boolean | number
     parent?: StopRequest
     pathways_from_stop?: [{limit?: (Scalars['Int'] | null)},PathwayRequest] | PathwayRequest
@@ -1511,7 +1532,7 @@ export interface TripRequest{
     __scalar?: boolean | number
 }
 
-export interface TripFilter {feed_onestop_id?: (Scalars['String'] | null),feed_version_sha1?: (Scalars['String'] | null),route_ids?: (Scalars['Int'][] | null),route_onestop_ids?: (Scalars['String'][] | null),service_date?: (Scalars['Date'] | null),trip_id?: (Scalars['String'] | null)}
+export interface TripFilter {feed_onestop_id?: (Scalars['String'] | null),feed_version_sha1?: (Scalars['String'] | null),route_ids?: (Scalars['Int'][] | null),route_onestop_ids?: (Scalars['String'][] | null),service_date?: (Scalars['Date'] | null),stop_pattern_id?: (Scalars['Int'] | null),trip_id?: (Scalars['String'] | null)}
 
 export interface ValidationResultRequest{
     agencies?: [{limit?: (Scalars['Int'] | null)},AgencyRequest] | AgencyRequest
@@ -1901,6 +1922,14 @@ const RouteStopBuffer_possibleTypes: string[] = ['RouteStopBuffer']
 export const isRouteStopBuffer = (obj?: { __typename?: any } | null): obj is RouteStopBuffer => {
   if (!obj?.__typename) throw new Error('__typename is missing in "isRouteStopBuffer"')
   return RouteStopBuffer_possibleTypes.includes(obj.__typename)
+}
+
+
+
+const RouteStopPattern_possibleTypes: string[] = ['RouteStopPattern']
+export const isRouteStopPattern = (obj?: { __typename?: any } | null): obj is RouteStopPattern => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isRouteStopPattern"')
+  return RouteStopPattern_possibleTypes.includes(obj.__typename)
 }
 
 
@@ -2930,6 +2959,7 @@ export interface RoutePromiseChain{
     headways: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends RouteHeadwayRequest>(request: R, defaultValue?: FieldsSelection<RouteHeadway, R>[]) => Promise<FieldsSelection<RouteHeadway, R>[]>})&({get: <R extends RouteHeadwayRequest>(request: R, defaultValue?: FieldsSelection<RouteHeadway, R>[]) => Promise<FieldsSelection<RouteHeadway, R>[]>}),
     id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
     onestop_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
+    patterns: ({get: <R extends RouteStopPatternRequest>(request: R, defaultValue?: (FieldsSelection<RouteStopPattern, R>[] | undefined)) => Promise<(FieldsSelection<RouteStopPattern, R>[] | undefined)>}),
     route_color: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
     route_desc: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
     route_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
@@ -2962,6 +2992,7 @@ export interface RouteObservableChain{
     headways: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends RouteHeadwayRequest>(request: R, defaultValue?: FieldsSelection<RouteHeadway, R>[]) => Observable<FieldsSelection<RouteHeadway, R>[]>})&({get: <R extends RouteHeadwayRequest>(request: R, defaultValue?: FieldsSelection<RouteHeadway, R>[]) => Observable<FieldsSelection<RouteHeadway, R>[]>}),
     id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
     onestop_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
+    patterns: ({get: <R extends RouteStopPatternRequest>(request: R, defaultValue?: (FieldsSelection<RouteStopPattern, R>[] | undefined)) => Observable<(FieldsSelection<RouteStopPattern, R>[] | undefined)>}),
     route_color: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
     route_desc: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
     route_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
@@ -3052,6 +3083,20 @@ export interface RouteStopBufferObservableChain{
     stop_points: ({get: (request?: boolean|number, defaultValue?: (Scalars['Geometry'] | undefined)) => Observable<(Scalars['Geometry'] | undefined)>})
 }
 
+export interface RouteStopPatternPromiseChain{
+    count: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
+    direction_id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
+    stop_pattern_id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
+    trips: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends TripRequest>(request: R, defaultValue?: (FieldsSelection<Trip, R>[] | undefined)) => Promise<(FieldsSelection<Trip, R>[] | undefined)>})&({get: <R extends TripRequest>(request: R, defaultValue?: (FieldsSelection<Trip, R>[] | undefined)) => Promise<(FieldsSelection<Trip, R>[] | undefined)>})
+}
+
+export interface RouteStopPatternObservableChain{
+    count: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
+    direction_id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
+    stop_pattern_id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
+    trips: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends TripRequest>(request: R, defaultValue?: (FieldsSelection<Trip, R>[] | undefined)) => Observable<(FieldsSelection<Trip, R>[] | undefined)>})&({get: <R extends TripRequest>(request: R, defaultValue?: (FieldsSelection<Trip, R>[] | undefined)) => Observable<(FieldsSelection<Trip, R>[] | undefined)>})
+}
+
 
 /** Record from a static GTFS [shapes.txt](https://gtfs.org/schedule/reference/#shapestxt) file. */
 export interface ShapePromiseChain{
@@ -3108,6 +3153,7 @@ export interface StopPromiseChain{
     id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
     level: (LevelPromiseChain & {get: <R extends LevelRequest>(request: R, defaultValue?: (FieldsSelection<Level, R> | undefined)) => Promise<(FieldsSelection<Level, R> | undefined)>}),
     location_type: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
+    nearby_stops: ((args?: {limit?: (Scalars['Int'] | null),radius?: (Scalars['Float'] | null)}) => {get: <R extends StopRequest>(request: R, defaultValue?: (FieldsSelection<Stop, R>[] | undefined)) => Promise<(FieldsSelection<Stop, R>[] | undefined)>})&({get: <R extends StopRequest>(request: R, defaultValue?: (FieldsSelection<Stop, R>[] | undefined)) => Promise<(FieldsSelection<Stop, R>[] | undefined)>}),
     onestop_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
     parent: (StopPromiseChain & {get: <R extends StopRequest>(request: R, defaultValue?: (FieldsSelection<Stop, R> | undefined)) => Promise<(FieldsSelection<Stop, R> | undefined)>}),
     pathways_from_stop: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends PathwayRequest>(request: R, defaultValue?: FieldsSelection<Pathway, R>[]) => Promise<FieldsSelection<Pathway, R>[]>})&({get: <R extends PathwayRequest>(request: R, defaultValue?: FieldsSelection<Pathway, R>[]) => Promise<FieldsSelection<Pathway, R>[]>}),
@@ -3143,6 +3189,7 @@ export interface StopObservableChain{
     id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
     level: (LevelObservableChain & {get: <R extends LevelRequest>(request: R, defaultValue?: (FieldsSelection<Level, R> | undefined)) => Observable<(FieldsSelection<Level, R> | undefined)>}),
     location_type: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
+    nearby_stops: ((args?: {limit?: (Scalars['Int'] | null),radius?: (Scalars['Float'] | null)}) => {get: <R extends StopRequest>(request: R, defaultValue?: (FieldsSelection<Stop, R>[] | undefined)) => Observable<(FieldsSelection<Stop, R>[] | undefined)>})&({get: <R extends StopRequest>(request: R, defaultValue?: (FieldsSelection<Stop, R>[] | undefined)) => Observable<(FieldsSelection<Stop, R>[] | undefined)>}),
     onestop_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
     parent: (StopObservableChain & {get: <R extends StopRequest>(request: R, defaultValue?: (FieldsSelection<Stop, R> | undefined)) => Observable<(FieldsSelection<Stop, R> | undefined)>}),
     pathways_from_stop: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends PathwayRequest>(request: R, defaultValue?: FieldsSelection<Pathway, R>[]) => Observable<FieldsSelection<Pathway, R>[]>})&({get: <R extends PathwayRequest>(request: R, defaultValue?: FieldsSelection<Pathway, R>[]) => Observable<FieldsSelection<Pathway, R>[]>}),
