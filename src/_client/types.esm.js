@@ -51,7 +51,15 @@ export default {
                 82
             ],
             "alerts": [
-                4
+                4,
+                {
+                    "active": [
+                        6
+                    ],
+                    "limit": [
+                        46
+                    ]
+                }
             ],
             "census_geographies": [
                 9,
@@ -1456,7 +1464,15 @@ export default {
                 0
             ],
             "alerts": [
-                4
+                4,
+                {
+                    "active": [
+                        6
+                    ],
+                    "limit": [
+                        46
+                    ]
+                }
             ],
             "census_geographies": [
                 9,
@@ -1791,7 +1807,15 @@ export default {
         "StepMode": {},
         "Stop": {
             "alerts": [
-                4
+                4,
+                {
+                    "active": [
+                        6
+                    ],
+                    "limit": [
+                        46
+                    ]
+                }
             ],
             "arrivals": [
                 79,
@@ -2122,7 +2146,15 @@ export default {
         "Time": {},
         "Trip": {
             "alerts": [
-                4
+                4,
+                {
+                    "active": [
+                        6
+                    ],
+                    "limit": [
+                        46
+                    ]
+                }
             ],
             "bikes_allowed": [
                 46

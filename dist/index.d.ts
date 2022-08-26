@@ -602,7 +602,10 @@ interface AgencyRequest {
     agency_phone?: boolean | number;
     agency_timezone?: boolean | number;
     agency_url?: boolean | number;
-    alerts?: AlertRequest;
+    alerts?: [{
+        active?: (Scalars['Boolean'] | null);
+        limit?: (Scalars['Int'] | null);
+    }, AlertRequest] | AlertRequest;
     census_geographies?: [{
         layer: Scalars['String'];
         limit?: (Scalars['Int'] | null);
@@ -1170,7 +1173,10 @@ interface RTTranslationRequest {
 /** See https://gtfs.org/schedule/reference/#routestxt */
 interface RouteRequest {
     agency?: AgencyRequest;
-    alerts?: AlertRequest;
+    alerts?: [{
+        active?: (Scalars['Boolean'] | null);
+        limit?: (Scalars['Int'] | null);
+    }, AlertRequest] | AlertRequest;
     census_geographies?: [{
         layer: Scalars['String'];
         limit?: (Scalars['Int'] | null);
@@ -1305,7 +1311,10 @@ interface StepRequest {
 }
 /** See https://gtfs.org/reference/static/#stopstxt */
 interface StopRequest {
-    alerts?: AlertRequest;
+    alerts?: [{
+        active?: (Scalars['Boolean'] | null);
+        limit?: (Scalars['Int'] | null);
+    }, AlertRequest] | AlertRequest;
     arrivals?: [{
         limit?: (Scalars['Int'] | null);
         where?: (StopTimeFilter | null);
@@ -1427,7 +1436,10 @@ interface StopTimeFilter {
 }
 /** Record from a static GTFS [trips.txt](https://gtfs.org/schedule/reference/#tripstxt) file optionally enriched with by GTFS Realtime [TripUpdate](https://gtfs.org/reference/realtime/v2/#message-tripupdate) and [Alert](https://gtfs.org/reference/realtime/v2/#message-alert) messages. */
 interface TripRequest {
-    alerts?: AlertRequest;
+    alerts?: [{
+        active?: (Scalars['Boolean'] | null);
+        limit?: (Scalars['Int'] | null);
+    }, AlertRequest] | AlertRequest;
     bikes_allowed?: boolean | number;
     block_id?: boolean | number;
     calendar?: CalendarRequest;

@@ -768,7 +768,7 @@ export interface AgencyRequest{
     agency_phone?: boolean | number
     agency_timezone?: boolean | number
     agency_url?: boolean | number
-    alerts?: AlertRequest
+    alerts?: [{active?: (Scalars['Boolean'] | null),limit?: (Scalars['Int'] | null)},AlertRequest] | AlertRequest
     census_geographies?: [{layer: Scalars['String'],limit?: (Scalars['Int'] | null),radius?: (Scalars['Float'] | null)},CensusGeographyRequest]
     feed_onestop_id?: boolean | number
     feed_version?: FeedVersionRequest
@@ -1322,7 +1322,7 @@ export interface RTVehicleDescriptorRequest{
 /** See https://gtfs.org/schedule/reference/#routestxt */
 export interface RouteRequest{
     agency?: AgencyRequest
-    alerts?: AlertRequest
+    alerts?: [{active?: (Scalars['Boolean'] | null),limit?: (Scalars['Int'] | null)},AlertRequest] | AlertRequest
     census_geographies?: [{layer: Scalars['String'],limit?: (Scalars['Int'] | null),radius?: (Scalars['Float'] | null)},CensusGeographyRequest]
     continuous_drop_off?: boolean | number
     continuous_pickup?: boolean | number
@@ -1435,7 +1435,7 @@ export interface StepRequest{
 
 /** See https://gtfs.org/reference/static/#stopstxt */
 export interface StopRequest{
-    alerts?: AlertRequest
+    alerts?: [{active?: (Scalars['Boolean'] | null),limit?: (Scalars['Int'] | null)},AlertRequest] | AlertRequest
     arrivals?: [{limit?: (Scalars['Int'] | null),where?: (StopTimeFilter | null)},StopTimeRequest] | StopTimeRequest
     census_geographies?: [{layer: Scalars['String'],limit?: (Scalars['Int'] | null),radius?: (Scalars['Float'] | null)},CensusGeographyRequest]
     children?: [{limit?: (Scalars['Int'] | null)},StopRequest] | StopRequest
@@ -1510,7 +1510,7 @@ export interface StopTimeFilter {allow_previous_route_onestop_ids?: (Scalars['Bo
 
 /** Record from a static GTFS [trips.txt](https://gtfs.org/schedule/reference/#tripstxt) file optionally enriched with by GTFS Realtime [TripUpdate](https://gtfs.org/reference/realtime/v2/#message-tripupdate) and [Alert](https://gtfs.org/reference/realtime/v2/#message-alert) messages. */
 export interface TripRequest{
-    alerts?: AlertRequest
+    alerts?: [{active?: (Scalars['Boolean'] | null),limit?: (Scalars['Int'] | null)},AlertRequest] | AlertRequest
     bikes_allowed?: boolean | number
     block_id?: boolean | number
     calendar?: CalendarRequest
@@ -2032,7 +2032,7 @@ export interface AgencyPromiseChain{
     agency_phone: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
     agency_timezone: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
     agency_url: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    alerts: ({get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Promise<(FieldsSelection<Alert, R>[] | undefined)>}),
+    alerts: ((args?: {active?: (Scalars['Boolean'] | null),limit?: (Scalars['Int'] | null)}) => {get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Promise<(FieldsSelection<Alert, R>[] | undefined)>})&({get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Promise<(FieldsSelection<Alert, R>[] | undefined)>}),
     census_geographies: ((args: {layer: Scalars['String'],limit?: (Scalars['Int'] | null),radius?: (Scalars['Float'] | null)}) => {get: <R extends CensusGeographyRequest>(request: R, defaultValue?: (FieldsSelection<CensusGeography, R>[] | undefined)) => Promise<(FieldsSelection<CensusGeography, R>[] | undefined)>}),
     feed_onestop_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
     feed_version: (FeedVersionPromiseChain & {get: <R extends FeedVersionRequest>(request: R, defaultValue?: FieldsSelection<FeedVersion, R>) => Promise<FieldsSelection<FeedVersion, R>>}),
@@ -2057,7 +2057,7 @@ export interface AgencyObservableChain{
     agency_phone: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
     agency_timezone: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
     agency_url: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    alerts: ({get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Observable<(FieldsSelection<Alert, R>[] | undefined)>}),
+    alerts: ((args?: {active?: (Scalars['Boolean'] | null),limit?: (Scalars['Int'] | null)}) => {get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Observable<(FieldsSelection<Alert, R>[] | undefined)>})&({get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Observable<(FieldsSelection<Alert, R>[] | undefined)>}),
     census_geographies: ((args: {layer: Scalars['String'],limit?: (Scalars['Int'] | null),radius?: (Scalars['Float'] | null)}) => {get: <R extends CensusGeographyRequest>(request: R, defaultValue?: (FieldsSelection<CensusGeography, R>[] | undefined)) => Observable<(FieldsSelection<CensusGeography, R>[] | undefined)>}),
     feed_onestop_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
     feed_version: (FeedVersionObservableChain & {get: <R extends FeedVersionRequest>(request: R, defaultValue?: FieldsSelection<FeedVersion, R>) => Observable<FieldsSelection<FeedVersion, R>>}),
@@ -2947,7 +2947,7 @@ export interface RTVehicleDescriptorObservableChain{
 /** See https://gtfs.org/schedule/reference/#routestxt */
 export interface RoutePromiseChain{
     agency: (AgencyPromiseChain & {get: <R extends AgencyRequest>(request: R, defaultValue?: FieldsSelection<Agency, R>) => Promise<FieldsSelection<Agency, R>>}),
-    alerts: ({get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Promise<(FieldsSelection<Alert, R>[] | undefined)>}),
+    alerts: ((args?: {active?: (Scalars['Boolean'] | null),limit?: (Scalars['Int'] | null)}) => {get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Promise<(FieldsSelection<Alert, R>[] | undefined)>})&({get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Promise<(FieldsSelection<Alert, R>[] | undefined)>}),
     census_geographies: ((args: {layer: Scalars['String'],limit?: (Scalars['Int'] | null),radius?: (Scalars['Float'] | null)}) => {get: <R extends CensusGeographyRequest>(request: R, defaultValue?: (FieldsSelection<CensusGeography, R>[] | undefined)) => Promise<(FieldsSelection<CensusGeography, R>[] | undefined)>}),
     continuous_drop_off: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
     continuous_pickup: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
@@ -2980,7 +2980,7 @@ export interface RoutePromiseChain{
 /** See https://gtfs.org/schedule/reference/#routestxt */
 export interface RouteObservableChain{
     agency: (AgencyObservableChain & {get: <R extends AgencyRequest>(request: R, defaultValue?: FieldsSelection<Agency, R>) => Observable<FieldsSelection<Agency, R>>}),
-    alerts: ({get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Observable<(FieldsSelection<Alert, R>[] | undefined)>}),
+    alerts: ((args?: {active?: (Scalars['Boolean'] | null),limit?: (Scalars['Int'] | null)}) => {get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Observable<(FieldsSelection<Alert, R>[] | undefined)>})&({get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Observable<(FieldsSelection<Alert, R>[] | undefined)>}),
     census_geographies: ((args: {layer: Scalars['String'],limit?: (Scalars['Int'] | null),radius?: (Scalars['Float'] | null)}) => {get: <R extends CensusGeographyRequest>(request: R, defaultValue?: (FieldsSelection<CensusGeography, R>[] | undefined)) => Observable<(FieldsSelection<CensusGeography, R>[] | undefined)>}),
     continuous_drop_off: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
     continuous_pickup: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
@@ -3140,7 +3140,7 @@ export interface StepObservableChain{
 
 /** See https://gtfs.org/reference/static/#stopstxt */
 export interface StopPromiseChain{
-    alerts: ({get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Promise<(FieldsSelection<Alert, R>[] | undefined)>}),
+    alerts: ((args?: {active?: (Scalars['Boolean'] | null),limit?: (Scalars['Int'] | null)}) => {get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Promise<(FieldsSelection<Alert, R>[] | undefined)>})&({get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Promise<(FieldsSelection<Alert, R>[] | undefined)>}),
     arrivals: ((args?: {limit?: (Scalars['Int'] | null),where?: (StopTimeFilter | null)}) => {get: <R extends StopTimeRequest>(request: R, defaultValue?: FieldsSelection<StopTime, R>[]) => Promise<FieldsSelection<StopTime, R>[]>})&({get: <R extends StopTimeRequest>(request: R, defaultValue?: FieldsSelection<StopTime, R>[]) => Promise<FieldsSelection<StopTime, R>[]>}),
     census_geographies: ((args: {layer: Scalars['String'],limit?: (Scalars['Int'] | null),radius?: (Scalars['Float'] | null)}) => {get: <R extends CensusGeographyRequest>(request: R, defaultValue?: (FieldsSelection<CensusGeography, R>[] | undefined)) => Promise<(FieldsSelection<CensusGeography, R>[] | undefined)>}),
     children: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends StopRequest>(request: R, defaultValue?: (FieldsSelection<Stop, R>[] | undefined)) => Promise<(FieldsSelection<Stop, R>[] | undefined)>})&({get: <R extends StopRequest>(request: R, defaultValue?: (FieldsSelection<Stop, R>[] | undefined)) => Promise<(FieldsSelection<Stop, R>[] | undefined)>}),
@@ -3176,7 +3176,7 @@ export interface StopPromiseChain{
 
 /** See https://gtfs.org/reference/static/#stopstxt */
 export interface StopObservableChain{
-    alerts: ({get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Observable<(FieldsSelection<Alert, R>[] | undefined)>}),
+    alerts: ((args?: {active?: (Scalars['Boolean'] | null),limit?: (Scalars['Int'] | null)}) => {get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Observable<(FieldsSelection<Alert, R>[] | undefined)>})&({get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Observable<(FieldsSelection<Alert, R>[] | undefined)>}),
     arrivals: ((args?: {limit?: (Scalars['Int'] | null),where?: (StopTimeFilter | null)}) => {get: <R extends StopTimeRequest>(request: R, defaultValue?: FieldsSelection<StopTime, R>[]) => Observable<FieldsSelection<StopTime, R>[]>})&({get: <R extends StopTimeRequest>(request: R, defaultValue?: FieldsSelection<StopTime, R>[]) => Observable<FieldsSelection<StopTime, R>[]>}),
     census_geographies: ((args: {layer: Scalars['String'],limit?: (Scalars['Int'] | null),radius?: (Scalars['Float'] | null)}) => {get: <R extends CensusGeographyRequest>(request: R, defaultValue?: (FieldsSelection<CensusGeography, R>[] | undefined)) => Observable<(FieldsSelection<CensusGeography, R>[] | undefined)>}),
     children: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends StopRequest>(request: R, defaultValue?: (FieldsSelection<Stop, R>[] | undefined)) => Observable<(FieldsSelection<Stop, R>[] | undefined)>})&({get: <R extends StopRequest>(request: R, defaultValue?: (FieldsSelection<Stop, R>[] | undefined)) => Observable<(FieldsSelection<Stop, R>[] | undefined)>}),
@@ -3270,7 +3270,7 @@ export interface StopTimeEventObservableChain{
 
 /** Record from a static GTFS [trips.txt](https://gtfs.org/schedule/reference/#tripstxt) file optionally enriched with by GTFS Realtime [TripUpdate](https://gtfs.org/reference/realtime/v2/#message-tripupdate) and [Alert](https://gtfs.org/reference/realtime/v2/#message-alert) messages. */
 export interface TripPromiseChain{
-    alerts: ({get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Promise<(FieldsSelection<Alert, R>[] | undefined)>}),
+    alerts: ((args?: {active?: (Scalars['Boolean'] | null),limit?: (Scalars['Int'] | null)}) => {get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Promise<(FieldsSelection<Alert, R>[] | undefined)>})&({get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Promise<(FieldsSelection<Alert, R>[] | undefined)>}),
     bikes_allowed: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
     block_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
     calendar: (CalendarPromiseChain & {get: <R extends CalendarRequest>(request: R, defaultValue?: FieldsSelection<Calendar, R>) => Promise<FieldsSelection<Calendar, R>>}),
@@ -3293,7 +3293,7 @@ export interface TripPromiseChain{
 
 /** Record from a static GTFS [trips.txt](https://gtfs.org/schedule/reference/#tripstxt) file optionally enriched with by GTFS Realtime [TripUpdate](https://gtfs.org/reference/realtime/v2/#message-tripupdate) and [Alert](https://gtfs.org/reference/realtime/v2/#message-alert) messages. */
 export interface TripObservableChain{
-    alerts: ({get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Observable<(FieldsSelection<Alert, R>[] | undefined)>}),
+    alerts: ((args?: {active?: (Scalars['Boolean'] | null),limit?: (Scalars['Int'] | null)}) => {get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Observable<(FieldsSelection<Alert, R>[] | undefined)>})&({get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Observable<(FieldsSelection<Alert, R>[] | undefined)>}),
     bikes_allowed: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
     block_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
     calendar: (CalendarObservableChain & {get: <R extends CalendarRequest>(request: R, defaultValue?: FieldsSelection<Calendar, R>) => Observable<FieldsSelection<Calendar, R>>}),
