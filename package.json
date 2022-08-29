@@ -32,7 +32,7 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.1.1",
+    "@commitlint/cli": "17.1.2",
     "@commitlint/config-conventional": "17.1.0",
     "@csmith/release-it-calver-plugin": "2022.5.13",
     "@genql/cli": "2.10.0",
