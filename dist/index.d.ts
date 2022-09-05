@@ -1635,4 +1635,4 @@ declare const createClient: ({ apiKey, ...options }: ClientOptions) => {
     };
 };
 
-export { createClient };
+export { Query, QueryPromiseChain, QueryRequest, createClient };
