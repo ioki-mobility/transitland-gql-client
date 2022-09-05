@@ -1,5 +1,5 @@
 import type { ClientOptions as OriginalClientOptions} from '@genql/runtime';
-import { createClient as originalCreateClient } from './_client';
+import { createClient as originalCreateClient, Query, QueryPromiseChain, QueryRequest } from './_client';
 
 type Optional<T extends object, K extends keyof T = keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 
@@ -17,3 +17,5 @@ export const createClient = ({ apiKey, ...options }: ClientOptions) => {
     const { query, chain } = originalCreateClient(options)
     return { query, chain };
 }
+ 
+export type { QueryRequest, QueryPromiseChain, Query };
