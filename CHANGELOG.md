@@ -1,5 +1,12 @@
 
 
+## 2022.8.27 (2022-09-05)
+
+
+### Bug Fixes
+
+* export query types ([a568c4e](https://github.com/ioki-mobility/transitland-gql-client/commit/a568c4e293c433c16cc48a8be013ec1a90aad625))
+
 ## 2022.8.26 (2022-08-26)
 
 ## 2022.8.25 (2022-08-25)
