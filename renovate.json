@@ -2,10 +2,10 @@
     "automerge": true,
     "enabled": true,
     "extends": [
-      ":autodetectPinVersions",
+      ":pinDependencies",
       ":dependencyDashboard",
       ":semanticPrefixFixDepsChoreOthers",
-      "github>whitesource/merge-confidence:beta",
+      ":semanticCommits",
       "group:monorepos",
       "group:recommended",
       "workarounds:all",
