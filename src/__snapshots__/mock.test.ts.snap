@@ -1,33 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`run something against the mocked server 1`] = `
-Object {
-  "feeds": Array [
-    Object {
+{
+  "feeds": [
+    {
       "onestop_id": "Hello World",
     },
-    Object {
+    {
       "onestop_id": "Hello World",
     },
   ],
-  "routes": Array [
-    Object {
+  "routes": [
+    {
       "route_id": "VKKZLoG5g0zB",
       "route_type": 2,
     },
-    Object {
+    {
       "route_id": ")kgvEPeaw9]2",
       "route_type": 3,
     },
-    Object {
+    {
       "route_id": "eHl&Bv6PjHGb",
       "route_type": 3,
     },
-    Object {
+    {
       "route_id": "(Jwo!wb!Q!S7",
       "route_type": 1,
     },
-    Object {
+    {
       "route_id": "*xq*42%%B#T%",
       "route_type": 3,
     },
