@@ -488,7 +488,7 @@
   resolved "https://registry.yarnpkg.com/@esbuild/linux-loong64/-/linux-loong64-0.15.7.tgz#1ec4af4a16c554cbd402cc557ccdd874e3f7be53"
   integrity sha512-IKznSJOsVUuyt7cDzzSZyqBEcZe+7WlBqTVXiF1OXP/4Nm387ToaXZ0fyLwI1iBlI/bzpxVq411QE2/Bt2XWWw==
 
-"@genql/cli@^2.10.0":
+"@genql/cli@2.10.0":
   version "2.10.0"
   resolved "https://registry.yarnpkg.com/@genql/cli/-/cli-2.10.0.tgz#ab39444b0a7ee041d1fa5183f10a23b8c1d6d1f9"
   integrity sha512-X47y17qT8M0LAwIE9Wu0jMWm4dW9Y8c8dT7iDsmV3gkKZXAnRBoXUVcrZY+RrZLp8N7orDPyhE7pXAMFf2CcaA==
