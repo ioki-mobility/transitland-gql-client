@@ -85,6 +85,8 @@ type Alert {
 
 scalar Any
 
+scalar Bool
+
 """
 Record from a static GTFS [calendars.txt](https://gtfs.org/schedule/reference/#calendarstxt) file.
 """
@@ -504,6 +506,257 @@ type Frequency {
   start_time: Seconds!
 }
 
+type GbfsAlertTime {
+  end: Int
+  start: Int
+}
+
+input GbfsBikeRequest {
+  near: PointRadius
+}
+
+type GbfsBrandAsset {
+  brand_image_url: String
+  brand_image_url_dark: String
+  brand_last_modified: Date
+  brand_terms_url: String
+  color: String
+}
+
+input GbfsDockRequest {
+  near: PointRadius
+}
+
+type GbfsFeed {
+  alerts: [GbfsSystemAlert!]
+  calendars: [GbfsSystemCalendar!]
+  rental_hours: [GbfsSystemHour!]
+  station_information: [GbfsStationInformation!]
+  system_information: GbfsSystemInformation
+}
+
+type GbfsFreeBikeStatus {
+  available_until: Int
+  bike_id: String
+  current_fuel_percent: Float
+  current_range_meters: Float
+  feed: GbfsFeed
+  home_station: GbfsStationInformation
+  is_disabled: Bool
+  is_reserved: Bool
+  last_reported: Int
+  lat: Float
+  lon: Float
+  pricing_plan: GbfsSystemPricingPlan
+  rental_uris: GbfsRentalUris
+  station: GbfsStationInformation
+  vehicle_equipment: Strings
+  vehicle_type: GbfsVehicleType
+}
+
+type GbfsGeofenceFeature {
+  geometry: Geometry
+  type: String
+}
+
+type GbfsGeofenceProperty {
+  end: Int
+  name: String
+  rules: [GbfsGeofenceRule]
+  start: Int
+}
+
+type GbfsGeofenceRule {
+  maximum_speed_kph: Int
+  ride_allowed: Bool
+  ride_through_allowed: Bool
+  station_parking: Bool
+  vehicle_type: GbfsVehicleType
+}
+
+type GbfsGeofenceZone {
+  features: [GbfsGeofenceFeature!]
+  type: String
+}
+
+type GbfsPlanPrice {
+  end: Int
+  interval: Int
+  rate: Float
+  start: Int
+}
+
+type GbfsRentalApp {
+  discovery_uri: String
+  store_uri: String
+}
+
+type GbfsRentalApps {
+  android: GbfsRentalApp
+  ios: GbfsRentalApp
+}
+
+type GbfsRentalUris {
+  android: String
+  ios: String
+  web: String
+}
+
+type GbfsStationInformation {
+  address: String
+  capacity: Int
+  contact_phone: String
+  cross_street: String
+  feed: GbfsFeed
+  is_charging_station: Bool
+  is_valet_station: Bool
+  is_virtual_station: Bool
+  lat: Float
+  lon: Float
+  name: String
+  parking_hoop: Int
+  parking_type: String
+  post_code: String
+  region: GbfsSystemRegion
+  rental_methods: Strings
+  short_name: String
+  station_area: Geometry
+  station_id: String
+  status: GbfsStationStatus
+}
+
+type GbfsStationStatus {
+  is_installed: Bool
+  is_renting: Bool
+  is_returning: Bool
+  last_reported: Int
+  num_bikes_available: Int
+  num_bikes_disabled: Int
+  num_docks_available: Int
+  num_docks_disabled: Int
+  station_id: String
+  vehicle_docks_available: [GbfsVehicleDockAvailable!]
+  vehicle_types_available: [GbfsVehicleTypeAvailable!]
+}
+
+type GbfsSystemAlert {
+  alert_id: String
+  description: String
+  last_updated: Int
+  summary: String
+  times: [GbfsAlertTime!]
+  type: String
+  url: String
+}
+
+type GbfsSystemCalendar {
+  end_day: Int
+  end_month: Int
+  end_year: Int
+  start_day: Int
+  start_month: Int
+  start_year: Int
+}
+
+type GbfsSystemHour {
+  days: Strings
+  end_time: String
+  start_time: String
+  user_types: Strings
+}
+
+type GbfsSystemInformation {
+  brand_assets: GbfsBrandAsset
+  email: String
+  feed_contact_email: String
+  language: String
+  license_url: String
+  name: String
+  operator: String
+  phone_number: String
+  privacy_last_updated: Date
+  privacy_url: String
+  purchase_url: String
+  rental_apps: GbfsRentalApps
+  short_name: String
+  start_date: Date
+  system_id: String
+  terms_last_updated: Date
+  terms_url: String
+  timezone: String
+  url: String
+}
+
+type GbfsSystemPricingPlan {
+  currency: String
+  description: String
+  is_taxable: Bool
+  name: String
+  per_km_pricing: [GbfsPlanPrice!]
+  per_min_pricing: [GbfsPlanPrice!]
+  plan_id: String
+  price: Float
+  surge_pricing: Bool
+  url: String
+}
+
+type GbfsSystemRegion {
+  name: String
+  region_id: String
+}
+
+type GbfsSystemVersion {
+  url: String
+  version: String
+}
+
+type GbfsVehicleAssets {
+  icon_last_modified: Date
+  icon_url: String
+  icon_url_dark: String
+}
+
+type GbfsVehicleDockAvailable {
+  count: Int
+  vehicle_types: [GbfsVehicleType!]
+}
+
+type GbfsVehicleType {
+  cargo_load_capacity: Int
+  cargo_volume_capacity: Int
+  color: String
+  country_code: String
+  default_pricing_plan: GbfsSystemPricingPlan
+  default_reserve_time: Int
+  eco_label: String
+  eco_sticker: String
+  form_factor: String
+  gco_2_km: Int
+  make: String
+  max_permitted_speed: Int
+  max_range_meters: Float
+  model: String
+  name: String
+  pricing_plans: [GbfsSystemPricingPlan!]
+  propulsion_type: String
+  rated_power: Int
+  rental_uris: GbfsRentalUris
+  return_constraint: String
+  rider_capacity: Int
+  vehicle_accessories: Strings
+  vehicle_assets: GbfsVehicleAssets
+  vehicle_image: String
+  vehicle_type_id: String
+  wheel_count: Int
+}
+
+type GbfsVehicleTypeAvailable {
+  count: Int
+  num_bikes_disabled: Int
+  num_docks_available: Int
+  vehicle_type: GbfsVehicleType
+}
+
 scalar Geometry
 
 enum ImportStatus {
@@ -521,6 +774,8 @@ type Itinerary {
   start_time: Time!
   to: Waypoint!
 }
+
+scalar Key
 
 type Leg {
   distance: Distance!
@@ -615,7 +870,9 @@ scalar Polygon
 
 type Query {
   agencies(after: Int, ids: [Int!], limit: Int, where: AgencyFilter): [Agency!]!
+  bikes(limit: Int, where: GbfsBikeRequest): [GbfsFreeBikeStatus!]
   directions(where: DirectionRequest!): Directions!
+  docks(limit: Int, where: GbfsDockRequest): [GbfsStationInformation!]
   feed_versions(after: Int, ids: [Int!], limit: Int, where: FeedVersionFilter): [FeedVersion!]!
   feeds(after: Int, ids: [Int!], limit: Int, where: FeedFilter): [Feed!]!
   operators(after: Int, ids: [Int!], limit: Int, where: OperatorFilter): [Operator!]!
@@ -854,6 +1111,7 @@ type StopTime {
   interpolated: Int
   pickup_type: Int
   service_date: Date
+  shape_dist_traveled: Float
   stop: Stop!
   stop_headsign: String
   stop_sequence: Int!
@@ -883,6 +1141,8 @@ input StopTimeFilter {
   start_time: Int
   use_service_window: Boolean
 }
+
+scalar Strings
 
 scalar Tags
 

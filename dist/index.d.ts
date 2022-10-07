@@ -3,17 +3,20 @@ import { FieldsSelection, ClientOptions as ClientOptions$1 } from '@genql/runtim
 
 declare type Scalars = {
     Any: any;
+    Bool: any;
     Boolean: boolean;
     Date: string;
     Float: number;
     Geometry: GeoJSON.Geometry;
     Int: number;
+    Key: any;
     LineString: GeoJSON.LineString;
     Map: any;
     Point: GeoJSON.Point;
     Polygon: GeoJSON.Polygon;
     Seconds: string;
     String: string;
+    Strings: any;
     Tags: {
         [k: string]: string;
     };
@@ -316,6 +319,219 @@ interface Frequency {
     start_time: Scalars['Seconds'];
     __typename: 'Frequency';
 }
+interface GbfsAlertTime {
+    end?: Scalars['Int'];
+    start?: Scalars['Int'];
+    __typename: 'GbfsAlertTime';
+}
+interface GbfsBrandAsset {
+    brand_image_url?: Scalars['String'];
+    brand_image_url_dark?: Scalars['String'];
+    brand_last_modified?: Scalars['Date'];
+    brand_terms_url?: Scalars['String'];
+    color?: Scalars['String'];
+    __typename: 'GbfsBrandAsset';
+}
+interface GbfsFeed {
+    alerts?: GbfsSystemAlert[];
+    calendars?: GbfsSystemCalendar[];
+    rental_hours?: GbfsSystemHour[];
+    station_information?: GbfsStationInformation[];
+    system_information?: GbfsSystemInformation;
+    __typename: 'GbfsFeed';
+}
+interface GbfsFreeBikeStatus {
+    available_until?: Scalars['Int'];
+    bike_id?: Scalars['String'];
+    current_fuel_percent?: Scalars['Float'];
+    current_range_meters?: Scalars['Float'];
+    feed?: GbfsFeed;
+    home_station?: GbfsStationInformation;
+    is_disabled?: Scalars['Bool'];
+    is_reserved?: Scalars['Bool'];
+    last_reported?: Scalars['Int'];
+    lat?: Scalars['Float'];
+    lon?: Scalars['Float'];
+    pricing_plan?: GbfsSystemPricingPlan;
+    rental_uris?: GbfsRentalUris;
+    station?: GbfsStationInformation;
+    vehicle_equipment?: Scalars['Strings'];
+    vehicle_type?: GbfsVehicleType;
+    __typename: 'GbfsFreeBikeStatus';
+}
+interface GbfsPlanPrice {
+    end?: Scalars['Int'];
+    interval?: Scalars['Int'];
+    rate?: Scalars['Float'];
+    start?: Scalars['Int'];
+    __typename: 'GbfsPlanPrice';
+}
+interface GbfsRentalApp {
+    discovery_uri?: Scalars['String'];
+    store_uri?: Scalars['String'];
+    __typename: 'GbfsRentalApp';
+}
+interface GbfsRentalApps {
+    android?: GbfsRentalApp;
+    ios?: GbfsRentalApp;
+    __typename: 'GbfsRentalApps';
+}
+interface GbfsRentalUris {
+    android?: Scalars['String'];
+    ios?: Scalars['String'];
+    web?: Scalars['String'];
+    __typename: 'GbfsRentalUris';
+}
+interface GbfsStationInformation {
+    address?: Scalars['String'];
+    capacity?: Scalars['Int'];
+    contact_phone?: Scalars['String'];
+    cross_street?: Scalars['String'];
+    feed?: GbfsFeed;
+    is_charging_station?: Scalars['Bool'];
+    is_valet_station?: Scalars['Bool'];
+    is_virtual_station?: Scalars['Bool'];
+    lat?: Scalars['Float'];
+    lon?: Scalars['Float'];
+    name?: Scalars['String'];
+    parking_hoop?: Scalars['Int'];
+    parking_type?: Scalars['String'];
+    post_code?: Scalars['String'];
+    region?: GbfsSystemRegion;
+    rental_methods?: Scalars['Strings'];
+    short_name?: Scalars['String'];
+    station_area?: Scalars['Geometry'];
+    station_id?: Scalars['String'];
+    status?: GbfsStationStatus;
+    __typename: 'GbfsStationInformation';
+}
+interface GbfsStationStatus {
+    is_installed?: Scalars['Bool'];
+    is_renting?: Scalars['Bool'];
+    is_returning?: Scalars['Bool'];
+    last_reported?: Scalars['Int'];
+    num_bikes_available?: Scalars['Int'];
+    num_bikes_disabled?: Scalars['Int'];
+    num_docks_available?: Scalars['Int'];
+    num_docks_disabled?: Scalars['Int'];
+    station_id?: Scalars['String'];
+    vehicle_docks_available?: GbfsVehicleDockAvailable[];
+    vehicle_types_available?: GbfsVehicleTypeAvailable[];
+    __typename: 'GbfsStationStatus';
+}
+interface GbfsSystemAlert {
+    alert_id?: Scalars['String'];
+    description?: Scalars['String'];
+    last_updated?: Scalars['Int'];
+    summary?: Scalars['String'];
+    times?: GbfsAlertTime[];
+    type?: Scalars['String'];
+    url?: Scalars['String'];
+    __typename: 'GbfsSystemAlert';
+}
+interface GbfsSystemCalendar {
+    end_day?: Scalars['Int'];
+    end_month?: Scalars['Int'];
+    end_year?: Scalars['Int'];
+    start_day?: Scalars['Int'];
+    start_month?: Scalars['Int'];
+    start_year?: Scalars['Int'];
+    __typename: 'GbfsSystemCalendar';
+}
+interface GbfsSystemHour {
+    days?: Scalars['Strings'];
+    end_time?: Scalars['String'];
+    start_time?: Scalars['String'];
+    user_types?: Scalars['Strings'];
+    __typename: 'GbfsSystemHour';
+}
+interface GbfsSystemInformation {
+    brand_assets?: GbfsBrandAsset;
+    email?: Scalars['String'];
+    feed_contact_email?: Scalars['String'];
+    language?: Scalars['String'];
+    license_url?: Scalars['String'];
+    name?: Scalars['String'];
+    operator?: Scalars['String'];
+    phone_number?: Scalars['String'];
+    privacy_last_updated?: Scalars['Date'];
+    privacy_url?: Scalars['String'];
+    purchase_url?: Scalars['String'];
+    rental_apps?: GbfsRentalApps;
+    short_name?: Scalars['String'];
+    start_date?: Scalars['Date'];
+    system_id?: Scalars['String'];
+    terms_last_updated?: Scalars['Date'];
+    terms_url?: Scalars['String'];
+    timezone?: Scalars['String'];
+    url?: Scalars['String'];
+    __typename: 'GbfsSystemInformation';
+}
+interface GbfsSystemPricingPlan {
+    currency?: Scalars['String'];
+    description?: Scalars['String'];
+    is_taxable?: Scalars['Bool'];
+    name?: Scalars['String'];
+    per_km_pricing?: GbfsPlanPrice[];
+    per_min_pricing?: GbfsPlanPrice[];
+    plan_id?: Scalars['String'];
+    price?: Scalars['Float'];
+    surge_pricing?: Scalars['Bool'];
+    url?: Scalars['String'];
+    __typename: 'GbfsSystemPricingPlan';
+}
+interface GbfsSystemRegion {
+    name?: Scalars['String'];
+    region_id?: Scalars['String'];
+    __typename: 'GbfsSystemRegion';
+}
+interface GbfsVehicleAssets {
+    icon_last_modified?: Scalars['Date'];
+    icon_url?: Scalars['String'];
+    icon_url_dark?: Scalars['String'];
+    __typename: 'GbfsVehicleAssets';
+}
+interface GbfsVehicleDockAvailable {
+    count?: Scalars['Int'];
+    vehicle_types?: GbfsVehicleType[];
+    __typename: 'GbfsVehicleDockAvailable';
+}
+interface GbfsVehicleType {
+    cargo_load_capacity?: Scalars['Int'];
+    cargo_volume_capacity?: Scalars['Int'];
+    color?: Scalars['String'];
+    country_code?: Scalars['String'];
+    default_pricing_plan?: GbfsSystemPricingPlan;
+    default_reserve_time?: Scalars['Int'];
+    eco_label?: Scalars['String'];
+    eco_sticker?: Scalars['String'];
+    form_factor?: Scalars['String'];
+    gco_2_km?: Scalars['Int'];
+    make?: Scalars['String'];
+    max_permitted_speed?: Scalars['Int'];
+    max_range_meters?: Scalars['Float'];
+    model?: Scalars['String'];
+    name?: Scalars['String'];
+    pricing_plans?: GbfsSystemPricingPlan[];
+    propulsion_type?: Scalars['String'];
+    rated_power?: Scalars['Int'];
+    rental_uris?: GbfsRentalUris;
+    return_constraint?: Scalars['String'];
+    rider_capacity?: Scalars['Int'];
+    vehicle_accessories?: Scalars['Strings'];
+    vehicle_assets?: GbfsVehicleAssets;
+    vehicle_image?: Scalars['String'];
+    vehicle_type_id?: Scalars['String'];
+    wheel_count?: Scalars['Int'];
+    __typename: 'GbfsVehicleType';
+}
+interface GbfsVehicleTypeAvailable {
+    count?: Scalars['Int'];
+    num_bikes_disabled?: Scalars['Int'];
+    num_docks_available?: Scalars['Int'];
+    vehicle_type?: GbfsVehicleType;
+    __typename: 'GbfsVehicleTypeAvailable';
+}
 declare type ImportStatus = 'ERROR' | 'IN_PROGRESS' | 'SUCCESS';
 interface Itinerary {
     distance: Distance;
@@ -384,7 +600,9 @@ interface Pathway {
 }
 interface Query {
     agencies: Agency[];
+    bikes?: GbfsFreeBikeStatus[];
     directions: Directions;
+    docks?: GbfsStationInformation[];
     feed_versions: FeedVersion[];
     feeds: Feed[];
     operators: Operator[];
@@ -548,6 +766,7 @@ interface StopTime {
     interpolated?: Scalars['Int'];
     pickup_type?: Scalars['Int'];
     service_date?: Scalars['Date'];
+    shape_dist_traveled?: Scalars['Float'];
     stop: Stop;
     stop_headsign?: Scalars['String'];
     stop_sequence: Scalars['Int'];
@@ -1016,6 +1235,245 @@ interface FrequencyRequest {
     __typename?: boolean | number;
     __scalar?: boolean | number;
 }
+interface GbfsAlertTimeRequest {
+    end?: boolean | number;
+    start?: boolean | number;
+    __typename?: boolean | number;
+    __scalar?: boolean | number;
+}
+interface GbfsBikeRequest {
+    near?: (PointRadius | null);
+}
+interface GbfsBrandAssetRequest {
+    brand_image_url?: boolean | number;
+    brand_image_url_dark?: boolean | number;
+    brand_last_modified?: boolean | number;
+    brand_terms_url?: boolean | number;
+    color?: boolean | number;
+    __typename?: boolean | number;
+    __scalar?: boolean | number;
+}
+interface GbfsDockRequest {
+    near?: (PointRadius | null);
+}
+interface GbfsFeedRequest {
+    alerts?: GbfsSystemAlertRequest;
+    calendars?: GbfsSystemCalendarRequest;
+    rental_hours?: GbfsSystemHourRequest;
+    station_information?: GbfsStationInformationRequest;
+    system_information?: GbfsSystemInformationRequest;
+    __typename?: boolean | number;
+    __scalar?: boolean | number;
+}
+interface GbfsFreeBikeStatusRequest {
+    available_until?: boolean | number;
+    bike_id?: boolean | number;
+    current_fuel_percent?: boolean | number;
+    current_range_meters?: boolean | number;
+    feed?: GbfsFeedRequest;
+    home_station?: GbfsStationInformationRequest;
+    is_disabled?: boolean | number;
+    is_reserved?: boolean | number;
+    last_reported?: boolean | number;
+    lat?: boolean | number;
+    lon?: boolean | number;
+    pricing_plan?: GbfsSystemPricingPlanRequest;
+    rental_uris?: GbfsRentalUrisRequest;
+    station?: GbfsStationInformationRequest;
+    vehicle_equipment?: boolean | number;
+    vehicle_type?: GbfsVehicleTypeRequest;
+    __typename?: boolean | number;
+    __scalar?: boolean | number;
+}
+interface GbfsPlanPriceRequest {
+    end?: boolean | number;
+    interval?: boolean | number;
+    rate?: boolean | number;
+    start?: boolean | number;
+    __typename?: boolean | number;
+    __scalar?: boolean | number;
+}
+interface GbfsRentalAppRequest {
+    discovery_uri?: boolean | number;
+    store_uri?: boolean | number;
+    __typename?: boolean | number;
+    __scalar?: boolean | number;
+}
+interface GbfsRentalAppsRequest {
+    android?: GbfsRentalAppRequest;
+    ios?: GbfsRentalAppRequest;
+    __typename?: boolean | number;
+    __scalar?: boolean | number;
+}
+interface GbfsRentalUrisRequest {
+    android?: boolean | number;
+    ios?: boolean | number;
+    web?: boolean | number;
+    __typename?: boolean | number;
+    __scalar?: boolean | number;
+}
+interface GbfsStationInformationRequest {
+    address?: boolean | number;
+    capacity?: boolean | number;
+    contact_phone?: boolean | number;
+    cross_street?: boolean | number;
+    feed?: GbfsFeedRequest;
+    is_charging_station?: boolean | number;
+    is_valet_station?: boolean | number;
+    is_virtual_station?: boolean | number;
+    lat?: boolean | number;
+    lon?: boolean | number;
+    name?: boolean | number;
+    parking_hoop?: boolean | number;
+    parking_type?: boolean | number;
+    post_code?: boolean | number;
+    region?: GbfsSystemRegionRequest;
+    rental_methods?: boolean | number;
+    short_name?: boolean | number;
+    station_area?: boolean | number;
+    station_id?: boolean | number;
+    status?: GbfsStationStatusRequest;
+    __typename?: boolean | number;
+    __scalar?: boolean | number;
+}
+interface GbfsStationStatusRequest {
+    is_installed?: boolean | number;
+    is_renting?: boolean | number;
+    is_returning?: boolean | number;
+    last_reported?: boolean | number;
+    num_bikes_available?: boolean | number;
+    num_bikes_disabled?: boolean | number;
+    num_docks_available?: boolean | number;
+    num_docks_disabled?: boolean | number;
+    station_id?: boolean | number;
+    vehicle_docks_available?: GbfsVehicleDockAvailableRequest;
+    vehicle_types_available?: GbfsVehicleTypeAvailableRequest;
+    __typename?: boolean | number;
+    __scalar?: boolean | number;
+}
+interface GbfsSystemAlertRequest {
+    alert_id?: boolean | number;
+    description?: boolean | number;
+    last_updated?: boolean | number;
+    summary?: boolean | number;
+    times?: GbfsAlertTimeRequest;
+    type?: boolean | number;
+    url?: boolean | number;
+    __typename?: boolean | number;
+    __scalar?: boolean | number;
+}
+interface GbfsSystemCalendarRequest {
+    end_day?: boolean | number;
+    end_month?: boolean | number;
+    end_year?: boolean | number;
+    start_day?: boolean | number;
+    start_month?: boolean | number;
+    start_year?: boolean | number;
+    __typename?: boolean | number;
+    __scalar?: boolean | number;
+}
+interface GbfsSystemHourRequest {
+    days?: boolean | number;
+    end_time?: boolean | number;
+    start_time?: boolean | number;
+    user_types?: boolean | number;
+    __typename?: boolean | number;
+    __scalar?: boolean | number;
+}
+interface GbfsSystemInformationRequest {
+    brand_assets?: GbfsBrandAssetRequest;
+    email?: boolean | number;
+    feed_contact_email?: boolean | number;
+    language?: boolean | number;
+    license_url?: boolean | number;
+    name?: boolean | number;
+    operator?: boolean | number;
+    phone_number?: boolean | number;
+    privacy_last_updated?: boolean | number;
+    privacy_url?: boolean | number;
+    purchase_url?: boolean | number;
+    rental_apps?: GbfsRentalAppsRequest;
+    short_name?: boolean | number;
+    start_date?: boolean | number;
+    system_id?: boolean | number;
+    terms_last_updated?: boolean | number;
+    terms_url?: boolean | number;
+    timezone?: boolean | number;
+    url?: boolean | number;
+    __typename?: boolean | number;
+    __scalar?: boolean | number;
+}
+interface GbfsSystemPricingPlanRequest {
+    currency?: boolean | number;
+    description?: boolean | number;
+    is_taxable?: boolean | number;
+    name?: boolean | number;
+    per_km_pricing?: GbfsPlanPriceRequest;
+    per_min_pricing?: GbfsPlanPriceRequest;
+    plan_id?: boolean | number;
+    price?: boolean | number;
+    surge_pricing?: boolean | number;
+    url?: boolean | number;
+    __typename?: boolean | number;
+    __scalar?: boolean | number;
+}
+interface GbfsSystemRegionRequest {
+    name?: boolean | number;
+    region_id?: boolean | number;
+    __typename?: boolean | number;
+    __scalar?: boolean | number;
+}
+interface GbfsVehicleAssetsRequest {
+    icon_last_modified?: boolean | number;
+    icon_url?: boolean | number;
+    icon_url_dark?: boolean | number;
+    __typename?: boolean | number;
+    __scalar?: boolean | number;
+}
+interface GbfsVehicleDockAvailableRequest {
+    count?: boolean | number;
+    vehicle_types?: GbfsVehicleTypeRequest;
+    __typename?: boolean | number;
+    __scalar?: boolean | number;
+}
+interface GbfsVehicleTypeRequest {
+    cargo_load_capacity?: boolean | number;
+    cargo_volume_capacity?: boolean | number;
+    color?: boolean | number;
+    country_code?: boolean | number;
+    default_pricing_plan?: GbfsSystemPricingPlanRequest;
+    default_reserve_time?: boolean | number;
+    eco_label?: boolean | number;
+    eco_sticker?: boolean | number;
+    form_factor?: boolean | number;
+    gco_2_km?: boolean | number;
+    make?: boolean | number;
+    max_permitted_speed?: boolean | number;
+    max_range_meters?: boolean | number;
+    model?: boolean | number;
+    name?: boolean | number;
+    pricing_plans?: GbfsSystemPricingPlanRequest;
+    propulsion_type?: boolean | number;
+    rated_power?: boolean | number;
+    rental_uris?: GbfsRentalUrisRequest;
+    return_constraint?: boolean | number;
+    rider_capacity?: boolean | number;
+    vehicle_accessories?: boolean | number;
+    vehicle_assets?: GbfsVehicleAssetsRequest;
+    vehicle_image?: boolean | number;
+    vehicle_type_id?: boolean | number;
+    wheel_count?: boolean | number;
+    __typename?: boolean | number;
+    __scalar?: boolean | number;
+}
+interface GbfsVehicleTypeAvailableRequest {
+    count?: boolean | number;
+    num_bikes_disabled?: boolean | number;
+    num_docks_available?: boolean | number;
+    vehicle_type?: GbfsVehicleTypeRequest;
+    __typename?: boolean | number;
+    __scalar?: boolean | number;
+}
 interface ItineraryRequest {
     distance?: DistanceRequest;
     duration?: DurationRequest;
@@ -1114,9 +1572,17 @@ interface QueryRequest {
         limit?: (Scalars['Int'] | null);
         where?: (AgencyFilter | null);
     }, AgencyRequest] | AgencyRequest;
+    bikes?: [{
+        limit?: (Scalars['Int'] | null);
+        where?: (GbfsBikeRequest | null);
+    }, GbfsFreeBikeStatusRequest] | GbfsFreeBikeStatusRequest;
     directions?: [{
         where: DirectionRequest;
     }, DirectionsRequest];
+    docks?: [{
+        limit?: (Scalars['Int'] | null);
+        where?: (GbfsDockRequest | null);
+    }, GbfsStationInformationRequest] | GbfsStationInformationRequest;
     feed_versions?: [{
         after?: (Scalars['Int'] | null);
         ids?: (Scalars['Int'][] | null);
@@ -1403,6 +1869,7 @@ interface StopTimeRequest {
     interpolated?: boolean | number;
     pickup_type?: boolean | number;
     service_date?: boolean | number;
+    shape_dist_traveled?: boolean | number;
     stop?: StopRequest;
     stop_headsign?: boolean | number;
     stop_sequence?: boolean | number;
@@ -1544,10 +2011,26 @@ interface QueryPromiseChain {
     }) & ({
         get: <R extends AgencyRequest>(request: R, defaultValue?: FieldsSelection<Agency, R>[]) => Promise<FieldsSelection<Agency, R>[]>;
     });
+    bikes: ((args?: {
+        limit?: (Scalars['Int'] | null);
+        where?: (GbfsBikeRequest | null);
+    }) => {
+        get: <R extends GbfsFreeBikeStatusRequest>(request: R, defaultValue?: (FieldsSelection<GbfsFreeBikeStatus, R>[] | undefined)) => Promise<(FieldsSelection<GbfsFreeBikeStatus, R>[] | undefined)>;
+    }) & ({
+        get: <R extends GbfsFreeBikeStatusRequest>(request: R, defaultValue?: (FieldsSelection<GbfsFreeBikeStatus, R>[] | undefined)) => Promise<(FieldsSelection<GbfsFreeBikeStatus, R>[] | undefined)>;
+    });
     directions: ((args: {
         where: DirectionRequest;
     }) => DirectionsPromiseChain & {
         get: <R extends DirectionsRequest>(request: R, defaultValue?: FieldsSelection<Directions, R>) => Promise<FieldsSelection<Directions, R>>;
+    });
+    docks: ((args?: {
+        limit?: (Scalars['Int'] | null);
+        where?: (GbfsDockRequest | null);
+    }) => {
+        get: <R extends GbfsStationInformationRequest>(request: R, defaultValue?: (FieldsSelection<GbfsStationInformation, R>[] | undefined)) => Promise<(FieldsSelection<GbfsStationInformation, R>[] | undefined)>;
+    }) & ({
+        get: <R extends GbfsStationInformationRequest>(request: R, defaultValue?: (FieldsSelection<GbfsStationInformation, R>[] | undefined)) => Promise<(FieldsSelection<GbfsStationInformation, R>[] | undefined)>;
     });
     feed_versions: ((args?: {
         after?: (Scalars['Int'] | null);

@@ -207,6 +207,206 @@ export var isFrequency = function(obj) {
 
 
 
+var GbfsAlertTime_possibleTypes = ['GbfsAlertTime']
+export var isGbfsAlertTime = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isGbfsAlertTime"')
+  return GbfsAlertTime_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var GbfsBrandAsset_possibleTypes = ['GbfsBrandAsset']
+export var isGbfsBrandAsset = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isGbfsBrandAsset"')
+  return GbfsBrandAsset_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var GbfsFeed_possibleTypes = ['GbfsFeed']
+export var isGbfsFeed = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isGbfsFeed"')
+  return GbfsFeed_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var GbfsFreeBikeStatus_possibleTypes = ['GbfsFreeBikeStatus']
+export var isGbfsFreeBikeStatus = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isGbfsFreeBikeStatus"')
+  return GbfsFreeBikeStatus_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var GbfsGeofenceFeature_possibleTypes = ['GbfsGeofenceFeature']
+export var isGbfsGeofenceFeature = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isGbfsGeofenceFeature"')
+  return GbfsGeofenceFeature_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var GbfsGeofenceProperty_possibleTypes = ['GbfsGeofenceProperty']
+export var isGbfsGeofenceProperty = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isGbfsGeofenceProperty"')
+  return GbfsGeofenceProperty_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var GbfsGeofenceRule_possibleTypes = ['GbfsGeofenceRule']
+export var isGbfsGeofenceRule = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isGbfsGeofenceRule"')
+  return GbfsGeofenceRule_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var GbfsGeofenceZone_possibleTypes = ['GbfsGeofenceZone']
+export var isGbfsGeofenceZone = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isGbfsGeofenceZone"')
+  return GbfsGeofenceZone_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var GbfsPlanPrice_possibleTypes = ['GbfsPlanPrice']
+export var isGbfsPlanPrice = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isGbfsPlanPrice"')
+  return GbfsPlanPrice_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var GbfsRentalApp_possibleTypes = ['GbfsRentalApp']
+export var isGbfsRentalApp = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isGbfsRentalApp"')
+  return GbfsRentalApp_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var GbfsRentalApps_possibleTypes = ['GbfsRentalApps']
+export var isGbfsRentalApps = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isGbfsRentalApps"')
+  return GbfsRentalApps_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var GbfsRentalUris_possibleTypes = ['GbfsRentalUris']
+export var isGbfsRentalUris = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isGbfsRentalUris"')
+  return GbfsRentalUris_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var GbfsStationInformation_possibleTypes = ['GbfsStationInformation']
+export var isGbfsStationInformation = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isGbfsStationInformation"')
+  return GbfsStationInformation_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var GbfsStationStatus_possibleTypes = ['GbfsStationStatus']
+export var isGbfsStationStatus = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isGbfsStationStatus"')
+  return GbfsStationStatus_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var GbfsSystemAlert_possibleTypes = ['GbfsSystemAlert']
+export var isGbfsSystemAlert = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isGbfsSystemAlert"')
+  return GbfsSystemAlert_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var GbfsSystemCalendar_possibleTypes = ['GbfsSystemCalendar']
+export var isGbfsSystemCalendar = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isGbfsSystemCalendar"')
+  return GbfsSystemCalendar_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var GbfsSystemHour_possibleTypes = ['GbfsSystemHour']
+export var isGbfsSystemHour = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isGbfsSystemHour"')
+  return GbfsSystemHour_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var GbfsSystemInformation_possibleTypes = ['GbfsSystemInformation']
+export var isGbfsSystemInformation = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isGbfsSystemInformation"')
+  return GbfsSystemInformation_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var GbfsSystemPricingPlan_possibleTypes = ['GbfsSystemPricingPlan']
+export var isGbfsSystemPricingPlan = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isGbfsSystemPricingPlan"')
+  return GbfsSystemPricingPlan_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var GbfsSystemRegion_possibleTypes = ['GbfsSystemRegion']
+export var isGbfsSystemRegion = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isGbfsSystemRegion"')
+  return GbfsSystemRegion_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var GbfsSystemVersion_possibleTypes = ['GbfsSystemVersion']
+export var isGbfsSystemVersion = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isGbfsSystemVersion"')
+  return GbfsSystemVersion_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var GbfsVehicleAssets_possibleTypes = ['GbfsVehicleAssets']
+export var isGbfsVehicleAssets = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isGbfsVehicleAssets"')
+  return GbfsVehicleAssets_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var GbfsVehicleDockAvailable_possibleTypes = ['GbfsVehicleDockAvailable']
+export var isGbfsVehicleDockAvailable = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isGbfsVehicleDockAvailable"')
+  return GbfsVehicleDockAvailable_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var GbfsVehicleType_possibleTypes = ['GbfsVehicleType']
+export var isGbfsVehicleType = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isGbfsVehicleType"')
+  return GbfsVehicleType_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var GbfsVehicleTypeAvailable_possibleTypes = ['GbfsVehicleTypeAvailable']
+export var isGbfsVehicleTypeAvailable = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isGbfsVehicleTypeAvailable"')
+  return GbfsVehicleTypeAvailable_possibleTypes.includes(obj.__typename)
+}
+
+
+
 var Itinerary_possibleTypes = ['Itinerary']
 export var isItinerary = function(obj) {
   if (!obj || !obj.__typename) throw new Error('__typename is missing in "isItinerary"')
