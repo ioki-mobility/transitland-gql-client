@@ -1,5 +1,12 @@
 
 
+## 2022.9.27 (2022-10-07)
+
+
+### Bug Fixes
+
+* set new schema url ([ad6e923](https://github.com/ioki-mobility/transitland-gql-client/commit/ad6e923403d925ce7ef847cb49aad7e5f8b9d7e7))
+
 ## 2022.8.27 (2022-09-05)
 
 
