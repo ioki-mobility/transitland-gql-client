@@ -3,7 +3,11 @@ import { exit } from 'node:process';
 import { generate } from '@genql/cli';
 import fs from 'node:fs'
 
-const schema = fs.readFileSync(path.join(__dirname, 'landing/schema.graphqls'), 'utf-8');
+const inputSchema = fs.readFileSync(path.join(__dirname, 'landing/input.graphqls'), 'utf-8');
+const directionsSchema = fs.readFileSync(path.join(__dirname, 'landing/directions.graphqls'), 'utf-8');
+const gbfsSchema = fs.readFileSync(path.join(__dirname, 'landing/gbfs.graphqls'), 'utf-8');
+
+const schema = fs.readFileSync(path.join(__dirname, 'landing/schema.graphqls'), 'utf-8').concat(inputSchema).concat(directionsSchema).concat(gbfsSchema)
 
 void (async function () {
     const generator = generate({

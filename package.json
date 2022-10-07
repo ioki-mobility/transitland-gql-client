@@ -22,7 +22,10 @@
   },
   "scripts": {
     "generate": "yarn run-s generate:* --print-label",
-    "generate:0-download": "curl -s https://raw.githubusercontent.com/interline-io/transitland-server/main/schema.graphqls > ./landing/schema.graphqls",
+    "generate:0-download-schema": "curl -s https://raw.githubusercontent.com/interline-io/transitland-server/main/schema/schema.graphqls > ./landing/schema.graphqls",
+    "generate:0-download-input": "curl -s https://raw.githubusercontent.com/interline-io/transitland-server/main/schema/input.graphqls > ./landing/input.graphqls",
+    "generate:0-download-directions": "curl -s https://raw.githubusercontent.com/interline-io/transitland-server/main/schema/directions.graphqls > ./landing/directions.graphqls",
+    "generate:0-download-gbfs": "curl -s https://raw.githubusercontent.com/interline-io/transitland-server/main/schema/gbfs.graphqls > ./landing/gbfs.graphqls",
     "generate:1-client": "ts-node genql.ts",
     "generate:2-bundle": "tsup",
     "generate:3-cp-schema": "cp src/_client/schema.graphql dist/schema.graphql",
