@@ -29,22 +29,45 @@ jobs:
         with:
           token: ${{ github.token }}
           fetch-depth: 0
+      - name: remote-commit
+        id: remote-commit
+        env:
+          URL: https://github.com/interline-io/transitland-server.git
+        run: |
+          echo "::set-output name=sha::$(git ls-remote ${URL} HEAD | awk '{ print $1}')"
+      - name: commit-store
+        id: commit-store
+        uses: boredland/action-commit-store@1.0.1
+        with:
+          storage-commit-sha: 3755750738397a632761958464ebbda4f87fd7ad
+          key: last-commit
+          value: ${{ steps.remote-commit.outputs.sha }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - id: skip
+        if: steps.commit-store.outputs.updated == 'false' && github.event_name == 'schedule'
+        run: |
+          echo "::set-output name=value::true"
       - name: setup node
         uses: actions/setup-node@969bd2663942d722d85b6a8626225850c2f7be4b # tag=v3
+        if: steps.skip.outputs.value != 'true'
         with:
           node-version: 'node'
           cache: 'yarn'
       - name: install
+        if: steps.skip.outputs.value != 'true'
         run: yarn --frozen-lockfile
       - name: generate
+        if: steps.skip.outputs.value != 'true'
         run: yarn generate
       - name: test
+        if: steps.skip.outputs.value != 'true'
         run: yarn test
         env:
           TRANSITLAND_API_KEY: ${{ secrets.TRANSITLAND_API_KEY }}
           TRANSITLAND_URL: ${{ secrets.TRANSITLAND_URL }}
-      - id: changes
-        name: detect changes
+      - name: commit changes
+        if: ${{ steps.skip.outputs.value == 'true' }}
+        id: changes
         uses: stefanzweifel/git-auto-commit-action@6c32682a4040e023c054b2fc60a7cf65cc77f7ad # tag=v4
         with:
           commit_message: "chore(update): automated client update"
