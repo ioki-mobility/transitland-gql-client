@@ -37,7 +37,7 @@ jobs:
           echo "::set-output name=sha::$(git ls-remote ${URL} HEAD | awk '{ print $1}')"
       - name: commit-store
         id: commit-store
-        uses: boredland/action-commit-store@e4c2d3e3d0d865a0ffdfb017e25eb7b59117894e # tag=1.0.1
+        uses: boredland/action-commit-store@841a879cc6b4bfaebd247c17ad7b72cbf76c7e77 # tag=1.3.0
         with:
           storage-commit-sha: 3755750738397a632761958464ebbda4f87fd7ad
           key: last-commit
