@@ -1,5 +1,12 @@
 
 
+## 2022.10.27 (2022-10-17)
+
+
+### Bug Fixes
+
+* avoid skipping commit in force mode ([36f450c](https://github.com/ioki-mobility/transitland-gql-client/commit/36f450ceb78e5ffb470ac962c4568fc805d4d7e1))
+
 ## 2022.9.27 (2022-10-07)
 
 
