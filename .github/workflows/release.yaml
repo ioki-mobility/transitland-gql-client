@@ -66,7 +66,7 @@ jobs:
           TRANSITLAND_API_KEY: ${{ secrets.TRANSITLAND_API_KEY }}
           TRANSITLAND_URL: ${{ secrets.TRANSITLAND_URL }}
       - name: commit changes
-        if: ${{ steps.skip.outputs.value == 'true' }}
+        if: steps.skip.outputs.value != 'true'
         id: changes
         uses: stefanzweifel/git-auto-commit-action@fd157da78fa13d9383e5580d1fd1184d89554b51 # tag=v4
         with:
