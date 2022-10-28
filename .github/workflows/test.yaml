@@ -16,7 +16,7 @@ jobs:
       - name: setup node
         uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # tag=v3
         with:
-          node-version: 'node'
+          node-version: 'lts/*'
           cache: 'yarn'
       - name: install
         run: yarn --frozen-lockfile
