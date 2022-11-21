@@ -2,7 +2,7 @@ import * as _genql_runtime from '@genql/runtime';
 import { FieldsSelection, Observable, GraphqlOperation, ClientOptions as ClientOptions$1 } from '@genql/runtime';
 import { SubscriptionClient } from 'subscriptions-transport-ws';
 
-declare type Scalars = {
+type Scalars = {
     Any: any;
     Bool: any;
     Boolean: boolean;
@@ -126,13 +126,13 @@ interface Distance {
     units: DistanceUnit;
     __typename: 'Distance';
 }
-declare type DistanceUnit = 'KILOMETERS' | 'MILES';
+type DistanceUnit = 'KILOMETERS' | 'MILES';
 interface Duration {
     duration: Scalars['Float'];
     units: DurationUnit;
     __typename: 'Duration';
 }
-declare type DurationUnit = 'SECONDS';
+type DurationUnit = 'SECONDS';
 /** Feeds contain details on how to access transit information, including URLs to data sources in various formats (GTFS, GTFS-RT, GBFS, etc), license information, related feeds, details on how to make authorized requests, and feed version archives. Feed versions are archived (as `.zip` files) and imported into the Transitland database for querying agencies, stops, routes, trips, etc. */
 interface Feed {
     associated_operators?: Operator[];
@@ -215,9 +215,9 @@ interface FeedLicense {
     use_without_attribution: Scalars['String'];
     __typename: 'FeedLicense';
 }
-declare type FeedSourceUrlTypes = 'gbfs_auto_discovery' | 'mds_provider' | 'realtime_alerts' | 'realtime_trip_updates' | 'realtime_vehicle_positions' | 'static_current' | 'static_historic' | 'static_hypothetical' | 'static_planned';
+type FeedSourceUrlTypes = 'gbfs_auto_discovery' | 'mds_provider' | 'realtime_alerts' | 'realtime_trip_updates' | 'realtime_vehicle_positions' | 'static_current' | 'static_historic' | 'static_hypothetical' | 'static_planned';
 /** Type of data contained in a source feed */
-declare type FeedSpecTypes = 'GBFS' | 'GTFS' | 'GTFS_RT' | 'MDS';
+type FeedSpecTypes = 'GBFS' | 'GTFS' | 'GTFS_RT' | 'MDS';
 /** Details on the current state of this feed, such as active version, last fetch time, etc. */
 interface FeedState {
     /** The active feed version for this feed */
@@ -582,7 +582,7 @@ interface GbfsVehicleTypeAvailable {
     vehicle_type?: GbfsVehicleType;
     __typename: 'GbfsVehicleTypeAvailable';
 }
-declare type ImportStatus = 'ERROR' | 'IN_PROGRESS' | 'SUCCESS';
+type ImportStatus = 'ERROR' | 'IN_PROGRESS' | 'SUCCESS';
 interface Itinerary {
     distance: Distance;
     duration: Duration;
@@ -690,7 +690,7 @@ interface RTVehicleDescriptor {
     license_plate?: Scalars['String'];
     __typename: 'RTVehicleDescriptor';
 }
-declare type Role = 'ADMIN' | 'ANON' | 'USER';
+type Role = 'ADMIN' | 'ANON' | 'USER';
 /** See https://gtfs.org/schedule/reference/#routestxt */
 interface Route {
     agency: Agency;
@@ -766,7 +766,7 @@ interface RouteStopPattern {
     trips?: Trip[];
     __typename: 'RouteStopPattern';
 }
-declare type ScheduleRelationship = 'ADDED' | 'CANCELED' | 'SCHEDULED' | 'UNSCHEDULED';
+type ScheduleRelationship = 'ADDED' | 'CANCELED' | 'SCHEDULED' | 'UNSCHEDULED';
 /** Record from a static GTFS [shapes.txt](https://gtfs.org/schedule/reference/#shapestxt) file. */
 interface Shape {
     generated: Scalars['Boolean'];
@@ -786,7 +786,7 @@ interface Step {
     to?: Waypoint;
     __typename: 'Step';
 }
-declare type StepMode = 'AUTO' | 'BICYCLE' | 'LINE' | 'TRANSIT' | 'WALK';
+type StepMode = 'AUTO' | 'BICYCLE' | 'LINE' | 'TRANSIT' | 'WALK';
 /** See https://gtfs.org/reference/static/#stopstxt */
 interface Stop {
     alerts?: Alert[];
@@ -7073,9 +7073,9 @@ declare const enumStepMode: {
   readonly WALK: 'WALK'
 }
 
-declare type Optional<T extends object, K extends keyof T = keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
+type Optional<T extends object, K extends keyof T = keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 
-declare type ClientOptions = Optional<ClientOptions$1, 'url' | 'batch'> & {
+type ClientOptions = Optional<ClientOptions$1, 'url' | 'batch'> & {
     apiKey: string;
 };
 declare const createClient: ({ apiKey, ...options }: ClientOptions) => {
