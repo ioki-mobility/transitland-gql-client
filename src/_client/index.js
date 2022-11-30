@@ -59,6 +59,13 @@ export const enumImportStatus = {
   SUCCESS: 'SUCCESS',
 }
 
+export const enumLicenseValue = {
+  EXCLUDE_NO: 'EXCLUDE_NO',
+  NO: 'NO',
+  UNKNOWN: 'UNKNOWN',
+  YES: 'YES',
+}
+
 export const enumRole = {
   ADMIN: 'ADMIN',
   ANON: 'ANON',

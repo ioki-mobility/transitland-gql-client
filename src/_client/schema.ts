@@ -681,6 +681,8 @@ export interface Level {
     __typename: 'Level'
 }
 
+export type LicenseValue = 'EXCLUDE_NO' | 'NO' | 'UNKNOWN' | 'YES'
+
 
 /**
  * An agency represents a single GTFS `agencies.txt` entity that was imported from a single feed version. The metadata, routes, etc., for an agency include only the data for that specific agency in that specific feed version. 
@@ -1070,7 +1072,7 @@ adm1_name?: (Scalars['String'] | null),agency_id?: (Scalars['String'] | null),
 /** Search for records with this GTFS agency_name */
 agency_name?: (Scalars['String'] | null),
 /** Search by city name (provided by Natural Earth) */
-city_name?: (Scalars['String'] | null),feed_onestop_id?: (Scalars['String'] | null),feed_version_sha1?: (Scalars['String'] | null),
+city_name?: (Scalars['String'] | null),feed_onestop_id?: (Scalars['String'] | null),feed_version_sha1?: (Scalars['String'] | null),license?: (LicenseFilter | null),
 /** Search for agencies within a radius */
 near?: (PointRadius | null),onestop_id?: (Scalars['String'] | null),
 /** Full text search */
@@ -1245,7 +1247,7 @@ export interface FeedFilter {
 /** Search for feeds with or without a fetch error */
 fetch_error?: (Scalars['Boolean'] | null),
 /** Search for feeds by their import status */
-import_status?: (ImportStatus | null),
+import_status?: (ImportStatus | null),license?: (LicenseFilter | null),
 /** Search for feed with a specific Onestop ID */
 onestop_id?: (Scalars['String'] | null),
 /** Full text search */
@@ -1787,6 +1789,8 @@ export interface LevelRequest{
     __scalar?: boolean | number
 }
 
+export interface LicenseFilter {commercial_use_allowed?: (LicenseValue | null),create_derived_product?: (LicenseValue | null),redistribution_allowed?: (LicenseValue | null),share_alike_optional?: (LicenseValue | null),use_without_attribution?: (LicenseValue | null)}
+
 
 /**
  * An agency represents a single GTFS `agencies.txt` entity that was imported from a single feed version. The metadata, routes, etc., for an agency include only the data for that specific agency in that specific feed version. 
@@ -1809,7 +1813,7 @@ export interface OperatorRequest{
     __scalar?: boolean | number
 }
 
-export interface OperatorFilter {adm0_iso?: (Scalars['String'] | null),adm0_name?: (Scalars['String'] | null),adm1_iso?: (Scalars['String'] | null),adm1_name?: (Scalars['String'] | null),agency_id?: (Scalars['String'] | null),city_name?: (Scalars['String'] | null),feed_onestop_id?: (Scalars['String'] | null),merged?: (Scalars['Boolean'] | null),onestop_id?: (Scalars['String'] | null),search?: (Scalars['String'] | null),tags?: (Scalars['Tags'] | null)}
+export interface OperatorFilter {adm0_iso?: (Scalars['String'] | null),adm0_name?: (Scalars['String'] | null),adm1_iso?: (Scalars['String'] | null),adm1_name?: (Scalars['String'] | null),agency_id?: (Scalars['String'] | null),city_name?: (Scalars['String'] | null),feed_onestop_id?: (Scalars['String'] | null),license?: (LicenseFilter | null),merged?: (Scalars['Boolean'] | null),onestop_id?: (Scalars['String'] | null),search?: (Scalars['String'] | null),tags?: (Scalars['Tags'] | null)}
 
 
 /** The GTFS-Pathways extension uses a graph representation to describe subway or train, with nodes (the locations) and edges (the pathways). See https://gtfs.org/reference/static/#pathwaystxt */
@@ -1926,7 +1930,7 @@ export interface RouteRequest{
     __scalar?: boolean | number
 }
 
-export interface RouteFilter {agency_ids?: (Scalars['Int'][] | null),allow_previous_onestop_ids?: (Scalars['Boolean'] | null),feed_onestop_id?: (Scalars['String'] | null),feed_version_sha1?: (Scalars['String'] | null),near?: (PointRadius | null),onestop_id?: (Scalars['String'] | null),onestop_ids?: (Scalars['String'][] | null),operator_onestop_id?: (Scalars['String'] | null),route_id?: (Scalars['String'] | null),route_type?: (Scalars['Int'] | null),search?: (Scalars['String'] | null),within?: (Scalars['Polygon'] | null)}
+export interface RouteFilter {agency_ids?: (Scalars['Int'][] | null),allow_previous_onestop_ids?: (Scalars['Boolean'] | null),feed_onestop_id?: (Scalars['String'] | null),feed_version_sha1?: (Scalars['String'] | null),license?: (LicenseFilter | null),near?: (PointRadius | null),onestop_id?: (Scalars['String'] | null),onestop_ids?: (Scalars['String'][] | null),operator_onestop_id?: (Scalars['String'] | null),route_id?: (Scalars['String'] | null),route_type?: (Scalars['Int'] | null),search?: (Scalars['String'] | null),within?: (Scalars['Polygon'] | null)}
 
 export interface RouteGeometryRequest{
     combined_geometry?: boolean | number
@@ -2043,7 +2047,7 @@ export interface StopRequest{
     __scalar?: boolean | number
 }
 
-export interface StopFilter {agency_ids?: (Scalars['Int'][] | null),allow_previous_onestop_ids?: (Scalars['Boolean'] | null),feed_onestop_id?: (Scalars['String'] | null),feed_version_sha1?: (Scalars['String'] | null),near?: (PointRadius | null),onestop_id?: (Scalars['String'] | null),onestop_ids?: (Scalars['String'][] | null),search?: (Scalars['String'] | null),served_by_onestop_ids?: (Scalars['String'][] | null),stop_code?: (Scalars['String'] | null),stop_id?: (Scalars['String'] | null),within?: (Scalars['Polygon'] | null)}
+export interface StopFilter {agency_ids?: (Scalars['Int'][] | null),allow_previous_onestop_ids?: (Scalars['Boolean'] | null),feed_onestop_id?: (Scalars['String'] | null),feed_version_sha1?: (Scalars['String'] | null),license?: (LicenseFilter | null),near?: (PointRadius | null),onestop_id?: (Scalars['String'] | null),onestop_ids?: (Scalars['String'][] | null),search?: (Scalars['String'] | null),served_by_onestop_ids?: (Scalars['String'][] | null),stop_code?: (Scalars['String'] | null),stop_id?: (Scalars['String'] | null),within?: (Scalars['Polygon'] | null)}
 
 
 /** Record from a static GTFS [stop_times.txt](https://gtfs.org/schedule/reference/#stop_timestxt) file. */
@@ -2106,7 +2110,7 @@ export interface TripRequest{
     __scalar?: boolean | number
 }
 
-export interface TripFilter {feed_onestop_id?: (Scalars['String'] | null),feed_version_sha1?: (Scalars['String'] | null),route_ids?: (Scalars['Int'][] | null),route_onestop_ids?: (Scalars['String'][] | null),service_date?: (Scalars['Date'] | null),stop_pattern_id?: (Scalars['Int'] | null),trip_id?: (Scalars['String'] | null)}
+export interface TripFilter {feed_onestop_id?: (Scalars['String'] | null),feed_version_sha1?: (Scalars['String'] | null),license?: (LicenseFilter | null),route_ids?: (Scalars['Int'][] | null),route_onestop_ids?: (Scalars['String'][] | null),service_date?: (Scalars['Date'] | null),stop_pattern_id?: (Scalars['Int'] | null),trip_id?: (Scalars['String'] | null)}
 
 export interface ValidationResultRequest{
     agencies?: [{limit?: (Scalars['Int'] | null)},AgencyRequest] | AgencyRequest

@@ -66,6 +66,13 @@ export declare const enumImportStatus: {
   readonly SUCCESS: 'SUCCESS'
 }
 
+export declare const enumLicenseValue: {
+  readonly EXCLUDE_NO: 'EXCLUDE_NO'
+  readonly NO: 'NO'
+  readonly UNKNOWN: 'UNKNOWN'
+  readonly YES: 'YES'
+}
+
 export declare const enumRole: {
   readonly ADMIN: 'ADMIN'
   readonly ANON: 'ANON'
