@@ -2711,7 +2711,7 @@ declare const generateQueryOp: (fields: QueryGenqlSelection & {
 
 type Optional<T extends object, K extends keyof T = keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 
-type ClientOptions = Optional<NonNullable<Parameters<typeof createClient$1>[0]>, 'url' | 'batch'> & {
+type ClientOptions = Optional<NonNullable<Parameters<typeof createClient$1>[0]>, "url" | "batch"> & {
     apiKey: string;
 };
 declare const createClient: ({ apiKey, ...options }: ClientOptions) => {
