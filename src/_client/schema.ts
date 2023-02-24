@@ -1,5 +1,3 @@
-import {FieldsSelection,Observable} from '@genql/runtime'
-
 export type Scalars = {
     Any: any,
     Bool: any,
@@ -1035,7 +1033,7 @@ export interface Waypoint {
 
 
 /** See https://gtfs.org/schedule/reference/#agencytxt */
-export interface AgencyRequest{
+export interface AgencyGenqlSelection{
     agency_email?: boolean | number
     agency_fare_url?: boolean | number
     agency_id?: boolean | number
@@ -1044,17 +1042,17 @@ export interface AgencyRequest{
     agency_phone?: boolean | number
     agency_timezone?: boolean | number
     agency_url?: boolean | number
-    alerts?: [{active?: (Scalars['Boolean'] | null),limit?: (Scalars['Int'] | null)},AlertRequest] | AlertRequest
-    census_geographies?: [{layer: Scalars['String'],limit?: (Scalars['Int'] | null),radius?: (Scalars['Float'] | null)},CensusGeographyRequest]
+    alerts?: (AlertGenqlSelection & { __args?: {active?: (Scalars['Boolean'] | null), limit?: (Scalars['Int'] | null)} })
+    census_geographies?: (CensusGeographyGenqlSelection & { __args: {layer: Scalars['String'], limit?: (Scalars['Int'] | null), radius?: (Scalars['Float'] | null)} })
     feed_onestop_id?: boolean | number
-    feed_version?: FeedVersionRequest
+    feed_version?: FeedVersionGenqlSelection
     feed_version_sha1?: boolean | number
     geometry?: boolean | number
     id?: boolean | number
     onestop_id?: boolean | number
-    operator?: OperatorRequest
-    places?: [{limit?: (Scalars['Int'] | null),where?: (AgencyPlaceFilter | null)},AgencyPlaceRequest] | AgencyPlaceRequest
-    routes?: [{limit?: (Scalars['Int'] | null),where?: (RouteFilter | null)},RouteRequest] | RouteRequest
+    operator?: OperatorGenqlSelection
+    places?: (AgencyPlaceGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), where?: (AgencyPlaceFilter | null)} })
+    routes?: (RouteGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), where?: (RouteFilter | null)} })
     search_rank?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
@@ -1078,7 +1076,7 @@ near?: (PointRadius | null),onestop_id?: (Scalars['String'] | null),
 /** Full text search */
 search?: (Scalars['String'] | null),within?: (Scalars['Polygon'] | null)}
 
-export interface AgencyPlaceRequest{
+export interface AgencyPlaceGenqlSelection{
     adm0_name?: boolean | number
     adm1_name?: boolean | number
     city_name?: boolean | number
@@ -1091,29 +1089,29 @@ export interface AgencyPlaceFilter {min_rank?: (Scalars['Float'] | null)}
 
 
 /** [Alert](https://gtfs.org/reference/realtime/v2/#message-alert) message, also called a service alert, provided by a source GTFS Realtime feed. */
-export interface AlertRequest{
-    active_period?: RTTimeRangeRequest
+export interface AlertGenqlSelection{
+    active_period?: RTTimeRangeGenqlSelection
     cause?: boolean | number
-    description_text?: RTTranslationRequest
+    description_text?: RTTranslationGenqlSelection
     effect?: boolean | number
-    header_text?: RTTranslationRequest
+    header_text?: RTTranslationGenqlSelection
     severity_level?: boolean | number
-    tts_description_text?: RTTranslationRequest
-    tts_header_text?: RTTranslationRequest
-    url?: RTTranslationRequest
+    tts_description_text?: RTTranslationGenqlSelection
+    tts_header_text?: RTTranslationGenqlSelection
+    url?: RTTranslationGenqlSelection
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
 
 /** Record from a static GTFS [calendars.txt](https://gtfs.org/schedule/reference/#calendarstxt) file. */
-export interface CalendarRequest{
-    added_dates?: [{limit?: (Scalars['Int'] | null)}] | boolean | number
+export interface CalendarGenqlSelection{
+    added_dates?: { __args: {limit?: (Scalars['Int'] | null)} } | boolean | number
     end_date?: boolean | number
     friday?: boolean | number
     id?: boolean | number
     monday?: boolean | number
-    removed_dates?: [{limit?: (Scalars['Int'] | null)}] | boolean | number
+    removed_dates?: { __args: {limit?: (Scalars['Int'] | null)} } | boolean | number
     saturday?: boolean | number
     service_id?: boolean | number
     start_date?: boolean | number
@@ -1127,7 +1125,7 @@ export interface CalendarRequest{
 
 export interface CalendarDateFilter {date?: (Scalars['Date'] | null),exception_type?: (Scalars['Int'] | null)}
 
-export interface CensusGeographyRequest{
+export interface CensusGeographyGenqlSelection{
     aland?: boolean | number
     awater?: boolean | number
     geoid?: boolean | number
@@ -1135,12 +1133,12 @@ export interface CensusGeographyRequest{
     id?: boolean | number
     layer_name?: boolean | number
     name?: boolean | number
-    values?: [{limit?: (Scalars['Int'] | null),table_names: Scalars['String'][]},CensusValueRequest]
+    values?: (CensusValueGenqlSelection & { __args: {limit?: (Scalars['Int'] | null), table_names: Scalars['String'][]} })
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface CensusTableRequest{
+export interface CensusTableGenqlSelection{
     id?: boolean | number
     table_group?: boolean | number
     table_name?: boolean | number
@@ -1149,8 +1147,8 @@ export interface CensusTableRequest{
     __scalar?: boolean | number
 }
 
-export interface CensusValueRequest{
-    table?: CensusTableRequest
+export interface CensusValueGenqlSelection{
+    table?: CensusTableGenqlSelection
     values?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
@@ -1158,29 +1156,29 @@ export interface CensusValueRequest{
 
 export interface DirectionRequest {depart_at?: (Scalars['Time'] | null),from: WaypointInput,mode: StepMode,to: WaypointInput}
 
-export interface DirectionsRequest{
+export interface DirectionsGenqlSelection{
     data_source?: boolean | number
-    destination?: WaypointRequest
-    distance?: DistanceRequest
-    duration?: DurationRequest
+    destination?: WaypointGenqlSelection
+    distance?: DistanceGenqlSelection
+    duration?: DurationGenqlSelection
     end_time?: boolean | number
     exception?: boolean | number
-    itineraries?: ItineraryRequest
-    origin?: WaypointRequest
+    itineraries?: ItineraryGenqlSelection
+    origin?: WaypointGenqlSelection
     start_time?: boolean | number
     success?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface DistanceRequest{
+export interface DistanceGenqlSelection{
     distance?: boolean | number
     units?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface DurationRequest{
+export interface DurationGenqlSelection{
     duration?: boolean | number
     units?: boolean | number
     __typename?: boolean | number
@@ -1189,19 +1187,19 @@ export interface DurationRequest{
 
 
 /** Feeds contain details on how to access transit information, including URLs to data sources in various formats (GTFS, GTFS-RT, GBFS, etc), license information, related feeds, details on how to make authorized requests, and feed version archives. Feed versions are archived (as `.zip` files) and imported into the Transitland database for querying agencies, stops, routes, trips, etc. */
-export interface FeedRequest{
-    associated_operators?: OperatorRequest
-    authorization?: FeedAuthorizationRequest
-    feed_fetches?: [{limit?: (Scalars['Int'] | null),where?: (FeedFetchFilter | null)},FeedFetchRequest] | FeedFetchRequest
-    feed_state?: FeedStateRequest
+export interface FeedGenqlSelection{
+    associated_operators?: OperatorGenqlSelection
+    authorization?: FeedAuthorizationGenqlSelection
+    feed_fetches?: (FeedFetchGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), where?: (FeedFetchFilter | null)} })
+    feed_state?: FeedStateGenqlSelection
     /** Versions of this feed that have been fetched, archived, and imported by Transitland */
-    feed_versions?: [{limit?: (Scalars['Int'] | null),where?: (FeedVersionFilter | null)},FeedVersionRequest] | FeedVersionRequest
+    feed_versions?: (FeedVersionGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), where?: (FeedVersionFilter | null)} })
     file?: boolean | number
     /** Unique integer ID */
     id?: boolean | number
     /** Language(s) included in this feed */
     languages?: boolean | number
-    license?: FeedLicenseRequest
+    license?: FeedLicenseGenqlSelection
     /** A common name for this feed. Optional. Alternatively use `associated_operators[].name` */
     name?: boolean | number
     /** Onestop ID for this feed */
@@ -1209,14 +1207,14 @@ export interface FeedRequest{
     search_rank?: boolean | number
     spec?: boolean | number
     tags?: boolean | number
-    urls?: FeedUrlsRequest
+    urls?: FeedUrlsGenqlSelection
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
 
 /** Details on how to construct an HTTP request to access a protected resource */
-export interface FeedAuthorizationRequest{
+export interface FeedAuthorizationGenqlSelection{
     /** Website to visit to sign up for an account */
     info_url?: boolean | number
     /** When `type=query_param`, this specifies the name of the query parameter. When `type=header`, this specifies the name of the header */
@@ -1227,7 +1225,7 @@ export interface FeedAuthorizationRequest{
     __scalar?: boolean | number
 }
 
-export interface FeedFetchRequest{
+export interface FeedFetchGenqlSelection{
     fetch_error?: boolean | number
     fetched_at?: boolean | number
     id?: boolean | number
@@ -1261,7 +1259,7 @@ tags?: (Scalars['Tags'] | null)}
 
 
 /** Record from a static GTFS [feed_info.txt](https://gtfs.org/schedule/reference/#feed_infotxt) file. */
-export interface FeedInfoRequest{
+export interface FeedInfoGenqlSelection{
     default_lang?: boolean | number
     feed_contact_email?: boolean | number
     feed_contact_url?: boolean | number
@@ -1278,7 +1276,7 @@ export interface FeedInfoRequest{
 
 
 /** License information for this feed, curated by Interline and contributors to the Transitland Atlas feed registry. Note that this does not constitute legal advice. Users are advised to review and confirm any terms and conditions attached to a source feed. */
-export interface FeedLicenseRequest{
+export interface FeedLicenseGenqlSelection{
     /** Feed consumers must follow these instructions for how to provide attribution */
     attribution_instructions?: boolean | number
     /** Feed consumers must include this particular text when using this feed */
@@ -1305,9 +1303,9 @@ export interface FeedSourceUrl {case_sensitive?: (Scalars['Boolean'] | null),typ
 
 
 /** Details on the current state of this feed, such as active version, last fetch time, etc. */
-export interface FeedStateRequest{
+export interface FeedStateGenqlSelection{
     /** The active feed version for this feed */
-    feed_version?: FeedVersionRequest
+    feed_version?: FeedVersionGenqlSelection
     id?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
@@ -1315,7 +1313,7 @@ export interface FeedStateRequest{
 
 
 /** URL(s) from which Transitland sources a feed */
-export interface FeedUrlsRequest{
+export interface FeedUrlsGenqlSelection{
     /** URL for GBFS feed `gbfs.json` auto-discovery file */
     gbfs_auto_discovery?: boolean | number
     /** URL for MDS feed provider endpoint */
@@ -1338,41 +1336,41 @@ export interface FeedUrlsRequest{
 
 
 /** Feed versions represent a specific static GTFS file that was published at a particular point in time, and are generally accessed and referenced using the [SHA1 checksum](https://en.wikipedia.org/wiki/SHA-1) of the GTFS archive. */
-export interface FeedVersionRequest{
-    agencies?: [{limit?: (Scalars['Int'] | null),where?: (AgencyFilter | null)},AgencyRequest] | AgencyRequest
+export interface FeedVersionGenqlSelection{
+    agencies?: (AgencyGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), where?: (AgencyFilter | null)} })
     created_by?: boolean | number
     description?: boolean | number
     earliest_calendar_date?: boolean | number
-    feed?: FeedRequest
-    feed_infos?: [{limit?: (Scalars['Int'] | null)},FeedInfoRequest] | FeedInfoRequest
-    feed_version_gtfs_import?: FeedVersionGtfsImportRequest
+    feed?: FeedGenqlSelection
+    feed_infos?: (FeedInfoGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
+    feed_version_gtfs_import?: FeedVersionGtfsImportGenqlSelection
     fetched_at?: boolean | number
     /** Metadata for each text file present in the main directory of the zip archive  */
-    files?: [{limit?: (Scalars['Int'] | null)},FeedVersionFileInfoRequest] | FeedVersionFileInfoRequest
+    files?: (FeedVersionFileInfoGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
     /** Convex hull around all active stops in the feed version */
     geometry?: boolean | number
     id?: boolean | number
     latest_calendar_date?: boolean | number
     name?: boolean | number
-    routes?: [{limit?: (Scalars['Int'] | null),where?: (RouteFilter | null)},RouteRequest] | RouteRequest
-    service_levels?: [{limit?: (Scalars['Int'] | null),where?: (FeedVersionServiceLevelFilter | null)},FeedVersionServiceLevelRequest] | FeedVersionServiceLevelRequest
+    routes?: (RouteGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), where?: (RouteFilter | null)} })
+    service_levels?: (FeedVersionServiceLevelGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), where?: (FeedVersionServiceLevelFilter | null)} })
     sha1?: boolean | number
-    stops?: [{limit?: (Scalars['Int'] | null),where?: (StopFilter | null)},StopRequest] | StopRequest
-    trips?: [{limit?: (Scalars['Int'] | null),where?: (TripFilter | null)},TripRequest] | TripRequest
+    stops?: (StopGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), where?: (StopFilter | null)} })
+    trips?: (TripGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), where?: (TripFilter | null)} })
     updated_by?: boolean | number
     url?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface FeedVersionDeleteResultRequest{
+export interface FeedVersionDeleteResultGenqlSelection{
     success?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface FeedVersionFetchResultRequest{
-    feed_version?: FeedVersionRequest
+export interface FeedVersionFetchResultGenqlSelection{
+    feed_version?: FeedVersionGenqlSelection
     fetch_error?: boolean | number
     found_dir_sha1?: boolean | number
     found_sha1?: boolean | number
@@ -1380,7 +1378,7 @@ export interface FeedVersionFetchResultRequest{
     __scalar?: boolean | number
 }
 
-export interface FeedVersionFileInfoRequest{
+export interface FeedVersionFileInfoGenqlSelection{
     csv_like?: boolean | number
     header?: boolean | number
     id?: boolean | number
@@ -1394,7 +1392,7 @@ export interface FeedVersionFileInfoRequest{
 
 export interface FeedVersionFilter {feed_ids?: (Scalars['Int'][] | null),feed_onestop_id?: (Scalars['String'] | null),import_status?: (ImportStatus | null),sha1?: (Scalars['String'] | null)}
 
-export interface FeedVersionGtfsImportRequest{
+export interface FeedVersionGtfsImportGenqlSelection{
     created_at?: boolean | number
     entity_count?: boolean | number
     exception_log?: boolean | number
@@ -1413,13 +1411,13 @@ export interface FeedVersionGtfsImportRequest{
     __scalar?: boolean | number
 }
 
-export interface FeedVersionImportResultRequest{
+export interface FeedVersionImportResultGenqlSelection{
     success?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface FeedVersionServiceLevelRequest{
+export interface FeedVersionServiceLevelGenqlSelection{
     end_date?: boolean | number
     friday?: boolean | number
     id?: boolean | number
@@ -1438,7 +1436,7 @@ export interface FeedVersionServiceLevelFilter {end_date?: (Scalars['Date'] | nu
 
 export interface FeedVersionSetInput {description?: (Scalars['String'] | null),name?: (Scalars['String'] | null)}
 
-export interface FeedVersionUnimportResultRequest{
+export interface FeedVersionUnimportResultGenqlSelection{
     success?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
@@ -1446,7 +1444,7 @@ export interface FeedVersionUnimportResultRequest{
 
 
 /** Record from a static GTFS [frequencies.txt](https://gtfs.org/schedule/reference/#frequenciestxt) file. */
-export interface FrequencyRequest{
+export interface FrequencyGenqlSelection{
     end_time?: boolean | number
     exact_times?: boolean | number
     headway_secs?: boolean | number
@@ -1456,7 +1454,7 @@ export interface FrequencyRequest{
     __scalar?: boolean | number
 }
 
-export interface GbfsAlertTimeRequest{
+export interface GbfsAlertTimeGenqlSelection{
     end?: boolean | number
     start?: boolean | number
     __typename?: boolean | number
@@ -1465,7 +1463,7 @@ export interface GbfsAlertTimeRequest{
 
 export interface GbfsBikeRequest {near?: (PointRadius | null)}
 
-export interface GbfsBrandAssetRequest{
+export interface GbfsBrandAssetGenqlSelection{
     brand_image_url?: boolean | number
     brand_image_url_dark?: boolean | number
     brand_last_modified?: boolean | number
@@ -1477,71 +1475,71 @@ export interface GbfsBrandAssetRequest{
 
 export interface GbfsDockRequest {near?: (PointRadius | null)}
 
-export interface GbfsFeedRequest{
-    alerts?: GbfsSystemAlertRequest
-    calendars?: GbfsSystemCalendarRequest
-    rental_hours?: GbfsSystemHourRequest
-    station_information?: GbfsStationInformationRequest
-    system_information?: GbfsSystemInformationRequest
+export interface GbfsFeedGenqlSelection{
+    alerts?: GbfsSystemAlertGenqlSelection
+    calendars?: GbfsSystemCalendarGenqlSelection
+    rental_hours?: GbfsSystemHourGenqlSelection
+    station_information?: GbfsStationInformationGenqlSelection
+    system_information?: GbfsSystemInformationGenqlSelection
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface GbfsFreeBikeStatusRequest{
+export interface GbfsFreeBikeStatusGenqlSelection{
     available_until?: boolean | number
     bike_id?: boolean | number
     current_fuel_percent?: boolean | number
     current_range_meters?: boolean | number
-    feed?: GbfsFeedRequest
-    home_station?: GbfsStationInformationRequest
+    feed?: GbfsFeedGenqlSelection
+    home_station?: GbfsStationInformationGenqlSelection
     is_disabled?: boolean | number
     is_reserved?: boolean | number
     last_reported?: boolean | number
     lat?: boolean | number
     lon?: boolean | number
-    pricing_plan?: GbfsSystemPricingPlanRequest
-    rental_uris?: GbfsRentalUrisRequest
-    station?: GbfsStationInformationRequest
+    pricing_plan?: GbfsSystemPricingPlanGenqlSelection
+    rental_uris?: GbfsRentalUrisGenqlSelection
+    station?: GbfsStationInformationGenqlSelection
     vehicle_equipment?: boolean | number
-    vehicle_type?: GbfsVehicleTypeRequest
+    vehicle_type?: GbfsVehicleTypeGenqlSelection
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface GbfsGeofenceFeatureRequest{
+export interface GbfsGeofenceFeatureGenqlSelection{
     geometry?: boolean | number
     type?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface GbfsGeofencePropertyRequest{
+export interface GbfsGeofencePropertyGenqlSelection{
     end?: boolean | number
     name?: boolean | number
-    rules?: GbfsGeofenceRuleRequest
+    rules?: GbfsGeofenceRuleGenqlSelection
     start?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface GbfsGeofenceRuleRequest{
+export interface GbfsGeofenceRuleGenqlSelection{
     maximum_speed_kph?: boolean | number
     ride_allowed?: boolean | number
     ride_through_allowed?: boolean | number
     station_parking?: boolean | number
-    vehicle_type?: GbfsVehicleTypeRequest
+    vehicle_type?: GbfsVehicleTypeGenqlSelection
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface GbfsGeofenceZoneRequest{
-    features?: GbfsGeofenceFeatureRequest
+export interface GbfsGeofenceZoneGenqlSelection{
+    features?: GbfsGeofenceFeatureGenqlSelection
     type?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface GbfsPlanPriceRequest{
+export interface GbfsPlanPriceGenqlSelection{
     end?: boolean | number
     interval?: boolean | number
     rate?: boolean | number
@@ -1550,21 +1548,21 @@ export interface GbfsPlanPriceRequest{
     __scalar?: boolean | number
 }
 
-export interface GbfsRentalAppRequest{
+export interface GbfsRentalAppGenqlSelection{
     discovery_uri?: boolean | number
     store_uri?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface GbfsRentalAppsRequest{
-    android?: GbfsRentalAppRequest
-    ios?: GbfsRentalAppRequest
+export interface GbfsRentalAppsGenqlSelection{
+    android?: GbfsRentalAppGenqlSelection
+    ios?: GbfsRentalAppGenqlSelection
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface GbfsRentalUrisRequest{
+export interface GbfsRentalUrisGenqlSelection{
     android?: boolean | number
     ios?: boolean | number
     web?: boolean | number
@@ -1572,12 +1570,12 @@ export interface GbfsRentalUrisRequest{
     __scalar?: boolean | number
 }
 
-export interface GbfsStationInformationRequest{
+export interface GbfsStationInformationGenqlSelection{
     address?: boolean | number
     capacity?: boolean | number
     contact_phone?: boolean | number
     cross_street?: boolean | number
-    feed?: GbfsFeedRequest
+    feed?: GbfsFeedGenqlSelection
     is_charging_station?: boolean | number
     is_valet_station?: boolean | number
     is_virtual_station?: boolean | number
@@ -1587,17 +1585,17 @@ export interface GbfsStationInformationRequest{
     parking_hoop?: boolean | number
     parking_type?: boolean | number
     post_code?: boolean | number
-    region?: GbfsSystemRegionRequest
+    region?: GbfsSystemRegionGenqlSelection
     rental_methods?: boolean | number
     short_name?: boolean | number
     station_area?: boolean | number
     station_id?: boolean | number
-    status?: GbfsStationStatusRequest
+    status?: GbfsStationStatusGenqlSelection
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface GbfsStationStatusRequest{
+export interface GbfsStationStatusGenqlSelection{
     is_installed?: boolean | number
     is_renting?: boolean | number
     is_returning?: boolean | number
@@ -1607,25 +1605,25 @@ export interface GbfsStationStatusRequest{
     num_docks_available?: boolean | number
     num_docks_disabled?: boolean | number
     station_id?: boolean | number
-    vehicle_docks_available?: GbfsVehicleDockAvailableRequest
-    vehicle_types_available?: GbfsVehicleTypeAvailableRequest
+    vehicle_docks_available?: GbfsVehicleDockAvailableGenqlSelection
+    vehicle_types_available?: GbfsVehicleTypeAvailableGenqlSelection
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface GbfsSystemAlertRequest{
+export interface GbfsSystemAlertGenqlSelection{
     alert_id?: boolean | number
     description?: boolean | number
     last_updated?: boolean | number
     summary?: boolean | number
-    times?: GbfsAlertTimeRequest
+    times?: GbfsAlertTimeGenqlSelection
     type?: boolean | number
     url?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface GbfsSystemCalendarRequest{
+export interface GbfsSystemCalendarGenqlSelection{
     end_day?: boolean | number
     end_month?: boolean | number
     end_year?: boolean | number
@@ -1636,7 +1634,7 @@ export interface GbfsSystemCalendarRequest{
     __scalar?: boolean | number
 }
 
-export interface GbfsSystemHourRequest{
+export interface GbfsSystemHourGenqlSelection{
     days?: boolean | number
     end_time?: boolean | number
     start_time?: boolean | number
@@ -1645,8 +1643,8 @@ export interface GbfsSystemHourRequest{
     __scalar?: boolean | number
 }
 
-export interface GbfsSystemInformationRequest{
-    brand_assets?: GbfsBrandAssetRequest
+export interface GbfsSystemInformationGenqlSelection{
+    brand_assets?: GbfsBrandAssetGenqlSelection
     email?: boolean | number
     feed_contact_email?: boolean | number
     language?: boolean | number
@@ -1657,7 +1655,7 @@ export interface GbfsSystemInformationRequest{
     privacy_last_updated?: boolean | number
     privacy_url?: boolean | number
     purchase_url?: boolean | number
-    rental_apps?: GbfsRentalAppsRequest
+    rental_apps?: GbfsRentalAppsGenqlSelection
     short_name?: boolean | number
     start_date?: boolean | number
     system_id?: boolean | number
@@ -1669,13 +1667,13 @@ export interface GbfsSystemInformationRequest{
     __scalar?: boolean | number
 }
 
-export interface GbfsSystemPricingPlanRequest{
+export interface GbfsSystemPricingPlanGenqlSelection{
     currency?: boolean | number
     description?: boolean | number
     is_taxable?: boolean | number
     name?: boolean | number
-    per_km_pricing?: GbfsPlanPriceRequest
-    per_min_pricing?: GbfsPlanPriceRequest
+    per_km_pricing?: GbfsPlanPriceGenqlSelection
+    per_min_pricing?: GbfsPlanPriceGenqlSelection
     plan_id?: boolean | number
     price?: boolean | number
     surge_pricing?: boolean | number
@@ -1684,21 +1682,21 @@ export interface GbfsSystemPricingPlanRequest{
     __scalar?: boolean | number
 }
 
-export interface GbfsSystemRegionRequest{
+export interface GbfsSystemRegionGenqlSelection{
     name?: boolean | number
     region_id?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface GbfsSystemVersionRequest{
+export interface GbfsSystemVersionGenqlSelection{
     url?: boolean | number
     version?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface GbfsVehicleAssetsRequest{
+export interface GbfsVehicleAssetsGenqlSelection{
     icon_last_modified?: boolean | number
     icon_url?: boolean | number
     icon_url_dark?: boolean | number
@@ -1706,19 +1704,19 @@ export interface GbfsVehicleAssetsRequest{
     __scalar?: boolean | number
 }
 
-export interface GbfsVehicleDockAvailableRequest{
+export interface GbfsVehicleDockAvailableGenqlSelection{
     count?: boolean | number
-    vehicle_types?: GbfsVehicleTypeRequest
+    vehicle_types?: GbfsVehicleTypeGenqlSelection
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface GbfsVehicleTypeRequest{
+export interface GbfsVehicleTypeGenqlSelection{
     cargo_load_capacity?: boolean | number
     cargo_volume_capacity?: boolean | number
     color?: boolean | number
     country_code?: boolean | number
-    default_pricing_plan?: GbfsSystemPricingPlanRequest
+    default_pricing_plan?: GbfsSystemPricingPlanGenqlSelection
     default_reserve_time?: boolean | number
     eco_label?: boolean | number
     eco_sticker?: boolean | number
@@ -1729,14 +1727,14 @@ export interface GbfsVehicleTypeRequest{
     max_range_meters?: boolean | number
     model?: boolean | number
     name?: boolean | number
-    pricing_plans?: GbfsSystemPricingPlanRequest
+    pricing_plans?: GbfsSystemPricingPlanGenqlSelection
     propulsion_type?: boolean | number
     rated_power?: boolean | number
-    rental_uris?: GbfsRentalUrisRequest
+    rental_uris?: GbfsRentalUrisGenqlSelection
     return_constraint?: boolean | number
     rider_capacity?: boolean | number
     vehicle_accessories?: boolean | number
-    vehicle_assets?: GbfsVehicleAssetsRequest
+    vehicle_assets?: GbfsVehicleAssetsGenqlSelection
     vehicle_image?: boolean | number
     vehicle_type_id?: boolean | number
     wheel_count?: boolean | number
@@ -1744,43 +1742,43 @@ export interface GbfsVehicleTypeRequest{
     __scalar?: boolean | number
 }
 
-export interface GbfsVehicleTypeAvailableRequest{
+export interface GbfsVehicleTypeAvailableGenqlSelection{
     count?: boolean | number
     num_bikes_disabled?: boolean | number
     num_docks_available?: boolean | number
-    vehicle_type?: GbfsVehicleTypeRequest
+    vehicle_type?: GbfsVehicleTypeGenqlSelection
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface ItineraryRequest{
-    distance?: DistanceRequest
-    duration?: DurationRequest
+export interface ItineraryGenqlSelection{
+    distance?: DistanceGenqlSelection
+    duration?: DurationGenqlSelection
     end_time?: boolean | number
-    from?: WaypointRequest
-    legs?: LegRequest
+    from?: WaypointGenqlSelection
+    legs?: LegGenqlSelection
     start_time?: boolean | number
-    to?: WaypointRequest
+    to?: WaypointGenqlSelection
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface LegRequest{
-    distance?: DistanceRequest
-    duration?: DurationRequest
+export interface LegGenqlSelection{
+    distance?: DistanceGenqlSelection
+    duration?: DurationGenqlSelection
     end_time?: boolean | number
-    from?: WaypointRequest
+    from?: WaypointGenqlSelection
     geometry?: boolean | number
     start_time?: boolean | number
-    steps?: StepRequest
-    to?: WaypointRequest
+    steps?: StepGenqlSelection
+    to?: WaypointGenqlSelection
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
 
 /** Describe the different levels of a station. Is mostly useful when used in conjunction with pathways. See https://gtfs.org/reference/static/#levelstxt */
-export interface LevelRequest{
+export interface LevelGenqlSelection{
     id?: boolean | number
     level_id?: boolean | number
     level_index?: boolean | number
@@ -1797,9 +1795,9 @@ export interface LicenseFilter {commercial_use_allowed?: (LicenseValue | null),c
  * 
  * Operators are a higher-level abstraction over agencies, with each operator defined by an entry in the [Transitland Atlas](/documentation/atlas). Operators provide a method for enriching the basic GTFS agency data, as well as grouping agencies that span across multiple source feeds. Operators are matched with GTFS agencies using `associated_feeds`, a simple list of Feed OnestopIDs and GTFS `agency_id`s. For instance, the [Atlas operator record](https://github.com/transitland/transitland-atlas/blob/master/operators/o-dr5r-nyct.json) for the [New York City MTA](/operators/o-dr5r-nyct) has `associated_feeds` values for 8 different GTFS feeds. A query for this operator OnestopID thus represents the union of data from all 8 feeds, and includes routes for the subway, bus service for all 5 boroughs, commuter rail agencies, etc., operated by the MTA. This record also includes additional metadata about the MTA, such as the United States National Transit Database ID, Wikidata IDs, and alternate names for the agency. Operator records are created and maintained through pull requests to the Atlas json files and synchronized with the Transitland database on each commit.
  */
-export interface OperatorRequest{
-    agencies?: AgencyRequest
-    feeds?: [{limit?: (Scalars['Int'] | null),where?: (FeedFilter | null)},FeedRequest] | FeedRequest
+export interface OperatorGenqlSelection{
+    agencies?: AgencyGenqlSelection
+    feeds?: (FeedGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), where?: (FeedFilter | null)} })
     file?: boolean | number
     generated?: boolean | number
     id?: boolean | number
@@ -1817,8 +1815,8 @@ export interface OperatorFilter {adm0_iso?: (Scalars['String'] | null),adm0_name
 
 
 /** The GTFS-Pathways extension uses a graph representation to describe subway or train, with nodes (the locations) and edges (the pathways). See https://gtfs.org/reference/static/#pathwaystxt */
-export interface PathwayRequest{
-    from_stop?: StopRequest
+export interface PathwayGenqlSelection{
+    from_stop?: StopGenqlSelection
     id?: boolean | number
     is_bidirectional?: boolean | number
     length?: boolean | number
@@ -1829,7 +1827,7 @@ export interface PathwayRequest{
     reverse_signposted_as?: boolean | number
     signposted_as?: boolean | number
     stair_count?: boolean | number
-    to_stop?: StopRequest
+    to_stop?: StopGenqlSelection
     traversal_time?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
@@ -1839,24 +1837,24 @@ export interface PathwayFilter {pathway_mode?: (Scalars['Int'] | null)}
 
 export interface PointRadius {lat: Scalars['Float'],lon: Scalars['Float'],radius: Scalars['Float']}
 
-export interface QueryRequest{
-    agencies?: [{after?: (Scalars['Int'] | null),ids?: (Scalars['Int'][] | null),limit?: (Scalars['Int'] | null),where?: (AgencyFilter | null)},AgencyRequest] | AgencyRequest
-    bikes?: [{limit?: (Scalars['Int'] | null),where?: (GbfsBikeRequest | null)},GbfsFreeBikeStatusRequest] | GbfsFreeBikeStatusRequest
-    directions?: [{where: DirectionRequest},DirectionsRequest]
-    docks?: [{limit?: (Scalars['Int'] | null),where?: (GbfsDockRequest | null)},GbfsStationInformationRequest] | GbfsStationInformationRequest
-    feed_versions?: [{after?: (Scalars['Int'] | null),ids?: (Scalars['Int'][] | null),limit?: (Scalars['Int'] | null),where?: (FeedVersionFilter | null)},FeedVersionRequest] | FeedVersionRequest
-    feeds?: [{after?: (Scalars['Int'] | null),ids?: (Scalars['Int'][] | null),limit?: (Scalars['Int'] | null),where?: (FeedFilter | null)},FeedRequest] | FeedRequest
-    operators?: [{after?: (Scalars['Int'] | null),ids?: (Scalars['Int'][] | null),limit?: (Scalars['Int'] | null),where?: (OperatorFilter | null)},OperatorRequest] | OperatorRequest
-    routes?: [{after?: (Scalars['Int'] | null),ids?: (Scalars['Int'][] | null),limit?: (Scalars['Int'] | null),where?: (RouteFilter | null)},RouteRequest] | RouteRequest
-    stops?: [{after?: (Scalars['Int'] | null),ids?: (Scalars['Int'][] | null),limit?: (Scalars['Int'] | null),where?: (StopFilter | null)},StopRequest] | StopRequest
-    trips?: [{after?: (Scalars['Int'] | null),ids?: (Scalars['Int'][] | null),limit?: (Scalars['Int'] | null),where?: (TripFilter | null)},TripRequest] | TripRequest
+export interface QueryGenqlSelection{
+    agencies?: (AgencyGenqlSelection & { __args?: {after?: (Scalars['Int'] | null), ids?: (Scalars['Int'][] | null), limit?: (Scalars['Int'] | null), where?: (AgencyFilter | null)} })
+    bikes?: (GbfsFreeBikeStatusGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), where?: (GbfsBikeRequest | null)} })
+    directions?: (DirectionsGenqlSelection & { __args: {where: DirectionRequest} })
+    docks?: (GbfsStationInformationGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), where?: (GbfsDockRequest | null)} })
+    feed_versions?: (FeedVersionGenqlSelection & { __args?: {after?: (Scalars['Int'] | null), ids?: (Scalars['Int'][] | null), limit?: (Scalars['Int'] | null), where?: (FeedVersionFilter | null)} })
+    feeds?: (FeedGenqlSelection & { __args?: {after?: (Scalars['Int'] | null), ids?: (Scalars['Int'][] | null), limit?: (Scalars['Int'] | null), where?: (FeedFilter | null)} })
+    operators?: (OperatorGenqlSelection & { __args?: {after?: (Scalars['Int'] | null), ids?: (Scalars['Int'][] | null), limit?: (Scalars['Int'] | null), where?: (OperatorFilter | null)} })
+    routes?: (RouteGenqlSelection & { __args?: {after?: (Scalars['Int'] | null), ids?: (Scalars['Int'][] | null), limit?: (Scalars['Int'] | null), where?: (RouteFilter | null)} })
+    stops?: (StopGenqlSelection & { __args?: {after?: (Scalars['Int'] | null), ids?: (Scalars['Int'][] | null), limit?: (Scalars['Int'] | null), where?: (StopFilter | null)} })
+    trips?: (TripGenqlSelection & { __args?: {after?: (Scalars['Int'] | null), ids?: (Scalars['Int'][] | null), limit?: (Scalars['Int'] | null), where?: (TripFilter | null)} })
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
 
 /** See https://gtfs.org/reference/realtime/v2/#message-timerange */
-export interface RTTimeRangeRequest{
+export interface RTTimeRangeGenqlSelection{
     end?: boolean | number
     start?: boolean | number
     __typename?: boolean | number
@@ -1865,7 +1863,7 @@ export interface RTTimeRangeRequest{
 
 
 /** See https://gtfs.org/reference/realtime/v2/#message-translatedstring */
-export interface RTTranslationRequest{
+export interface RTTranslationGenqlSelection{
     language?: boolean | number
     text?: boolean | number
     __typename?: boolean | number
@@ -1874,7 +1872,7 @@ export interface RTTranslationRequest{
 
 
 /** See https://gtfs.org/reference/realtime/v2/#message-tripdescriptor */
-export interface RTTripDescriptorRequest{
+export interface RTTripDescriptorGenqlSelection{
     direction_id?: boolean | number
     route_id?: boolean | number
     schedule_relationship?: boolean | number
@@ -1887,7 +1885,7 @@ export interface RTTripDescriptorRequest{
 
 
 /** See https://gtfs.org/reference/realtime/v2/#message-vehicledescriptor */
-export interface RTVehicleDescriptorRequest{
+export interface RTVehicleDescriptorGenqlSelection{
     id?: boolean | number
     label?: boolean | number
     license_plate?: boolean | number
@@ -1897,42 +1895,42 @@ export interface RTVehicleDescriptorRequest{
 
 
 /** See https://gtfs.org/schedule/reference/#routestxt */
-export interface RouteRequest{
-    agency?: AgencyRequest
-    alerts?: [{active?: (Scalars['Boolean'] | null),limit?: (Scalars['Int'] | null)},AlertRequest] | AlertRequest
-    census_geographies?: [{layer: Scalars['String'],limit?: (Scalars['Int'] | null),radius?: (Scalars['Float'] | null)},CensusGeographyRequest]
+export interface RouteGenqlSelection{
+    agency?: AgencyGenqlSelection
+    alerts?: (AlertGenqlSelection & { __args?: {active?: (Scalars['Boolean'] | null), limit?: (Scalars['Int'] | null)} })
+    census_geographies?: (CensusGeographyGenqlSelection & { __args: {layer: Scalars['String'], limit?: (Scalars['Int'] | null), radius?: (Scalars['Float'] | null)} })
     continuous_drop_off?: boolean | number
     continuous_pickup?: boolean | number
     feed_onestop_id?: boolean | number
-    feed_version?: FeedVersionRequest
+    feed_version?: FeedVersionGenqlSelection
     feed_version_sha1?: boolean | number
-    geometries?: [{limit?: (Scalars['Int'] | null)},RouteGeometryRequest] | RouteGeometryRequest
+    geometries?: (RouteGeometryGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
     geometry?: boolean | number
-    headways?: [{limit?: (Scalars['Int'] | null)},RouteHeadwayRequest] | RouteHeadwayRequest
+    headways?: (RouteHeadwayGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
     id?: boolean | number
     onestop_id?: boolean | number
-    patterns?: RouteStopPatternRequest
+    patterns?: RouteStopPatternGenqlSelection
     route_color?: boolean | number
     route_desc?: boolean | number
     route_id?: boolean | number
     route_long_name?: boolean | number
     route_short_name?: boolean | number
     route_sort_order?: boolean | number
-    route_stop_buffer?: [{radius?: (Scalars['Float'] | null)},RouteStopBufferRequest] | RouteStopBufferRequest
-    route_stops?: [{limit?: (Scalars['Int'] | null)},RouteStopRequest] | RouteStopRequest
+    route_stop_buffer?: (RouteStopBufferGenqlSelection & { __args?: {radius?: (Scalars['Float'] | null)} })
+    route_stops?: (RouteStopGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
     route_text_color?: boolean | number
     route_type?: boolean | number
     route_url?: boolean | number
     search_rank?: boolean | number
-    stops?: [{limit?: (Scalars['Int'] | null),where?: (StopFilter | null)},StopRequest] | StopRequest
-    trips?: [{limit?: (Scalars['Int'] | null),where?: (TripFilter | null)},TripRequest] | TripRequest
+    stops?: (StopGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), where?: (StopFilter | null)} })
+    trips?: (TripGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), where?: (TripFilter | null)} })
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
 export interface RouteFilter {agency_ids?: (Scalars['Int'][] | null),allow_previous_onestop_ids?: (Scalars['Boolean'] | null),feed_onestop_id?: (Scalars['String'] | null),feed_version_sha1?: (Scalars['String'] | null),license?: (LicenseFilter | null),near?: (PointRadius | null),onestop_id?: (Scalars['String'] | null),onestop_ids?: (Scalars['String'][] | null),operator_onestop_id?: (Scalars['String'] | null),route_id?: (Scalars['String'] | null),route_type?: (Scalars['Int'] | null),search?: (Scalars['String'] | null),within?: (Scalars['Polygon'] | null)}
 
-export interface RouteGeometryRequest{
+export interface RouteGeometryGenqlSelection{
     combined_geometry?: boolean | number
     first_point_max_distance?: boolean | number
     /** If true, the source GTFS feed provides no shapes. This route geometry is based on straight lines between stop points. */
@@ -1944,31 +1942,31 @@ export interface RouteGeometryRequest{
     __scalar?: boolean | number
 }
 
-export interface RouteHeadwayRequest{
+export interface RouteHeadwayGenqlSelection{
     departures?: boolean | number
     direction_id?: boolean | number
     dow_category?: boolean | number
     headway_secs?: boolean | number
     service_date?: boolean | number
-    stop?: StopRequest
+    stop?: StopGenqlSelection
     stop_trip_count?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface RouteStopRequest{
-    agency?: AgencyRequest
+export interface RouteStopGenqlSelection{
+    agency?: AgencyGenqlSelection
     agency_id?: boolean | number
     id?: boolean | number
-    route?: RouteRequest
+    route?: RouteGenqlSelection
     route_id?: boolean | number
-    stop?: StopRequest
+    stop?: StopGenqlSelection
     stop_id?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface RouteStopBufferRequest{
+export interface RouteStopBufferGenqlSelection{
     stop_buffer?: boolean | number
     stop_convexhull?: boolean | number
     stop_points?: boolean | number
@@ -1976,18 +1974,18 @@ export interface RouteStopBufferRequest{
     __scalar?: boolean | number
 }
 
-export interface RouteStopPatternRequest{
+export interface RouteStopPatternGenqlSelection{
     count?: boolean | number
     direction_id?: boolean | number
     stop_pattern_id?: boolean | number
-    trips?: [{limit?: (Scalars['Int'] | null)},TripRequest] | TripRequest
+    trips?: (TripGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
 
 /** Record from a static GTFS [shapes.txt](https://gtfs.org/schedule/reference/#shapestxt) file. */
-export interface ShapeRequest{
+export interface ShapeGenqlSelection{
     generated?: boolean | number
     geometry?: boolean | number
     id?: boolean | number
@@ -1996,48 +1994,48 @@ export interface ShapeRequest{
     __scalar?: boolean | number
 }
 
-export interface StepRequest{
-    distance?: DistanceRequest
-    duration?: DurationRequest
+export interface StepGenqlSelection{
+    distance?: DistanceGenqlSelection
+    duration?: DurationGenqlSelection
     end_time?: boolean | number
     geometry_offset?: boolean | number
     instruction?: boolean | number
     mode?: boolean | number
     start_time?: boolean | number
-    to?: WaypointRequest
+    to?: WaypointGenqlSelection
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
 
 /** See https://gtfs.org/reference/static/#stopstxt */
-export interface StopRequest{
-    alerts?: [{active?: (Scalars['Boolean'] | null),limit?: (Scalars['Int'] | null)},AlertRequest] | AlertRequest
-    arrivals?: [{limit?: (Scalars['Int'] | null),where?: (StopTimeFilter | null)},StopTimeRequest] | StopTimeRequest
-    census_geographies?: [{layer: Scalars['String'],limit?: (Scalars['Int'] | null),radius?: (Scalars['Float'] | null)},CensusGeographyRequest]
-    children?: [{limit?: (Scalars['Int'] | null)},StopRequest] | StopRequest
-    departures?: [{limit?: (Scalars['Int'] | null),where?: (StopTimeFilter | null)},StopTimeRequest] | StopTimeRequest
-    directions?: [{depart_at?: (Scalars['Time'] | null),from?: (WaypointInput | null),mode?: (StepMode | null),to?: (WaypointInput | null)},DirectionsRequest] | DirectionsRequest
+export interface StopGenqlSelection{
+    alerts?: (AlertGenqlSelection & { __args?: {active?: (Scalars['Boolean'] | null), limit?: (Scalars['Int'] | null)} })
+    arrivals?: (StopTimeGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), where?: (StopTimeFilter | null)} })
+    census_geographies?: (CensusGeographyGenqlSelection & { __args: {layer: Scalars['String'], limit?: (Scalars['Int'] | null), radius?: (Scalars['Float'] | null)} })
+    children?: (StopGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
+    departures?: (StopTimeGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), where?: (StopTimeFilter | null)} })
+    directions?: (DirectionsGenqlSelection & { __args?: {depart_at?: (Scalars['Time'] | null), from?: (WaypointInput | null), mode?: (StepMode | null), to?: (WaypointInput | null)} })
     feed_onestop_id?: boolean | number
-    feed_version?: FeedVersionRequest
+    feed_version?: FeedVersionGenqlSelection
     feed_version_sha1?: boolean | number
     geometry?: boolean | number
     id?: boolean | number
-    level?: LevelRequest
+    level?: LevelGenqlSelection
     location_type?: boolean | number
-    nearby_stops?: [{limit?: (Scalars['Int'] | null),radius?: (Scalars['Float'] | null)},StopRequest] | StopRequest
+    nearby_stops?: (StopGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), radius?: (Scalars['Float'] | null)} })
     onestop_id?: boolean | number
-    parent?: StopRequest
-    pathways_from_stop?: [{limit?: (Scalars['Int'] | null)},PathwayRequest] | PathwayRequest
-    pathways_to_stop?: [{limit?: (Scalars['Int'] | null)},PathwayRequest] | PathwayRequest
+    parent?: StopGenqlSelection
+    pathways_from_stop?: (PathwayGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
+    pathways_to_stop?: (PathwayGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
     platform_code?: boolean | number
-    route_stops?: [{limit?: (Scalars['Int'] | null)},RouteStopRequest] | RouteStopRequest
+    route_stops?: (RouteStopGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
     search_rank?: boolean | number
     stop_code?: boolean | number
     stop_desc?: boolean | number
     stop_id?: boolean | number
     stop_name?: boolean | number
-    stop_times?: [{limit?: (Scalars['Int'] | null),where?: (StopTimeFilter | null)},StopTimeRequest] | StopTimeRequest
+    stop_times?: (StopTimeGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), where?: (StopTimeFilter | null)} })
     stop_timezone?: boolean | number
     stop_url?: boolean | number
     tts_stop_name?: boolean | number
@@ -2051,28 +2049,28 @@ export interface StopFilter {agency_ids?: (Scalars['Int'][] | null),allow_previo
 
 
 /** Record from a static GTFS [stop_times.txt](https://gtfs.org/schedule/reference/#stop_timestxt) file. */
-export interface StopTimeRequest{
-    arrival?: StopTimeEventRequest
+export interface StopTimeGenqlSelection{
+    arrival?: StopTimeEventGenqlSelection
     arrival_time?: boolean | number
     continuous_drop_off?: boolean | number
     continuous_pickup?: boolean | number
-    departure?: StopTimeEventRequest
+    departure?: StopTimeEventGenqlSelection
     departure_time?: boolean | number
     drop_off_type?: boolean | number
     interpolated?: boolean | number
     pickup_type?: boolean | number
     service_date?: boolean | number
     shape_dist_traveled?: boolean | number
-    stop?: StopRequest
+    stop?: StopGenqlSelection
     stop_headsign?: boolean | number
     stop_sequence?: boolean | number
     timepoint?: boolean | number
-    trip?: TripRequest
+    trip?: TripGenqlSelection
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface StopTimeEventRequest{
+export interface StopTimeEventGenqlSelection{
     delay?: boolean | number
     estimated?: boolean | number
     estimated_utc?: boolean | number
@@ -2087,20 +2085,20 @@ export interface StopTimeFilter {allow_previous_route_onestop_ids?: (Scalars['Bo
 
 
 /** Record from a static GTFS [trips.txt](https://gtfs.org/schedule/reference/#tripstxt) file optionally enriched with by GTFS Realtime [TripUpdate](https://gtfs.org/reference/realtime/v2/#message-tripupdate) and [Alert](https://gtfs.org/reference/realtime/v2/#message-alert) messages. */
-export interface TripRequest{
-    alerts?: [{active?: (Scalars['Boolean'] | null),limit?: (Scalars['Int'] | null)},AlertRequest] | AlertRequest
+export interface TripGenqlSelection{
+    alerts?: (AlertGenqlSelection & { __args?: {active?: (Scalars['Boolean'] | null), limit?: (Scalars['Int'] | null)} })
     bikes_allowed?: boolean | number
     block_id?: boolean | number
-    calendar?: CalendarRequest
+    calendar?: CalendarGenqlSelection
     direction_id?: boolean | number
-    feed_version?: FeedVersionRequest
-    frequencies?: [{limit?: (Scalars['Int'] | null)},FrequencyRequest] | FrequencyRequest
+    feed_version?: FeedVersionGenqlSelection
+    frequencies?: (FrequencyGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
     id?: boolean | number
-    route?: RouteRequest
+    route?: RouteGenqlSelection
     schedule_relationship?: boolean | number
-    shape?: ShapeRequest
+    shape?: ShapeGenqlSelection
     stop_pattern_id?: boolean | number
-    stop_times?: [{limit?: (Scalars['Int'] | null)},StopTimeRequest] | StopTimeRequest
+    stop_times?: (StopTimeGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
     timestamp?: boolean | number
     trip_headsign?: boolean | number
     trip_id?: boolean | number
@@ -2112,25 +2110,25 @@ export interface TripRequest{
 
 export interface TripFilter {feed_onestop_id?: (Scalars['String'] | null),feed_version_sha1?: (Scalars['String'] | null),license?: (LicenseFilter | null),route_ids?: (Scalars['Int'][] | null),route_onestop_ids?: (Scalars['String'][] | null),service_date?: (Scalars['Date'] | null),stop_pattern_id?: (Scalars['Int'] | null),trip_id?: (Scalars['String'] | null)}
 
-export interface ValidationResultRequest{
-    agencies?: [{limit?: (Scalars['Int'] | null)},AgencyRequest] | AgencyRequest
+export interface ValidationResultGenqlSelection{
+    agencies?: (AgencyGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
     earliest_calendar_date?: boolean | number
-    errors?: ValidationResultErrorGroupRequest
+    errors?: ValidationResultErrorGroupGenqlSelection
     failure_reason?: boolean | number
-    feed_infos?: [{limit?: (Scalars['Int'] | null)},FeedInfoRequest] | FeedInfoRequest
-    files?: FeedVersionFileInfoRequest
+    feed_infos?: (FeedInfoGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
+    files?: FeedVersionFileInfoGenqlSelection
     latest_calendar_date?: boolean | number
-    routes?: [{limit?: (Scalars['Int'] | null)},RouteRequest] | RouteRequest
-    service_levels?: [{limit?: (Scalars['Int'] | null),route_id?: (Scalars['String'] | null)},FeedVersionServiceLevelRequest] | FeedVersionServiceLevelRequest
+    routes?: (RouteGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
+    service_levels?: (FeedVersionServiceLevelGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), route_id?: (Scalars['String'] | null)} })
     sha1?: boolean | number
-    stops?: [{limit?: (Scalars['Int'] | null)},StopRequest] | StopRequest
+    stops?: (StopGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
     success?: boolean | number
-    warnings?: ValidationResultErrorGroupRequest
+    warnings?: ValidationResultErrorGroupGenqlSelection
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface ValidationResultErrorRequest{
+export interface ValidationResultErrorGenqlSelection{
     entity_id?: boolean | number
     error_type?: boolean | number
     field?: boolean | number
@@ -2141,10 +2139,10 @@ export interface ValidationResultErrorRequest{
     __scalar?: boolean | number
 }
 
-export interface ValidationResultErrorGroupRequest{
+export interface ValidationResultErrorGroupGenqlSelection{
     count?: boolean | number
     error_type?: boolean | number
-    errors?: ValidationResultErrorRequest
+    errors?: ValidationResultErrorGenqlSelection
     filename?: boolean | number
     limit?: boolean | number
     __typename?: boolean | number
@@ -2153,19 +2151,19 @@ export interface ValidationResultErrorGroupRequest{
 
 
 /** [Vehicle Position](https://gtfs.org/reference/realtime/v2/#message-vehicleposition) message provided by a source GTFS Realtime feed. */
-export interface VehiclePositionRequest{
+export interface VehiclePositionGenqlSelection{
     congestion_level?: boolean | number
     current_status?: boolean | number
     current_stop_sequence?: boolean | number
     position?: boolean | number
-    stop_id?: StopRequest
+    stop_id?: StopGenqlSelection
     timestamp?: boolean | number
-    vehicle?: RTVehicleDescriptorRequest
+    vehicle?: RTVehicleDescriptorGenqlSelection
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface WaypointRequest{
+export interface WaypointGenqlSelection{
     lat?: boolean | number
     lon?: boolean | number
     name?: boolean | number
@@ -2176,2511 +2174,687 @@ export interface WaypointRequest{
 export interface WaypointInput {lat: Scalars['Float'],lon: Scalars['Float'],name?: (Scalars['String'] | null)}
 
 
-const Agency_possibleTypes: string[] = ['Agency']
-export const isAgency = (obj?: { __typename?: any } | null): obj is Agency => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isAgency"')
-  return Agency_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const AgencyPlace_possibleTypes: string[] = ['AgencyPlace']
-export const isAgencyPlace = (obj?: { __typename?: any } | null): obj is AgencyPlace => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isAgencyPlace"')
-  return AgencyPlace_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const Alert_possibleTypes: string[] = ['Alert']
-export const isAlert = (obj?: { __typename?: any } | null): obj is Alert => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isAlert"')
-  return Alert_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const Calendar_possibleTypes: string[] = ['Calendar']
-export const isCalendar = (obj?: { __typename?: any } | null): obj is Calendar => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isCalendar"')
-  return Calendar_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const CensusGeography_possibleTypes: string[] = ['CensusGeography']
-export const isCensusGeography = (obj?: { __typename?: any } | null): obj is CensusGeography => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isCensusGeography"')
-  return CensusGeography_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const CensusTable_possibleTypes: string[] = ['CensusTable']
-export const isCensusTable = (obj?: { __typename?: any } | null): obj is CensusTable => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isCensusTable"')
-  return CensusTable_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const CensusValue_possibleTypes: string[] = ['CensusValue']
-export const isCensusValue = (obj?: { __typename?: any } | null): obj is CensusValue => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isCensusValue"')
-  return CensusValue_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const Directions_possibleTypes: string[] = ['Directions']
-export const isDirections = (obj?: { __typename?: any } | null): obj is Directions => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isDirections"')
-  return Directions_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const Distance_possibleTypes: string[] = ['Distance']
-export const isDistance = (obj?: { __typename?: any } | null): obj is Distance => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isDistance"')
-  return Distance_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const Duration_possibleTypes: string[] = ['Duration']
-export const isDuration = (obj?: { __typename?: any } | null): obj is Duration => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isDuration"')
-  return Duration_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const Feed_possibleTypes: string[] = ['Feed']
-export const isFeed = (obj?: { __typename?: any } | null): obj is Feed => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isFeed"')
-  return Feed_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const FeedAuthorization_possibleTypes: string[] = ['FeedAuthorization']
-export const isFeedAuthorization = (obj?: { __typename?: any } | null): obj is FeedAuthorization => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isFeedAuthorization"')
-  return FeedAuthorization_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const FeedFetch_possibleTypes: string[] = ['FeedFetch']
-export const isFeedFetch = (obj?: { __typename?: any } | null): obj is FeedFetch => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isFeedFetch"')
-  return FeedFetch_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const FeedInfo_possibleTypes: string[] = ['FeedInfo']
-export const isFeedInfo = (obj?: { __typename?: any } | null): obj is FeedInfo => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isFeedInfo"')
-  return FeedInfo_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const FeedLicense_possibleTypes: string[] = ['FeedLicense']
-export const isFeedLicense = (obj?: { __typename?: any } | null): obj is FeedLicense => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isFeedLicense"')
-  return FeedLicense_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const FeedState_possibleTypes: string[] = ['FeedState']
-export const isFeedState = (obj?: { __typename?: any } | null): obj is FeedState => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isFeedState"')
-  return FeedState_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const FeedUrls_possibleTypes: string[] = ['FeedUrls']
-export const isFeedUrls = (obj?: { __typename?: any } | null): obj is FeedUrls => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isFeedUrls"')
-  return FeedUrls_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const FeedVersion_possibleTypes: string[] = ['FeedVersion']
-export const isFeedVersion = (obj?: { __typename?: any } | null): obj is FeedVersion => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isFeedVersion"')
-  return FeedVersion_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const FeedVersionDeleteResult_possibleTypes: string[] = ['FeedVersionDeleteResult']
-export const isFeedVersionDeleteResult = (obj?: { __typename?: any } | null): obj is FeedVersionDeleteResult => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isFeedVersionDeleteResult"')
-  return FeedVersionDeleteResult_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const FeedVersionFetchResult_possibleTypes: string[] = ['FeedVersionFetchResult']
-export const isFeedVersionFetchResult = (obj?: { __typename?: any } | null): obj is FeedVersionFetchResult => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isFeedVersionFetchResult"')
-  return FeedVersionFetchResult_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const FeedVersionFileInfo_possibleTypes: string[] = ['FeedVersionFileInfo']
-export const isFeedVersionFileInfo = (obj?: { __typename?: any } | null): obj is FeedVersionFileInfo => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isFeedVersionFileInfo"')
-  return FeedVersionFileInfo_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const FeedVersionGtfsImport_possibleTypes: string[] = ['FeedVersionGtfsImport']
-export const isFeedVersionGtfsImport = (obj?: { __typename?: any } | null): obj is FeedVersionGtfsImport => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isFeedVersionGtfsImport"')
-  return FeedVersionGtfsImport_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const FeedVersionImportResult_possibleTypes: string[] = ['FeedVersionImportResult']
-export const isFeedVersionImportResult = (obj?: { __typename?: any } | null): obj is FeedVersionImportResult => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isFeedVersionImportResult"')
-  return FeedVersionImportResult_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const FeedVersionServiceLevel_possibleTypes: string[] = ['FeedVersionServiceLevel']
-export const isFeedVersionServiceLevel = (obj?: { __typename?: any } | null): obj is FeedVersionServiceLevel => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isFeedVersionServiceLevel"')
-  return FeedVersionServiceLevel_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const FeedVersionUnimportResult_possibleTypes: string[] = ['FeedVersionUnimportResult']
-export const isFeedVersionUnimportResult = (obj?: { __typename?: any } | null): obj is FeedVersionUnimportResult => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isFeedVersionUnimportResult"')
-  return FeedVersionUnimportResult_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const Frequency_possibleTypes: string[] = ['Frequency']
-export const isFrequency = (obj?: { __typename?: any } | null): obj is Frequency => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isFrequency"')
-  return Frequency_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const GbfsAlertTime_possibleTypes: string[] = ['GbfsAlertTime']
-export const isGbfsAlertTime = (obj?: { __typename?: any } | null): obj is GbfsAlertTime => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsAlertTime"')
-  return GbfsAlertTime_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const GbfsBrandAsset_possibleTypes: string[] = ['GbfsBrandAsset']
-export const isGbfsBrandAsset = (obj?: { __typename?: any } | null): obj is GbfsBrandAsset => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsBrandAsset"')
-  return GbfsBrandAsset_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const GbfsFeed_possibleTypes: string[] = ['GbfsFeed']
-export const isGbfsFeed = (obj?: { __typename?: any } | null): obj is GbfsFeed => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsFeed"')
-  return GbfsFeed_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const GbfsFreeBikeStatus_possibleTypes: string[] = ['GbfsFreeBikeStatus']
-export const isGbfsFreeBikeStatus = (obj?: { __typename?: any } | null): obj is GbfsFreeBikeStatus => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsFreeBikeStatus"')
-  return GbfsFreeBikeStatus_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const GbfsGeofenceFeature_possibleTypes: string[] = ['GbfsGeofenceFeature']
-export const isGbfsGeofenceFeature = (obj?: { __typename?: any } | null): obj is GbfsGeofenceFeature => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsGeofenceFeature"')
-  return GbfsGeofenceFeature_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const GbfsGeofenceProperty_possibleTypes: string[] = ['GbfsGeofenceProperty']
-export const isGbfsGeofenceProperty = (obj?: { __typename?: any } | null): obj is GbfsGeofenceProperty => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsGeofenceProperty"')
-  return GbfsGeofenceProperty_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const GbfsGeofenceRule_possibleTypes: string[] = ['GbfsGeofenceRule']
-export const isGbfsGeofenceRule = (obj?: { __typename?: any } | null): obj is GbfsGeofenceRule => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsGeofenceRule"')
-  return GbfsGeofenceRule_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const GbfsGeofenceZone_possibleTypes: string[] = ['GbfsGeofenceZone']
-export const isGbfsGeofenceZone = (obj?: { __typename?: any } | null): obj is GbfsGeofenceZone => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsGeofenceZone"')
-  return GbfsGeofenceZone_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const GbfsPlanPrice_possibleTypes: string[] = ['GbfsPlanPrice']
-export const isGbfsPlanPrice = (obj?: { __typename?: any } | null): obj is GbfsPlanPrice => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsPlanPrice"')
-  return GbfsPlanPrice_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const GbfsRentalApp_possibleTypes: string[] = ['GbfsRentalApp']
-export const isGbfsRentalApp = (obj?: { __typename?: any } | null): obj is GbfsRentalApp => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsRentalApp"')
-  return GbfsRentalApp_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const GbfsRentalApps_possibleTypes: string[] = ['GbfsRentalApps']
-export const isGbfsRentalApps = (obj?: { __typename?: any } | null): obj is GbfsRentalApps => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsRentalApps"')
-  return GbfsRentalApps_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const GbfsRentalUris_possibleTypes: string[] = ['GbfsRentalUris']
-export const isGbfsRentalUris = (obj?: { __typename?: any } | null): obj is GbfsRentalUris => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsRentalUris"')
-  return GbfsRentalUris_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const GbfsStationInformation_possibleTypes: string[] = ['GbfsStationInformation']
-export const isGbfsStationInformation = (obj?: { __typename?: any } | null): obj is GbfsStationInformation => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsStationInformation"')
-  return GbfsStationInformation_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const GbfsStationStatus_possibleTypes: string[] = ['GbfsStationStatus']
-export const isGbfsStationStatus = (obj?: { __typename?: any } | null): obj is GbfsStationStatus => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsStationStatus"')
-  return GbfsStationStatus_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const GbfsSystemAlert_possibleTypes: string[] = ['GbfsSystemAlert']
-export const isGbfsSystemAlert = (obj?: { __typename?: any } | null): obj is GbfsSystemAlert => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsSystemAlert"')
-  return GbfsSystemAlert_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const GbfsSystemCalendar_possibleTypes: string[] = ['GbfsSystemCalendar']
-export const isGbfsSystemCalendar = (obj?: { __typename?: any } | null): obj is GbfsSystemCalendar => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsSystemCalendar"')
-  return GbfsSystemCalendar_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const GbfsSystemHour_possibleTypes: string[] = ['GbfsSystemHour']
-export const isGbfsSystemHour = (obj?: { __typename?: any } | null): obj is GbfsSystemHour => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsSystemHour"')
-  return GbfsSystemHour_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const GbfsSystemInformation_possibleTypes: string[] = ['GbfsSystemInformation']
-export const isGbfsSystemInformation = (obj?: { __typename?: any } | null): obj is GbfsSystemInformation => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsSystemInformation"')
-  return GbfsSystemInformation_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const GbfsSystemPricingPlan_possibleTypes: string[] = ['GbfsSystemPricingPlan']
-export const isGbfsSystemPricingPlan = (obj?: { __typename?: any } | null): obj is GbfsSystemPricingPlan => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsSystemPricingPlan"')
-  return GbfsSystemPricingPlan_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const GbfsSystemRegion_possibleTypes: string[] = ['GbfsSystemRegion']
-export const isGbfsSystemRegion = (obj?: { __typename?: any } | null): obj is GbfsSystemRegion => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsSystemRegion"')
-  return GbfsSystemRegion_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const GbfsSystemVersion_possibleTypes: string[] = ['GbfsSystemVersion']
-export const isGbfsSystemVersion = (obj?: { __typename?: any } | null): obj is GbfsSystemVersion => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsSystemVersion"')
-  return GbfsSystemVersion_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const GbfsVehicleAssets_possibleTypes: string[] = ['GbfsVehicleAssets']
-export const isGbfsVehicleAssets = (obj?: { __typename?: any } | null): obj is GbfsVehicleAssets => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsVehicleAssets"')
-  return GbfsVehicleAssets_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const GbfsVehicleDockAvailable_possibleTypes: string[] = ['GbfsVehicleDockAvailable']
-export const isGbfsVehicleDockAvailable = (obj?: { __typename?: any } | null): obj is GbfsVehicleDockAvailable => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsVehicleDockAvailable"')
-  return GbfsVehicleDockAvailable_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const GbfsVehicleType_possibleTypes: string[] = ['GbfsVehicleType']
-export const isGbfsVehicleType = (obj?: { __typename?: any } | null): obj is GbfsVehicleType => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsVehicleType"')
-  return GbfsVehicleType_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const GbfsVehicleTypeAvailable_possibleTypes: string[] = ['GbfsVehicleTypeAvailable']
-export const isGbfsVehicleTypeAvailable = (obj?: { __typename?: any } | null): obj is GbfsVehicleTypeAvailable => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsVehicleTypeAvailable"')
-  return GbfsVehicleTypeAvailable_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const Itinerary_possibleTypes: string[] = ['Itinerary']
-export const isItinerary = (obj?: { __typename?: any } | null): obj is Itinerary => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isItinerary"')
-  return Itinerary_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const Leg_possibleTypes: string[] = ['Leg']
-export const isLeg = (obj?: { __typename?: any } | null): obj is Leg => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isLeg"')
-  return Leg_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const Level_possibleTypes: string[] = ['Level']
-export const isLevel = (obj?: { __typename?: any } | null): obj is Level => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isLevel"')
-  return Level_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const Operator_possibleTypes: string[] = ['Operator']
-export const isOperator = (obj?: { __typename?: any } | null): obj is Operator => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isOperator"')
-  return Operator_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const Pathway_possibleTypes: string[] = ['Pathway']
-export const isPathway = (obj?: { __typename?: any } | null): obj is Pathway => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isPathway"')
-  return Pathway_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const Query_possibleTypes: string[] = ['Query']
-export const isQuery = (obj?: { __typename?: any } | null): obj is Query => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isQuery"')
-  return Query_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const RTTimeRange_possibleTypes: string[] = ['RTTimeRange']
-export const isRTTimeRange = (obj?: { __typename?: any } | null): obj is RTTimeRange => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isRTTimeRange"')
-  return RTTimeRange_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const RTTranslation_possibleTypes: string[] = ['RTTranslation']
-export const isRTTranslation = (obj?: { __typename?: any } | null): obj is RTTranslation => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isRTTranslation"')
-  return RTTranslation_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const RTTripDescriptor_possibleTypes: string[] = ['RTTripDescriptor']
-export const isRTTripDescriptor = (obj?: { __typename?: any } | null): obj is RTTripDescriptor => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isRTTripDescriptor"')
-  return RTTripDescriptor_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const RTVehicleDescriptor_possibleTypes: string[] = ['RTVehicleDescriptor']
-export const isRTVehicleDescriptor = (obj?: { __typename?: any } | null): obj is RTVehicleDescriptor => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isRTVehicleDescriptor"')
-  return RTVehicleDescriptor_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const Route_possibleTypes: string[] = ['Route']
-export const isRoute = (obj?: { __typename?: any } | null): obj is Route => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isRoute"')
-  return Route_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const RouteGeometry_possibleTypes: string[] = ['RouteGeometry']
-export const isRouteGeometry = (obj?: { __typename?: any } | null): obj is RouteGeometry => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isRouteGeometry"')
-  return RouteGeometry_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const RouteHeadway_possibleTypes: string[] = ['RouteHeadway']
-export const isRouteHeadway = (obj?: { __typename?: any } | null): obj is RouteHeadway => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isRouteHeadway"')
-  return RouteHeadway_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const RouteStop_possibleTypes: string[] = ['RouteStop']
-export const isRouteStop = (obj?: { __typename?: any } | null): obj is RouteStop => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isRouteStop"')
-  return RouteStop_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const RouteStopBuffer_possibleTypes: string[] = ['RouteStopBuffer']
-export const isRouteStopBuffer = (obj?: { __typename?: any } | null): obj is RouteStopBuffer => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isRouteStopBuffer"')
-  return RouteStopBuffer_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const RouteStopPattern_possibleTypes: string[] = ['RouteStopPattern']
-export const isRouteStopPattern = (obj?: { __typename?: any } | null): obj is RouteStopPattern => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isRouteStopPattern"')
-  return RouteStopPattern_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const Shape_possibleTypes: string[] = ['Shape']
-export const isShape = (obj?: { __typename?: any } | null): obj is Shape => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isShape"')
-  return Shape_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const Step_possibleTypes: string[] = ['Step']
-export const isStep = (obj?: { __typename?: any } | null): obj is Step => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isStep"')
-  return Step_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const Stop_possibleTypes: string[] = ['Stop']
-export const isStop = (obj?: { __typename?: any } | null): obj is Stop => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isStop"')
-  return Stop_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const StopTime_possibleTypes: string[] = ['StopTime']
-export const isStopTime = (obj?: { __typename?: any } | null): obj is StopTime => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isStopTime"')
-  return StopTime_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const StopTimeEvent_possibleTypes: string[] = ['StopTimeEvent']
-export const isStopTimeEvent = (obj?: { __typename?: any } | null): obj is StopTimeEvent => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isStopTimeEvent"')
-  return StopTimeEvent_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const Trip_possibleTypes: string[] = ['Trip']
-export const isTrip = (obj?: { __typename?: any } | null): obj is Trip => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isTrip"')
-  return Trip_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const ValidationResult_possibleTypes: string[] = ['ValidationResult']
-export const isValidationResult = (obj?: { __typename?: any } | null): obj is ValidationResult => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isValidationResult"')
-  return ValidationResult_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const ValidationResultError_possibleTypes: string[] = ['ValidationResultError']
-export const isValidationResultError = (obj?: { __typename?: any } | null): obj is ValidationResultError => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isValidationResultError"')
-  return ValidationResultError_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const ValidationResultErrorGroup_possibleTypes: string[] = ['ValidationResultErrorGroup']
-export const isValidationResultErrorGroup = (obj?: { __typename?: any } | null): obj is ValidationResultErrorGroup => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isValidationResultErrorGroup"')
-  return ValidationResultErrorGroup_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const VehiclePosition_possibleTypes: string[] = ['VehiclePosition']
-export const isVehiclePosition = (obj?: { __typename?: any } | null): obj is VehiclePosition => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isVehiclePosition"')
-  return VehiclePosition_possibleTypes.includes(obj.__typename)
-}
-
-
-
-const Waypoint_possibleTypes: string[] = ['Waypoint']
-export const isWaypoint = (obj?: { __typename?: any } | null): obj is Waypoint => {
-  if (!obj?.__typename) throw new Error('__typename is missing in "isWaypoint"')
-  return Waypoint_possibleTypes.includes(obj.__typename)
-}
-
-
-
-/** See https://gtfs.org/schedule/reference/#agencytxt */
-export interface AgencyPromiseChain{
-    agency_email: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    agency_fare_url: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    agency_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    agency_lang: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    agency_name: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    agency_phone: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    agency_timezone: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    agency_url: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    alerts: ((args?: {active?: (Scalars['Boolean'] | null),limit?: (Scalars['Int'] | null)}) => {get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Promise<(FieldsSelection<Alert, R>[] | undefined)>})&({get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Promise<(FieldsSelection<Alert, R>[] | undefined)>}),
-    census_geographies: ((args: {layer: Scalars['String'],limit?: (Scalars['Int'] | null),radius?: (Scalars['Float'] | null)}) => {get: <R extends CensusGeographyRequest>(request: R, defaultValue?: (FieldsSelection<CensusGeography, R>[] | undefined)) => Promise<(FieldsSelection<CensusGeography, R>[] | undefined)>}),
-    feed_onestop_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    feed_version: (FeedVersionPromiseChain & {get: <R extends FeedVersionRequest>(request: R, defaultValue?: FieldsSelection<FeedVersion, R>) => Promise<FieldsSelection<FeedVersion, R>>}),
-    feed_version_sha1: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    geometry: ({get: (request?: boolean|number, defaultValue?: (Scalars['Polygon'] | undefined)) => Promise<(Scalars['Polygon'] | undefined)>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    onestop_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    operator: (OperatorPromiseChain & {get: <R extends OperatorRequest>(request: R, defaultValue?: (FieldsSelection<Operator, R> | undefined)) => Promise<(FieldsSelection<Operator, R> | undefined)>}),
-    places: ((args?: {limit?: (Scalars['Int'] | null),where?: (AgencyPlaceFilter | null)}) => {get: <R extends AgencyPlaceRequest>(request: R, defaultValue?: (FieldsSelection<AgencyPlace, R>[] | undefined)) => Promise<(FieldsSelection<AgencyPlace, R>[] | undefined)>})&({get: <R extends AgencyPlaceRequest>(request: R, defaultValue?: (FieldsSelection<AgencyPlace, R>[] | undefined)) => Promise<(FieldsSelection<AgencyPlace, R>[] | undefined)>}),
-    routes: ((args?: {limit?: (Scalars['Int'] | null),where?: (RouteFilter | null)}) => {get: <R extends RouteRequest>(request: R, defaultValue?: FieldsSelection<Route, R>[]) => Promise<FieldsSelection<Route, R>[]>})&({get: <R extends RouteRequest>(request: R, defaultValue?: FieldsSelection<Route, R>[]) => Promise<FieldsSelection<Route, R>[]>}),
-    search_rank: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>})
-}
-
-
-/** See https://gtfs.org/schedule/reference/#agencytxt */
-export interface AgencyObservableChain{
-    agency_email: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    agency_fare_url: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    agency_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    agency_lang: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    agency_name: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    agency_phone: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    agency_timezone: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    agency_url: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    alerts: ((args?: {active?: (Scalars['Boolean'] | null),limit?: (Scalars['Int'] | null)}) => {get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Observable<(FieldsSelection<Alert, R>[] | undefined)>})&({get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Observable<(FieldsSelection<Alert, R>[] | undefined)>}),
-    census_geographies: ((args: {layer: Scalars['String'],limit?: (Scalars['Int'] | null),radius?: (Scalars['Float'] | null)}) => {get: <R extends CensusGeographyRequest>(request: R, defaultValue?: (FieldsSelection<CensusGeography, R>[] | undefined)) => Observable<(FieldsSelection<CensusGeography, R>[] | undefined)>}),
-    feed_onestop_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    feed_version: (FeedVersionObservableChain & {get: <R extends FeedVersionRequest>(request: R, defaultValue?: FieldsSelection<FeedVersion, R>) => Observable<FieldsSelection<FeedVersion, R>>}),
-    feed_version_sha1: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    geometry: ({get: (request?: boolean|number, defaultValue?: (Scalars['Polygon'] | undefined)) => Observable<(Scalars['Polygon'] | undefined)>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    onestop_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    operator: (OperatorObservableChain & {get: <R extends OperatorRequest>(request: R, defaultValue?: (FieldsSelection<Operator, R> | undefined)) => Observable<(FieldsSelection<Operator, R> | undefined)>}),
-    places: ((args?: {limit?: (Scalars['Int'] | null),where?: (AgencyPlaceFilter | null)}) => {get: <R extends AgencyPlaceRequest>(request: R, defaultValue?: (FieldsSelection<AgencyPlace, R>[] | undefined)) => Observable<(FieldsSelection<AgencyPlace, R>[] | undefined)>})&({get: <R extends AgencyPlaceRequest>(request: R, defaultValue?: (FieldsSelection<AgencyPlace, R>[] | undefined)) => Observable<(FieldsSelection<AgencyPlace, R>[] | undefined)>}),
-    routes: ((args?: {limit?: (Scalars['Int'] | null),where?: (RouteFilter | null)}) => {get: <R extends RouteRequest>(request: R, defaultValue?: FieldsSelection<Route, R>[]) => Observable<FieldsSelection<Route, R>[]>})&({get: <R extends RouteRequest>(request: R, defaultValue?: FieldsSelection<Route, R>[]) => Observable<FieldsSelection<Route, R>[]>}),
-    search_rank: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>})
-}
-
-export interface AgencyPlacePromiseChain{
-    adm0_name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    adm1_name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    city_name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    rank: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Promise<(Scalars['Float'] | undefined)>})
-}
-
-export interface AgencyPlaceObservableChain{
-    adm0_name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    adm1_name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    city_name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    rank: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Observable<(Scalars['Float'] | undefined)>})
-}
-
-
-/** [Alert](https://gtfs.org/reference/realtime/v2/#message-alert) message, also called a service alert, provided by a source GTFS Realtime feed. */
-export interface AlertPromiseChain{
-    active_period: ({get: <R extends RTTimeRangeRequest>(request: R, defaultValue?: (FieldsSelection<RTTimeRange, R>[] | undefined)) => Promise<(FieldsSelection<RTTimeRange, R>[] | undefined)>}),
-    cause: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    description_text: ({get: <R extends RTTranslationRequest>(request: R, defaultValue?: FieldsSelection<RTTranslation, R>[]) => Promise<FieldsSelection<RTTranslation, R>[]>}),
-    effect: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    header_text: ({get: <R extends RTTranslationRequest>(request: R, defaultValue?: FieldsSelection<RTTranslation, R>[]) => Promise<FieldsSelection<RTTranslation, R>[]>}),
-    severity_level: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    tts_description_text: ({get: <R extends RTTranslationRequest>(request: R, defaultValue?: (FieldsSelection<RTTranslation, R>[] | undefined)) => Promise<(FieldsSelection<RTTranslation, R>[] | undefined)>}),
-    tts_header_text: ({get: <R extends RTTranslationRequest>(request: R, defaultValue?: (FieldsSelection<RTTranslation, R>[] | undefined)) => Promise<(FieldsSelection<RTTranslation, R>[] | undefined)>}),
-    url: ({get: <R extends RTTranslationRequest>(request: R, defaultValue?: (FieldsSelection<RTTranslation, R>[] | undefined)) => Promise<(FieldsSelection<RTTranslation, R>[] | undefined)>})
-}
-
-
-/** [Alert](https://gtfs.org/reference/realtime/v2/#message-alert) message, also called a service alert, provided by a source GTFS Realtime feed. */
-export interface AlertObservableChain{
-    active_period: ({get: <R extends RTTimeRangeRequest>(request: R, defaultValue?: (FieldsSelection<RTTimeRange, R>[] | undefined)) => Observable<(FieldsSelection<RTTimeRange, R>[] | undefined)>}),
-    cause: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    description_text: ({get: <R extends RTTranslationRequest>(request: R, defaultValue?: FieldsSelection<RTTranslation, R>[]) => Observable<FieldsSelection<RTTranslation, R>[]>}),
-    effect: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    header_text: ({get: <R extends RTTranslationRequest>(request: R, defaultValue?: FieldsSelection<RTTranslation, R>[]) => Observable<FieldsSelection<RTTranslation, R>[]>}),
-    severity_level: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    tts_description_text: ({get: <R extends RTTranslationRequest>(request: R, defaultValue?: (FieldsSelection<RTTranslation, R>[] | undefined)) => Observable<(FieldsSelection<RTTranslation, R>[] | undefined)>}),
-    tts_header_text: ({get: <R extends RTTranslationRequest>(request: R, defaultValue?: (FieldsSelection<RTTranslation, R>[] | undefined)) => Observable<(FieldsSelection<RTTranslation, R>[] | undefined)>}),
-    url: ({get: <R extends RTTranslationRequest>(request: R, defaultValue?: (FieldsSelection<RTTranslation, R>[] | undefined)) => Observable<(FieldsSelection<RTTranslation, R>[] | undefined)>})
-}
-
-
-/** Record from a static GTFS [calendars.txt](https://gtfs.org/schedule/reference/#calendarstxt) file. */
-export interface CalendarPromiseChain{
-    added_dates: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: (request?: boolean|number, defaultValue?: Scalars['Date'][]) => Promise<Scalars['Date'][]>})&({get: (request?: boolean|number, defaultValue?: Scalars['Date'][]) => Promise<Scalars['Date'][]>}),
-    end_date: ({get: (request?: boolean|number, defaultValue?: Scalars['Date']) => Promise<Scalars['Date']>}),
-    friday: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    monday: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    removed_dates: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: (request?: boolean|number, defaultValue?: Scalars['Date'][]) => Promise<Scalars['Date'][]>})&({get: (request?: boolean|number, defaultValue?: Scalars['Date'][]) => Promise<Scalars['Date'][]>}),
-    saturday: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    service_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    start_date: ({get: (request?: boolean|number, defaultValue?: Scalars['Date']) => Promise<Scalars['Date']>}),
-    sunday: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    thursday: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    tuesday: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    wednesday: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>})
-}
-
-
-/** Record from a static GTFS [calendars.txt](https://gtfs.org/schedule/reference/#calendarstxt) file. */
-export interface CalendarObservableChain{
-    added_dates: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: (request?: boolean|number, defaultValue?: Scalars['Date'][]) => Observable<Scalars['Date'][]>})&({get: (request?: boolean|number, defaultValue?: Scalars['Date'][]) => Observable<Scalars['Date'][]>}),
-    end_date: ({get: (request?: boolean|number, defaultValue?: Scalars['Date']) => Observable<Scalars['Date']>}),
-    friday: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    monday: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    removed_dates: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: (request?: boolean|number, defaultValue?: Scalars['Date'][]) => Observable<Scalars['Date'][]>})&({get: (request?: boolean|number, defaultValue?: Scalars['Date'][]) => Observable<Scalars['Date'][]>}),
-    saturday: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    service_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    start_date: ({get: (request?: boolean|number, defaultValue?: Scalars['Date']) => Observable<Scalars['Date']>}),
-    sunday: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    thursday: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    tuesday: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    wednesday: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>})
-}
-
-export interface CensusGeographyPromiseChain{
-    aland: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Promise<(Scalars['Float'] | undefined)>}),
-    awater: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Promise<(Scalars['Float'] | undefined)>}),
-    geoid: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    geometry: ({get: (request?: boolean|number, defaultValue?: (Scalars['Polygon'] | undefined)) => Promise<(Scalars['Polygon'] | undefined)>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    layer_name: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    values: ((args: {limit?: (Scalars['Int'] | null),table_names: Scalars['String'][]}) => {get: <R extends CensusValueRequest>(request: R, defaultValue?: (FieldsSelection<CensusValue, R> | undefined)[]) => Promise<(FieldsSelection<CensusValue, R> | undefined)[]>})
-}
-
-export interface CensusGeographyObservableChain{
-    aland: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Observable<(Scalars['Float'] | undefined)>}),
-    awater: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Observable<(Scalars['Float'] | undefined)>}),
-    geoid: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    geometry: ({get: (request?: boolean|number, defaultValue?: (Scalars['Polygon'] | undefined)) => Observable<(Scalars['Polygon'] | undefined)>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    layer_name: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    values: ((args: {limit?: (Scalars['Int'] | null),table_names: Scalars['String'][]}) => {get: <R extends CensusValueRequest>(request: R, defaultValue?: (FieldsSelection<CensusValue, R> | undefined)[]) => Observable<(FieldsSelection<CensusValue, R> | undefined)[]>})
-}
-
-export interface CensusTablePromiseChain{
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    table_group: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    table_name: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    table_title: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>})
-}
-
-export interface CensusTableObservableChain{
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    table_group: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    table_name: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    table_title: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>})
-}
-
-export interface CensusValuePromiseChain{
-    table: (CensusTablePromiseChain & {get: <R extends CensusTableRequest>(request: R, defaultValue?: FieldsSelection<CensusTable, R>) => Promise<FieldsSelection<CensusTable, R>>}),
-    values: ({get: (request?: boolean|number, defaultValue?: Scalars['Any']) => Promise<Scalars['Any']>})
-}
-
-export interface CensusValueObservableChain{
-    table: (CensusTableObservableChain & {get: <R extends CensusTableRequest>(request: R, defaultValue?: FieldsSelection<CensusTable, R>) => Observable<FieldsSelection<CensusTable, R>>}),
-    values: ({get: (request?: boolean|number, defaultValue?: Scalars['Any']) => Observable<Scalars['Any']>})
-}
-
-export interface DirectionsPromiseChain{
-    data_source: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    destination: (WaypointPromiseChain & {get: <R extends WaypointRequest>(request: R, defaultValue?: (FieldsSelection<Waypoint, R> | undefined)) => Promise<(FieldsSelection<Waypoint, R> | undefined)>}),
-    distance: (DistancePromiseChain & {get: <R extends DistanceRequest>(request: R, defaultValue?: (FieldsSelection<Distance, R> | undefined)) => Promise<(FieldsSelection<Distance, R> | undefined)>}),
-    duration: (DurationPromiseChain & {get: <R extends DurationRequest>(request: R, defaultValue?: (FieldsSelection<Duration, R> | undefined)) => Promise<(FieldsSelection<Duration, R> | undefined)>}),
-    end_time: ({get: (request?: boolean|number, defaultValue?: (Scalars['Time'] | undefined)) => Promise<(Scalars['Time'] | undefined)>}),
-    exception: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    itineraries: ({get: <R extends ItineraryRequest>(request: R, defaultValue?: (FieldsSelection<Itinerary, R>[] | undefined)) => Promise<(FieldsSelection<Itinerary, R>[] | undefined)>}),
-    origin: (WaypointPromiseChain & {get: <R extends WaypointRequest>(request: R, defaultValue?: (FieldsSelection<Waypoint, R> | undefined)) => Promise<(FieldsSelection<Waypoint, R> | undefined)>}),
-    start_time: ({get: (request?: boolean|number, defaultValue?: (Scalars['Time'] | undefined)) => Promise<(Scalars['Time'] | undefined)>}),
-    success: ({get: (request?: boolean|number, defaultValue?: Scalars['Boolean']) => Promise<Scalars['Boolean']>})
-}
-
-export interface DirectionsObservableChain{
-    data_source: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    destination: (WaypointObservableChain & {get: <R extends WaypointRequest>(request: R, defaultValue?: (FieldsSelection<Waypoint, R> | undefined)) => Observable<(FieldsSelection<Waypoint, R> | undefined)>}),
-    distance: (DistanceObservableChain & {get: <R extends DistanceRequest>(request: R, defaultValue?: (FieldsSelection<Distance, R> | undefined)) => Observable<(FieldsSelection<Distance, R> | undefined)>}),
-    duration: (DurationObservableChain & {get: <R extends DurationRequest>(request: R, defaultValue?: (FieldsSelection<Duration, R> | undefined)) => Observable<(FieldsSelection<Duration, R> | undefined)>}),
-    end_time: ({get: (request?: boolean|number, defaultValue?: (Scalars['Time'] | undefined)) => Observable<(Scalars['Time'] | undefined)>}),
-    exception: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    itineraries: ({get: <R extends ItineraryRequest>(request: R, defaultValue?: (FieldsSelection<Itinerary, R>[] | undefined)) => Observable<(FieldsSelection<Itinerary, R>[] | undefined)>}),
-    origin: (WaypointObservableChain & {get: <R extends WaypointRequest>(request: R, defaultValue?: (FieldsSelection<Waypoint, R> | undefined)) => Observable<(FieldsSelection<Waypoint, R> | undefined)>}),
-    start_time: ({get: (request?: boolean|number, defaultValue?: (Scalars['Time'] | undefined)) => Observable<(Scalars['Time'] | undefined)>}),
-    success: ({get: (request?: boolean|number, defaultValue?: Scalars['Boolean']) => Observable<Scalars['Boolean']>})
-}
-
-export interface DistancePromiseChain{
-    distance: ({get: (request?: boolean|number, defaultValue?: Scalars['Float']) => Promise<Scalars['Float']>}),
-    units: ({get: (request?: boolean|number, defaultValue?: DistanceUnit) => Promise<DistanceUnit>})
-}
-
-export interface DistanceObservableChain{
-    distance: ({get: (request?: boolean|number, defaultValue?: Scalars['Float']) => Observable<Scalars['Float']>}),
-    units: ({get: (request?: boolean|number, defaultValue?: DistanceUnit) => Observable<DistanceUnit>})
-}
-
-export interface DurationPromiseChain{
-    duration: ({get: (request?: boolean|number, defaultValue?: Scalars['Float']) => Promise<Scalars['Float']>}),
-    units: ({get: (request?: boolean|number, defaultValue?: DurationUnit) => Promise<DurationUnit>})
-}
-
-export interface DurationObservableChain{
-    duration: ({get: (request?: boolean|number, defaultValue?: Scalars['Float']) => Observable<Scalars['Float']>}),
-    units: ({get: (request?: boolean|number, defaultValue?: DurationUnit) => Observable<DurationUnit>})
-}
-
-
-/** Feeds contain details on how to access transit information, including URLs to data sources in various formats (GTFS, GTFS-RT, GBFS, etc), license information, related feeds, details on how to make authorized requests, and feed version archives. Feed versions are archived (as `.zip` files) and imported into the Transitland database for querying agencies, stops, routes, trips, etc. */
-export interface FeedPromiseChain{
-    associated_operators: ({get: <R extends OperatorRequest>(request: R, defaultValue?: (FieldsSelection<Operator, R>[] | undefined)) => Promise<(FieldsSelection<Operator, R>[] | undefined)>}),
-    authorization: (FeedAuthorizationPromiseChain & {get: <R extends FeedAuthorizationRequest>(request: R, defaultValue?: (FieldsSelection<FeedAuthorization, R> | undefined)) => Promise<(FieldsSelection<FeedAuthorization, R> | undefined)>}),
-    feed_fetches: ((args?: {limit?: (Scalars['Int'] | null),where?: (FeedFetchFilter | null)}) => {get: <R extends FeedFetchRequest>(request: R, defaultValue?: (FieldsSelection<FeedFetch, R>[] | undefined)) => Promise<(FieldsSelection<FeedFetch, R>[] | undefined)>})&({get: <R extends FeedFetchRequest>(request: R, defaultValue?: (FieldsSelection<FeedFetch, R>[] | undefined)) => Promise<(FieldsSelection<FeedFetch, R>[] | undefined)>}),
-    feed_state: (FeedStatePromiseChain & {get: <R extends FeedStateRequest>(request: R, defaultValue?: (FieldsSelection<FeedState, R> | undefined)) => Promise<(FieldsSelection<FeedState, R> | undefined)>}),
+    const Agency_possibleTypes: string[] = ['Agency']
+    export const isAgency = (obj?: { __typename?: any } | null): obj is Agency => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isAgency"')
+      return Agency_possibleTypes.includes(obj.__typename)
+    }
     
-/** Versions of this feed that have been fetched, archived, and imported by Transitland */
-feed_versions: ((args?: {limit?: (Scalars['Int'] | null),where?: (FeedVersionFilter | null)}) => {get: <R extends FeedVersionRequest>(request: R, defaultValue?: FieldsSelection<FeedVersion, R>[]) => Promise<FieldsSelection<FeedVersion, R>[]>})&({get: <R extends FeedVersionRequest>(request: R, defaultValue?: FieldsSelection<FeedVersion, R>[]) => Promise<FieldsSelection<FeedVersion, R>[]>}),
-    file: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
+
+
+    const AgencyPlace_possibleTypes: string[] = ['AgencyPlace']
+    export const isAgencyPlace = (obj?: { __typename?: any } | null): obj is AgencyPlace => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isAgencyPlace"')
+      return AgencyPlace_possibleTypes.includes(obj.__typename)
+    }
     
-/** Unique integer ID */
-id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
+
+
+    const Alert_possibleTypes: string[] = ['Alert']
+    export const isAlert = (obj?: { __typename?: any } | null): obj is Alert => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isAlert"')
+      return Alert_possibleTypes.includes(obj.__typename)
+    }
     
-/** Language(s) included in this feed */
-languages: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'][] | undefined)) => Promise<(Scalars['String'][] | undefined)>}),
-    license: (FeedLicensePromiseChain & {get: <R extends FeedLicenseRequest>(request: R, defaultValue?: (FieldsSelection<FeedLicense, R> | undefined)) => Promise<(FieldsSelection<FeedLicense, R> | undefined)>}),
+
+
+    const Calendar_possibleTypes: string[] = ['Calendar']
+    export const isCalendar = (obj?: { __typename?: any } | null): obj is Calendar => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isCalendar"')
+      return Calendar_possibleTypes.includes(obj.__typename)
+    }
     
-/** A common name for this feed. Optional. Alternatively use `associated_operators[].name` */
-name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
+
+
+    const CensusGeography_possibleTypes: string[] = ['CensusGeography']
+    export const isCensusGeography = (obj?: { __typename?: any } | null): obj is CensusGeography => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isCensusGeography"')
+      return CensusGeography_possibleTypes.includes(obj.__typename)
+    }
     
-/** Onestop ID for this feed */
-onestop_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    search_rank: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    spec: ({get: (request?: boolean|number, defaultValue?: (FeedSpecTypes | undefined)) => Promise<(FeedSpecTypes | undefined)>}),
-    tags: ({get: (request?: boolean|number, defaultValue?: (Scalars['Tags'] | undefined)) => Promise<(Scalars['Tags'] | undefined)>}),
-    urls: (FeedUrlsPromiseChain & {get: <R extends FeedUrlsRequest>(request: R, defaultValue?: (FieldsSelection<FeedUrls, R> | undefined)) => Promise<(FieldsSelection<FeedUrls, R> | undefined)>})
-}
 
 
-/** Feeds contain details on how to access transit information, including URLs to data sources in various formats (GTFS, GTFS-RT, GBFS, etc), license information, related feeds, details on how to make authorized requests, and feed version archives. Feed versions are archived (as `.zip` files) and imported into the Transitland database for querying agencies, stops, routes, trips, etc. */
-export interface FeedObservableChain{
-    associated_operators: ({get: <R extends OperatorRequest>(request: R, defaultValue?: (FieldsSelection<Operator, R>[] | undefined)) => Observable<(FieldsSelection<Operator, R>[] | undefined)>}),
-    authorization: (FeedAuthorizationObservableChain & {get: <R extends FeedAuthorizationRequest>(request: R, defaultValue?: (FieldsSelection<FeedAuthorization, R> | undefined)) => Observable<(FieldsSelection<FeedAuthorization, R> | undefined)>}),
-    feed_fetches: ((args?: {limit?: (Scalars['Int'] | null),where?: (FeedFetchFilter | null)}) => {get: <R extends FeedFetchRequest>(request: R, defaultValue?: (FieldsSelection<FeedFetch, R>[] | undefined)) => Observable<(FieldsSelection<FeedFetch, R>[] | undefined)>})&({get: <R extends FeedFetchRequest>(request: R, defaultValue?: (FieldsSelection<FeedFetch, R>[] | undefined)) => Observable<(FieldsSelection<FeedFetch, R>[] | undefined)>}),
-    feed_state: (FeedStateObservableChain & {get: <R extends FeedStateRequest>(request: R, defaultValue?: (FieldsSelection<FeedState, R> | undefined)) => Observable<(FieldsSelection<FeedState, R> | undefined)>}),
+    const CensusTable_possibleTypes: string[] = ['CensusTable']
+    export const isCensusTable = (obj?: { __typename?: any } | null): obj is CensusTable => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isCensusTable"')
+      return CensusTable_possibleTypes.includes(obj.__typename)
+    }
     
-/** Versions of this feed that have been fetched, archived, and imported by Transitland */
-feed_versions: ((args?: {limit?: (Scalars['Int'] | null),where?: (FeedVersionFilter | null)}) => {get: <R extends FeedVersionRequest>(request: R, defaultValue?: FieldsSelection<FeedVersion, R>[]) => Observable<FieldsSelection<FeedVersion, R>[]>})&({get: <R extends FeedVersionRequest>(request: R, defaultValue?: FieldsSelection<FeedVersion, R>[]) => Observable<FieldsSelection<FeedVersion, R>[]>}),
-    file: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
+
+
+    const CensusValue_possibleTypes: string[] = ['CensusValue']
+    export const isCensusValue = (obj?: { __typename?: any } | null): obj is CensusValue => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isCensusValue"')
+      return CensusValue_possibleTypes.includes(obj.__typename)
+    }
     
-/** Unique integer ID */
-id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
+
+
+    const Directions_possibleTypes: string[] = ['Directions']
+    export const isDirections = (obj?: { __typename?: any } | null): obj is Directions => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isDirections"')
+      return Directions_possibleTypes.includes(obj.__typename)
+    }
     
-/** Language(s) included in this feed */
-languages: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'][] | undefined)) => Observable<(Scalars['String'][] | undefined)>}),
-    license: (FeedLicenseObservableChain & {get: <R extends FeedLicenseRequest>(request: R, defaultValue?: (FieldsSelection<FeedLicense, R> | undefined)) => Observable<(FieldsSelection<FeedLicense, R> | undefined)>}),
+
+
+    const Distance_possibleTypes: string[] = ['Distance']
+    export const isDistance = (obj?: { __typename?: any } | null): obj is Distance => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isDistance"')
+      return Distance_possibleTypes.includes(obj.__typename)
+    }
     
-/** A common name for this feed. Optional. Alternatively use `associated_operators[].name` */
-name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
+
+
+    const Duration_possibleTypes: string[] = ['Duration']
+    export const isDuration = (obj?: { __typename?: any } | null): obj is Duration => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isDuration"')
+      return Duration_possibleTypes.includes(obj.__typename)
+    }
     
-/** Onestop ID for this feed */
-onestop_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    search_rank: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    spec: ({get: (request?: boolean|number, defaultValue?: (FeedSpecTypes | undefined)) => Observable<(FeedSpecTypes | undefined)>}),
-    tags: ({get: (request?: boolean|number, defaultValue?: (Scalars['Tags'] | undefined)) => Observable<(Scalars['Tags'] | undefined)>}),
-    urls: (FeedUrlsObservableChain & {get: <R extends FeedUrlsRequest>(request: R, defaultValue?: (FieldsSelection<FeedUrls, R> | undefined)) => Observable<(FieldsSelection<FeedUrls, R> | undefined)>})
-}
 
 
-/** Details on how to construct an HTTP request to access a protected resource */
-export interface FeedAuthorizationPromiseChain{
+    const Feed_possibleTypes: string[] = ['Feed']
+    export const isFeed = (obj?: { __typename?: any } | null): obj is Feed => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isFeed"')
+      return Feed_possibleTypes.includes(obj.__typename)
+    }
     
-/** Website to visit to sign up for an account */
-info_url: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
+
+
+    const FeedAuthorization_possibleTypes: string[] = ['FeedAuthorization']
+    export const isFeedAuthorization = (obj?: { __typename?: any } | null): obj is FeedAuthorization => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isFeedAuthorization"')
+      return FeedAuthorization_possibleTypes.includes(obj.__typename)
+    }
     
-/** When `type=query_param`, this specifies the name of the query parameter. When `type=header`, this specifies the name of the header */
-param_name: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
+
+
+    const FeedFetch_possibleTypes: string[] = ['FeedFetch']
+    export const isFeedFetch = (obj?: { __typename?: any } | null): obj is FeedFetch => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isFeedFetch"')
+      return FeedFetch_possibleTypes.includes(obj.__typename)
+    }
     
-/** Method for inserting authorization secret into request */
-type: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>})
-}
 
 
-/** Details on how to construct an HTTP request to access a protected resource */
-export interface FeedAuthorizationObservableChain{
+    const FeedInfo_possibleTypes: string[] = ['FeedInfo']
+    export const isFeedInfo = (obj?: { __typename?: any } | null): obj is FeedInfo => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isFeedInfo"')
+      return FeedInfo_possibleTypes.includes(obj.__typename)
+    }
     
-/** Website to visit to sign up for an account */
-info_url: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
+
+
+    const FeedLicense_possibleTypes: string[] = ['FeedLicense']
+    export const isFeedLicense = (obj?: { __typename?: any } | null): obj is FeedLicense => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isFeedLicense"')
+      return FeedLicense_possibleTypes.includes(obj.__typename)
+    }
     
-/** When `type=query_param`, this specifies the name of the query parameter. When `type=header`, this specifies the name of the header */
-param_name: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
+
+
+    const FeedState_possibleTypes: string[] = ['FeedState']
+    export const isFeedState = (obj?: { __typename?: any } | null): obj is FeedState => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isFeedState"')
+      return FeedState_possibleTypes.includes(obj.__typename)
+    }
     
-/** Method for inserting authorization secret into request */
-type: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>})
-}
-
-export interface FeedFetchPromiseChain{
-    fetch_error: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    fetched_at: ({get: (request?: boolean|number, defaultValue?: (Scalars['Time'] | undefined)) => Promise<(Scalars['Time'] | undefined)>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    response_code: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    response_sha1: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    response_size: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    success: ({get: (request?: boolean|number, defaultValue?: (Scalars['Boolean'] | undefined)) => Promise<(Scalars['Boolean'] | undefined)>}),
-    url: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    url_type: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>})
-}
-
-export interface FeedFetchObservableChain{
-    fetch_error: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    fetched_at: ({get: (request?: boolean|number, defaultValue?: (Scalars['Time'] | undefined)) => Observable<(Scalars['Time'] | undefined)>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    response_code: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    response_sha1: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    response_size: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    success: ({get: (request?: boolean|number, defaultValue?: (Scalars['Boolean'] | undefined)) => Observable<(Scalars['Boolean'] | undefined)>}),
-    url: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    url_type: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>})
-}
 
 
-/** Record from a static GTFS [feed_info.txt](https://gtfs.org/schedule/reference/#feed_infotxt) file. */
-export interface FeedInfoPromiseChain{
-    default_lang: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    feed_contact_email: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    feed_contact_url: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    feed_end_date: ({get: (request?: boolean|number, defaultValue?: (Scalars['Date'] | undefined)) => Promise<(Scalars['Date'] | undefined)>}),
-    feed_lang: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    feed_publisher_name: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    feed_publisher_url: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    feed_start_date: ({get: (request?: boolean|number, defaultValue?: (Scalars['Date'] | undefined)) => Promise<(Scalars['Date'] | undefined)>}),
-    feed_version: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>})
-}
-
-
-/** Record from a static GTFS [feed_info.txt](https://gtfs.org/schedule/reference/#feed_infotxt) file. */
-export interface FeedInfoObservableChain{
-    default_lang: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    feed_contact_email: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    feed_contact_url: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    feed_end_date: ({get: (request?: boolean|number, defaultValue?: (Scalars['Date'] | undefined)) => Observable<(Scalars['Date'] | undefined)>}),
-    feed_lang: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    feed_publisher_name: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    feed_publisher_url: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    feed_start_date: ({get: (request?: boolean|number, defaultValue?: (Scalars['Date'] | undefined)) => Observable<(Scalars['Date'] | undefined)>}),
-    feed_version: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>})
-}
-
-
-/** License information for this feed, curated by Interline and contributors to the Transitland Atlas feed registry. Note that this does not constitute legal advice. Users are advised to review and confirm any terms and conditions attached to a source feed. */
-export interface FeedLicensePromiseChain{
+    const FeedUrls_possibleTypes: string[] = ['FeedUrls']
+    export const isFeedUrls = (obj?: { __typename?: any } | null): obj is FeedUrls => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isFeedUrls"')
+      return FeedUrls_possibleTypes.includes(obj.__typename)
+    }
     
-/** Feed consumers must follow these instructions for how to provide attribution */
-attribution_instructions: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
+
+
+    const FeedVersion_possibleTypes: string[] = ['FeedVersion']
+    export const isFeedVersion = (obj?: { __typename?: any } | null): obj is FeedVersion => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isFeedVersion"')
+      return FeedVersion_possibleTypes.includes(obj.__typename)
+    }
     
-/** Feed consumers must include this particular text when using this feed */
-attribution_text: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
+
+
+    const FeedVersionDeleteResult_possibleTypes: string[] = ['FeedVersionDeleteResult']
+    export const isFeedVersionDeleteResult = (obj?: { __typename?: any } | null): obj is FeedVersionDeleteResult => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isFeedVersionDeleteResult"')
+      return FeedVersionDeleteResult_possibleTypes.includes(obj.__typename)
+    }
     
-/** Are feed consumers allowed to use the feed for commercial purposes? */
-commercial_use_allowed: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
+
+
+    const FeedVersionFetchResult_possibleTypes: string[] = ['FeedVersionFetchResult']
+    export const isFeedVersionFetchResult = (obj?: { __typename?: any } | null): obj is FeedVersionFetchResult => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isFeedVersionFetchResult"')
+      return FeedVersionFetchResult_possibleTypes.includes(obj.__typename)
+    }
     
-/** Are feed consumers allowed to create and share derived products from the feed? */
-create_derived_product: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
+
+
+    const FeedVersionFileInfo_possibleTypes: string[] = ['FeedVersionFileInfo']
+    export const isFeedVersionFileInfo = (obj?: { __typename?: any } | null): obj is FeedVersionFileInfo => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isFeedVersionFileInfo"')
+      return FeedVersionFileInfo_possibleTypes.includes(obj.__typename)
+    }
     
-/** Are feed consumers allowed to redistribute the feed in its entirety? */
-redistribution_allowed: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
+
+
+    const FeedVersionGtfsImport_possibleTypes: string[] = ['FeedVersionGtfsImport']
+    export const isFeedVersionGtfsImport = (obj?: { __typename?: any } | null): obj is FeedVersionGtfsImport => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isFeedVersionGtfsImport"')
+      return FeedVersionGtfsImport_possibleTypes.includes(obj.__typename)
+    }
     
-/** Are feed consumers allowed to keep their modifications of this feed private? */
-share_alike_optional: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
+
+
+    const FeedVersionImportResult_possibleTypes: string[] = ['FeedVersionImportResult']
+    export const isFeedVersionImportResult = (obj?: { __typename?: any } | null): obj is FeedVersionImportResult => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isFeedVersionImportResult"')
+      return FeedVersionImportResult_possibleTypes.includes(obj.__typename)
+    }
     
-/** SPDX identifier for a common license. See https://spdx.org/licenses/ */
-spdx_identifier: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
+
+
+    const FeedVersionServiceLevel_possibleTypes: string[] = ['FeedVersionServiceLevel']
+    export const isFeedVersionServiceLevel = (obj?: { __typename?: any } | null): obj is FeedVersionServiceLevel => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isFeedVersionServiceLevel"')
+      return FeedVersionServiceLevel_possibleTypes.includes(obj.__typename)
+    }
     
-/** URL for a custom license */
-url: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
+
+
+    const FeedVersionUnimportResult_possibleTypes: string[] = ['FeedVersionUnimportResult']
+    export const isFeedVersionUnimportResult = (obj?: { __typename?: any } | null): obj is FeedVersionUnimportResult => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isFeedVersionUnimportResult"')
+      return FeedVersionUnimportResult_possibleTypes.includes(obj.__typename)
+    }
     
-/** Are feed consumers allowed to use the feed contents without including attribution text in their app or map? */
-use_without_attribution: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>})
-}
 
 
-/** License information for this feed, curated by Interline and contributors to the Transitland Atlas feed registry. Note that this does not constitute legal advice. Users are advised to review and confirm any terms and conditions attached to a source feed. */
-export interface FeedLicenseObservableChain{
+    const Frequency_possibleTypes: string[] = ['Frequency']
+    export const isFrequency = (obj?: { __typename?: any } | null): obj is Frequency => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isFrequency"')
+      return Frequency_possibleTypes.includes(obj.__typename)
+    }
     
-/** Feed consumers must follow these instructions for how to provide attribution */
-attribution_instructions: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
+
+
+    const GbfsAlertTime_possibleTypes: string[] = ['GbfsAlertTime']
+    export const isGbfsAlertTime = (obj?: { __typename?: any } | null): obj is GbfsAlertTime => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsAlertTime"')
+      return GbfsAlertTime_possibleTypes.includes(obj.__typename)
+    }
     
-/** Feed consumers must include this particular text when using this feed */
-attribution_text: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
+
+
+    const GbfsBrandAsset_possibleTypes: string[] = ['GbfsBrandAsset']
+    export const isGbfsBrandAsset = (obj?: { __typename?: any } | null): obj is GbfsBrandAsset => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsBrandAsset"')
+      return GbfsBrandAsset_possibleTypes.includes(obj.__typename)
+    }
     
-/** Are feed consumers allowed to use the feed for commercial purposes? */
-commercial_use_allowed: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
+
+
+    const GbfsFeed_possibleTypes: string[] = ['GbfsFeed']
+    export const isGbfsFeed = (obj?: { __typename?: any } | null): obj is GbfsFeed => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsFeed"')
+      return GbfsFeed_possibleTypes.includes(obj.__typename)
+    }
     
-/** Are feed consumers allowed to create and share derived products from the feed? */
-create_derived_product: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
+
+
+    const GbfsFreeBikeStatus_possibleTypes: string[] = ['GbfsFreeBikeStatus']
+    export const isGbfsFreeBikeStatus = (obj?: { __typename?: any } | null): obj is GbfsFreeBikeStatus => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsFreeBikeStatus"')
+      return GbfsFreeBikeStatus_possibleTypes.includes(obj.__typename)
+    }
     
-/** Are feed consumers allowed to redistribute the feed in its entirety? */
-redistribution_allowed: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
+
+
+    const GbfsGeofenceFeature_possibleTypes: string[] = ['GbfsGeofenceFeature']
+    export const isGbfsGeofenceFeature = (obj?: { __typename?: any } | null): obj is GbfsGeofenceFeature => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsGeofenceFeature"')
+      return GbfsGeofenceFeature_possibleTypes.includes(obj.__typename)
+    }
     
-/** Are feed consumers allowed to keep their modifications of this feed private? */
-share_alike_optional: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
+
+
+    const GbfsGeofenceProperty_possibleTypes: string[] = ['GbfsGeofenceProperty']
+    export const isGbfsGeofenceProperty = (obj?: { __typename?: any } | null): obj is GbfsGeofenceProperty => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsGeofenceProperty"')
+      return GbfsGeofenceProperty_possibleTypes.includes(obj.__typename)
+    }
     
-/** SPDX identifier for a common license. See https://spdx.org/licenses/ */
-spdx_identifier: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
+
+
+    const GbfsGeofenceRule_possibleTypes: string[] = ['GbfsGeofenceRule']
+    export const isGbfsGeofenceRule = (obj?: { __typename?: any } | null): obj is GbfsGeofenceRule => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsGeofenceRule"')
+      return GbfsGeofenceRule_possibleTypes.includes(obj.__typename)
+    }
     
-/** URL for a custom license */
-url: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
+
+
+    const GbfsGeofenceZone_possibleTypes: string[] = ['GbfsGeofenceZone']
+    export const isGbfsGeofenceZone = (obj?: { __typename?: any } | null): obj is GbfsGeofenceZone => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsGeofenceZone"')
+      return GbfsGeofenceZone_possibleTypes.includes(obj.__typename)
+    }
     
-/** Are feed consumers allowed to use the feed contents without including attribution text in their app or map? */
-use_without_attribution: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>})
-}
 
 
-/** Details on the current state of this feed, such as active version, last fetch time, etc. */
-export interface FeedStatePromiseChain{
+    const GbfsPlanPrice_possibleTypes: string[] = ['GbfsPlanPrice']
+    export const isGbfsPlanPrice = (obj?: { __typename?: any } | null): obj is GbfsPlanPrice => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsPlanPrice"')
+      return GbfsPlanPrice_possibleTypes.includes(obj.__typename)
+    }
     
-/** The active feed version for this feed */
-feed_version: (FeedVersionPromiseChain & {get: <R extends FeedVersionRequest>(request: R, defaultValue?: (FieldsSelection<FeedVersion, R> | undefined)) => Promise<(FieldsSelection<FeedVersion, R> | undefined)>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>})
-}
 
 
-/** Details on the current state of this feed, such as active version, last fetch time, etc. */
-export interface FeedStateObservableChain{
+    const GbfsRentalApp_possibleTypes: string[] = ['GbfsRentalApp']
+    export const isGbfsRentalApp = (obj?: { __typename?: any } | null): obj is GbfsRentalApp => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsRentalApp"')
+      return GbfsRentalApp_possibleTypes.includes(obj.__typename)
+    }
     
-/** The active feed version for this feed */
-feed_version: (FeedVersionObservableChain & {get: <R extends FeedVersionRequest>(request: R, defaultValue?: (FieldsSelection<FeedVersion, R> | undefined)) => Observable<(FieldsSelection<FeedVersion, R> | undefined)>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>})
-}
 
 
-/** URL(s) from which Transitland sources a feed */
-export interface FeedUrlsPromiseChain{
+    const GbfsRentalApps_possibleTypes: string[] = ['GbfsRentalApps']
+    export const isGbfsRentalApps = (obj?: { __typename?: any } | null): obj is GbfsRentalApps => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsRentalApps"')
+      return GbfsRentalApps_possibleTypes.includes(obj.__typename)
+    }
     
-/** URL for GBFS feed `gbfs.json` auto-discovery file */
-gbfs_auto_discovery: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
+
+
+    const GbfsRentalUris_possibleTypes: string[] = ['GbfsRentalUris']
+    export const isGbfsRentalUris = (obj?: { __typename?: any } | null): obj is GbfsRentalUris => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsRentalUris"')
+      return GbfsRentalUris_possibleTypes.includes(obj.__typename)
+    }
     
-/** URL for MDS feed provider endpoint */
-mds_provider: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
+
+
+    const GbfsStationInformation_possibleTypes: string[] = ['GbfsStationInformation']
+    export const isGbfsStationInformation = (obj?: { __typename?: any } | null): obj is GbfsStationInformation => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsStationInformation"')
+      return GbfsStationInformation_possibleTypes.includes(obj.__typename)
+    }
     
-/** URL for GTFS Realtime Alert messages */
-realtime_alerts: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
+
+
+    const GbfsStationStatus_possibleTypes: string[] = ['GbfsStationStatus']
+    export const isGbfsStationStatus = (obj?: { __typename?: any } | null): obj is GbfsStationStatus => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsStationStatus"')
+      return GbfsStationStatus_possibleTypes.includes(obj.__typename)
+    }
     
-/** URL for GTFS Realtime TripUpdate messages */
-realtime_trip_updates: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
+
+
+    const GbfsSystemAlert_possibleTypes: string[] = ['GbfsSystemAlert']
+    export const isGbfsSystemAlert = (obj?: { __typename?: any } | null): obj is GbfsSystemAlert => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsSystemAlert"')
+      return GbfsSystemAlert_possibleTypes.includes(obj.__typename)
+    }
     
-/** URL for GTFS Realtime VehiclePosition messages */
-realtime_vehicle_positions: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
+
+
+    const GbfsSystemCalendar_possibleTypes: string[] = ['GbfsSystemCalendar']
+    export const isGbfsSystemCalendar = (obj?: { __typename?: any } | null): obj is GbfsSystemCalendar => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsSystemCalendar"')
+      return GbfsSystemCalendar_possibleTypes.includes(obj.__typename)
+    }
     
-/** URL for the static feed that represents today's service */
-static_current: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
+
+
+    const GbfsSystemHour_possibleTypes: string[] = ['GbfsSystemHour']
+    export const isGbfsSystemHour = (obj?: { __typename?: any } | null): obj is GbfsSystemHour => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsSystemHour"')
+      return GbfsSystemHour_possibleTypes.includes(obj.__typename)
+    }
     
-/** URLs for static feeds that represent past service that is no longer in effect  */
-static_historic: ({get: (request?: boolean|number, defaultValue?: Scalars['String'][]) => Promise<Scalars['String'][]>}),
+
+
+    const GbfsSystemInformation_possibleTypes: string[] = ['GbfsSystemInformation']
+    export const isGbfsSystemInformation = (obj?: { __typename?: any } | null): obj is GbfsSystemInformation => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsSystemInformation"')
+      return GbfsSystemInformation_possibleTypes.includes(obj.__typename)
+    }
     
-/** URLs for static feeds that represent service planned for upcoming dates. Typically used to represent calendar/service changes that will take effect few weeks or months in the future */
-static_planned: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>})
-}
 
 
-/** URL(s) from which Transitland sources a feed */
-export interface FeedUrlsObservableChain{
+    const GbfsSystemPricingPlan_possibleTypes: string[] = ['GbfsSystemPricingPlan']
+    export const isGbfsSystemPricingPlan = (obj?: { __typename?: any } | null): obj is GbfsSystemPricingPlan => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsSystemPricingPlan"')
+      return GbfsSystemPricingPlan_possibleTypes.includes(obj.__typename)
+    }
     
-/** URL for GBFS feed `gbfs.json` auto-discovery file */
-gbfs_auto_discovery: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
+
+
+    const GbfsSystemRegion_possibleTypes: string[] = ['GbfsSystemRegion']
+    export const isGbfsSystemRegion = (obj?: { __typename?: any } | null): obj is GbfsSystemRegion => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsSystemRegion"')
+      return GbfsSystemRegion_possibleTypes.includes(obj.__typename)
+    }
     
-/** URL for MDS feed provider endpoint */
-mds_provider: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
+
+
+    const GbfsSystemVersion_possibleTypes: string[] = ['GbfsSystemVersion']
+    export const isGbfsSystemVersion = (obj?: { __typename?: any } | null): obj is GbfsSystemVersion => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsSystemVersion"')
+      return GbfsSystemVersion_possibleTypes.includes(obj.__typename)
+    }
     
-/** URL for GTFS Realtime Alert messages */
-realtime_alerts: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
+
+
+    const GbfsVehicleAssets_possibleTypes: string[] = ['GbfsVehicleAssets']
+    export const isGbfsVehicleAssets = (obj?: { __typename?: any } | null): obj is GbfsVehicleAssets => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsVehicleAssets"')
+      return GbfsVehicleAssets_possibleTypes.includes(obj.__typename)
+    }
     
-/** URL for GTFS Realtime TripUpdate messages */
-realtime_trip_updates: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
+
+
+    const GbfsVehicleDockAvailable_possibleTypes: string[] = ['GbfsVehicleDockAvailable']
+    export const isGbfsVehicleDockAvailable = (obj?: { __typename?: any } | null): obj is GbfsVehicleDockAvailable => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsVehicleDockAvailable"')
+      return GbfsVehicleDockAvailable_possibleTypes.includes(obj.__typename)
+    }
     
-/** URL for GTFS Realtime VehiclePosition messages */
-realtime_vehicle_positions: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
+
+
+    const GbfsVehicleType_possibleTypes: string[] = ['GbfsVehicleType']
+    export const isGbfsVehicleType = (obj?: { __typename?: any } | null): obj is GbfsVehicleType => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsVehicleType"')
+      return GbfsVehicleType_possibleTypes.includes(obj.__typename)
+    }
     
-/** URL for the static feed that represents today's service */
-static_current: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
+
+
+    const GbfsVehicleTypeAvailable_possibleTypes: string[] = ['GbfsVehicleTypeAvailable']
+    export const isGbfsVehicleTypeAvailable = (obj?: { __typename?: any } | null): obj is GbfsVehicleTypeAvailable => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isGbfsVehicleTypeAvailable"')
+      return GbfsVehicleTypeAvailable_possibleTypes.includes(obj.__typename)
+    }
     
-/** URLs for static feeds that represent past service that is no longer in effect  */
-static_historic: ({get: (request?: boolean|number, defaultValue?: Scalars['String'][]) => Observable<Scalars['String'][]>}),
+
+
+    const Itinerary_possibleTypes: string[] = ['Itinerary']
+    export const isItinerary = (obj?: { __typename?: any } | null): obj is Itinerary => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isItinerary"')
+      return Itinerary_possibleTypes.includes(obj.__typename)
+    }
     
-/** URLs for static feeds that represent service planned for upcoming dates. Typically used to represent calendar/service changes that will take effect few weeks or months in the future */
-static_planned: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>})
-}
 
 
-/** Feed versions represent a specific static GTFS file that was published at a particular point in time, and are generally accessed and referenced using the [SHA1 checksum](https://en.wikipedia.org/wiki/SHA-1) of the GTFS archive. */
-export interface FeedVersionPromiseChain{
-    agencies: ((args?: {limit?: (Scalars['Int'] | null),where?: (AgencyFilter | null)}) => {get: <R extends AgencyRequest>(request: R, defaultValue?: FieldsSelection<Agency, R>[]) => Promise<FieldsSelection<Agency, R>[]>})&({get: <R extends AgencyRequest>(request: R, defaultValue?: FieldsSelection<Agency, R>[]) => Promise<FieldsSelection<Agency, R>[]>}),
-    created_by: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    description: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    earliest_calendar_date: ({get: (request?: boolean|number, defaultValue?: Scalars['Date']) => Promise<Scalars['Date']>}),
-    feed: (FeedPromiseChain & {get: <R extends FeedRequest>(request: R, defaultValue?: FieldsSelection<Feed, R>) => Promise<FieldsSelection<Feed, R>>}),
-    feed_infos: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends FeedInfoRequest>(request: R, defaultValue?: FieldsSelection<FeedInfo, R>[]) => Promise<FieldsSelection<FeedInfo, R>[]>})&({get: <R extends FeedInfoRequest>(request: R, defaultValue?: FieldsSelection<FeedInfo, R>[]) => Promise<FieldsSelection<FeedInfo, R>[]>}),
-    feed_version_gtfs_import: (FeedVersionGtfsImportPromiseChain & {get: <R extends FeedVersionGtfsImportRequest>(request: R, defaultValue?: (FieldsSelection<FeedVersionGtfsImport, R> | undefined)) => Promise<(FieldsSelection<FeedVersionGtfsImport, R> | undefined)>}),
-    fetched_at: ({get: (request?: boolean|number, defaultValue?: Scalars['Time']) => Promise<Scalars['Time']>}),
+    const Leg_possibleTypes: string[] = ['Leg']
+    export const isLeg = (obj?: { __typename?: any } | null): obj is Leg => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isLeg"')
+      return Leg_possibleTypes.includes(obj.__typename)
+    }
     
-/** Metadata for each text file present in the main directory of the zip archive  */
-files: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends FeedVersionFileInfoRequest>(request: R, defaultValue?: FieldsSelection<FeedVersionFileInfo, R>[]) => Promise<FieldsSelection<FeedVersionFileInfo, R>[]>})&({get: <R extends FeedVersionFileInfoRequest>(request: R, defaultValue?: FieldsSelection<FeedVersionFileInfo, R>[]) => Promise<FieldsSelection<FeedVersionFileInfo, R>[]>}),
+
+
+    const Level_possibleTypes: string[] = ['Level']
+    export const isLevel = (obj?: { __typename?: any } | null): obj is Level => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isLevel"')
+      return Level_possibleTypes.includes(obj.__typename)
+    }
     
-/** Convex hull around all active stops in the feed version */
-geometry: ({get: (request?: boolean|number, defaultValue?: (Scalars['Polygon'] | undefined)) => Promise<(Scalars['Polygon'] | undefined)>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    latest_calendar_date: ({get: (request?: boolean|number, defaultValue?: Scalars['Date']) => Promise<Scalars['Date']>}),
-    name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    routes: ((args?: {limit?: (Scalars['Int'] | null),where?: (RouteFilter | null)}) => {get: <R extends RouteRequest>(request: R, defaultValue?: FieldsSelection<Route, R>[]) => Promise<FieldsSelection<Route, R>[]>})&({get: <R extends RouteRequest>(request: R, defaultValue?: FieldsSelection<Route, R>[]) => Promise<FieldsSelection<Route, R>[]>}),
-    service_levels: ((args?: {limit?: (Scalars['Int'] | null),where?: (FeedVersionServiceLevelFilter | null)}) => {get: <R extends FeedVersionServiceLevelRequest>(request: R, defaultValue?: FieldsSelection<FeedVersionServiceLevel, R>[]) => Promise<FieldsSelection<FeedVersionServiceLevel, R>[]>})&({get: <R extends FeedVersionServiceLevelRequest>(request: R, defaultValue?: FieldsSelection<FeedVersionServiceLevel, R>[]) => Promise<FieldsSelection<FeedVersionServiceLevel, R>[]>}),
-    sha1: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    stops: ((args?: {limit?: (Scalars['Int'] | null),where?: (StopFilter | null)}) => {get: <R extends StopRequest>(request: R, defaultValue?: FieldsSelection<Stop, R>[]) => Promise<FieldsSelection<Stop, R>[]>})&({get: <R extends StopRequest>(request: R, defaultValue?: FieldsSelection<Stop, R>[]) => Promise<FieldsSelection<Stop, R>[]>}),
-    trips: ((args?: {limit?: (Scalars['Int'] | null),where?: (TripFilter | null)}) => {get: <R extends TripRequest>(request: R, defaultValue?: FieldsSelection<Trip, R>[]) => Promise<FieldsSelection<Trip, R>[]>})&({get: <R extends TripRequest>(request: R, defaultValue?: FieldsSelection<Trip, R>[]) => Promise<FieldsSelection<Trip, R>[]>}),
-    updated_by: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    url: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>})
-}
 
 
-/** Feed versions represent a specific static GTFS file that was published at a particular point in time, and are generally accessed and referenced using the [SHA1 checksum](https://en.wikipedia.org/wiki/SHA-1) of the GTFS archive. */
-export interface FeedVersionObservableChain{
-    agencies: ((args?: {limit?: (Scalars['Int'] | null),where?: (AgencyFilter | null)}) => {get: <R extends AgencyRequest>(request: R, defaultValue?: FieldsSelection<Agency, R>[]) => Observable<FieldsSelection<Agency, R>[]>})&({get: <R extends AgencyRequest>(request: R, defaultValue?: FieldsSelection<Agency, R>[]) => Observable<FieldsSelection<Agency, R>[]>}),
-    created_by: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    description: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    earliest_calendar_date: ({get: (request?: boolean|number, defaultValue?: Scalars['Date']) => Observable<Scalars['Date']>}),
-    feed: (FeedObservableChain & {get: <R extends FeedRequest>(request: R, defaultValue?: FieldsSelection<Feed, R>) => Observable<FieldsSelection<Feed, R>>}),
-    feed_infos: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends FeedInfoRequest>(request: R, defaultValue?: FieldsSelection<FeedInfo, R>[]) => Observable<FieldsSelection<FeedInfo, R>[]>})&({get: <R extends FeedInfoRequest>(request: R, defaultValue?: FieldsSelection<FeedInfo, R>[]) => Observable<FieldsSelection<FeedInfo, R>[]>}),
-    feed_version_gtfs_import: (FeedVersionGtfsImportObservableChain & {get: <R extends FeedVersionGtfsImportRequest>(request: R, defaultValue?: (FieldsSelection<FeedVersionGtfsImport, R> | undefined)) => Observable<(FieldsSelection<FeedVersionGtfsImport, R> | undefined)>}),
-    fetched_at: ({get: (request?: boolean|number, defaultValue?: Scalars['Time']) => Observable<Scalars['Time']>}),
+    const Operator_possibleTypes: string[] = ['Operator']
+    export const isOperator = (obj?: { __typename?: any } | null): obj is Operator => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isOperator"')
+      return Operator_possibleTypes.includes(obj.__typename)
+    }
     
-/** Metadata for each text file present in the main directory of the zip archive  */
-files: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends FeedVersionFileInfoRequest>(request: R, defaultValue?: FieldsSelection<FeedVersionFileInfo, R>[]) => Observable<FieldsSelection<FeedVersionFileInfo, R>[]>})&({get: <R extends FeedVersionFileInfoRequest>(request: R, defaultValue?: FieldsSelection<FeedVersionFileInfo, R>[]) => Observable<FieldsSelection<FeedVersionFileInfo, R>[]>}),
+
+
+    const Pathway_possibleTypes: string[] = ['Pathway']
+    export const isPathway = (obj?: { __typename?: any } | null): obj is Pathway => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isPathway"')
+      return Pathway_possibleTypes.includes(obj.__typename)
+    }
     
-/** Convex hull around all active stops in the feed version */
-geometry: ({get: (request?: boolean|number, defaultValue?: (Scalars['Polygon'] | undefined)) => Observable<(Scalars['Polygon'] | undefined)>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    latest_calendar_date: ({get: (request?: boolean|number, defaultValue?: Scalars['Date']) => Observable<Scalars['Date']>}),
-    name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    routes: ((args?: {limit?: (Scalars['Int'] | null),where?: (RouteFilter | null)}) => {get: <R extends RouteRequest>(request: R, defaultValue?: FieldsSelection<Route, R>[]) => Observable<FieldsSelection<Route, R>[]>})&({get: <R extends RouteRequest>(request: R, defaultValue?: FieldsSelection<Route, R>[]) => Observable<FieldsSelection<Route, R>[]>}),
-    service_levels: ((args?: {limit?: (Scalars['Int'] | null),where?: (FeedVersionServiceLevelFilter | null)}) => {get: <R extends FeedVersionServiceLevelRequest>(request: R, defaultValue?: FieldsSelection<FeedVersionServiceLevel, R>[]) => Observable<FieldsSelection<FeedVersionServiceLevel, R>[]>})&({get: <R extends FeedVersionServiceLevelRequest>(request: R, defaultValue?: FieldsSelection<FeedVersionServiceLevel, R>[]) => Observable<FieldsSelection<FeedVersionServiceLevel, R>[]>}),
-    sha1: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    stops: ((args?: {limit?: (Scalars['Int'] | null),where?: (StopFilter | null)}) => {get: <R extends StopRequest>(request: R, defaultValue?: FieldsSelection<Stop, R>[]) => Observable<FieldsSelection<Stop, R>[]>})&({get: <R extends StopRequest>(request: R, defaultValue?: FieldsSelection<Stop, R>[]) => Observable<FieldsSelection<Stop, R>[]>}),
-    trips: ((args?: {limit?: (Scalars['Int'] | null),where?: (TripFilter | null)}) => {get: <R extends TripRequest>(request: R, defaultValue?: FieldsSelection<Trip, R>[]) => Observable<FieldsSelection<Trip, R>[]>})&({get: <R extends TripRequest>(request: R, defaultValue?: FieldsSelection<Trip, R>[]) => Observable<FieldsSelection<Trip, R>[]>}),
-    updated_by: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    url: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>})
-}
 
-export interface FeedVersionDeleteResultPromiseChain{
-    success: ({get: (request?: boolean|number, defaultValue?: Scalars['Boolean']) => Promise<Scalars['Boolean']>})
-}
 
-export interface FeedVersionDeleteResultObservableChain{
-    success: ({get: (request?: boolean|number, defaultValue?: Scalars['Boolean']) => Observable<Scalars['Boolean']>})
-}
-
-export interface FeedVersionFetchResultPromiseChain{
-    feed_version: (FeedVersionPromiseChain & {get: <R extends FeedVersionRequest>(request: R, defaultValue?: (FieldsSelection<FeedVersion, R> | undefined)) => Promise<(FieldsSelection<FeedVersion, R> | undefined)>}),
-    fetch_error: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    found_dir_sha1: ({get: (request?: boolean|number, defaultValue?: Scalars['Boolean']) => Promise<Scalars['Boolean']>}),
-    found_sha1: ({get: (request?: boolean|number, defaultValue?: Scalars['Boolean']) => Promise<Scalars['Boolean']>})
-}
-
-export interface FeedVersionFetchResultObservableChain{
-    feed_version: (FeedVersionObservableChain & {get: <R extends FeedVersionRequest>(request: R, defaultValue?: (FieldsSelection<FeedVersion, R> | undefined)) => Observable<(FieldsSelection<FeedVersion, R> | undefined)>}),
-    fetch_error: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    found_dir_sha1: ({get: (request?: boolean|number, defaultValue?: Scalars['Boolean']) => Observable<Scalars['Boolean']>}),
-    found_sha1: ({get: (request?: boolean|number, defaultValue?: Scalars['Boolean']) => Observable<Scalars['Boolean']>})
-}
-
-export interface FeedVersionFileInfoPromiseChain{
-    csv_like: ({get: (request?: boolean|number, defaultValue?: Scalars['Boolean']) => Promise<Scalars['Boolean']>}),
-    header: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    name: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    rows: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    sha1: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    size: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>})
-}
-
-export interface FeedVersionFileInfoObservableChain{
-    csv_like: ({get: (request?: boolean|number, defaultValue?: Scalars['Boolean']) => Observable<Scalars['Boolean']>}),
-    header: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    name: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    rows: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    sha1: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    size: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>})
-}
-
-export interface FeedVersionGtfsImportPromiseChain{
-    created_at: ({get: (request?: boolean|number, defaultValue?: (Scalars['Time'] | undefined)) => Promise<(Scalars['Time'] | undefined)>}),
-    entity_count: ({get: (request?: boolean|number, defaultValue?: (Scalars['Any'] | undefined)) => Promise<(Scalars['Any'] | undefined)>}),
-    exception_log: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    in_progress: ({get: (request?: boolean|number, defaultValue?: Scalars['Boolean']) => Promise<Scalars['Boolean']>}),
-    interpolated_stop_time_count: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    schedule_removed: ({get: (request?: boolean|number, defaultValue?: Scalars['Boolean']) => Promise<Scalars['Boolean']>}),
-    skip_entity_error_count: ({get: (request?: boolean|number, defaultValue?: (Scalars['Any'] | undefined)) => Promise<(Scalars['Any'] | undefined)>}),
-    skip_entity_filter_count: ({get: (request?: boolean|number, defaultValue?: (Scalars['Any'] | undefined)) => Promise<(Scalars['Any'] | undefined)>}),
-    skip_entity_marked_count: ({get: (request?: boolean|number, defaultValue?: (Scalars['Any'] | undefined)) => Promise<(Scalars['Any'] | undefined)>}),
-    skip_entity_reference_count: ({get: (request?: boolean|number, defaultValue?: (Scalars['Any'] | undefined)) => Promise<(Scalars['Any'] | undefined)>}),
-    success: ({get: (request?: boolean|number, defaultValue?: Scalars['Boolean']) => Promise<Scalars['Boolean']>}),
-    updated_at: ({get: (request?: boolean|number, defaultValue?: (Scalars['Time'] | undefined)) => Promise<(Scalars['Time'] | undefined)>}),
-    warning_count: ({get: (request?: boolean|number, defaultValue?: (Scalars['Any'] | undefined)) => Promise<(Scalars['Any'] | undefined)>})
-}
-
-export interface FeedVersionGtfsImportObservableChain{
-    created_at: ({get: (request?: boolean|number, defaultValue?: (Scalars['Time'] | undefined)) => Observable<(Scalars['Time'] | undefined)>}),
-    entity_count: ({get: (request?: boolean|number, defaultValue?: (Scalars['Any'] | undefined)) => Observable<(Scalars['Any'] | undefined)>}),
-    exception_log: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    in_progress: ({get: (request?: boolean|number, defaultValue?: Scalars['Boolean']) => Observable<Scalars['Boolean']>}),
-    interpolated_stop_time_count: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    schedule_removed: ({get: (request?: boolean|number, defaultValue?: Scalars['Boolean']) => Observable<Scalars['Boolean']>}),
-    skip_entity_error_count: ({get: (request?: boolean|number, defaultValue?: (Scalars['Any'] | undefined)) => Observable<(Scalars['Any'] | undefined)>}),
-    skip_entity_filter_count: ({get: (request?: boolean|number, defaultValue?: (Scalars['Any'] | undefined)) => Observable<(Scalars['Any'] | undefined)>}),
-    skip_entity_marked_count: ({get: (request?: boolean|number, defaultValue?: (Scalars['Any'] | undefined)) => Observable<(Scalars['Any'] | undefined)>}),
-    skip_entity_reference_count: ({get: (request?: boolean|number, defaultValue?: (Scalars['Any'] | undefined)) => Observable<(Scalars['Any'] | undefined)>}),
-    success: ({get: (request?: boolean|number, defaultValue?: Scalars['Boolean']) => Observable<Scalars['Boolean']>}),
-    updated_at: ({get: (request?: boolean|number, defaultValue?: (Scalars['Time'] | undefined)) => Observable<(Scalars['Time'] | undefined)>}),
-    warning_count: ({get: (request?: boolean|number, defaultValue?: (Scalars['Any'] | undefined)) => Observable<(Scalars['Any'] | undefined)>})
-}
-
-export interface FeedVersionImportResultPromiseChain{
-    success: ({get: (request?: boolean|number, defaultValue?: Scalars['Boolean']) => Promise<Scalars['Boolean']>})
-}
-
-export interface FeedVersionImportResultObservableChain{
-    success: ({get: (request?: boolean|number, defaultValue?: Scalars['Boolean']) => Observable<Scalars['Boolean']>})
-}
-
-export interface FeedVersionServiceLevelPromiseChain{
-    end_date: ({get: (request?: boolean|number, defaultValue?: Scalars['Date']) => Promise<Scalars['Date']>}),
-    friday: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    monday: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    saturday: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    start_date: ({get: (request?: boolean|number, defaultValue?: Scalars['Date']) => Promise<Scalars['Date']>}),
-    sunday: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    thursday: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    tuesday: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    wednesday: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>})
-}
-
-export interface FeedVersionServiceLevelObservableChain{
-    end_date: ({get: (request?: boolean|number, defaultValue?: Scalars['Date']) => Observable<Scalars['Date']>}),
-    friday: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    monday: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    saturday: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    start_date: ({get: (request?: boolean|number, defaultValue?: Scalars['Date']) => Observable<Scalars['Date']>}),
-    sunday: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    thursday: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    tuesday: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    wednesday: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>})
-}
-
-export interface FeedVersionUnimportResultPromiseChain{
-    success: ({get: (request?: boolean|number, defaultValue?: Scalars['Boolean']) => Promise<Scalars['Boolean']>})
-}
-
-export interface FeedVersionUnimportResultObservableChain{
-    success: ({get: (request?: boolean|number, defaultValue?: Scalars['Boolean']) => Observable<Scalars['Boolean']>})
-}
-
-
-/** Record from a static GTFS [frequencies.txt](https://gtfs.org/schedule/reference/#frequenciestxt) file. */
-export interface FrequencyPromiseChain{
-    end_time: ({get: (request?: boolean|number, defaultValue?: Scalars['Seconds']) => Promise<Scalars['Seconds']>}),
-    exact_times: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    headway_secs: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    start_time: ({get: (request?: boolean|number, defaultValue?: Scalars['Seconds']) => Promise<Scalars['Seconds']>})
-}
-
-
-/** Record from a static GTFS [frequencies.txt](https://gtfs.org/schedule/reference/#frequenciestxt) file. */
-export interface FrequencyObservableChain{
-    end_time: ({get: (request?: boolean|number, defaultValue?: Scalars['Seconds']) => Observable<Scalars['Seconds']>}),
-    exact_times: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    headway_secs: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    start_time: ({get: (request?: boolean|number, defaultValue?: Scalars['Seconds']) => Observable<Scalars['Seconds']>})
-}
-
-export interface GbfsAlertTimePromiseChain{
-    end: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    start: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>})
-}
-
-export interface GbfsAlertTimeObservableChain{
-    end: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    start: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>})
-}
-
-export interface GbfsBrandAssetPromiseChain{
-    brand_image_url: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    brand_image_url_dark: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    brand_last_modified: ({get: (request?: boolean|number, defaultValue?: (Scalars['Date'] | undefined)) => Promise<(Scalars['Date'] | undefined)>}),
-    brand_terms_url: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    color: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>})
-}
-
-export interface GbfsBrandAssetObservableChain{
-    brand_image_url: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    brand_image_url_dark: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    brand_last_modified: ({get: (request?: boolean|number, defaultValue?: (Scalars['Date'] | undefined)) => Observable<(Scalars['Date'] | undefined)>}),
-    brand_terms_url: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    color: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>})
-}
-
-export interface GbfsFeedPromiseChain{
-    alerts: ({get: <R extends GbfsSystemAlertRequest>(request: R, defaultValue?: (FieldsSelection<GbfsSystemAlert, R>[] | undefined)) => Promise<(FieldsSelection<GbfsSystemAlert, R>[] | undefined)>}),
-    calendars: ({get: <R extends GbfsSystemCalendarRequest>(request: R, defaultValue?: (FieldsSelection<GbfsSystemCalendar, R>[] | undefined)) => Promise<(FieldsSelection<GbfsSystemCalendar, R>[] | undefined)>}),
-    rental_hours: ({get: <R extends GbfsSystemHourRequest>(request: R, defaultValue?: (FieldsSelection<GbfsSystemHour, R>[] | undefined)) => Promise<(FieldsSelection<GbfsSystemHour, R>[] | undefined)>}),
-    station_information: ({get: <R extends GbfsStationInformationRequest>(request: R, defaultValue?: (FieldsSelection<GbfsStationInformation, R>[] | undefined)) => Promise<(FieldsSelection<GbfsStationInformation, R>[] | undefined)>}),
-    system_information: (GbfsSystemInformationPromiseChain & {get: <R extends GbfsSystemInformationRequest>(request: R, defaultValue?: (FieldsSelection<GbfsSystemInformation, R> | undefined)) => Promise<(FieldsSelection<GbfsSystemInformation, R> | undefined)>})
-}
-
-export interface GbfsFeedObservableChain{
-    alerts: ({get: <R extends GbfsSystemAlertRequest>(request: R, defaultValue?: (FieldsSelection<GbfsSystemAlert, R>[] | undefined)) => Observable<(FieldsSelection<GbfsSystemAlert, R>[] | undefined)>}),
-    calendars: ({get: <R extends GbfsSystemCalendarRequest>(request: R, defaultValue?: (FieldsSelection<GbfsSystemCalendar, R>[] | undefined)) => Observable<(FieldsSelection<GbfsSystemCalendar, R>[] | undefined)>}),
-    rental_hours: ({get: <R extends GbfsSystemHourRequest>(request: R, defaultValue?: (FieldsSelection<GbfsSystemHour, R>[] | undefined)) => Observable<(FieldsSelection<GbfsSystemHour, R>[] | undefined)>}),
-    station_information: ({get: <R extends GbfsStationInformationRequest>(request: R, defaultValue?: (FieldsSelection<GbfsStationInformation, R>[] | undefined)) => Observable<(FieldsSelection<GbfsStationInformation, R>[] | undefined)>}),
-    system_information: (GbfsSystemInformationObservableChain & {get: <R extends GbfsSystemInformationRequest>(request: R, defaultValue?: (FieldsSelection<GbfsSystemInformation, R> | undefined)) => Observable<(FieldsSelection<GbfsSystemInformation, R> | undefined)>})
-}
-
-export interface GbfsFreeBikeStatusPromiseChain{
-    available_until: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    bike_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    current_fuel_percent: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Promise<(Scalars['Float'] | undefined)>}),
-    current_range_meters: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Promise<(Scalars['Float'] | undefined)>}),
-    feed: (GbfsFeedPromiseChain & {get: <R extends GbfsFeedRequest>(request: R, defaultValue?: (FieldsSelection<GbfsFeed, R> | undefined)) => Promise<(FieldsSelection<GbfsFeed, R> | undefined)>}),
-    home_station: (GbfsStationInformationPromiseChain & {get: <R extends GbfsStationInformationRequest>(request: R, defaultValue?: (FieldsSelection<GbfsStationInformation, R> | undefined)) => Promise<(FieldsSelection<GbfsStationInformation, R> | undefined)>}),
-    is_disabled: ({get: (request?: boolean|number, defaultValue?: (Scalars['Bool'] | undefined)) => Promise<(Scalars['Bool'] | undefined)>}),
-    is_reserved: ({get: (request?: boolean|number, defaultValue?: (Scalars['Bool'] | undefined)) => Promise<(Scalars['Bool'] | undefined)>}),
-    last_reported: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    lat: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Promise<(Scalars['Float'] | undefined)>}),
-    lon: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Promise<(Scalars['Float'] | undefined)>}),
-    pricing_plan: (GbfsSystemPricingPlanPromiseChain & {get: <R extends GbfsSystemPricingPlanRequest>(request: R, defaultValue?: (FieldsSelection<GbfsSystemPricingPlan, R> | undefined)) => Promise<(FieldsSelection<GbfsSystemPricingPlan, R> | undefined)>}),
-    rental_uris: (GbfsRentalUrisPromiseChain & {get: <R extends GbfsRentalUrisRequest>(request: R, defaultValue?: (FieldsSelection<GbfsRentalUris, R> | undefined)) => Promise<(FieldsSelection<GbfsRentalUris, R> | undefined)>}),
-    station: (GbfsStationInformationPromiseChain & {get: <R extends GbfsStationInformationRequest>(request: R, defaultValue?: (FieldsSelection<GbfsStationInformation, R> | undefined)) => Promise<(FieldsSelection<GbfsStationInformation, R> | undefined)>}),
-    vehicle_equipment: ({get: (request?: boolean|number, defaultValue?: (Scalars['Strings'] | undefined)) => Promise<(Scalars['Strings'] | undefined)>}),
-    vehicle_type: (GbfsVehicleTypePromiseChain & {get: <R extends GbfsVehicleTypeRequest>(request: R, defaultValue?: (FieldsSelection<GbfsVehicleType, R> | undefined)) => Promise<(FieldsSelection<GbfsVehicleType, R> | undefined)>})
-}
-
-export interface GbfsFreeBikeStatusObservableChain{
-    available_until: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    bike_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    current_fuel_percent: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Observable<(Scalars['Float'] | undefined)>}),
-    current_range_meters: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Observable<(Scalars['Float'] | undefined)>}),
-    feed: (GbfsFeedObservableChain & {get: <R extends GbfsFeedRequest>(request: R, defaultValue?: (FieldsSelection<GbfsFeed, R> | undefined)) => Observable<(FieldsSelection<GbfsFeed, R> | undefined)>}),
-    home_station: (GbfsStationInformationObservableChain & {get: <R extends GbfsStationInformationRequest>(request: R, defaultValue?: (FieldsSelection<GbfsStationInformation, R> | undefined)) => Observable<(FieldsSelection<GbfsStationInformation, R> | undefined)>}),
-    is_disabled: ({get: (request?: boolean|number, defaultValue?: (Scalars['Bool'] | undefined)) => Observable<(Scalars['Bool'] | undefined)>}),
-    is_reserved: ({get: (request?: boolean|number, defaultValue?: (Scalars['Bool'] | undefined)) => Observable<(Scalars['Bool'] | undefined)>}),
-    last_reported: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    lat: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Observable<(Scalars['Float'] | undefined)>}),
-    lon: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Observable<(Scalars['Float'] | undefined)>}),
-    pricing_plan: (GbfsSystemPricingPlanObservableChain & {get: <R extends GbfsSystemPricingPlanRequest>(request: R, defaultValue?: (FieldsSelection<GbfsSystemPricingPlan, R> | undefined)) => Observable<(FieldsSelection<GbfsSystemPricingPlan, R> | undefined)>}),
-    rental_uris: (GbfsRentalUrisObservableChain & {get: <R extends GbfsRentalUrisRequest>(request: R, defaultValue?: (FieldsSelection<GbfsRentalUris, R> | undefined)) => Observable<(FieldsSelection<GbfsRentalUris, R> | undefined)>}),
-    station: (GbfsStationInformationObservableChain & {get: <R extends GbfsStationInformationRequest>(request: R, defaultValue?: (FieldsSelection<GbfsStationInformation, R> | undefined)) => Observable<(FieldsSelection<GbfsStationInformation, R> | undefined)>}),
-    vehicle_equipment: ({get: (request?: boolean|number, defaultValue?: (Scalars['Strings'] | undefined)) => Observable<(Scalars['Strings'] | undefined)>}),
-    vehicle_type: (GbfsVehicleTypeObservableChain & {get: <R extends GbfsVehicleTypeRequest>(request: R, defaultValue?: (FieldsSelection<GbfsVehicleType, R> | undefined)) => Observable<(FieldsSelection<GbfsVehicleType, R> | undefined)>})
-}
-
-export interface GbfsGeofenceFeaturePromiseChain{
-    geometry: ({get: (request?: boolean|number, defaultValue?: (Scalars['Geometry'] | undefined)) => Promise<(Scalars['Geometry'] | undefined)>}),
-    type: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>})
-}
-
-export interface GbfsGeofenceFeatureObservableChain{
-    geometry: ({get: (request?: boolean|number, defaultValue?: (Scalars['Geometry'] | undefined)) => Observable<(Scalars['Geometry'] | undefined)>}),
-    type: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>})
-}
-
-export interface GbfsGeofencePropertyPromiseChain{
-    end: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    rules: ({get: <R extends GbfsGeofenceRuleRequest>(request: R, defaultValue?: ((FieldsSelection<GbfsGeofenceRule, R> | undefined)[] | undefined)) => Promise<((FieldsSelection<GbfsGeofenceRule, R> | undefined)[] | undefined)>}),
-    start: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>})
-}
-
-export interface GbfsGeofencePropertyObservableChain{
-    end: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    rules: ({get: <R extends GbfsGeofenceRuleRequest>(request: R, defaultValue?: ((FieldsSelection<GbfsGeofenceRule, R> | undefined)[] | undefined)) => Observable<((FieldsSelection<GbfsGeofenceRule, R> | undefined)[] | undefined)>}),
-    start: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>})
-}
-
-export interface GbfsGeofenceRulePromiseChain{
-    maximum_speed_kph: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    ride_allowed: ({get: (request?: boolean|number, defaultValue?: (Scalars['Bool'] | undefined)) => Promise<(Scalars['Bool'] | undefined)>}),
-    ride_through_allowed: ({get: (request?: boolean|number, defaultValue?: (Scalars['Bool'] | undefined)) => Promise<(Scalars['Bool'] | undefined)>}),
-    station_parking: ({get: (request?: boolean|number, defaultValue?: (Scalars['Bool'] | undefined)) => Promise<(Scalars['Bool'] | undefined)>}),
-    vehicle_type: (GbfsVehicleTypePromiseChain & {get: <R extends GbfsVehicleTypeRequest>(request: R, defaultValue?: (FieldsSelection<GbfsVehicleType, R> | undefined)) => Promise<(FieldsSelection<GbfsVehicleType, R> | undefined)>})
-}
-
-export interface GbfsGeofenceRuleObservableChain{
-    maximum_speed_kph: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    ride_allowed: ({get: (request?: boolean|number, defaultValue?: (Scalars['Bool'] | undefined)) => Observable<(Scalars['Bool'] | undefined)>}),
-    ride_through_allowed: ({get: (request?: boolean|number, defaultValue?: (Scalars['Bool'] | undefined)) => Observable<(Scalars['Bool'] | undefined)>}),
-    station_parking: ({get: (request?: boolean|number, defaultValue?: (Scalars['Bool'] | undefined)) => Observable<(Scalars['Bool'] | undefined)>}),
-    vehicle_type: (GbfsVehicleTypeObservableChain & {get: <R extends GbfsVehicleTypeRequest>(request: R, defaultValue?: (FieldsSelection<GbfsVehicleType, R> | undefined)) => Observable<(FieldsSelection<GbfsVehicleType, R> | undefined)>})
-}
-
-export interface GbfsGeofenceZonePromiseChain{
-    features: ({get: <R extends GbfsGeofenceFeatureRequest>(request: R, defaultValue?: (FieldsSelection<GbfsGeofenceFeature, R>[] | undefined)) => Promise<(FieldsSelection<GbfsGeofenceFeature, R>[] | undefined)>}),
-    type: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>})
-}
-
-export interface GbfsGeofenceZoneObservableChain{
-    features: ({get: <R extends GbfsGeofenceFeatureRequest>(request: R, defaultValue?: (FieldsSelection<GbfsGeofenceFeature, R>[] | undefined)) => Observable<(FieldsSelection<GbfsGeofenceFeature, R>[] | undefined)>}),
-    type: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>})
-}
-
-export interface GbfsPlanPricePromiseChain{
-    end: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    interval: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    rate: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Promise<(Scalars['Float'] | undefined)>}),
-    start: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>})
-}
-
-export interface GbfsPlanPriceObservableChain{
-    end: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    interval: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    rate: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Observable<(Scalars['Float'] | undefined)>}),
-    start: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>})
-}
-
-export interface GbfsRentalAppPromiseChain{
-    discovery_uri: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    store_uri: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>})
-}
-
-export interface GbfsRentalAppObservableChain{
-    discovery_uri: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    store_uri: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>})
-}
-
-export interface GbfsRentalAppsPromiseChain{
-    android: (GbfsRentalAppPromiseChain & {get: <R extends GbfsRentalAppRequest>(request: R, defaultValue?: (FieldsSelection<GbfsRentalApp, R> | undefined)) => Promise<(FieldsSelection<GbfsRentalApp, R> | undefined)>}),
-    ios: (GbfsRentalAppPromiseChain & {get: <R extends GbfsRentalAppRequest>(request: R, defaultValue?: (FieldsSelection<GbfsRentalApp, R> | undefined)) => Promise<(FieldsSelection<GbfsRentalApp, R> | undefined)>})
-}
-
-export interface GbfsRentalAppsObservableChain{
-    android: (GbfsRentalAppObservableChain & {get: <R extends GbfsRentalAppRequest>(request: R, defaultValue?: (FieldsSelection<GbfsRentalApp, R> | undefined)) => Observable<(FieldsSelection<GbfsRentalApp, R> | undefined)>}),
-    ios: (GbfsRentalAppObservableChain & {get: <R extends GbfsRentalAppRequest>(request: R, defaultValue?: (FieldsSelection<GbfsRentalApp, R> | undefined)) => Observable<(FieldsSelection<GbfsRentalApp, R> | undefined)>})
-}
-
-export interface GbfsRentalUrisPromiseChain{
-    android: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    ios: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    web: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>})
-}
-
-export interface GbfsRentalUrisObservableChain{
-    android: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    ios: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    web: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>})
-}
-
-export interface GbfsStationInformationPromiseChain{
-    address: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    capacity: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    contact_phone: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    cross_street: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    feed: (GbfsFeedPromiseChain & {get: <R extends GbfsFeedRequest>(request: R, defaultValue?: (FieldsSelection<GbfsFeed, R> | undefined)) => Promise<(FieldsSelection<GbfsFeed, R> | undefined)>}),
-    is_charging_station: ({get: (request?: boolean|number, defaultValue?: (Scalars['Bool'] | undefined)) => Promise<(Scalars['Bool'] | undefined)>}),
-    is_valet_station: ({get: (request?: boolean|number, defaultValue?: (Scalars['Bool'] | undefined)) => Promise<(Scalars['Bool'] | undefined)>}),
-    is_virtual_station: ({get: (request?: boolean|number, defaultValue?: (Scalars['Bool'] | undefined)) => Promise<(Scalars['Bool'] | undefined)>}),
-    lat: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Promise<(Scalars['Float'] | undefined)>}),
-    lon: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Promise<(Scalars['Float'] | undefined)>}),
-    name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    parking_hoop: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    parking_type: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    post_code: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    region: (GbfsSystemRegionPromiseChain & {get: <R extends GbfsSystemRegionRequest>(request: R, defaultValue?: (FieldsSelection<GbfsSystemRegion, R> | undefined)) => Promise<(FieldsSelection<GbfsSystemRegion, R> | undefined)>}),
-    rental_methods: ({get: (request?: boolean|number, defaultValue?: (Scalars['Strings'] | undefined)) => Promise<(Scalars['Strings'] | undefined)>}),
-    short_name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    station_area: ({get: (request?: boolean|number, defaultValue?: (Scalars['Geometry'] | undefined)) => Promise<(Scalars['Geometry'] | undefined)>}),
-    station_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    status: (GbfsStationStatusPromiseChain & {get: <R extends GbfsStationStatusRequest>(request: R, defaultValue?: (FieldsSelection<GbfsStationStatus, R> | undefined)) => Promise<(FieldsSelection<GbfsStationStatus, R> | undefined)>})
-}
-
-export interface GbfsStationInformationObservableChain{
-    address: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    capacity: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    contact_phone: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    cross_street: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    feed: (GbfsFeedObservableChain & {get: <R extends GbfsFeedRequest>(request: R, defaultValue?: (FieldsSelection<GbfsFeed, R> | undefined)) => Observable<(FieldsSelection<GbfsFeed, R> | undefined)>}),
-    is_charging_station: ({get: (request?: boolean|number, defaultValue?: (Scalars['Bool'] | undefined)) => Observable<(Scalars['Bool'] | undefined)>}),
-    is_valet_station: ({get: (request?: boolean|number, defaultValue?: (Scalars['Bool'] | undefined)) => Observable<(Scalars['Bool'] | undefined)>}),
-    is_virtual_station: ({get: (request?: boolean|number, defaultValue?: (Scalars['Bool'] | undefined)) => Observable<(Scalars['Bool'] | undefined)>}),
-    lat: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Observable<(Scalars['Float'] | undefined)>}),
-    lon: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Observable<(Scalars['Float'] | undefined)>}),
-    name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    parking_hoop: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    parking_type: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    post_code: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    region: (GbfsSystemRegionObservableChain & {get: <R extends GbfsSystemRegionRequest>(request: R, defaultValue?: (FieldsSelection<GbfsSystemRegion, R> | undefined)) => Observable<(FieldsSelection<GbfsSystemRegion, R> | undefined)>}),
-    rental_methods: ({get: (request?: boolean|number, defaultValue?: (Scalars['Strings'] | undefined)) => Observable<(Scalars['Strings'] | undefined)>}),
-    short_name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    station_area: ({get: (request?: boolean|number, defaultValue?: (Scalars['Geometry'] | undefined)) => Observable<(Scalars['Geometry'] | undefined)>}),
-    station_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    status: (GbfsStationStatusObservableChain & {get: <R extends GbfsStationStatusRequest>(request: R, defaultValue?: (FieldsSelection<GbfsStationStatus, R> | undefined)) => Observable<(FieldsSelection<GbfsStationStatus, R> | undefined)>})
-}
-
-export interface GbfsStationStatusPromiseChain{
-    is_installed: ({get: (request?: boolean|number, defaultValue?: (Scalars['Bool'] | undefined)) => Promise<(Scalars['Bool'] | undefined)>}),
-    is_renting: ({get: (request?: boolean|number, defaultValue?: (Scalars['Bool'] | undefined)) => Promise<(Scalars['Bool'] | undefined)>}),
-    is_returning: ({get: (request?: boolean|number, defaultValue?: (Scalars['Bool'] | undefined)) => Promise<(Scalars['Bool'] | undefined)>}),
-    last_reported: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    num_bikes_available: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    num_bikes_disabled: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    num_docks_available: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    num_docks_disabled: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    station_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    vehicle_docks_available: ({get: <R extends GbfsVehicleDockAvailableRequest>(request: R, defaultValue?: (FieldsSelection<GbfsVehicleDockAvailable, R>[] | undefined)) => Promise<(FieldsSelection<GbfsVehicleDockAvailable, R>[] | undefined)>}),
-    vehicle_types_available: ({get: <R extends GbfsVehicleTypeAvailableRequest>(request: R, defaultValue?: (FieldsSelection<GbfsVehicleTypeAvailable, R>[] | undefined)) => Promise<(FieldsSelection<GbfsVehicleTypeAvailable, R>[] | undefined)>})
-}
-
-export interface GbfsStationStatusObservableChain{
-    is_installed: ({get: (request?: boolean|number, defaultValue?: (Scalars['Bool'] | undefined)) => Observable<(Scalars['Bool'] | undefined)>}),
-    is_renting: ({get: (request?: boolean|number, defaultValue?: (Scalars['Bool'] | undefined)) => Observable<(Scalars['Bool'] | undefined)>}),
-    is_returning: ({get: (request?: boolean|number, defaultValue?: (Scalars['Bool'] | undefined)) => Observable<(Scalars['Bool'] | undefined)>}),
-    last_reported: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    num_bikes_available: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    num_bikes_disabled: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    num_docks_available: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    num_docks_disabled: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    station_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    vehicle_docks_available: ({get: <R extends GbfsVehicleDockAvailableRequest>(request: R, defaultValue?: (FieldsSelection<GbfsVehicleDockAvailable, R>[] | undefined)) => Observable<(FieldsSelection<GbfsVehicleDockAvailable, R>[] | undefined)>}),
-    vehicle_types_available: ({get: <R extends GbfsVehicleTypeAvailableRequest>(request: R, defaultValue?: (FieldsSelection<GbfsVehicleTypeAvailable, R>[] | undefined)) => Observable<(FieldsSelection<GbfsVehicleTypeAvailable, R>[] | undefined)>})
-}
-
-export interface GbfsSystemAlertPromiseChain{
-    alert_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    description: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    last_updated: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    summary: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    times: ({get: <R extends GbfsAlertTimeRequest>(request: R, defaultValue?: (FieldsSelection<GbfsAlertTime, R>[] | undefined)) => Promise<(FieldsSelection<GbfsAlertTime, R>[] | undefined)>}),
-    type: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    url: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>})
-}
-
-export interface GbfsSystemAlertObservableChain{
-    alert_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    description: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    last_updated: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    summary: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    times: ({get: <R extends GbfsAlertTimeRequest>(request: R, defaultValue?: (FieldsSelection<GbfsAlertTime, R>[] | undefined)) => Observable<(FieldsSelection<GbfsAlertTime, R>[] | undefined)>}),
-    type: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    url: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>})
-}
-
-export interface GbfsSystemCalendarPromiseChain{
-    end_day: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    end_month: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    end_year: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    start_day: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    start_month: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    start_year: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>})
-}
-
-export interface GbfsSystemCalendarObservableChain{
-    end_day: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    end_month: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    end_year: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    start_day: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    start_month: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    start_year: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>})
-}
-
-export interface GbfsSystemHourPromiseChain{
-    days: ({get: (request?: boolean|number, defaultValue?: (Scalars['Strings'] | undefined)) => Promise<(Scalars['Strings'] | undefined)>}),
-    end_time: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    start_time: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    user_types: ({get: (request?: boolean|number, defaultValue?: (Scalars['Strings'] | undefined)) => Promise<(Scalars['Strings'] | undefined)>})
-}
-
-export interface GbfsSystemHourObservableChain{
-    days: ({get: (request?: boolean|number, defaultValue?: (Scalars['Strings'] | undefined)) => Observable<(Scalars['Strings'] | undefined)>}),
-    end_time: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    start_time: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    user_types: ({get: (request?: boolean|number, defaultValue?: (Scalars['Strings'] | undefined)) => Observable<(Scalars['Strings'] | undefined)>})
-}
-
-export interface GbfsSystemInformationPromiseChain{
-    brand_assets: (GbfsBrandAssetPromiseChain & {get: <R extends GbfsBrandAssetRequest>(request: R, defaultValue?: (FieldsSelection<GbfsBrandAsset, R> | undefined)) => Promise<(FieldsSelection<GbfsBrandAsset, R> | undefined)>}),
-    email: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    feed_contact_email: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    language: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    license_url: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    operator: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    phone_number: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    privacy_last_updated: ({get: (request?: boolean|number, defaultValue?: (Scalars['Date'] | undefined)) => Promise<(Scalars['Date'] | undefined)>}),
-    privacy_url: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    purchase_url: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    rental_apps: (GbfsRentalAppsPromiseChain & {get: <R extends GbfsRentalAppsRequest>(request: R, defaultValue?: (FieldsSelection<GbfsRentalApps, R> | undefined)) => Promise<(FieldsSelection<GbfsRentalApps, R> | undefined)>}),
-    short_name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    start_date: ({get: (request?: boolean|number, defaultValue?: (Scalars['Date'] | undefined)) => Promise<(Scalars['Date'] | undefined)>}),
-    system_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    terms_last_updated: ({get: (request?: boolean|number, defaultValue?: (Scalars['Date'] | undefined)) => Promise<(Scalars['Date'] | undefined)>}),
-    terms_url: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    timezone: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    url: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>})
-}
-
-export interface GbfsSystemInformationObservableChain{
-    brand_assets: (GbfsBrandAssetObservableChain & {get: <R extends GbfsBrandAssetRequest>(request: R, defaultValue?: (FieldsSelection<GbfsBrandAsset, R> | undefined)) => Observable<(FieldsSelection<GbfsBrandAsset, R> | undefined)>}),
-    email: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    feed_contact_email: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    language: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    license_url: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    operator: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    phone_number: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    privacy_last_updated: ({get: (request?: boolean|number, defaultValue?: (Scalars['Date'] | undefined)) => Observable<(Scalars['Date'] | undefined)>}),
-    privacy_url: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    purchase_url: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    rental_apps: (GbfsRentalAppsObservableChain & {get: <R extends GbfsRentalAppsRequest>(request: R, defaultValue?: (FieldsSelection<GbfsRentalApps, R> | undefined)) => Observable<(FieldsSelection<GbfsRentalApps, R> | undefined)>}),
-    short_name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    start_date: ({get: (request?: boolean|number, defaultValue?: (Scalars['Date'] | undefined)) => Observable<(Scalars['Date'] | undefined)>}),
-    system_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    terms_last_updated: ({get: (request?: boolean|number, defaultValue?: (Scalars['Date'] | undefined)) => Observable<(Scalars['Date'] | undefined)>}),
-    terms_url: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    timezone: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    url: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>})
-}
-
-export interface GbfsSystemPricingPlanPromiseChain{
-    currency: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    description: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    is_taxable: ({get: (request?: boolean|number, defaultValue?: (Scalars['Bool'] | undefined)) => Promise<(Scalars['Bool'] | undefined)>}),
-    name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    per_km_pricing: ({get: <R extends GbfsPlanPriceRequest>(request: R, defaultValue?: (FieldsSelection<GbfsPlanPrice, R>[] | undefined)) => Promise<(FieldsSelection<GbfsPlanPrice, R>[] | undefined)>}),
-    per_min_pricing: ({get: <R extends GbfsPlanPriceRequest>(request: R, defaultValue?: (FieldsSelection<GbfsPlanPrice, R>[] | undefined)) => Promise<(FieldsSelection<GbfsPlanPrice, R>[] | undefined)>}),
-    plan_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    price: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Promise<(Scalars['Float'] | undefined)>}),
-    surge_pricing: ({get: (request?: boolean|number, defaultValue?: (Scalars['Bool'] | undefined)) => Promise<(Scalars['Bool'] | undefined)>}),
-    url: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>})
-}
-
-export interface GbfsSystemPricingPlanObservableChain{
-    currency: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    description: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    is_taxable: ({get: (request?: boolean|number, defaultValue?: (Scalars['Bool'] | undefined)) => Observable<(Scalars['Bool'] | undefined)>}),
-    name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    per_km_pricing: ({get: <R extends GbfsPlanPriceRequest>(request: R, defaultValue?: (FieldsSelection<GbfsPlanPrice, R>[] | undefined)) => Observable<(FieldsSelection<GbfsPlanPrice, R>[] | undefined)>}),
-    per_min_pricing: ({get: <R extends GbfsPlanPriceRequest>(request: R, defaultValue?: (FieldsSelection<GbfsPlanPrice, R>[] | undefined)) => Observable<(FieldsSelection<GbfsPlanPrice, R>[] | undefined)>}),
-    plan_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    price: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Observable<(Scalars['Float'] | undefined)>}),
-    surge_pricing: ({get: (request?: boolean|number, defaultValue?: (Scalars['Bool'] | undefined)) => Observable<(Scalars['Bool'] | undefined)>}),
-    url: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>})
-}
-
-export interface GbfsSystemRegionPromiseChain{
-    name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    region_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>})
-}
-
-export interface GbfsSystemRegionObservableChain{
-    name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    region_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>})
-}
-
-export interface GbfsSystemVersionPromiseChain{
-    url: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    version: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>})
-}
-
-export interface GbfsSystemVersionObservableChain{
-    url: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    version: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>})
-}
-
-export interface GbfsVehicleAssetsPromiseChain{
-    icon_last_modified: ({get: (request?: boolean|number, defaultValue?: (Scalars['Date'] | undefined)) => Promise<(Scalars['Date'] | undefined)>}),
-    icon_url: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    icon_url_dark: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>})
-}
-
-export interface GbfsVehicleAssetsObservableChain{
-    icon_last_modified: ({get: (request?: boolean|number, defaultValue?: (Scalars['Date'] | undefined)) => Observable<(Scalars['Date'] | undefined)>}),
-    icon_url: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    icon_url_dark: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>})
-}
-
-export interface GbfsVehicleDockAvailablePromiseChain{
-    count: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    vehicle_types: ({get: <R extends GbfsVehicleTypeRequest>(request: R, defaultValue?: (FieldsSelection<GbfsVehicleType, R>[] | undefined)) => Promise<(FieldsSelection<GbfsVehicleType, R>[] | undefined)>})
-}
-
-export interface GbfsVehicleDockAvailableObservableChain{
-    count: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    vehicle_types: ({get: <R extends GbfsVehicleTypeRequest>(request: R, defaultValue?: (FieldsSelection<GbfsVehicleType, R>[] | undefined)) => Observable<(FieldsSelection<GbfsVehicleType, R>[] | undefined)>})
-}
-
-export interface GbfsVehicleTypePromiseChain{
-    cargo_load_capacity: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    cargo_volume_capacity: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    color: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    country_code: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    default_pricing_plan: (GbfsSystemPricingPlanPromiseChain & {get: <R extends GbfsSystemPricingPlanRequest>(request: R, defaultValue?: (FieldsSelection<GbfsSystemPricingPlan, R> | undefined)) => Promise<(FieldsSelection<GbfsSystemPricingPlan, R> | undefined)>}),
-    default_reserve_time: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    eco_label: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    eco_sticker: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    form_factor: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    gco_2_km: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    make: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    max_permitted_speed: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    max_range_meters: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Promise<(Scalars['Float'] | undefined)>}),
-    model: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    pricing_plans: ({get: <R extends GbfsSystemPricingPlanRequest>(request: R, defaultValue?: (FieldsSelection<GbfsSystemPricingPlan, R>[] | undefined)) => Promise<(FieldsSelection<GbfsSystemPricingPlan, R>[] | undefined)>}),
-    propulsion_type: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    rated_power: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    rental_uris: (GbfsRentalUrisPromiseChain & {get: <R extends GbfsRentalUrisRequest>(request: R, defaultValue?: (FieldsSelection<GbfsRentalUris, R> | undefined)) => Promise<(FieldsSelection<GbfsRentalUris, R> | undefined)>}),
-    return_constraint: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    rider_capacity: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    vehicle_accessories: ({get: (request?: boolean|number, defaultValue?: (Scalars['Strings'] | undefined)) => Promise<(Scalars['Strings'] | undefined)>}),
-    vehicle_assets: (GbfsVehicleAssetsPromiseChain & {get: <R extends GbfsVehicleAssetsRequest>(request: R, defaultValue?: (FieldsSelection<GbfsVehicleAssets, R> | undefined)) => Promise<(FieldsSelection<GbfsVehicleAssets, R> | undefined)>}),
-    vehicle_image: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    vehicle_type_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    wheel_count: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>})
-}
-
-export interface GbfsVehicleTypeObservableChain{
-    cargo_load_capacity: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    cargo_volume_capacity: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    color: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    country_code: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    default_pricing_plan: (GbfsSystemPricingPlanObservableChain & {get: <R extends GbfsSystemPricingPlanRequest>(request: R, defaultValue?: (FieldsSelection<GbfsSystemPricingPlan, R> | undefined)) => Observable<(FieldsSelection<GbfsSystemPricingPlan, R> | undefined)>}),
-    default_reserve_time: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    eco_label: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    eco_sticker: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    form_factor: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    gco_2_km: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    make: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    max_permitted_speed: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    max_range_meters: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Observable<(Scalars['Float'] | undefined)>}),
-    model: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    pricing_plans: ({get: <R extends GbfsSystemPricingPlanRequest>(request: R, defaultValue?: (FieldsSelection<GbfsSystemPricingPlan, R>[] | undefined)) => Observable<(FieldsSelection<GbfsSystemPricingPlan, R>[] | undefined)>}),
-    propulsion_type: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    rated_power: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    rental_uris: (GbfsRentalUrisObservableChain & {get: <R extends GbfsRentalUrisRequest>(request: R, defaultValue?: (FieldsSelection<GbfsRentalUris, R> | undefined)) => Observable<(FieldsSelection<GbfsRentalUris, R> | undefined)>}),
-    return_constraint: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    rider_capacity: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    vehicle_accessories: ({get: (request?: boolean|number, defaultValue?: (Scalars['Strings'] | undefined)) => Observable<(Scalars['Strings'] | undefined)>}),
-    vehicle_assets: (GbfsVehicleAssetsObservableChain & {get: <R extends GbfsVehicleAssetsRequest>(request: R, defaultValue?: (FieldsSelection<GbfsVehicleAssets, R> | undefined)) => Observable<(FieldsSelection<GbfsVehicleAssets, R> | undefined)>}),
-    vehicle_image: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    vehicle_type_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    wheel_count: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>})
-}
-
-export interface GbfsVehicleTypeAvailablePromiseChain{
-    count: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    num_bikes_disabled: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    num_docks_available: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    vehicle_type: (GbfsVehicleTypePromiseChain & {get: <R extends GbfsVehicleTypeRequest>(request: R, defaultValue?: (FieldsSelection<GbfsVehicleType, R> | undefined)) => Promise<(FieldsSelection<GbfsVehicleType, R> | undefined)>})
-}
-
-export interface GbfsVehicleTypeAvailableObservableChain{
-    count: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    num_bikes_disabled: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    num_docks_available: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    vehicle_type: (GbfsVehicleTypeObservableChain & {get: <R extends GbfsVehicleTypeRequest>(request: R, defaultValue?: (FieldsSelection<GbfsVehicleType, R> | undefined)) => Observable<(FieldsSelection<GbfsVehicleType, R> | undefined)>})
-}
-
-export interface ItineraryPromiseChain{
-    distance: (DistancePromiseChain & {get: <R extends DistanceRequest>(request: R, defaultValue?: FieldsSelection<Distance, R>) => Promise<FieldsSelection<Distance, R>>}),
-    duration: (DurationPromiseChain & {get: <R extends DurationRequest>(request: R, defaultValue?: FieldsSelection<Duration, R>) => Promise<FieldsSelection<Duration, R>>}),
-    end_time: ({get: (request?: boolean|number, defaultValue?: Scalars['Time']) => Promise<Scalars['Time']>}),
-    from: (WaypointPromiseChain & {get: <R extends WaypointRequest>(request: R, defaultValue?: FieldsSelection<Waypoint, R>) => Promise<FieldsSelection<Waypoint, R>>}),
-    legs: ({get: <R extends LegRequest>(request: R, defaultValue?: (FieldsSelection<Leg, R>[] | undefined)) => Promise<(FieldsSelection<Leg, R>[] | undefined)>}),
-    start_time: ({get: (request?: boolean|number, defaultValue?: Scalars['Time']) => Promise<Scalars['Time']>}),
-    to: (WaypointPromiseChain & {get: <R extends WaypointRequest>(request: R, defaultValue?: FieldsSelection<Waypoint, R>) => Promise<FieldsSelection<Waypoint, R>>})
-}
-
-export interface ItineraryObservableChain{
-    distance: (DistanceObservableChain & {get: <R extends DistanceRequest>(request: R, defaultValue?: FieldsSelection<Distance, R>) => Observable<FieldsSelection<Distance, R>>}),
-    duration: (DurationObservableChain & {get: <R extends DurationRequest>(request: R, defaultValue?: FieldsSelection<Duration, R>) => Observable<FieldsSelection<Duration, R>>}),
-    end_time: ({get: (request?: boolean|number, defaultValue?: Scalars['Time']) => Observable<Scalars['Time']>}),
-    from: (WaypointObservableChain & {get: <R extends WaypointRequest>(request: R, defaultValue?: FieldsSelection<Waypoint, R>) => Observable<FieldsSelection<Waypoint, R>>}),
-    legs: ({get: <R extends LegRequest>(request: R, defaultValue?: (FieldsSelection<Leg, R>[] | undefined)) => Observable<(FieldsSelection<Leg, R>[] | undefined)>}),
-    start_time: ({get: (request?: boolean|number, defaultValue?: Scalars['Time']) => Observable<Scalars['Time']>}),
-    to: (WaypointObservableChain & {get: <R extends WaypointRequest>(request: R, defaultValue?: FieldsSelection<Waypoint, R>) => Observable<FieldsSelection<Waypoint, R>>})
-}
-
-export interface LegPromiseChain{
-    distance: (DistancePromiseChain & {get: <R extends DistanceRequest>(request: R, defaultValue?: FieldsSelection<Distance, R>) => Promise<FieldsSelection<Distance, R>>}),
-    duration: (DurationPromiseChain & {get: <R extends DurationRequest>(request: R, defaultValue?: FieldsSelection<Duration, R>) => Promise<FieldsSelection<Duration, R>>}),
-    end_time: ({get: (request?: boolean|number, defaultValue?: Scalars['Time']) => Promise<Scalars['Time']>}),
-    from: (WaypointPromiseChain & {get: <R extends WaypointRequest>(request: R, defaultValue?: (FieldsSelection<Waypoint, R> | undefined)) => Promise<(FieldsSelection<Waypoint, R> | undefined)>}),
-    geometry: ({get: (request?: boolean|number, defaultValue?: Scalars['LineString']) => Promise<Scalars['LineString']>}),
-    start_time: ({get: (request?: boolean|number, defaultValue?: Scalars['Time']) => Promise<Scalars['Time']>}),
-    steps: ({get: <R extends StepRequest>(request: R, defaultValue?: (FieldsSelection<Step, R>[] | undefined)) => Promise<(FieldsSelection<Step, R>[] | undefined)>}),
-    to: (WaypointPromiseChain & {get: <R extends WaypointRequest>(request: R, defaultValue?: (FieldsSelection<Waypoint, R> | undefined)) => Promise<(FieldsSelection<Waypoint, R> | undefined)>})
-}
-
-export interface LegObservableChain{
-    distance: (DistanceObservableChain & {get: <R extends DistanceRequest>(request: R, defaultValue?: FieldsSelection<Distance, R>) => Observable<FieldsSelection<Distance, R>>}),
-    duration: (DurationObservableChain & {get: <R extends DurationRequest>(request: R, defaultValue?: FieldsSelection<Duration, R>) => Observable<FieldsSelection<Duration, R>>}),
-    end_time: ({get: (request?: boolean|number, defaultValue?: Scalars['Time']) => Observable<Scalars['Time']>}),
-    from: (WaypointObservableChain & {get: <R extends WaypointRequest>(request: R, defaultValue?: (FieldsSelection<Waypoint, R> | undefined)) => Observable<(FieldsSelection<Waypoint, R> | undefined)>}),
-    geometry: ({get: (request?: boolean|number, defaultValue?: Scalars['LineString']) => Observable<Scalars['LineString']>}),
-    start_time: ({get: (request?: boolean|number, defaultValue?: Scalars['Time']) => Observable<Scalars['Time']>}),
-    steps: ({get: <R extends StepRequest>(request: R, defaultValue?: (FieldsSelection<Step, R>[] | undefined)) => Observable<(FieldsSelection<Step, R>[] | undefined)>}),
-    to: (WaypointObservableChain & {get: <R extends WaypointRequest>(request: R, defaultValue?: (FieldsSelection<Waypoint, R> | undefined)) => Observable<(FieldsSelection<Waypoint, R> | undefined)>})
-}
-
-
-/** Describe the different levels of a station. Is mostly useful when used in conjunction with pathways. See https://gtfs.org/reference/static/#levelstxt */
-export interface LevelPromiseChain{
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    level_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    level_index: ({get: (request?: boolean|number, defaultValue?: Scalars['Float']) => Promise<Scalars['Float']>}),
-    level_name: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>})
-}
-
-
-/** Describe the different levels of a station. Is mostly useful when used in conjunction with pathways. See https://gtfs.org/reference/static/#levelstxt */
-export interface LevelObservableChain{
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    level_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    level_index: ({get: (request?: boolean|number, defaultValue?: Scalars['Float']) => Observable<Scalars['Float']>}),
-    level_name: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>})
-}
-
-
-/**
- * An agency represents a single GTFS `agencies.txt` entity that was imported from a single feed version. The metadata, routes, etc., for an agency include only the data for that specific agency in that specific feed version. 
- * 
- * Operators are a higher-level abstraction over agencies, with each operator defined by an entry in the [Transitland Atlas](/documentation/atlas). Operators provide a method for enriching the basic GTFS agency data, as well as grouping agencies that span across multiple source feeds. Operators are matched with GTFS agencies using `associated_feeds`, a simple list of Feed OnestopIDs and GTFS `agency_id`s. For instance, the [Atlas operator record](https://github.com/transitland/transitland-atlas/blob/master/operators/o-dr5r-nyct.json) for the [New York City MTA](/operators/o-dr5r-nyct) has `associated_feeds` values for 8 different GTFS feeds. A query for this operator OnestopID thus represents the union of data from all 8 feeds, and includes routes for the subway, bus service for all 5 boroughs, commuter rail agencies, etc., operated by the MTA. This record also includes additional metadata about the MTA, such as the United States National Transit Database ID, Wikidata IDs, and alternate names for the agency. Operator records are created and maintained through pull requests to the Atlas json files and synchronized with the Transitland database on each commit.
- */
-export interface OperatorPromiseChain{
-    agencies: ({get: <R extends AgencyRequest>(request: R, defaultValue?: (FieldsSelection<Agency, R>[] | undefined)) => Promise<(FieldsSelection<Agency, R>[] | undefined)>}),
-    feeds: ((args?: {limit?: (Scalars['Int'] | null),where?: (FeedFilter | null)}) => {get: <R extends FeedRequest>(request: R, defaultValue?: (FieldsSelection<Feed, R>[] | undefined)) => Promise<(FieldsSelection<Feed, R>[] | undefined)>})&({get: <R extends FeedRequest>(request: R, defaultValue?: (FieldsSelection<Feed, R>[] | undefined)) => Promise<(FieldsSelection<Feed, R>[] | undefined)>}),
-    file: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    generated: ({get: (request?: boolean|number, defaultValue?: Scalars['Boolean']) => Promise<Scalars['Boolean']>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    onestop_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    search_rank: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    short_name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    tags: ({get: (request?: boolean|number, defaultValue?: (Scalars['Tags'] | undefined)) => Promise<(Scalars['Tags'] | undefined)>}),
-    website: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>})
-}
-
-
-/**
- * An agency represents a single GTFS `agencies.txt` entity that was imported from a single feed version. The metadata, routes, etc., for an agency include only the data for that specific agency in that specific feed version. 
- * 
- * Operators are a higher-level abstraction over agencies, with each operator defined by an entry in the [Transitland Atlas](/documentation/atlas). Operators provide a method for enriching the basic GTFS agency data, as well as grouping agencies that span across multiple source feeds. Operators are matched with GTFS agencies using `associated_feeds`, a simple list of Feed OnestopIDs and GTFS `agency_id`s. For instance, the [Atlas operator record](https://github.com/transitland/transitland-atlas/blob/master/operators/o-dr5r-nyct.json) for the [New York City MTA](/operators/o-dr5r-nyct) has `associated_feeds` values for 8 different GTFS feeds. A query for this operator OnestopID thus represents the union of data from all 8 feeds, and includes routes for the subway, bus service for all 5 boroughs, commuter rail agencies, etc., operated by the MTA. This record also includes additional metadata about the MTA, such as the United States National Transit Database ID, Wikidata IDs, and alternate names for the agency. Operator records are created and maintained through pull requests to the Atlas json files and synchronized with the Transitland database on each commit.
- */
-export interface OperatorObservableChain{
-    agencies: ({get: <R extends AgencyRequest>(request: R, defaultValue?: (FieldsSelection<Agency, R>[] | undefined)) => Observable<(FieldsSelection<Agency, R>[] | undefined)>}),
-    feeds: ((args?: {limit?: (Scalars['Int'] | null),where?: (FeedFilter | null)}) => {get: <R extends FeedRequest>(request: R, defaultValue?: (FieldsSelection<Feed, R>[] | undefined)) => Observable<(FieldsSelection<Feed, R>[] | undefined)>})&({get: <R extends FeedRequest>(request: R, defaultValue?: (FieldsSelection<Feed, R>[] | undefined)) => Observable<(FieldsSelection<Feed, R>[] | undefined)>}),
-    file: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    generated: ({get: (request?: boolean|number, defaultValue?: Scalars['Boolean']) => Observable<Scalars['Boolean']>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    onestop_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    search_rank: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    short_name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    tags: ({get: (request?: boolean|number, defaultValue?: (Scalars['Tags'] | undefined)) => Observable<(Scalars['Tags'] | undefined)>}),
-    website: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>})
-}
-
-
-/** The GTFS-Pathways extension uses a graph representation to describe subway or train, with nodes (the locations) and edges (the pathways). See https://gtfs.org/reference/static/#pathwaystxt */
-export interface PathwayPromiseChain{
-    from_stop: (StopPromiseChain & {get: <R extends StopRequest>(request: R, defaultValue?: FieldsSelection<Stop, R>) => Promise<FieldsSelection<Stop, R>>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    is_bidirectional: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    length: ({get: (request?: boolean|number, defaultValue?: Scalars['Float']) => Promise<Scalars['Float']>}),
-    max_slope: ({get: (request?: boolean|number, defaultValue?: Scalars['Float']) => Promise<Scalars['Float']>}),
-    min_width: ({get: (request?: boolean|number, defaultValue?: Scalars['Float']) => Promise<Scalars['Float']>}),
-    pathway_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    pathway_mode: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    reverse_signposted_as: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    signposted_as: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    stair_count: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    to_stop: (StopPromiseChain & {get: <R extends StopRequest>(request: R, defaultValue?: FieldsSelection<Stop, R>) => Promise<FieldsSelection<Stop, R>>}),
-    traversal_time: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>})
-}
-
-
-/** The GTFS-Pathways extension uses a graph representation to describe subway or train, with nodes (the locations) and edges (the pathways). See https://gtfs.org/reference/static/#pathwaystxt */
-export interface PathwayObservableChain{
-    from_stop: (StopObservableChain & {get: <R extends StopRequest>(request: R, defaultValue?: FieldsSelection<Stop, R>) => Observable<FieldsSelection<Stop, R>>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    is_bidirectional: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    length: ({get: (request?: boolean|number, defaultValue?: Scalars['Float']) => Observable<Scalars['Float']>}),
-    max_slope: ({get: (request?: boolean|number, defaultValue?: Scalars['Float']) => Observable<Scalars['Float']>}),
-    min_width: ({get: (request?: boolean|number, defaultValue?: Scalars['Float']) => Observable<Scalars['Float']>}),
-    pathway_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    pathway_mode: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    reverse_signposted_as: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    signposted_as: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    stair_count: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    to_stop: (StopObservableChain & {get: <R extends StopRequest>(request: R, defaultValue?: FieldsSelection<Stop, R>) => Observable<FieldsSelection<Stop, R>>}),
-    traversal_time: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>})
-}
-
-export interface QueryPromiseChain{
-    agencies: ((args?: {after?: (Scalars['Int'] | null),ids?: (Scalars['Int'][] | null),limit?: (Scalars['Int'] | null),where?: (AgencyFilter | null)}) => {get: <R extends AgencyRequest>(request: R, defaultValue?: FieldsSelection<Agency, R>[]) => Promise<FieldsSelection<Agency, R>[]>})&({get: <R extends AgencyRequest>(request: R, defaultValue?: FieldsSelection<Agency, R>[]) => Promise<FieldsSelection<Agency, R>[]>}),
-    bikes: ((args?: {limit?: (Scalars['Int'] | null),where?: (GbfsBikeRequest | null)}) => {get: <R extends GbfsFreeBikeStatusRequest>(request: R, defaultValue?: (FieldsSelection<GbfsFreeBikeStatus, R>[] | undefined)) => Promise<(FieldsSelection<GbfsFreeBikeStatus, R>[] | undefined)>})&({get: <R extends GbfsFreeBikeStatusRequest>(request: R, defaultValue?: (FieldsSelection<GbfsFreeBikeStatus, R>[] | undefined)) => Promise<(FieldsSelection<GbfsFreeBikeStatus, R>[] | undefined)>}),
-    directions: ((args: {where: DirectionRequest}) => DirectionsPromiseChain & {get: <R extends DirectionsRequest>(request: R, defaultValue?: FieldsSelection<Directions, R>) => Promise<FieldsSelection<Directions, R>>}),
-    docks: ((args?: {limit?: (Scalars['Int'] | null),where?: (GbfsDockRequest | null)}) => {get: <R extends GbfsStationInformationRequest>(request: R, defaultValue?: (FieldsSelection<GbfsStationInformation, R>[] | undefined)) => Promise<(FieldsSelection<GbfsStationInformation, R>[] | undefined)>})&({get: <R extends GbfsStationInformationRequest>(request: R, defaultValue?: (FieldsSelection<GbfsStationInformation, R>[] | undefined)) => Promise<(FieldsSelection<GbfsStationInformation, R>[] | undefined)>}),
-    feed_versions: ((args?: {after?: (Scalars['Int'] | null),ids?: (Scalars['Int'][] | null),limit?: (Scalars['Int'] | null),where?: (FeedVersionFilter | null)}) => {get: <R extends FeedVersionRequest>(request: R, defaultValue?: FieldsSelection<FeedVersion, R>[]) => Promise<FieldsSelection<FeedVersion, R>[]>})&({get: <R extends FeedVersionRequest>(request: R, defaultValue?: FieldsSelection<FeedVersion, R>[]) => Promise<FieldsSelection<FeedVersion, R>[]>}),
-    feeds: ((args?: {after?: (Scalars['Int'] | null),ids?: (Scalars['Int'][] | null),limit?: (Scalars['Int'] | null),where?: (FeedFilter | null)}) => {get: <R extends FeedRequest>(request: R, defaultValue?: FieldsSelection<Feed, R>[]) => Promise<FieldsSelection<Feed, R>[]>})&({get: <R extends FeedRequest>(request: R, defaultValue?: FieldsSelection<Feed, R>[]) => Promise<FieldsSelection<Feed, R>[]>}),
-    operators: ((args?: {after?: (Scalars['Int'] | null),ids?: (Scalars['Int'][] | null),limit?: (Scalars['Int'] | null),where?: (OperatorFilter | null)}) => {get: <R extends OperatorRequest>(request: R, defaultValue?: FieldsSelection<Operator, R>[]) => Promise<FieldsSelection<Operator, R>[]>})&({get: <R extends OperatorRequest>(request: R, defaultValue?: FieldsSelection<Operator, R>[]) => Promise<FieldsSelection<Operator, R>[]>}),
-    routes: ((args?: {after?: (Scalars['Int'] | null),ids?: (Scalars['Int'][] | null),limit?: (Scalars['Int'] | null),where?: (RouteFilter | null)}) => {get: <R extends RouteRequest>(request: R, defaultValue?: FieldsSelection<Route, R>[]) => Promise<FieldsSelection<Route, R>[]>})&({get: <R extends RouteRequest>(request: R, defaultValue?: FieldsSelection<Route, R>[]) => Promise<FieldsSelection<Route, R>[]>}),
-    stops: ((args?: {after?: (Scalars['Int'] | null),ids?: (Scalars['Int'][] | null),limit?: (Scalars['Int'] | null),where?: (StopFilter | null)}) => {get: <R extends StopRequest>(request: R, defaultValue?: FieldsSelection<Stop, R>[]) => Promise<FieldsSelection<Stop, R>[]>})&({get: <R extends StopRequest>(request: R, defaultValue?: FieldsSelection<Stop, R>[]) => Promise<FieldsSelection<Stop, R>[]>}),
-    trips: ((args?: {after?: (Scalars['Int'] | null),ids?: (Scalars['Int'][] | null),limit?: (Scalars['Int'] | null),where?: (TripFilter | null)}) => {get: <R extends TripRequest>(request: R, defaultValue?: FieldsSelection<Trip, R>[]) => Promise<FieldsSelection<Trip, R>[]>})&({get: <R extends TripRequest>(request: R, defaultValue?: FieldsSelection<Trip, R>[]) => Promise<FieldsSelection<Trip, R>[]>})
-}
-
-export interface QueryObservableChain{
-    agencies: ((args?: {after?: (Scalars['Int'] | null),ids?: (Scalars['Int'][] | null),limit?: (Scalars['Int'] | null),where?: (AgencyFilter | null)}) => {get: <R extends AgencyRequest>(request: R, defaultValue?: FieldsSelection<Agency, R>[]) => Observable<FieldsSelection<Agency, R>[]>})&({get: <R extends AgencyRequest>(request: R, defaultValue?: FieldsSelection<Agency, R>[]) => Observable<FieldsSelection<Agency, R>[]>}),
-    bikes: ((args?: {limit?: (Scalars['Int'] | null),where?: (GbfsBikeRequest | null)}) => {get: <R extends GbfsFreeBikeStatusRequest>(request: R, defaultValue?: (FieldsSelection<GbfsFreeBikeStatus, R>[] | undefined)) => Observable<(FieldsSelection<GbfsFreeBikeStatus, R>[] | undefined)>})&({get: <R extends GbfsFreeBikeStatusRequest>(request: R, defaultValue?: (FieldsSelection<GbfsFreeBikeStatus, R>[] | undefined)) => Observable<(FieldsSelection<GbfsFreeBikeStatus, R>[] | undefined)>}),
-    directions: ((args: {where: DirectionRequest}) => DirectionsObservableChain & {get: <R extends DirectionsRequest>(request: R, defaultValue?: FieldsSelection<Directions, R>) => Observable<FieldsSelection<Directions, R>>}),
-    docks: ((args?: {limit?: (Scalars['Int'] | null),where?: (GbfsDockRequest | null)}) => {get: <R extends GbfsStationInformationRequest>(request: R, defaultValue?: (FieldsSelection<GbfsStationInformation, R>[] | undefined)) => Observable<(FieldsSelection<GbfsStationInformation, R>[] | undefined)>})&({get: <R extends GbfsStationInformationRequest>(request: R, defaultValue?: (FieldsSelection<GbfsStationInformation, R>[] | undefined)) => Observable<(FieldsSelection<GbfsStationInformation, R>[] | undefined)>}),
-    feed_versions: ((args?: {after?: (Scalars['Int'] | null),ids?: (Scalars['Int'][] | null),limit?: (Scalars['Int'] | null),where?: (FeedVersionFilter | null)}) => {get: <R extends FeedVersionRequest>(request: R, defaultValue?: FieldsSelection<FeedVersion, R>[]) => Observable<FieldsSelection<FeedVersion, R>[]>})&({get: <R extends FeedVersionRequest>(request: R, defaultValue?: FieldsSelection<FeedVersion, R>[]) => Observable<FieldsSelection<FeedVersion, R>[]>}),
-    feeds: ((args?: {after?: (Scalars['Int'] | null),ids?: (Scalars['Int'][] | null),limit?: (Scalars['Int'] | null),where?: (FeedFilter | null)}) => {get: <R extends FeedRequest>(request: R, defaultValue?: FieldsSelection<Feed, R>[]) => Observable<FieldsSelection<Feed, R>[]>})&({get: <R extends FeedRequest>(request: R, defaultValue?: FieldsSelection<Feed, R>[]) => Observable<FieldsSelection<Feed, R>[]>}),
-    operators: ((args?: {after?: (Scalars['Int'] | null),ids?: (Scalars['Int'][] | null),limit?: (Scalars['Int'] | null),where?: (OperatorFilter | null)}) => {get: <R extends OperatorRequest>(request: R, defaultValue?: FieldsSelection<Operator, R>[]) => Observable<FieldsSelection<Operator, R>[]>})&({get: <R extends OperatorRequest>(request: R, defaultValue?: FieldsSelection<Operator, R>[]) => Observable<FieldsSelection<Operator, R>[]>}),
-    routes: ((args?: {after?: (Scalars['Int'] | null),ids?: (Scalars['Int'][] | null),limit?: (Scalars['Int'] | null),where?: (RouteFilter | null)}) => {get: <R extends RouteRequest>(request: R, defaultValue?: FieldsSelection<Route, R>[]) => Observable<FieldsSelection<Route, R>[]>})&({get: <R extends RouteRequest>(request: R, defaultValue?: FieldsSelection<Route, R>[]) => Observable<FieldsSelection<Route, R>[]>}),
-    stops: ((args?: {after?: (Scalars['Int'] | null),ids?: (Scalars['Int'][] | null),limit?: (Scalars['Int'] | null),where?: (StopFilter | null)}) => {get: <R extends StopRequest>(request: R, defaultValue?: FieldsSelection<Stop, R>[]) => Observable<FieldsSelection<Stop, R>[]>})&({get: <R extends StopRequest>(request: R, defaultValue?: FieldsSelection<Stop, R>[]) => Observable<FieldsSelection<Stop, R>[]>}),
-    trips: ((args?: {after?: (Scalars['Int'] | null),ids?: (Scalars['Int'][] | null),limit?: (Scalars['Int'] | null),where?: (TripFilter | null)}) => {get: <R extends TripRequest>(request: R, defaultValue?: FieldsSelection<Trip, R>[]) => Observable<FieldsSelection<Trip, R>[]>})&({get: <R extends TripRequest>(request: R, defaultValue?: FieldsSelection<Trip, R>[]) => Observable<FieldsSelection<Trip, R>[]>})
-}
-
-
-/** See https://gtfs.org/reference/realtime/v2/#message-timerange */
-export interface RTTimeRangePromiseChain{
-    end: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    start: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>})
-}
-
-
-/** See https://gtfs.org/reference/realtime/v2/#message-timerange */
-export interface RTTimeRangeObservableChain{
-    end: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    start: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>})
-}
-
-
-/** See https://gtfs.org/reference/realtime/v2/#message-translatedstring */
-export interface RTTranslationPromiseChain{
-    language: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    text: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>})
-}
-
-
-/** See https://gtfs.org/reference/realtime/v2/#message-translatedstring */
-export interface RTTranslationObservableChain{
-    language: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    text: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>})
-}
-
-
-/** See https://gtfs.org/reference/realtime/v2/#message-tripdescriptor */
-export interface RTTripDescriptorPromiseChain{
-    direction_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    route_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    schedule_relationship: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    start_date: ({get: (request?: boolean|number, defaultValue?: (Scalars['Date'] | undefined)) => Promise<(Scalars['Date'] | undefined)>}),
-    start_time: ({get: (request?: boolean|number, defaultValue?: (Scalars['Seconds'] | undefined)) => Promise<(Scalars['Seconds'] | undefined)>}),
-    trip_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>})
-}
-
-
-/** See https://gtfs.org/reference/realtime/v2/#message-tripdescriptor */
-export interface RTTripDescriptorObservableChain{
-    direction_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    route_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    schedule_relationship: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    start_date: ({get: (request?: boolean|number, defaultValue?: (Scalars['Date'] | undefined)) => Observable<(Scalars['Date'] | undefined)>}),
-    start_time: ({get: (request?: boolean|number, defaultValue?: (Scalars['Seconds'] | undefined)) => Observable<(Scalars['Seconds'] | undefined)>}),
-    trip_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>})
-}
-
-
-/** See https://gtfs.org/reference/realtime/v2/#message-vehicledescriptor */
-export interface RTVehicleDescriptorPromiseChain{
-    id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    label: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    license_plate: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>})
-}
-
-
-/** See https://gtfs.org/reference/realtime/v2/#message-vehicledescriptor */
-export interface RTVehicleDescriptorObservableChain{
-    id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    label: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    license_plate: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>})
-}
-
-
-/** See https://gtfs.org/schedule/reference/#routestxt */
-export interface RoutePromiseChain{
-    agency: (AgencyPromiseChain & {get: <R extends AgencyRequest>(request: R, defaultValue?: FieldsSelection<Agency, R>) => Promise<FieldsSelection<Agency, R>>}),
-    alerts: ((args?: {active?: (Scalars['Boolean'] | null),limit?: (Scalars['Int'] | null)}) => {get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Promise<(FieldsSelection<Alert, R>[] | undefined)>})&({get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Promise<(FieldsSelection<Alert, R>[] | undefined)>}),
-    census_geographies: ((args: {layer: Scalars['String'],limit?: (Scalars['Int'] | null),radius?: (Scalars['Float'] | null)}) => {get: <R extends CensusGeographyRequest>(request: R, defaultValue?: (FieldsSelection<CensusGeography, R>[] | undefined)) => Promise<(FieldsSelection<CensusGeography, R>[] | undefined)>}),
-    continuous_drop_off: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    continuous_pickup: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    feed_onestop_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    feed_version: (FeedVersionPromiseChain & {get: <R extends FeedVersionRequest>(request: R, defaultValue?: FieldsSelection<FeedVersion, R>) => Promise<FieldsSelection<FeedVersion, R>>}),
-    feed_version_sha1: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    geometries: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends RouteGeometryRequest>(request: R, defaultValue?: FieldsSelection<RouteGeometry, R>[]) => Promise<FieldsSelection<RouteGeometry, R>[]>})&({get: <R extends RouteGeometryRequest>(request: R, defaultValue?: FieldsSelection<RouteGeometry, R>[]) => Promise<FieldsSelection<RouteGeometry, R>[]>}),
-    geometry: ({get: (request?: boolean|number, defaultValue?: (Scalars['Geometry'] | undefined)) => Promise<(Scalars['Geometry'] | undefined)>}),
-    headways: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends RouteHeadwayRequest>(request: R, defaultValue?: FieldsSelection<RouteHeadway, R>[]) => Promise<FieldsSelection<RouteHeadway, R>[]>})&({get: <R extends RouteHeadwayRequest>(request: R, defaultValue?: FieldsSelection<RouteHeadway, R>[]) => Promise<FieldsSelection<RouteHeadway, R>[]>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    onestop_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    patterns: ({get: <R extends RouteStopPatternRequest>(request: R, defaultValue?: (FieldsSelection<RouteStopPattern, R>[] | undefined)) => Promise<(FieldsSelection<RouteStopPattern, R>[] | undefined)>}),
-    route_color: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    route_desc: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    route_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    route_long_name: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    route_short_name: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    route_sort_order: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    route_stop_buffer: ((args?: {radius?: (Scalars['Float'] | null)}) => RouteStopBufferPromiseChain & {get: <R extends RouteStopBufferRequest>(request: R, defaultValue?: FieldsSelection<RouteStopBuffer, R>) => Promise<FieldsSelection<RouteStopBuffer, R>>})&(RouteStopBufferPromiseChain & {get: <R extends RouteStopBufferRequest>(request: R, defaultValue?: FieldsSelection<RouteStopBuffer, R>) => Promise<FieldsSelection<RouteStopBuffer, R>>}),
-    route_stops: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends RouteStopRequest>(request: R, defaultValue?: FieldsSelection<RouteStop, R>[]) => Promise<FieldsSelection<RouteStop, R>[]>})&({get: <R extends RouteStopRequest>(request: R, defaultValue?: FieldsSelection<RouteStop, R>[]) => Promise<FieldsSelection<RouteStop, R>[]>}),
-    route_text_color: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    route_type: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    route_url: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    search_rank: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    stops: ((args?: {limit?: (Scalars['Int'] | null),where?: (StopFilter | null)}) => {get: <R extends StopRequest>(request: R, defaultValue?: FieldsSelection<Stop, R>[]) => Promise<FieldsSelection<Stop, R>[]>})&({get: <R extends StopRequest>(request: R, defaultValue?: FieldsSelection<Stop, R>[]) => Promise<FieldsSelection<Stop, R>[]>}),
-    trips: ((args?: {limit?: (Scalars['Int'] | null),where?: (TripFilter | null)}) => {get: <R extends TripRequest>(request: R, defaultValue?: FieldsSelection<Trip, R>[]) => Promise<FieldsSelection<Trip, R>[]>})&({get: <R extends TripRequest>(request: R, defaultValue?: FieldsSelection<Trip, R>[]) => Promise<FieldsSelection<Trip, R>[]>})
-}
-
-
-/** See https://gtfs.org/schedule/reference/#routestxt */
-export interface RouteObservableChain{
-    agency: (AgencyObservableChain & {get: <R extends AgencyRequest>(request: R, defaultValue?: FieldsSelection<Agency, R>) => Observable<FieldsSelection<Agency, R>>}),
-    alerts: ((args?: {active?: (Scalars['Boolean'] | null),limit?: (Scalars['Int'] | null)}) => {get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Observable<(FieldsSelection<Alert, R>[] | undefined)>})&({get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Observable<(FieldsSelection<Alert, R>[] | undefined)>}),
-    census_geographies: ((args: {layer: Scalars['String'],limit?: (Scalars['Int'] | null),radius?: (Scalars['Float'] | null)}) => {get: <R extends CensusGeographyRequest>(request: R, defaultValue?: (FieldsSelection<CensusGeography, R>[] | undefined)) => Observable<(FieldsSelection<CensusGeography, R>[] | undefined)>}),
-    continuous_drop_off: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    continuous_pickup: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    feed_onestop_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    feed_version: (FeedVersionObservableChain & {get: <R extends FeedVersionRequest>(request: R, defaultValue?: FieldsSelection<FeedVersion, R>) => Observable<FieldsSelection<FeedVersion, R>>}),
-    feed_version_sha1: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    geometries: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends RouteGeometryRequest>(request: R, defaultValue?: FieldsSelection<RouteGeometry, R>[]) => Observable<FieldsSelection<RouteGeometry, R>[]>})&({get: <R extends RouteGeometryRequest>(request: R, defaultValue?: FieldsSelection<RouteGeometry, R>[]) => Observable<FieldsSelection<RouteGeometry, R>[]>}),
-    geometry: ({get: (request?: boolean|number, defaultValue?: (Scalars['Geometry'] | undefined)) => Observable<(Scalars['Geometry'] | undefined)>}),
-    headways: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends RouteHeadwayRequest>(request: R, defaultValue?: FieldsSelection<RouteHeadway, R>[]) => Observable<FieldsSelection<RouteHeadway, R>[]>})&({get: <R extends RouteHeadwayRequest>(request: R, defaultValue?: FieldsSelection<RouteHeadway, R>[]) => Observable<FieldsSelection<RouteHeadway, R>[]>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    onestop_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    patterns: ({get: <R extends RouteStopPatternRequest>(request: R, defaultValue?: (FieldsSelection<RouteStopPattern, R>[] | undefined)) => Observable<(FieldsSelection<RouteStopPattern, R>[] | undefined)>}),
-    route_color: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    route_desc: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    route_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    route_long_name: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    route_short_name: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    route_sort_order: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    route_stop_buffer: ((args?: {radius?: (Scalars['Float'] | null)}) => RouteStopBufferObservableChain & {get: <R extends RouteStopBufferRequest>(request: R, defaultValue?: FieldsSelection<RouteStopBuffer, R>) => Observable<FieldsSelection<RouteStopBuffer, R>>})&(RouteStopBufferObservableChain & {get: <R extends RouteStopBufferRequest>(request: R, defaultValue?: FieldsSelection<RouteStopBuffer, R>) => Observable<FieldsSelection<RouteStopBuffer, R>>}),
-    route_stops: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends RouteStopRequest>(request: R, defaultValue?: FieldsSelection<RouteStop, R>[]) => Observable<FieldsSelection<RouteStop, R>[]>})&({get: <R extends RouteStopRequest>(request: R, defaultValue?: FieldsSelection<RouteStop, R>[]) => Observable<FieldsSelection<RouteStop, R>[]>}),
-    route_text_color: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    route_type: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    route_url: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    search_rank: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    stops: ((args?: {limit?: (Scalars['Int'] | null),where?: (StopFilter | null)}) => {get: <R extends StopRequest>(request: R, defaultValue?: FieldsSelection<Stop, R>[]) => Observable<FieldsSelection<Stop, R>[]>})&({get: <R extends StopRequest>(request: R, defaultValue?: FieldsSelection<Stop, R>[]) => Observable<FieldsSelection<Stop, R>[]>}),
-    trips: ((args?: {limit?: (Scalars['Int'] | null),where?: (TripFilter | null)}) => {get: <R extends TripRequest>(request: R, defaultValue?: FieldsSelection<Trip, R>[]) => Observable<FieldsSelection<Trip, R>[]>})&({get: <R extends TripRequest>(request: R, defaultValue?: FieldsSelection<Trip, R>[]) => Observable<FieldsSelection<Trip, R>[]>})
-}
-
-export interface RouteGeometryPromiseChain{
-    combined_geometry: ({get: (request?: boolean|number, defaultValue?: (Scalars['Geometry'] | undefined)) => Promise<(Scalars['Geometry'] | undefined)>}),
-    first_point_max_distance: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Promise<(Scalars['Float'] | undefined)>}),
+    const Query_possibleTypes: string[] = ['Query']
+    export const isQuery = (obj?: { __typename?: any } | null): obj is Query => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isQuery"')
+      return Query_possibleTypes.includes(obj.__typename)
+    }
     
-/** If true, the source GTFS feed provides no shapes. This route geometry is based on straight lines between stop points. */
-generated: ({get: (request?: boolean|number, defaultValue?: Scalars['Boolean']) => Promise<Scalars['Boolean']>}),
-    geometry: ({get: (request?: boolean|number, defaultValue?: (Scalars['LineString'] | undefined)) => Promise<(Scalars['LineString'] | undefined)>}),
-    length: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Promise<(Scalars['Float'] | undefined)>}),
-    max_segment_length: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Promise<(Scalars['Float'] | undefined)>})
-}
 
-export interface RouteGeometryObservableChain{
-    combined_geometry: ({get: (request?: boolean|number, defaultValue?: (Scalars['Geometry'] | undefined)) => Observable<(Scalars['Geometry'] | undefined)>}),
-    first_point_max_distance: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Observable<(Scalars['Float'] | undefined)>}),
+
+    const RTTimeRange_possibleTypes: string[] = ['RTTimeRange']
+    export const isRTTimeRange = (obj?: { __typename?: any } | null): obj is RTTimeRange => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isRTTimeRange"')
+      return RTTimeRange_possibleTypes.includes(obj.__typename)
+    }
     
-/** If true, the source GTFS feed provides no shapes. This route geometry is based on straight lines between stop points. */
-generated: ({get: (request?: boolean|number, defaultValue?: Scalars['Boolean']) => Observable<Scalars['Boolean']>}),
-    geometry: ({get: (request?: boolean|number, defaultValue?: (Scalars['LineString'] | undefined)) => Observable<(Scalars['LineString'] | undefined)>}),
-    length: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Observable<(Scalars['Float'] | undefined)>}),
-    max_segment_length: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Observable<(Scalars['Float'] | undefined)>})
+
+
+    const RTTranslation_possibleTypes: string[] = ['RTTranslation']
+    export const isRTTranslation = (obj?: { __typename?: any } | null): obj is RTTranslation => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isRTTranslation"')
+      return RTTranslation_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const RTTripDescriptor_possibleTypes: string[] = ['RTTripDescriptor']
+    export const isRTTripDescriptor = (obj?: { __typename?: any } | null): obj is RTTripDescriptor => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isRTTripDescriptor"')
+      return RTTripDescriptor_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const RTVehicleDescriptor_possibleTypes: string[] = ['RTVehicleDescriptor']
+    export const isRTVehicleDescriptor = (obj?: { __typename?: any } | null): obj is RTVehicleDescriptor => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isRTVehicleDescriptor"')
+      return RTVehicleDescriptor_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const Route_possibleTypes: string[] = ['Route']
+    export const isRoute = (obj?: { __typename?: any } | null): obj is Route => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isRoute"')
+      return Route_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const RouteGeometry_possibleTypes: string[] = ['RouteGeometry']
+    export const isRouteGeometry = (obj?: { __typename?: any } | null): obj is RouteGeometry => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isRouteGeometry"')
+      return RouteGeometry_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const RouteHeadway_possibleTypes: string[] = ['RouteHeadway']
+    export const isRouteHeadway = (obj?: { __typename?: any } | null): obj is RouteHeadway => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isRouteHeadway"')
+      return RouteHeadway_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const RouteStop_possibleTypes: string[] = ['RouteStop']
+    export const isRouteStop = (obj?: { __typename?: any } | null): obj is RouteStop => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isRouteStop"')
+      return RouteStop_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const RouteStopBuffer_possibleTypes: string[] = ['RouteStopBuffer']
+    export const isRouteStopBuffer = (obj?: { __typename?: any } | null): obj is RouteStopBuffer => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isRouteStopBuffer"')
+      return RouteStopBuffer_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const RouteStopPattern_possibleTypes: string[] = ['RouteStopPattern']
+    export const isRouteStopPattern = (obj?: { __typename?: any } | null): obj is RouteStopPattern => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isRouteStopPattern"')
+      return RouteStopPattern_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const Shape_possibleTypes: string[] = ['Shape']
+    export const isShape = (obj?: { __typename?: any } | null): obj is Shape => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isShape"')
+      return Shape_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const Step_possibleTypes: string[] = ['Step']
+    export const isStep = (obj?: { __typename?: any } | null): obj is Step => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isStep"')
+      return Step_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const Stop_possibleTypes: string[] = ['Stop']
+    export const isStop = (obj?: { __typename?: any } | null): obj is Stop => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isStop"')
+      return Stop_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const StopTime_possibleTypes: string[] = ['StopTime']
+    export const isStopTime = (obj?: { __typename?: any } | null): obj is StopTime => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isStopTime"')
+      return StopTime_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const StopTimeEvent_possibleTypes: string[] = ['StopTimeEvent']
+    export const isStopTimeEvent = (obj?: { __typename?: any } | null): obj is StopTimeEvent => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isStopTimeEvent"')
+      return StopTimeEvent_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const Trip_possibleTypes: string[] = ['Trip']
+    export const isTrip = (obj?: { __typename?: any } | null): obj is Trip => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isTrip"')
+      return Trip_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const ValidationResult_possibleTypes: string[] = ['ValidationResult']
+    export const isValidationResult = (obj?: { __typename?: any } | null): obj is ValidationResult => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isValidationResult"')
+      return ValidationResult_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const ValidationResultError_possibleTypes: string[] = ['ValidationResultError']
+    export const isValidationResultError = (obj?: { __typename?: any } | null): obj is ValidationResultError => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isValidationResultError"')
+      return ValidationResultError_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const ValidationResultErrorGroup_possibleTypes: string[] = ['ValidationResultErrorGroup']
+    export const isValidationResultErrorGroup = (obj?: { __typename?: any } | null): obj is ValidationResultErrorGroup => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isValidationResultErrorGroup"')
+      return ValidationResultErrorGroup_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const VehiclePosition_possibleTypes: string[] = ['VehiclePosition']
+    export const isVehiclePosition = (obj?: { __typename?: any } | null): obj is VehiclePosition => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isVehiclePosition"')
+      return VehiclePosition_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const Waypoint_possibleTypes: string[] = ['Waypoint']
+    export const isWaypoint = (obj?: { __typename?: any } | null): obj is Waypoint => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isWaypoint"')
+      return Waypoint_possibleTypes.includes(obj.__typename)
+    }
+    
+
+export const enumDistanceUnit = {
+   KILOMETERS: 'KILOMETERS' as const,
+   MILES: 'MILES' as const
 }
 
-export interface RouteHeadwayPromiseChain{
-    departures: ({get: (request?: boolean|number, defaultValue?: (Scalars['Seconds'][] | undefined)) => Promise<(Scalars['Seconds'][] | undefined)>}),
-    direction_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    dow_category: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    headway_secs: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    service_date: ({get: (request?: boolean|number, defaultValue?: (Scalars['Date'] | undefined)) => Promise<(Scalars['Date'] | undefined)>}),
-    stop: (StopPromiseChain & {get: <R extends StopRequest>(request: R, defaultValue?: FieldsSelection<Stop, R>) => Promise<FieldsSelection<Stop, R>>}),
-    stop_trip_count: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>})
+export const enumDurationUnit = {
+   SECONDS: 'SECONDS' as const
 }
 
-export interface RouteHeadwayObservableChain{
-    departures: ({get: (request?: boolean|number, defaultValue?: (Scalars['Seconds'][] | undefined)) => Observable<(Scalars['Seconds'][] | undefined)>}),
-    direction_id: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    dow_category: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    headway_secs: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    service_date: ({get: (request?: boolean|number, defaultValue?: (Scalars['Date'] | undefined)) => Observable<(Scalars['Date'] | undefined)>}),
-    stop: (StopObservableChain & {get: <R extends StopRequest>(request: R, defaultValue?: FieldsSelection<Stop, R>) => Observable<FieldsSelection<Stop, R>>}),
-    stop_trip_count: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>})
+export const enumFeedSourceUrlTypes = {
+   gbfs_auto_discovery: 'gbfs_auto_discovery' as const,
+   mds_provider: 'mds_provider' as const,
+   realtime_alerts: 'realtime_alerts' as const,
+   realtime_trip_updates: 'realtime_trip_updates' as const,
+   realtime_vehicle_positions: 'realtime_vehicle_positions' as const,
+   static_current: 'static_current' as const,
+   static_historic: 'static_historic' as const,
+   static_hypothetical: 'static_hypothetical' as const,
+   static_planned: 'static_planned' as const
 }
 
-export interface RouteStopPromiseChain{
-    agency: (AgencyPromiseChain & {get: <R extends AgencyRequest>(request: R, defaultValue?: FieldsSelection<Agency, R>) => Promise<FieldsSelection<Agency, R>>}),
-    agency_id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    route: (RoutePromiseChain & {get: <R extends RouteRequest>(request: R, defaultValue?: FieldsSelection<Route, R>) => Promise<FieldsSelection<Route, R>>}),
-    route_id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    stop: (StopPromiseChain & {get: <R extends StopRequest>(request: R, defaultValue?: FieldsSelection<Stop, R>) => Promise<FieldsSelection<Stop, R>>}),
-    stop_id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>})
+export const enumFeedSpecTypes = {
+   GBFS: 'GBFS' as const,
+   GTFS: 'GTFS' as const,
+   GTFS_RT: 'GTFS_RT' as const,
+   MDS: 'MDS' as const
 }
 
-export interface RouteStopObservableChain{
-    agency: (AgencyObservableChain & {get: <R extends AgencyRequest>(request: R, defaultValue?: FieldsSelection<Agency, R>) => Observable<FieldsSelection<Agency, R>>}),
-    agency_id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    route: (RouteObservableChain & {get: <R extends RouteRequest>(request: R, defaultValue?: FieldsSelection<Route, R>) => Observable<FieldsSelection<Route, R>>}),
-    route_id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    stop: (StopObservableChain & {get: <R extends StopRequest>(request: R, defaultValue?: FieldsSelection<Stop, R>) => Observable<FieldsSelection<Stop, R>>}),
-    stop_id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>})
+export const enumImportStatus = {
+   ERROR: 'ERROR' as const,
+   IN_PROGRESS: 'IN_PROGRESS' as const,
+   SUCCESS: 'SUCCESS' as const
 }
 
-export interface RouteStopBufferPromiseChain{
-    stop_buffer: ({get: (request?: boolean|number, defaultValue?: (Scalars['Geometry'] | undefined)) => Promise<(Scalars['Geometry'] | undefined)>}),
-    stop_convexhull: ({get: (request?: boolean|number, defaultValue?: (Scalars['Polygon'] | undefined)) => Promise<(Scalars['Polygon'] | undefined)>}),
-    stop_points: ({get: (request?: boolean|number, defaultValue?: (Scalars['Geometry'] | undefined)) => Promise<(Scalars['Geometry'] | undefined)>})
+export const enumLicenseValue = {
+   EXCLUDE_NO: 'EXCLUDE_NO' as const,
+   NO: 'NO' as const,
+   UNKNOWN: 'UNKNOWN' as const,
+   YES: 'YES' as const
 }
 
-export interface RouteStopBufferObservableChain{
-    stop_buffer: ({get: (request?: boolean|number, defaultValue?: (Scalars['Geometry'] | undefined)) => Observable<(Scalars['Geometry'] | undefined)>}),
-    stop_convexhull: ({get: (request?: boolean|number, defaultValue?: (Scalars['Polygon'] | undefined)) => Observable<(Scalars['Polygon'] | undefined)>}),
-    stop_points: ({get: (request?: boolean|number, defaultValue?: (Scalars['Geometry'] | undefined)) => Observable<(Scalars['Geometry'] | undefined)>})
+export const enumRole = {
+   ADMIN: 'ADMIN' as const,
+   ANON: 'ANON' as const,
+   USER: 'USER' as const
 }
 
-export interface RouteStopPatternPromiseChain{
-    count: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    direction_id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    stop_pattern_id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    trips: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends TripRequest>(request: R, defaultValue?: (FieldsSelection<Trip, R>[] | undefined)) => Promise<(FieldsSelection<Trip, R>[] | undefined)>})&({get: <R extends TripRequest>(request: R, defaultValue?: (FieldsSelection<Trip, R>[] | undefined)) => Promise<(FieldsSelection<Trip, R>[] | undefined)>})
+export const enumScheduleRelationship = {
+   ADDED: 'ADDED' as const,
+   CANCELED: 'CANCELED' as const,
+   SCHEDULED: 'SCHEDULED' as const,
+   UNSCHEDULED: 'UNSCHEDULED' as const
 }
 
-export interface RouteStopPatternObservableChain{
-    count: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    direction_id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    stop_pattern_id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    trips: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends TripRequest>(request: R, defaultValue?: (FieldsSelection<Trip, R>[] | undefined)) => Observable<(FieldsSelection<Trip, R>[] | undefined)>})&({get: <R extends TripRequest>(request: R, defaultValue?: (FieldsSelection<Trip, R>[] | undefined)) => Observable<(FieldsSelection<Trip, R>[] | undefined)>})
-}
-
-
-/** Record from a static GTFS [shapes.txt](https://gtfs.org/schedule/reference/#shapestxt) file. */
-export interface ShapePromiseChain{
-    generated: ({get: (request?: boolean|number, defaultValue?: Scalars['Boolean']) => Promise<Scalars['Boolean']>}),
-    geometry: ({get: (request?: boolean|number, defaultValue?: Scalars['LineString']) => Promise<Scalars['LineString']>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    shape_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>})
-}
-
-
-/** Record from a static GTFS [shapes.txt](https://gtfs.org/schedule/reference/#shapestxt) file. */
-export interface ShapeObservableChain{
-    generated: ({get: (request?: boolean|number, defaultValue?: Scalars['Boolean']) => Observable<Scalars['Boolean']>}),
-    geometry: ({get: (request?: boolean|number, defaultValue?: Scalars['LineString']) => Observable<Scalars['LineString']>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    shape_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>})
-}
-
-export interface StepPromiseChain{
-    distance: (DistancePromiseChain & {get: <R extends DistanceRequest>(request: R, defaultValue?: FieldsSelection<Distance, R>) => Promise<FieldsSelection<Distance, R>>}),
-    duration: (DurationPromiseChain & {get: <R extends DurationRequest>(request: R, defaultValue?: FieldsSelection<Duration, R>) => Promise<FieldsSelection<Duration, R>>}),
-    end_time: ({get: (request?: boolean|number, defaultValue?: Scalars['Time']) => Promise<Scalars['Time']>}),
-    geometry_offset: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    instruction: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    mode: ({get: (request?: boolean|number, defaultValue?: StepMode) => Promise<StepMode>}),
-    start_time: ({get: (request?: boolean|number, defaultValue?: Scalars['Time']) => Promise<Scalars['Time']>}),
-    to: (WaypointPromiseChain & {get: <R extends WaypointRequest>(request: R, defaultValue?: (FieldsSelection<Waypoint, R> | undefined)) => Promise<(FieldsSelection<Waypoint, R> | undefined)>})
-}
-
-export interface StepObservableChain{
-    distance: (DistanceObservableChain & {get: <R extends DistanceRequest>(request: R, defaultValue?: FieldsSelection<Distance, R>) => Observable<FieldsSelection<Distance, R>>}),
-    duration: (DurationObservableChain & {get: <R extends DurationRequest>(request: R, defaultValue?: FieldsSelection<Duration, R>) => Observable<FieldsSelection<Duration, R>>}),
-    end_time: ({get: (request?: boolean|number, defaultValue?: Scalars['Time']) => Observable<Scalars['Time']>}),
-    geometry_offset: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    instruction: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    mode: ({get: (request?: boolean|number, defaultValue?: StepMode) => Observable<StepMode>}),
-    start_time: ({get: (request?: boolean|number, defaultValue?: Scalars['Time']) => Observable<Scalars['Time']>}),
-    to: (WaypointObservableChain & {get: <R extends WaypointRequest>(request: R, defaultValue?: (FieldsSelection<Waypoint, R> | undefined)) => Observable<(FieldsSelection<Waypoint, R> | undefined)>})
-}
-
-
-/** See https://gtfs.org/reference/static/#stopstxt */
-export interface StopPromiseChain{
-    alerts: ((args?: {active?: (Scalars['Boolean'] | null),limit?: (Scalars['Int'] | null)}) => {get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Promise<(FieldsSelection<Alert, R>[] | undefined)>})&({get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Promise<(FieldsSelection<Alert, R>[] | undefined)>}),
-    arrivals: ((args?: {limit?: (Scalars['Int'] | null),where?: (StopTimeFilter | null)}) => {get: <R extends StopTimeRequest>(request: R, defaultValue?: FieldsSelection<StopTime, R>[]) => Promise<FieldsSelection<StopTime, R>[]>})&({get: <R extends StopTimeRequest>(request: R, defaultValue?: FieldsSelection<StopTime, R>[]) => Promise<FieldsSelection<StopTime, R>[]>}),
-    census_geographies: ((args: {layer: Scalars['String'],limit?: (Scalars['Int'] | null),radius?: (Scalars['Float'] | null)}) => {get: <R extends CensusGeographyRequest>(request: R, defaultValue?: (FieldsSelection<CensusGeography, R>[] | undefined)) => Promise<(FieldsSelection<CensusGeography, R>[] | undefined)>}),
-    children: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends StopRequest>(request: R, defaultValue?: (FieldsSelection<Stop, R>[] | undefined)) => Promise<(FieldsSelection<Stop, R>[] | undefined)>})&({get: <R extends StopRequest>(request: R, defaultValue?: (FieldsSelection<Stop, R>[] | undefined)) => Promise<(FieldsSelection<Stop, R>[] | undefined)>}),
-    departures: ((args?: {limit?: (Scalars['Int'] | null),where?: (StopTimeFilter | null)}) => {get: <R extends StopTimeRequest>(request: R, defaultValue?: FieldsSelection<StopTime, R>[]) => Promise<FieldsSelection<StopTime, R>[]>})&({get: <R extends StopTimeRequest>(request: R, defaultValue?: FieldsSelection<StopTime, R>[]) => Promise<FieldsSelection<StopTime, R>[]>}),
-    directions: ((args?: {depart_at?: (Scalars['Time'] | null),from?: (WaypointInput | null),mode?: (StepMode | null),to?: (WaypointInput | null)}) => DirectionsPromiseChain & {get: <R extends DirectionsRequest>(request: R, defaultValue?: FieldsSelection<Directions, R>) => Promise<FieldsSelection<Directions, R>>})&(DirectionsPromiseChain & {get: <R extends DirectionsRequest>(request: R, defaultValue?: FieldsSelection<Directions, R>) => Promise<FieldsSelection<Directions, R>>}),
-    feed_onestop_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    feed_version: (FeedVersionPromiseChain & {get: <R extends FeedVersionRequest>(request: R, defaultValue?: FieldsSelection<FeedVersion, R>) => Promise<FieldsSelection<FeedVersion, R>>}),
-    feed_version_sha1: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    geometry: ({get: (request?: boolean|number, defaultValue?: Scalars['Point']) => Promise<Scalars['Point']>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    level: (LevelPromiseChain & {get: <R extends LevelRequest>(request: R, defaultValue?: (FieldsSelection<Level, R> | undefined)) => Promise<(FieldsSelection<Level, R> | undefined)>}),
-    location_type: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    nearby_stops: ((args?: {limit?: (Scalars['Int'] | null),radius?: (Scalars['Float'] | null)}) => {get: <R extends StopRequest>(request: R, defaultValue?: (FieldsSelection<Stop, R>[] | undefined)) => Promise<(FieldsSelection<Stop, R>[] | undefined)>})&({get: <R extends StopRequest>(request: R, defaultValue?: (FieldsSelection<Stop, R>[] | undefined)) => Promise<(FieldsSelection<Stop, R>[] | undefined)>}),
-    onestop_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    parent: (StopPromiseChain & {get: <R extends StopRequest>(request: R, defaultValue?: (FieldsSelection<Stop, R> | undefined)) => Promise<(FieldsSelection<Stop, R> | undefined)>}),
-    pathways_from_stop: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends PathwayRequest>(request: R, defaultValue?: FieldsSelection<Pathway, R>[]) => Promise<FieldsSelection<Pathway, R>[]>})&({get: <R extends PathwayRequest>(request: R, defaultValue?: FieldsSelection<Pathway, R>[]) => Promise<FieldsSelection<Pathway, R>[]>}),
-    pathways_to_stop: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends PathwayRequest>(request: R, defaultValue?: FieldsSelection<Pathway, R>[]) => Promise<FieldsSelection<Pathway, R>[]>})&({get: <R extends PathwayRequest>(request: R, defaultValue?: FieldsSelection<Pathway, R>[]) => Promise<FieldsSelection<Pathway, R>[]>}),
-    platform_code: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    route_stops: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends RouteStopRequest>(request: R, defaultValue?: FieldsSelection<RouteStop, R>[]) => Promise<FieldsSelection<RouteStop, R>[]>})&({get: <R extends RouteStopRequest>(request: R, defaultValue?: FieldsSelection<RouteStop, R>[]) => Promise<FieldsSelection<RouteStop, R>[]>}),
-    search_rank: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    stop_code: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    stop_desc: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    stop_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    stop_name: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    stop_times: ((args?: {limit?: (Scalars['Int'] | null),where?: (StopTimeFilter | null)}) => {get: <R extends StopTimeRequest>(request: R, defaultValue?: FieldsSelection<StopTime, R>[]) => Promise<FieldsSelection<StopTime, R>[]>})&({get: <R extends StopTimeRequest>(request: R, defaultValue?: FieldsSelection<StopTime, R>[]) => Promise<FieldsSelection<StopTime, R>[]>}),
-    stop_timezone: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    stop_url: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    tts_stop_name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    wheelchair_boarding: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    zone_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>})
-}
-
-
-/** See https://gtfs.org/reference/static/#stopstxt */
-export interface StopObservableChain{
-    alerts: ((args?: {active?: (Scalars['Boolean'] | null),limit?: (Scalars['Int'] | null)}) => {get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Observable<(FieldsSelection<Alert, R>[] | undefined)>})&({get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Observable<(FieldsSelection<Alert, R>[] | undefined)>}),
-    arrivals: ((args?: {limit?: (Scalars['Int'] | null),where?: (StopTimeFilter | null)}) => {get: <R extends StopTimeRequest>(request: R, defaultValue?: FieldsSelection<StopTime, R>[]) => Observable<FieldsSelection<StopTime, R>[]>})&({get: <R extends StopTimeRequest>(request: R, defaultValue?: FieldsSelection<StopTime, R>[]) => Observable<FieldsSelection<StopTime, R>[]>}),
-    census_geographies: ((args: {layer: Scalars['String'],limit?: (Scalars['Int'] | null),radius?: (Scalars['Float'] | null)}) => {get: <R extends CensusGeographyRequest>(request: R, defaultValue?: (FieldsSelection<CensusGeography, R>[] | undefined)) => Observable<(FieldsSelection<CensusGeography, R>[] | undefined)>}),
-    children: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends StopRequest>(request: R, defaultValue?: (FieldsSelection<Stop, R>[] | undefined)) => Observable<(FieldsSelection<Stop, R>[] | undefined)>})&({get: <R extends StopRequest>(request: R, defaultValue?: (FieldsSelection<Stop, R>[] | undefined)) => Observable<(FieldsSelection<Stop, R>[] | undefined)>}),
-    departures: ((args?: {limit?: (Scalars['Int'] | null),where?: (StopTimeFilter | null)}) => {get: <R extends StopTimeRequest>(request: R, defaultValue?: FieldsSelection<StopTime, R>[]) => Observable<FieldsSelection<StopTime, R>[]>})&({get: <R extends StopTimeRequest>(request: R, defaultValue?: FieldsSelection<StopTime, R>[]) => Observable<FieldsSelection<StopTime, R>[]>}),
-    directions: ((args?: {depart_at?: (Scalars['Time'] | null),from?: (WaypointInput | null),mode?: (StepMode | null),to?: (WaypointInput | null)}) => DirectionsObservableChain & {get: <R extends DirectionsRequest>(request: R, defaultValue?: FieldsSelection<Directions, R>) => Observable<FieldsSelection<Directions, R>>})&(DirectionsObservableChain & {get: <R extends DirectionsRequest>(request: R, defaultValue?: FieldsSelection<Directions, R>) => Observable<FieldsSelection<Directions, R>>}),
-    feed_onestop_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    feed_version: (FeedVersionObservableChain & {get: <R extends FeedVersionRequest>(request: R, defaultValue?: FieldsSelection<FeedVersion, R>) => Observable<FieldsSelection<FeedVersion, R>>}),
-    feed_version_sha1: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    geometry: ({get: (request?: boolean|number, defaultValue?: Scalars['Point']) => Observable<Scalars['Point']>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    level: (LevelObservableChain & {get: <R extends LevelRequest>(request: R, defaultValue?: (FieldsSelection<Level, R> | undefined)) => Observable<(FieldsSelection<Level, R> | undefined)>}),
-    location_type: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    nearby_stops: ((args?: {limit?: (Scalars['Int'] | null),radius?: (Scalars['Float'] | null)}) => {get: <R extends StopRequest>(request: R, defaultValue?: (FieldsSelection<Stop, R>[] | undefined)) => Observable<(FieldsSelection<Stop, R>[] | undefined)>})&({get: <R extends StopRequest>(request: R, defaultValue?: (FieldsSelection<Stop, R>[] | undefined)) => Observable<(FieldsSelection<Stop, R>[] | undefined)>}),
-    onestop_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    parent: (StopObservableChain & {get: <R extends StopRequest>(request: R, defaultValue?: (FieldsSelection<Stop, R> | undefined)) => Observable<(FieldsSelection<Stop, R> | undefined)>}),
-    pathways_from_stop: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends PathwayRequest>(request: R, defaultValue?: FieldsSelection<Pathway, R>[]) => Observable<FieldsSelection<Pathway, R>[]>})&({get: <R extends PathwayRequest>(request: R, defaultValue?: FieldsSelection<Pathway, R>[]) => Observable<FieldsSelection<Pathway, R>[]>}),
-    pathways_to_stop: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends PathwayRequest>(request: R, defaultValue?: FieldsSelection<Pathway, R>[]) => Observable<FieldsSelection<Pathway, R>[]>})&({get: <R extends PathwayRequest>(request: R, defaultValue?: FieldsSelection<Pathway, R>[]) => Observable<FieldsSelection<Pathway, R>[]>}),
-    platform_code: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    route_stops: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends RouteStopRequest>(request: R, defaultValue?: FieldsSelection<RouteStop, R>[]) => Observable<FieldsSelection<RouteStop, R>[]>})&({get: <R extends RouteStopRequest>(request: R, defaultValue?: FieldsSelection<RouteStop, R>[]) => Observable<FieldsSelection<RouteStop, R>[]>}),
-    search_rank: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    stop_code: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    stop_desc: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    stop_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    stop_name: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    stop_times: ((args?: {limit?: (Scalars['Int'] | null),where?: (StopTimeFilter | null)}) => {get: <R extends StopTimeRequest>(request: R, defaultValue?: FieldsSelection<StopTime, R>[]) => Observable<FieldsSelection<StopTime, R>[]>})&({get: <R extends StopTimeRequest>(request: R, defaultValue?: FieldsSelection<StopTime, R>[]) => Observable<FieldsSelection<StopTime, R>[]>}),
-    stop_timezone: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    stop_url: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    tts_stop_name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    wheelchair_boarding: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    zone_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>})
-}
-
-
-/** Record from a static GTFS [stop_times.txt](https://gtfs.org/schedule/reference/#stop_timestxt) file. */
-export interface StopTimePromiseChain{
-    arrival: (StopTimeEventPromiseChain & {get: <R extends StopTimeEventRequest>(request: R, defaultValue?: FieldsSelection<StopTimeEvent, R>) => Promise<FieldsSelection<StopTimeEvent, R>>}),
-    arrival_time: ({get: (request?: boolean|number, defaultValue?: Scalars['Seconds']) => Promise<Scalars['Seconds']>}),
-    continuous_drop_off: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    continuous_pickup: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    departure: (StopTimeEventPromiseChain & {get: <R extends StopTimeEventRequest>(request: R, defaultValue?: FieldsSelection<StopTimeEvent, R>) => Promise<FieldsSelection<StopTimeEvent, R>>}),
-    departure_time: ({get: (request?: boolean|number, defaultValue?: Scalars['Seconds']) => Promise<Scalars['Seconds']>}),
-    drop_off_type: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    interpolated: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    pickup_type: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    service_date: ({get: (request?: boolean|number, defaultValue?: (Scalars['Date'] | undefined)) => Promise<(Scalars['Date'] | undefined)>}),
-    shape_dist_traveled: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Promise<(Scalars['Float'] | undefined)>}),
-    stop: (StopPromiseChain & {get: <R extends StopRequest>(request: R, defaultValue?: FieldsSelection<Stop, R>) => Promise<FieldsSelection<Stop, R>>}),
-    stop_headsign: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    stop_sequence: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    timepoint: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    trip: (TripPromiseChain & {get: <R extends TripRequest>(request: R, defaultValue?: FieldsSelection<Trip, R>) => Promise<FieldsSelection<Trip, R>>})
-}
-
-
-/** Record from a static GTFS [stop_times.txt](https://gtfs.org/schedule/reference/#stop_timestxt) file. */
-export interface StopTimeObservableChain{
-    arrival: (StopTimeEventObservableChain & {get: <R extends StopTimeEventRequest>(request: R, defaultValue?: FieldsSelection<StopTimeEvent, R>) => Observable<FieldsSelection<StopTimeEvent, R>>}),
-    arrival_time: ({get: (request?: boolean|number, defaultValue?: Scalars['Seconds']) => Observable<Scalars['Seconds']>}),
-    continuous_drop_off: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    continuous_pickup: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    departure: (StopTimeEventObservableChain & {get: <R extends StopTimeEventRequest>(request: R, defaultValue?: FieldsSelection<StopTimeEvent, R>) => Observable<FieldsSelection<StopTimeEvent, R>>}),
-    departure_time: ({get: (request?: boolean|number, defaultValue?: Scalars['Seconds']) => Observable<Scalars['Seconds']>}),
-    drop_off_type: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    interpolated: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    pickup_type: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    service_date: ({get: (request?: boolean|number, defaultValue?: (Scalars['Date'] | undefined)) => Observable<(Scalars['Date'] | undefined)>}),
-    shape_dist_traveled: ({get: (request?: boolean|number, defaultValue?: (Scalars['Float'] | undefined)) => Observable<(Scalars['Float'] | undefined)>}),
-    stop: (StopObservableChain & {get: <R extends StopRequest>(request: R, defaultValue?: FieldsSelection<Stop, R>) => Observable<FieldsSelection<Stop, R>>}),
-    stop_headsign: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    stop_sequence: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    timepoint: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    trip: (TripObservableChain & {get: <R extends TripRequest>(request: R, defaultValue?: FieldsSelection<Trip, R>) => Observable<FieldsSelection<Trip, R>>})
-}
-
-export interface StopTimeEventPromiseChain{
-    delay: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    estimated: ({get: (request?: boolean|number, defaultValue?: (Scalars['Seconds'] | undefined)) => Promise<(Scalars['Seconds'] | undefined)>}),
-    estimated_utc: ({get: (request?: boolean|number, defaultValue?: (Scalars['Time'] | undefined)) => Promise<(Scalars['Time'] | undefined)>}),
-    scheduled: ({get: (request?: boolean|number, defaultValue?: (Scalars['Seconds'] | undefined)) => Promise<(Scalars['Seconds'] | undefined)>}),
-    stop_timezone: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    uncertainty: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>})
-}
-
-export interface StopTimeEventObservableChain{
-    delay: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    estimated: ({get: (request?: boolean|number, defaultValue?: (Scalars['Seconds'] | undefined)) => Observable<(Scalars['Seconds'] | undefined)>}),
-    estimated_utc: ({get: (request?: boolean|number, defaultValue?: (Scalars['Time'] | undefined)) => Observable<(Scalars['Time'] | undefined)>}),
-    scheduled: ({get: (request?: boolean|number, defaultValue?: (Scalars['Seconds'] | undefined)) => Observable<(Scalars['Seconds'] | undefined)>}),
-    stop_timezone: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    uncertainty: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>})
-}
-
-
-/** Record from a static GTFS [trips.txt](https://gtfs.org/schedule/reference/#tripstxt) file optionally enriched with by GTFS Realtime [TripUpdate](https://gtfs.org/reference/realtime/v2/#message-tripupdate) and [Alert](https://gtfs.org/reference/realtime/v2/#message-alert) messages. */
-export interface TripPromiseChain{
-    alerts: ((args?: {active?: (Scalars['Boolean'] | null),limit?: (Scalars['Int'] | null)}) => {get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Promise<(FieldsSelection<Alert, R>[] | undefined)>})&({get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Promise<(FieldsSelection<Alert, R>[] | undefined)>}),
-    bikes_allowed: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    block_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    calendar: (CalendarPromiseChain & {get: <R extends CalendarRequest>(request: R, defaultValue?: FieldsSelection<Calendar, R>) => Promise<FieldsSelection<Calendar, R>>}),
-    direction_id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    feed_version: (FeedVersionPromiseChain & {get: <R extends FeedVersionRequest>(request: R, defaultValue?: FieldsSelection<FeedVersion, R>) => Promise<FieldsSelection<FeedVersion, R>>}),
-    frequencies: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends FrequencyRequest>(request: R, defaultValue?: FieldsSelection<Frequency, R>[]) => Promise<FieldsSelection<Frequency, R>[]>})&({get: <R extends FrequencyRequest>(request: R, defaultValue?: FieldsSelection<Frequency, R>[]) => Promise<FieldsSelection<Frequency, R>[]>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    route: (RoutePromiseChain & {get: <R extends RouteRequest>(request: R, defaultValue?: FieldsSelection<Route, R>) => Promise<FieldsSelection<Route, R>>}),
-    schedule_relationship: ({get: (request?: boolean|number, defaultValue?: (ScheduleRelationship | undefined)) => Promise<(ScheduleRelationship | undefined)>}),
-    shape: (ShapePromiseChain & {get: <R extends ShapeRequest>(request: R, defaultValue?: (FieldsSelection<Shape, R> | undefined)) => Promise<(FieldsSelection<Shape, R> | undefined)>}),
-    stop_pattern_id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    stop_times: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends StopTimeRequest>(request: R, defaultValue?: (FieldsSelection<StopTime, R> | undefined)[]) => Promise<(FieldsSelection<StopTime, R> | undefined)[]>})&({get: <R extends StopTimeRequest>(request: R, defaultValue?: (FieldsSelection<StopTime, R> | undefined)[]) => Promise<(FieldsSelection<StopTime, R> | undefined)[]>}),
-    timestamp: ({get: (request?: boolean|number, defaultValue?: (Scalars['Time'] | undefined)) => Promise<(Scalars['Time'] | undefined)>}),
-    trip_headsign: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    trip_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    trip_short_name: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    wheelchair_accessible: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>})
-}
-
-
-/** Record from a static GTFS [trips.txt](https://gtfs.org/schedule/reference/#tripstxt) file optionally enriched with by GTFS Realtime [TripUpdate](https://gtfs.org/reference/realtime/v2/#message-tripupdate) and [Alert](https://gtfs.org/reference/realtime/v2/#message-alert) messages. */
-export interface TripObservableChain{
-    alerts: ((args?: {active?: (Scalars['Boolean'] | null),limit?: (Scalars['Int'] | null)}) => {get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Observable<(FieldsSelection<Alert, R>[] | undefined)>})&({get: <R extends AlertRequest>(request: R, defaultValue?: (FieldsSelection<Alert, R>[] | undefined)) => Observable<(FieldsSelection<Alert, R>[] | undefined)>}),
-    bikes_allowed: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    block_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    calendar: (CalendarObservableChain & {get: <R extends CalendarRequest>(request: R, defaultValue?: FieldsSelection<Calendar, R>) => Observable<FieldsSelection<Calendar, R>>}),
-    direction_id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    feed_version: (FeedVersionObservableChain & {get: <R extends FeedVersionRequest>(request: R, defaultValue?: FieldsSelection<FeedVersion, R>) => Observable<FieldsSelection<FeedVersion, R>>}),
-    frequencies: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends FrequencyRequest>(request: R, defaultValue?: FieldsSelection<Frequency, R>[]) => Observable<FieldsSelection<Frequency, R>[]>})&({get: <R extends FrequencyRequest>(request: R, defaultValue?: FieldsSelection<Frequency, R>[]) => Observable<FieldsSelection<Frequency, R>[]>}),
-    id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    route: (RouteObservableChain & {get: <R extends RouteRequest>(request: R, defaultValue?: FieldsSelection<Route, R>) => Observable<FieldsSelection<Route, R>>}),
-    schedule_relationship: ({get: (request?: boolean|number, defaultValue?: (ScheduleRelationship | undefined)) => Observable<(ScheduleRelationship | undefined)>}),
-    shape: (ShapeObservableChain & {get: <R extends ShapeRequest>(request: R, defaultValue?: (FieldsSelection<Shape, R> | undefined)) => Observable<(FieldsSelection<Shape, R> | undefined)>}),
-    stop_pattern_id: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    stop_times: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends StopTimeRequest>(request: R, defaultValue?: (FieldsSelection<StopTime, R> | undefined)[]) => Observable<(FieldsSelection<StopTime, R> | undefined)[]>})&({get: <R extends StopTimeRequest>(request: R, defaultValue?: (FieldsSelection<StopTime, R> | undefined)[]) => Observable<(FieldsSelection<StopTime, R> | undefined)[]>}),
-    timestamp: ({get: (request?: boolean|number, defaultValue?: (Scalars['Time'] | undefined)) => Observable<(Scalars['Time'] | undefined)>}),
-    trip_headsign: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    trip_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    trip_short_name: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    wheelchair_accessible: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>})
-}
-
-export interface ValidationResultPromiseChain{
-    agencies: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends AgencyRequest>(request: R, defaultValue?: FieldsSelection<Agency, R>[]) => Promise<FieldsSelection<Agency, R>[]>})&({get: <R extends AgencyRequest>(request: R, defaultValue?: FieldsSelection<Agency, R>[]) => Promise<FieldsSelection<Agency, R>[]>}),
-    earliest_calendar_date: ({get: (request?: boolean|number, defaultValue?: (Scalars['Date'] | undefined)) => Promise<(Scalars['Date'] | undefined)>}),
-    errors: ({get: <R extends ValidationResultErrorGroupRequest>(request: R, defaultValue?: FieldsSelection<ValidationResultErrorGroup, R>[]) => Promise<FieldsSelection<ValidationResultErrorGroup, R>[]>}),
-    failure_reason: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    feed_infos: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends FeedInfoRequest>(request: R, defaultValue?: FieldsSelection<FeedInfo, R>[]) => Promise<FieldsSelection<FeedInfo, R>[]>})&({get: <R extends FeedInfoRequest>(request: R, defaultValue?: FieldsSelection<FeedInfo, R>[]) => Promise<FieldsSelection<FeedInfo, R>[]>}),
-    files: ({get: <R extends FeedVersionFileInfoRequest>(request: R, defaultValue?: FieldsSelection<FeedVersionFileInfo, R>[]) => Promise<FieldsSelection<FeedVersionFileInfo, R>[]>}),
-    latest_calendar_date: ({get: (request?: boolean|number, defaultValue?: (Scalars['Date'] | undefined)) => Promise<(Scalars['Date'] | undefined)>}),
-    routes: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends RouteRequest>(request: R, defaultValue?: FieldsSelection<Route, R>[]) => Promise<FieldsSelection<Route, R>[]>})&({get: <R extends RouteRequest>(request: R, defaultValue?: FieldsSelection<Route, R>[]) => Promise<FieldsSelection<Route, R>[]>}),
-    service_levels: ((args?: {limit?: (Scalars['Int'] | null),route_id?: (Scalars['String'] | null)}) => {get: <R extends FeedVersionServiceLevelRequest>(request: R, defaultValue?: FieldsSelection<FeedVersionServiceLevel, R>[]) => Promise<FieldsSelection<FeedVersionServiceLevel, R>[]>})&({get: <R extends FeedVersionServiceLevelRequest>(request: R, defaultValue?: FieldsSelection<FeedVersionServiceLevel, R>[]) => Promise<FieldsSelection<FeedVersionServiceLevel, R>[]>}),
-    sha1: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    stops: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends StopRequest>(request: R, defaultValue?: FieldsSelection<Stop, R>[]) => Promise<FieldsSelection<Stop, R>[]>})&({get: <R extends StopRequest>(request: R, defaultValue?: FieldsSelection<Stop, R>[]) => Promise<FieldsSelection<Stop, R>[]>}),
-    success: ({get: (request?: boolean|number, defaultValue?: Scalars['Boolean']) => Promise<Scalars['Boolean']>}),
-    warnings: ({get: <R extends ValidationResultErrorGroupRequest>(request: R, defaultValue?: FieldsSelection<ValidationResultErrorGroup, R>[]) => Promise<FieldsSelection<ValidationResultErrorGroup, R>[]>})
-}
-
-export interface ValidationResultObservableChain{
-    agencies: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends AgencyRequest>(request: R, defaultValue?: FieldsSelection<Agency, R>[]) => Observable<FieldsSelection<Agency, R>[]>})&({get: <R extends AgencyRequest>(request: R, defaultValue?: FieldsSelection<Agency, R>[]) => Observable<FieldsSelection<Agency, R>[]>}),
-    earliest_calendar_date: ({get: (request?: boolean|number, defaultValue?: (Scalars['Date'] | undefined)) => Observable<(Scalars['Date'] | undefined)>}),
-    errors: ({get: <R extends ValidationResultErrorGroupRequest>(request: R, defaultValue?: FieldsSelection<ValidationResultErrorGroup, R>[]) => Observable<FieldsSelection<ValidationResultErrorGroup, R>[]>}),
-    failure_reason: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    feed_infos: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends FeedInfoRequest>(request: R, defaultValue?: FieldsSelection<FeedInfo, R>[]) => Observable<FieldsSelection<FeedInfo, R>[]>})&({get: <R extends FeedInfoRequest>(request: R, defaultValue?: FieldsSelection<FeedInfo, R>[]) => Observable<FieldsSelection<FeedInfo, R>[]>}),
-    files: ({get: <R extends FeedVersionFileInfoRequest>(request: R, defaultValue?: FieldsSelection<FeedVersionFileInfo, R>[]) => Observable<FieldsSelection<FeedVersionFileInfo, R>[]>}),
-    latest_calendar_date: ({get: (request?: boolean|number, defaultValue?: (Scalars['Date'] | undefined)) => Observable<(Scalars['Date'] | undefined)>}),
-    routes: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends RouteRequest>(request: R, defaultValue?: FieldsSelection<Route, R>[]) => Observable<FieldsSelection<Route, R>[]>})&({get: <R extends RouteRequest>(request: R, defaultValue?: FieldsSelection<Route, R>[]) => Observable<FieldsSelection<Route, R>[]>}),
-    service_levels: ((args?: {limit?: (Scalars['Int'] | null),route_id?: (Scalars['String'] | null)}) => {get: <R extends FeedVersionServiceLevelRequest>(request: R, defaultValue?: FieldsSelection<FeedVersionServiceLevel, R>[]) => Observable<FieldsSelection<FeedVersionServiceLevel, R>[]>})&({get: <R extends FeedVersionServiceLevelRequest>(request: R, defaultValue?: FieldsSelection<FeedVersionServiceLevel, R>[]) => Observable<FieldsSelection<FeedVersionServiceLevel, R>[]>}),
-    sha1: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    stops: ((args?: {limit?: (Scalars['Int'] | null)}) => {get: <R extends StopRequest>(request: R, defaultValue?: FieldsSelection<Stop, R>[]) => Observable<FieldsSelection<Stop, R>[]>})&({get: <R extends StopRequest>(request: R, defaultValue?: FieldsSelection<Stop, R>[]) => Observable<FieldsSelection<Stop, R>[]>}),
-    success: ({get: (request?: boolean|number, defaultValue?: Scalars['Boolean']) => Observable<Scalars['Boolean']>}),
-    warnings: ({get: <R extends ValidationResultErrorGroupRequest>(request: R, defaultValue?: FieldsSelection<ValidationResultErrorGroup, R>[]) => Observable<FieldsSelection<ValidationResultErrorGroup, R>[]>})
-}
-
-export interface ValidationResultErrorPromiseChain{
-    entity_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    error_type: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    field: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    filename: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    message: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    value: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>})
-}
-
-export interface ValidationResultErrorObservableChain{
-    entity_id: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    error_type: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    field: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    filename: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    message: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    value: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>})
-}
-
-export interface ValidationResultErrorGroupPromiseChain{
-    count: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>}),
-    error_type: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    errors: ({get: <R extends ValidationResultErrorRequest>(request: R, defaultValue?: FieldsSelection<ValidationResultError, R>[]) => Promise<FieldsSelection<ValidationResultError, R>[]>}),
-    filename: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>}),
-    limit: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Promise<Scalars['Int']>})
-}
-
-export interface ValidationResultErrorGroupObservableChain{
-    count: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>}),
-    error_type: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    errors: ({get: <R extends ValidationResultErrorRequest>(request: R, defaultValue?: FieldsSelection<ValidationResultError, R>[]) => Observable<FieldsSelection<ValidationResultError, R>[]>}),
-    filename: ({get: (request?: boolean|number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>}),
-    limit: ({get: (request?: boolean|number, defaultValue?: Scalars['Int']) => Observable<Scalars['Int']>})
-}
-
-
-/** [Vehicle Position](https://gtfs.org/reference/realtime/v2/#message-vehicleposition) message provided by a source GTFS Realtime feed. */
-export interface VehiclePositionPromiseChain{
-    congestion_level: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    current_status: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>}),
-    current_stop_sequence: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Promise<(Scalars['Int'] | undefined)>}),
-    position: ({get: (request?: boolean|number, defaultValue?: (Scalars['Point'] | undefined)) => Promise<(Scalars['Point'] | undefined)>}),
-    stop_id: (StopPromiseChain & {get: <R extends StopRequest>(request: R, defaultValue?: (FieldsSelection<Stop, R> | undefined)) => Promise<(FieldsSelection<Stop, R> | undefined)>}),
-    timestamp: ({get: (request?: boolean|number, defaultValue?: (Scalars['Time'] | undefined)) => Promise<(Scalars['Time'] | undefined)>}),
-    vehicle: (RTVehicleDescriptorPromiseChain & {get: <R extends RTVehicleDescriptorRequest>(request: R, defaultValue?: (FieldsSelection<RTVehicleDescriptor, R> | undefined)) => Promise<(FieldsSelection<RTVehicleDescriptor, R> | undefined)>})
-}
-
-
-/** [Vehicle Position](https://gtfs.org/reference/realtime/v2/#message-vehicleposition) message provided by a source GTFS Realtime feed. */
-export interface VehiclePositionObservableChain{
-    congestion_level: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    current_status: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>}),
-    current_stop_sequence: ({get: (request?: boolean|number, defaultValue?: (Scalars['Int'] | undefined)) => Observable<(Scalars['Int'] | undefined)>}),
-    position: ({get: (request?: boolean|number, defaultValue?: (Scalars['Point'] | undefined)) => Observable<(Scalars['Point'] | undefined)>}),
-    stop_id: (StopObservableChain & {get: <R extends StopRequest>(request: R, defaultValue?: (FieldsSelection<Stop, R> | undefined)) => Observable<(FieldsSelection<Stop, R> | undefined)>}),
-    timestamp: ({get: (request?: boolean|number, defaultValue?: (Scalars['Time'] | undefined)) => Observable<(Scalars['Time'] | undefined)>}),
-    vehicle: (RTVehicleDescriptorObservableChain & {get: <R extends RTVehicleDescriptorRequest>(request: R, defaultValue?: (FieldsSelection<RTVehicleDescriptor, R> | undefined)) => Observable<(FieldsSelection<RTVehicleDescriptor, R> | undefined)>})
-}
-
-export interface WaypointPromiseChain{
-    lat: ({get: (request?: boolean|number, defaultValue?: Scalars['Float']) => Promise<Scalars['Float']>}),
-    lon: ({get: (request?: boolean|number, defaultValue?: Scalars['Float']) => Promise<Scalars['Float']>}),
-    name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>})
-}
-
-export interface WaypointObservableChain{
-    lat: ({get: (request?: boolean|number, defaultValue?: Scalars['Float']) => Observable<Scalars['Float']>}),
-    lon: ({get: (request?: boolean|number, defaultValue?: Scalars['Float']) => Observable<Scalars['Float']>}),
-    name: ({get: (request?: boolean|number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>})
+export const enumStepMode = {
+   AUTO: 'AUTO' as const,
+   BICYCLE: 'BICYCLE' as const,
+   LINE: 'LINE' as const,
+   TRANSIT: 'TRANSIT' as const,
+   WALK: 'WALK' as const
 }

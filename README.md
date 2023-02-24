@@ -23,13 +23,13 @@ First add the library and its peerDependency to your project:
 * npm
 
   ```sh
-  npm i @ioki/transitland-gql-client@latest @genql/runtime@latest
+  npm i @ioki/transitland-gql-client@latest
   ```
 
 * yarn
 
   ```sh
-  yarn add @ioki/transitland-gql-client@latest @genql/runtime@latest
+  yarn add @ioki/transitland-gql-client@latest
   ```
 
 ### Setup
@@ -41,7 +41,8 @@ First add the library and its peerDependency to your project:
 import { createClient } from '@ioki/transitland-gql-client';
 
 const transitlandClient = createClient({
-  apiKey: "YOUR_SUPER_SECRET_API_KEY"
+  apiKey: "YOUR_SUPER_SECRET_API_KEY",
+  fetch: fetchClient // not needed for browser and node >= v18 (and >=v16 with --experimental-fetch)
 });
 ```
 
