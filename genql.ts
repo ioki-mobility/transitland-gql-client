@@ -15,7 +15,6 @@ void (async function () {
         schema: schema.replace(/type Mutation {[^}]*}/gm,  ''),
         output: path.join(__dirname, 'src/_client'),
         verbose: true,
-        onlyEsModules: true,
         scalarTypes: {
             Date: 'string', // "2015-07-19"
             Geometry: 'GeoJSON.Geometry',

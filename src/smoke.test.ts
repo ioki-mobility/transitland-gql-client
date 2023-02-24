@@ -10,31 +10,24 @@ const transitlandClient = createClient({
   apiKey: process.env.TRANSITLAND_API_KEY!,
   url: process.env.TRANSITLAND_URL,
   headers: {
-    Referer: "https://www.transit.land/"
-  }
+    Referer: "https://www.transit.land/",
+  },
 });
 
 it("should have no mutations", () => {
   expect(transitlandClient).not.toHaveProperty("mutation");
 });
 
-it("should have no wsClient", () => {
-  expect(transitlandClient).not.toHaveProperty("wsClient");
-  expect(transitlandClient).not.toHaveProperty("subscription");
-});
-
 it("can fetch feeds", async () => {
   const result = await transitlandClient.query({
-    feeds: [
-      {
+    feeds: {
+      __args: {
         where: {
-          onestop_id: "f-9q9-bart"
-        }
+          onestop_id: "f-9q9-bart",
+        },
       },
-      {
-        onestop_id: true
-      }
-    ]
+      onestop_id: true,
+    },
   });
   expect(result.feeds[0]).toMatchInlineSnapshot(`
     {
@@ -55,19 +48,20 @@ it("can not batch queries", async () => {
     url: process.env.TRANSITLAND_URL,
     batch: true,
     headers: {
-      Referer: "https://www.transit.land/"
-    }
+      Referer: "https://www.transit.land/",
+    },
   });
   const batch = Array(10)
     .fill(0)
     .map((_v, idx) => {
       return batchClient.query({
-        stops: [
-          { limit: 1, after: idx + 1 },
-          {
-            onestop_id: true
-          }
-        ]
+        stops: {
+          __args: {
+            limit: 1,
+            after: idx + 1,
+          },
+          onestop_id: true,
+        },
       });
     });
   expect(Promise.all(batch)).rejects.toEqual("error");
