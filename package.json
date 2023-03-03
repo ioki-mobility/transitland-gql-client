@@ -38,7 +38,7 @@
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
     "@csmith/release-it-calver-plugin": "^2022.5.13",
-    "@genql/cli": "3.0.3",
+    "@genql/cli": "3.0.4",
     "@graphql-tools/mock": "^8.7.5",
     "@graphql-tools/schema": "^9.0.3",
     "@release-it/conventional-changelog": "^5.1.0",
