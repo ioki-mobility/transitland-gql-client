@@ -401,6 +401,7 @@ type FeedVersion {
   feed_infos(limit: Int): [FeedInfo!]!
   feed_version_gtfs_import: FeedVersionGtfsImport
   fetched_at: Time!
+  file: String
 
   """
   Metadata for each text file present in the main directory of the zip archive 
@@ -445,6 +446,7 @@ type FeedVersionFileInfo {
 input FeedVersionFilter {
   feed_ids: [Int!]
   feed_onestop_id: String
+  file: String
   import_status: ImportStatus
   sha1: String
 }
@@ -794,10 +796,12 @@ type Leg {
 Describe the different levels of a station. Is mostly useful when used in conjunction with pathways. See https://gtfs.org/reference/static/#levelstxt
 """
 type Level {
+  geometry: Polygon!
   id: Int!
   level_id: String!
   level_index: Float!
   level_name: String!
+  stops: [Stop!]
 }
 
 input LicenseFilter {
@@ -1074,6 +1078,7 @@ type Stop {
   children(limit: Int): [Stop!]
   departures(limit: Int, where: StopTimeFilter): [StopTime!]!
   directions(depart_at: Time, from: WaypointInput, mode: StepMode, to: WaypointInput): Directions!
+  external_reference: StopExternalReference
   feed_onestop_id: String!
   feed_version: FeedVersion!
   feed_version_sha1: String!
@@ -1082,6 +1087,7 @@ type Stop {
   level: Level
   location_type: Int!
   nearby_stops(limit: Int, radius: Float): [Stop!]
+  observations(limit: Int, where: StopObservationFilter): [StopObservation!]
   onestop_id: String!
   parent: Stop
   pathways_from_stop(limit: Int): [Pathway!]!
@@ -1101,12 +1107,21 @@ type Stop {
   zone_id: String!
 }
 
+type StopExternalReference {
+  id: Int!
+  inactive: Boolean
+  target_active_stop: Stop
+  target_feed_onestop_id: String
+  target_stop_id: String
+}
+
 input StopFilter {
   agency_ids: [Int!]
   allow_previous_onestop_ids: Boolean
   feed_onestop_id: String
   feed_version_sha1: String
   license: LicenseFilter
+  location_type: Int
   near: PointRadius
   onestop_id: String
   onestop_ids: [String!]
@@ -1115,6 +1130,29 @@ input StopFilter {
   stop_code: String
   stop_id: String
   within: Polygon
+}
+
+type StopObservation {
+  agency_id: String
+  from_stop_id: String
+  observed_arrival_time: Seconds
+  observed_departure_time: Seconds
+  route_id: String
+  schedule_relationship: String
+  scheduled_arrival_time: Seconds
+  scheduled_departure_time: Seconds
+  source: String
+  stop_sequence: Int
+  to_stop_id: String
+  trip_id: String
+  trip_start_date: Date
+  trip_start_time: Seconds
+}
+
+input StopObservationFilter {
+  feed_version_id: Int!
+  source: String!
+  trip_start_date: Date!
 }
 
 """

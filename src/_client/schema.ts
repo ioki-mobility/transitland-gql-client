@@ -282,6 +282,7 @@ export interface FeedVersion {
     feed_infos: FeedInfo[]
     feed_version_gtfs_import?: FeedVersionGtfsImport
     fetched_at: Scalars['Time']
+    file?: Scalars['String']
     /** Metadata for each text file present in the main directory of the zip archive  */
     files: FeedVersionFileInfo[]
     /** Convex hull around all active stops in the feed version */
@@ -672,10 +673,12 @@ export interface Leg {
 
 /** Describe the different levels of a station. Is mostly useful when used in conjunction with pathways. See https://gtfs.org/reference/static/#levelstxt */
 export interface Level {
+    geometry: Scalars['Polygon']
     id: Scalars['Int']
     level_id: Scalars['String']
     level_index: Scalars['Float']
     level_name: Scalars['String']
+    stops?: Stop[]
     __typename: 'Level'
 }
 
@@ -891,6 +894,7 @@ export interface Stop {
     children?: Stop[]
     departures: StopTime[]
     directions: Directions
+    external_reference?: StopExternalReference
     feed_onestop_id: Scalars['String']
     feed_version: FeedVersion
     feed_version_sha1: Scalars['String']
@@ -899,6 +903,7 @@ export interface Stop {
     level?: Level
     location_type: Scalars['Int']
     nearby_stops?: Stop[]
+    observations?: StopObservation[]
     onestop_id: Scalars['String']
     parent?: Stop
     pathways_from_stop: Pathway[]
@@ -917,6 +922,33 @@ export interface Stop {
     wheelchair_boarding: Scalars['Int']
     zone_id: Scalars['String']
     __typename: 'Stop'
+}
+
+export interface StopExternalReference {
+    id: Scalars['Int']
+    inactive?: Scalars['Boolean']
+    target_active_stop?: Stop
+    target_feed_onestop_id?: Scalars['String']
+    target_stop_id?: Scalars['String']
+    __typename: 'StopExternalReference'
+}
+
+export interface StopObservation {
+    agency_id?: Scalars['String']
+    from_stop_id?: Scalars['String']
+    observed_arrival_time?: Scalars['Seconds']
+    observed_departure_time?: Scalars['Seconds']
+    route_id?: Scalars['String']
+    schedule_relationship?: Scalars['String']
+    scheduled_arrival_time?: Scalars['Seconds']
+    scheduled_departure_time?: Scalars['Seconds']
+    source?: Scalars['String']
+    stop_sequence?: Scalars['Int']
+    to_stop_id?: Scalars['String']
+    trip_id?: Scalars['String']
+    trip_start_date?: Scalars['Date']
+    trip_start_time?: Scalars['Seconds']
+    __typename: 'StopObservation'
 }
 
 
@@ -1345,6 +1377,7 @@ export interface FeedVersionGenqlSelection{
     feed_infos?: (FeedInfoGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
     feed_version_gtfs_import?: FeedVersionGtfsImportGenqlSelection
     fetched_at?: boolean | number
+    file?: boolean | number
     /** Metadata for each text file present in the main directory of the zip archive  */
     files?: (FeedVersionFileInfoGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
     /** Convex hull around all active stops in the feed version */
@@ -1390,7 +1423,7 @@ export interface FeedVersionFileInfoGenqlSelection{
     __scalar?: boolean | number
 }
 
-export interface FeedVersionFilter {feed_ids?: (Scalars['Int'][] | null),feed_onestop_id?: (Scalars['String'] | null),import_status?: (ImportStatus | null),sha1?: (Scalars['String'] | null)}
+export interface FeedVersionFilter {feed_ids?: (Scalars['Int'][] | null),feed_onestop_id?: (Scalars['String'] | null),file?: (Scalars['String'] | null),import_status?: (ImportStatus | null),sha1?: (Scalars['String'] | null)}
 
 export interface FeedVersionGtfsImportGenqlSelection{
     created_at?: boolean | number
@@ -1779,10 +1812,12 @@ export interface LegGenqlSelection{
 
 /** Describe the different levels of a station. Is mostly useful when used in conjunction with pathways. See https://gtfs.org/reference/static/#levelstxt */
 export interface LevelGenqlSelection{
+    geometry?: boolean | number
     id?: boolean | number
     level_id?: boolean | number
     level_index?: boolean | number
     level_name?: boolean | number
+    stops?: StopGenqlSelection
     __typename?: boolean | number
     __scalar?: boolean | number
 }
@@ -2016,6 +2051,7 @@ export interface StopGenqlSelection{
     children?: (StopGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
     departures?: (StopTimeGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), where?: (StopTimeFilter | null)} })
     directions?: (DirectionsGenqlSelection & { __args?: {depart_at?: (Scalars['Time'] | null), from?: (WaypointInput | null), mode?: (StepMode | null), to?: (WaypointInput | null)} })
+    external_reference?: StopExternalReferenceGenqlSelection
     feed_onestop_id?: boolean | number
     feed_version?: FeedVersionGenqlSelection
     feed_version_sha1?: boolean | number
@@ -2024,6 +2060,7 @@ export interface StopGenqlSelection{
     level?: LevelGenqlSelection
     location_type?: boolean | number
     nearby_stops?: (StopGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), radius?: (Scalars['Float'] | null)} })
+    observations?: (StopObservationGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), where?: (StopObservationFilter | null)} })
     onestop_id?: boolean | number
     parent?: StopGenqlSelection
     pathways_from_stop?: (PathwayGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
@@ -2045,7 +2082,38 @@ export interface StopGenqlSelection{
     __scalar?: boolean | number
 }
 
-export interface StopFilter {agency_ids?: (Scalars['Int'][] | null),allow_previous_onestop_ids?: (Scalars['Boolean'] | null),feed_onestop_id?: (Scalars['String'] | null),feed_version_sha1?: (Scalars['String'] | null),license?: (LicenseFilter | null),near?: (PointRadius | null),onestop_id?: (Scalars['String'] | null),onestop_ids?: (Scalars['String'][] | null),search?: (Scalars['String'] | null),served_by_onestop_ids?: (Scalars['String'][] | null),stop_code?: (Scalars['String'] | null),stop_id?: (Scalars['String'] | null),within?: (Scalars['Polygon'] | null)}
+export interface StopExternalReferenceGenqlSelection{
+    id?: boolean | number
+    inactive?: boolean | number
+    target_active_stop?: StopGenqlSelection
+    target_feed_onestop_id?: boolean | number
+    target_stop_id?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface StopFilter {agency_ids?: (Scalars['Int'][] | null),allow_previous_onestop_ids?: (Scalars['Boolean'] | null),feed_onestop_id?: (Scalars['String'] | null),feed_version_sha1?: (Scalars['String'] | null),license?: (LicenseFilter | null),location_type?: (Scalars['Int'] | null),near?: (PointRadius | null),onestop_id?: (Scalars['String'] | null),onestop_ids?: (Scalars['String'][] | null),search?: (Scalars['String'] | null),served_by_onestop_ids?: (Scalars['String'][] | null),stop_code?: (Scalars['String'] | null),stop_id?: (Scalars['String'] | null),within?: (Scalars['Polygon'] | null)}
+
+export interface StopObservationGenqlSelection{
+    agency_id?: boolean | number
+    from_stop_id?: boolean | number
+    observed_arrival_time?: boolean | number
+    observed_departure_time?: boolean | number
+    route_id?: boolean | number
+    schedule_relationship?: boolean | number
+    scheduled_arrival_time?: boolean | number
+    scheduled_departure_time?: boolean | number
+    source?: boolean | number
+    stop_sequence?: boolean | number
+    to_stop_id?: boolean | number
+    trip_id?: boolean | number
+    trip_start_date?: boolean | number
+    trip_start_time?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface StopObservationFilter {feed_version_id: Scalars['Int'],source: Scalars['String'],trip_start_date: Scalars['Date']}
 
 
 /** Record from a static GTFS [stop_times.txt](https://gtfs.org/schedule/reference/#stop_timestxt) file. */
@@ -2730,6 +2798,22 @@ export interface WaypointInput {lat: Scalars['Float'],lon: Scalars['Float'],name
     export const isStop = (obj?: { __typename?: any } | null): obj is Stop => {
       if (!obj?.__typename) throw new Error('__typename is missing in "isStop"')
       return Stop_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const StopExternalReference_possibleTypes: string[] = ['StopExternalReference']
+    export const isStopExternalReference = (obj?: { __typename?: any } | null): obj is StopExternalReference => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isStopExternalReference"')
+      return StopExternalReference_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const StopObservation_possibleTypes: string[] = ['StopObservation']
+    export const isStopObservation = (obj?: { __typename?: any } | null): obj is StopObservation => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isStopObservation"')
+      return StopObservation_possibleTypes.includes(obj.__typename)
     }
     
 
