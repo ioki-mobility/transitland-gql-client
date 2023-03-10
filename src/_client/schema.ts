@@ -794,6 +794,7 @@ export interface Route {
     id: Scalars['Int']
     onestop_id?: Scalars['String']
     patterns?: RouteStopPattern[]
+    route_attribute?: RouteAttribute
     route_color: Scalars['String']
     route_desc: Scalars['String']
     route_id: Scalars['String']
@@ -809,6 +810,15 @@ export interface Route {
     stops: Stop[]
     trips: Trip[]
     __typename: 'Route'
+}
+
+
+/** MTC GTFS+ Extension: route_attributes.txt */
+export interface RouteAttribute {
+    category?: Scalars['Int']
+    running_way?: Scalars['Int']
+    subcategory?: Scalars['Int']
+    __typename: 'RouteAttribute'
 }
 
 export interface RouteGeometry {
@@ -1945,6 +1955,7 @@ export interface RouteGenqlSelection{
     id?: boolean | number
     onestop_id?: boolean | number
     patterns?: RouteStopPatternGenqlSelection
+    route_attribute?: RouteAttributeGenqlSelection
     route_color?: boolean | number
     route_desc?: boolean | number
     route_id?: boolean | number
@@ -1959,6 +1970,16 @@ export interface RouteGenqlSelection{
     search_rank?: boolean | number
     stops?: (StopGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), where?: (StopFilter | null)} })
     trips?: (TripGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), where?: (TripFilter | null)} })
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+
+/** MTC GTFS+ Extension: route_attributes.txt */
+export interface RouteAttributeGenqlSelection{
+    category?: boolean | number
+    running_way?: boolean | number
+    subcategory?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
 }
@@ -2734,6 +2755,14 @@ export interface WaypointInput {lat: Scalars['Float'],lon: Scalars['Float'],name
     export const isRoute = (obj?: { __typename?: any } | null): obj is Route => {
       if (!obj?.__typename) throw new Error('__typename is missing in "isRoute"')
       return Route_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const RouteAttribute_possibleTypes: string[] = ['RouteAttribute']
+    export const isRouteAttribute = (obj?: { __typename?: any } | null): obj is RouteAttribute => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isRouteAttribute"')
+      return RouteAttribute_possibleTypes.includes(obj.__typename)
     }
     
 

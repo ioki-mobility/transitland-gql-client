@@ -954,6 +954,7 @@ type Route {
   id: Int!
   onestop_id: String
   patterns: [RouteStopPattern!]
+  route_attribute: RouteAttribute
   route_color: String!
   route_desc: String!
   route_id: String!
@@ -968,6 +969,13 @@ type Route {
   search_rank: String
   stops(limit: Int, where: StopFilter): [Stop!]!
   trips(limit: Int, where: TripFilter): [Trip!]!
+}
+
+"""MTC GTFS+ Extension: route_attributes.txt"""
+type RouteAttribute {
+  category: Int
+  running_way: Int
+  subcategory: Int
 }
 
 input RouteFilter {
