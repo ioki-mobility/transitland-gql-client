@@ -1,6 +1,6 @@
 {
   "name": "@ioki/transitland-gql-client",
-  "version": "2023.3.32",
+  "version": "2023.3.33",
   "description": "gql client for transitland",
   "repository": "git@github.com:ioki-mobility/transitland-gql-client.git",
   "author": "Jonas Strassel <jonas.strassel@ioki.com>",
