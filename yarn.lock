@@ -608,10 +608,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.17.14.tgz#e81fb49de05fed91bf74251c9ca0343f4fc77d31"
   integrity sha512-gPQmsi2DKTaEgG14hc3CHXHp62k8g6qr0Pas+I4lUxRMugGSATh/Bi8Dgusoz9IQ0IfdrvLpco6kujEIBoaogA==
 
-"@genql/cli@3.0.4":
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/@genql/cli/-/cli-3.0.4.tgz#0ea074b3de4bcd0946bf4ecd3df94463cf4e34f1"
-  integrity sha512-OTuIRSZWAwUigJwHVKR07FTdjvdv2mm67HI1QmoD8VuqUhc1Q1y0l0/siW0JRQbvZryOlD/jIZzQcHOzqOLUCg==
+"@genql/cli@3.0.5":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@genql/cli/-/cli-3.0.5.tgz#dffc22db75ab929918a500bc483fb3ec86563853"
+  integrity sha512-2IymSpQY01UeYMpIx3xYBRbvH2E/8CDVKhXmoD7Iju46VW1zWY763Hdl3/DHpJJeKbRrI92RftT8sl4YVQZYuw==
   dependencies:
     "@graphql-tools/graphql-file-loader" "^7.5.11"
     "@graphql-tools/load" "^7.8.6"
