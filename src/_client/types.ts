@@ -16,43 +16,44 @@ export default {
         80,
         81,
         82,
-        87,
-        89,
-        95,
-        104,
-        105,
+        88,
+        90,
+        92,
+        98,
+        107,
         108,
-        117,
-        118,
-        119,
+        111,
         120,
-        123
+        121,
+        122,
+        123,
+        126
     ],
     "types": {
         "Agency": {
             "agency_email": [
-                117
+                120
             ],
             "agency_fare_url": [
-                117
+                120
             ],
             "agency_id": [
-                117
+                120
             ],
             "agency_lang": [
-                117
+                120
             ],
             "agency_name": [
-                117
+                120
             ],
             "agency_phone": [
-                117
+                120
             ],
             "agency_timezone": [
-                117
+                120
             ],
             "agency_url": [
-                117
+                120
             ],
             "alerts": [
                 4,
@@ -69,7 +70,7 @@ export default {
                 10,
                 {
                     "layer": [
-                        117,
+                        120,
                         "String!"
                     ],
                     "limit": [
@@ -81,22 +82,22 @@ export default {
                 }
             ],
             "feed_onestop_id": [
-                117
+                120
             ],
             "feed_version": [
                 32
             ],
             "feed_version_sha1": [
-                117
+                120
             ],
             "geometry": [
-                89
+                92
             ],
             "id": [
                 74
             ],
             "onestop_id": [
-                117
+                120
             ],
             "operator": [
                 83
@@ -113,85 +114,85 @@ export default {
                 }
             ],
             "routes": [
-                96,
+                99,
                 {
                     "limit": [
                         74
                     ],
                     "where": [
-                        98
+                        101
                     ]
                 }
             ],
             "search_rank": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "AgencyFilter": {
             "adm0_iso": [
-                117
+                120
             ],
             "adm0_name": [
-                117
+                120
             ],
             "adm1_iso": [
-                117
+                120
             ],
             "adm1_name": [
-                117
+                120
             ],
             "agency_id": [
-                117
+                120
             ],
             "agency_name": [
-                117
+                120
             ],
             "city_name": [
-                117
+                120
             ],
             "feed_onestop_id": [
-                117
+                120
             ],
             "feed_version_sha1": [
-                117
+                120
             ],
             "license": [
                 79
             ],
             "near": [
-                88
+                91
             ],
             "onestop_id": [
-                117
+                120
             ],
             "search": [
-                117
+                120
             ],
             "within": [
-                89
+                92
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "AgencyPlace": {
             "adm0_name": [
-                117
+                120
             ],
             "adm1_name": [
-                117
+                120
             ],
             "city_name": [
-                117
+                120
             ],
             "rank": [
                 43
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "AgencyPlaceFilter": {
@@ -199,39 +200,39 @@ export default {
                 43
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "Alert": {
             "active_period": [
-                91
+                94
             ],
             "cause": [
-                117
+                120
             ],
             "description_text": [
-                92
+                95
             ],
             "effect": [
-                117
+                120
             ],
             "header_text": [
-                92
+                95
             ],
             "severity_level": [
-                117
+                120
             ],
             "tts_description_text": [
-                92
+                95
             ],
             "tts_header_text": [
-                92
+                95
             ],
             "url": [
-                92
+                95
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "Any": {},
@@ -270,7 +271,7 @@ export default {
                 74
             ],
             "service_id": [
-                117
+                120
             ],
             "start_date": [
                 13
@@ -288,7 +289,7 @@ export default {
                 74
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "CalendarDateFilter": {
@@ -299,7 +300,7 @@ export default {
                 74
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "CensusGeography": {
@@ -310,19 +311,19 @@ export default {
                 43
             ],
             "geoid": [
-                117
+                120
             ],
             "geometry": [
-                89
+                92
             ],
             "id": [
                 74
             ],
             "layer_name": [
-                117
+                120
             ],
             "name": [
-                117
+                120
             ],
             "values": [
                 12,
@@ -331,13 +332,13 @@ export default {
                         74
                     ],
                     "table_names": [
-                        117,
+                        120,
                         "[String!]!"
                     ]
                 }
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "CensusTable": {
@@ -345,16 +346,16 @@ export default {
                 74
             ],
             "table_group": [
-                117
+                120
             ],
             "table_name": [
-                117
+                120
             ],
             "table_title": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "CensusValue": {
@@ -365,33 +366,33 @@ export default {
                 5
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "Date": {},
         "DirectionRequest": {
             "depart_at": [
-                120
+                123
             ],
             "from": [
-                129
+                132
             ],
             "mode": [
-                108
+                111
             ],
             "to": [
-                129
+                132
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "Directions": {
             "data_source": [
-                117
+                120
             ],
             "destination": [
-                128
+                131
             ],
             "distance": [
                 16
@@ -400,25 +401,25 @@ export default {
                 18
             ],
             "end_time": [
-                120
+                123
             ],
             "exception": [
-                117
+                120
             ],
             "itineraries": [
                 75
             ],
             "origin": [
-                128
+                131
             ],
             "start_time": [
-                120
+                123
             ],
             "success": [
                 7
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "Distance": {
@@ -429,7 +430,7 @@ export default {
                 17
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "DistanceUnit": {},
@@ -441,7 +442,7 @@ export default {
                 19
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "DurationUnit": {},
@@ -478,59 +479,59 @@ export default {
                 }
             ],
             "file": [
-                117
+                120
             ],
             "id": [
                 74
             ],
             "languages": [
-                117
+                120
             ],
             "license": [
                 26
             ],
             "name": [
-                117
+                120
             ],
             "onestop_id": [
-                117
+                120
             ],
             "search_rank": [
-                117
+                120
             ],
             "spec": [
                 29
             ],
             "tags": [
-                119
+                122
             ],
             "urls": [
                 31
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "FeedAuthorization": {
             "info_url": [
-                117
+                120
             ],
             "param_name": [
-                117
+                120
             ],
             "type": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "FeedFetch": {
             "fetch_error": [
-                117
+                120
             ],
             "fetched_at": [
-                120
+                123
             ],
             "id": [
                 74
@@ -539,7 +540,7 @@ export default {
                 74
             ],
             "response_sha1": [
-                117
+                120
             ],
             "response_size": [
                 74
@@ -548,13 +549,13 @@ export default {
                 7
             ],
             "url": [
-                117
+                120
             ],
             "url_type": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "FeedFetchFilter": {
@@ -562,7 +563,7 @@ export default {
                 7
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "FeedFilter": {
@@ -576,10 +577,10 @@ export default {
                 79
             ],
             "onestop_id": [
-                117
+                120
             ],
             "search": [
-                117
+                120
             ],
             "source_url": [
                 27
@@ -588,77 +589,77 @@ export default {
                 29
             ],
             "tags": [
-                119
+                122
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "FeedInfo": {
             "default_lang": [
-                117
+                120
             ],
             "feed_contact_email": [
-                117
+                120
             ],
             "feed_contact_url": [
-                117
+                120
             ],
             "feed_end_date": [
                 13
             ],
             "feed_lang": [
-                117
+                120
             ],
             "feed_publisher_name": [
-                117
+                120
             ],
             "feed_publisher_url": [
-                117
+                120
             ],
             "feed_start_date": [
                 13
             ],
             "feed_version": [
-                117
+                120
             ],
             "id": [
                 74
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "FeedLicense": {
             "attribution_instructions": [
-                117
+                120
             ],
             "attribution_text": [
-                117
+                120
             ],
             "commercial_use_allowed": [
-                117
+                120
             ],
             "create_derived_product": [
-                117
+                120
             ],
             "redistribution_allowed": [
-                117
+                120
             ],
             "share_alike_optional": [
-                117
+                120
             ],
             "spdx_identifier": [
-                117
+                120
             ],
             "url": [
-                117
+                120
             ],
             "use_without_attribution": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "FeedSourceUrl": {
@@ -669,10 +670,10 @@ export default {
                 28
             ],
             "url": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "FeedSourceUrlTypes": {},
@@ -685,36 +686,36 @@ export default {
                 74
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "FeedUrls": {
             "gbfs_auto_discovery": [
-                117
+                120
             ],
             "mds_provider": [
-                117
+                120
             ],
             "realtime_alerts": [
-                117
+                120
             ],
             "realtime_trip_updates": [
-                117
+                120
             ],
             "realtime_vehicle_positions": [
-                117
+                120
             ],
             "static_current": [
-                117
+                120
             ],
             "static_historic": [
-                117
+                120
             ],
             "static_planned": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "FeedVersion": {
@@ -730,10 +731,10 @@ export default {
                 }
             ],
             "created_by": [
-                117
+                120
             ],
             "description": [
-                117
+                120
             ],
             "earliest_calendar_date": [
                 13
@@ -753,10 +754,10 @@ export default {
                 37
             ],
             "fetched_at": [
-                120
+                123
             ],
             "file": [
-                117
+                120
             ],
             "files": [
                 35,
@@ -767,7 +768,7 @@ export default {
                 }
             ],
             "geometry": [
-                89
+                92
             ],
             "id": [
                 74
@@ -776,16 +777,16 @@ export default {
                 13
             ],
             "name": [
-                117
+                120
             ],
             "routes": [
-                96,
+                99,
                 {
                     "limit": [
                         74
                     ],
                     "where": [
-                        98
+                        101
                     ]
                 }
             ],
@@ -801,38 +802,38 @@ export default {
                 }
             ],
             "sha1": [
-                117
+                120
             ],
             "stops": [
-                109,
+                112,
                 {
                     "limit": [
                         74
                     ],
                     "where": [
-                        111
+                        114
                     ]
                 }
             ],
             "trips": [
-                121,
+                124,
                 {
                     "limit": [
                         74
                     ],
                     "where": [
-                        122
+                        125
                     ]
                 }
             ],
             "updated_by": [
-                117
+                120
             ],
             "url": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "FeedVersionDeleteResult": {
@@ -840,7 +841,7 @@ export default {
                 7
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "FeedVersionFetchResult": {
@@ -848,7 +849,7 @@ export default {
                 32
             ],
             "fetch_error": [
-                117
+                120
             ],
             "found_dir_sha1": [
                 7
@@ -857,7 +858,7 @@ export default {
                 7
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "FeedVersionFileInfo": {
@@ -865,25 +866,25 @@ export default {
                 7
             ],
             "header": [
-                117
+                120
             ],
             "id": [
                 74
             ],
             "name": [
-                117
+                120
             ],
             "rows": [
                 74
             ],
             "sha1": [
-                117
+                120
             ],
             "size": [
                 74
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "FeedVersionFilter": {
@@ -891,30 +892,30 @@ export default {
                 74
             ],
             "feed_onestop_id": [
-                117
+                120
             ],
             "file": [
-                117
+                120
             ],
             "import_status": [
                 73
             ],
             "sha1": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "FeedVersionGtfsImport": {
             "created_at": [
-                120
+                123
             ],
             "entity_count": [
                 5
             ],
             "exception_log": [
-                117
+                120
             ],
             "id": [
                 74
@@ -944,13 +945,13 @@ export default {
                 7
             ],
             "updated_at": [
-                120
+                123
             ],
             "warning_count": [
                 5
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "FeedVersionImportResult": {
@@ -958,7 +959,7 @@ export default {
                 7
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "FeedVersionServiceLevel": {
@@ -993,7 +994,7 @@ export default {
                 74
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "FeedVersionServiceLevelFilter": {
@@ -1004,18 +1005,18 @@ export default {
                 13
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "FeedVersionSetInput": {
             "description": [
-                117
+                120
             ],
             "name": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "FeedVersionUnimportResult": {
@@ -1023,13 +1024,13 @@ export default {
                 7
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "Float": {},
         "Frequency": {
             "end_time": [
-                105
+                108
             ],
             "exact_times": [
                 74
@@ -1041,10 +1042,10 @@ export default {
                 74
             ],
             "start_time": [
-                105
+                108
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "GbfsAlertTime": {
@@ -1055,43 +1056,43 @@ export default {
                 74
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "GbfsBikeRequest": {
             "near": [
-                88
+                91
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "GbfsBrandAsset": {
             "brand_image_url": [
-                117
+                120
             ],
             "brand_image_url_dark": [
-                117
+                120
             ],
             "brand_last_modified": [
                 13
             ],
             "brand_terms_url": [
-                117
+                120
             ],
             "color": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "GbfsDockRequest": {
             "near": [
-                88
+                91
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "GbfsFeed": {
@@ -1111,7 +1112,7 @@ export default {
                 64
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "GbfsFreeBikeStatus": {
@@ -1119,7 +1120,7 @@ export default {
                 74
             ],
             "bike_id": [
-                117
+                120
             ],
             "current_fuel_percent": [
                 43
@@ -1158,13 +1159,13 @@ export default {
                 59
             ],
             "vehicle_equipment": [
-                118
+                121
             ],
             "vehicle_type": [
                 70
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "GbfsGeofenceFeature": {
@@ -1172,10 +1173,10 @@ export default {
                 72
             ],
             "type": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "GbfsGeofenceProperty": {
@@ -1183,7 +1184,7 @@ export default {
                 74
             ],
             "name": [
-                117
+                120
             ],
             "rules": [
                 53
@@ -1192,7 +1193,7 @@ export default {
                 74
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "GbfsGeofenceRule": {
@@ -1212,7 +1213,7 @@ export default {
                 70
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "GbfsGeofenceZone": {
@@ -1220,10 +1221,10 @@ export default {
                 51
             ],
             "type": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "GbfsPlanPrice": {
@@ -1240,18 +1241,18 @@ export default {
                 74
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "GbfsRentalApp": {
             "discovery_uri": [
-                117
+                120
             ],
             "store_uri": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "GbfsRentalApps": {
@@ -1262,35 +1263,35 @@ export default {
                 56
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "GbfsRentalUris": {
             "android": [
-                117
+                120
             ],
             "ios": [
-                117
+                120
             ],
             "web": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "GbfsStationInformation": {
             "address": [
-                117
+                120
             ],
             "capacity": [
                 74
             ],
             "contact_phone": [
-                117
+                120
             ],
             "cross_street": [
-                117
+                120
             ],
             "feed": [
                 49
@@ -1311,37 +1312,37 @@ export default {
                 43
             ],
             "name": [
-                117
+                120
             ],
             "parking_hoop": [
                 74
             ],
             "parking_type": [
-                117
+                120
             ],
             "post_code": [
-                117
+                120
             ],
             "region": [
                 66
             ],
             "rental_methods": [
-                118
+                121
             ],
             "short_name": [
-                117
+                120
             ],
             "station_area": [
                 72
             ],
             "station_id": [
-                117
+                120
             ],
             "status": [
                 60
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "GbfsStationStatus": {
@@ -1370,7 +1371,7 @@ export default {
                 74
             ],
             "station_id": [
-                117
+                120
             ],
             "vehicle_docks_available": [
                 69
@@ -1379,33 +1380,33 @@ export default {
                 71
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "GbfsSystemAlert": {
             "alert_id": [
-                117
+                120
             ],
             "description": [
-                117
+                120
             ],
             "last_updated": [
                 74
             ],
             "summary": [
-                117
+                120
             ],
             "times": [
                 45
             ],
             "type": [
-                117
+                120
             ],
             "url": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "GbfsSystemCalendar": {
@@ -1428,24 +1429,24 @@ export default {
                 74
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "GbfsSystemHour": {
             "days": [
-                118
+                121
             ],
             "end_time": [
-                117
+                120
             ],
             "start_time": [
-                117
+                120
             ],
             "user_types": [
-                118
+                121
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "GbfsSystemInformation": {
@@ -1453,75 +1454,75 @@ export default {
                 47
             ],
             "email": [
-                117
+                120
             ],
             "feed_contact_email": [
-                117
+                120
             ],
             "language": [
-                117
+                120
             ],
             "license_url": [
-                117
+                120
             ],
             "name": [
-                117
+                120
             ],
             "operator": [
-                117
+                120
             ],
             "phone_number": [
-                117
+                120
             ],
             "privacy_last_updated": [
                 13
             ],
             "privacy_url": [
-                117
+                120
             ],
             "purchase_url": [
-                117
+                120
             ],
             "rental_apps": [
                 57
             ],
             "short_name": [
-                117
+                120
             ],
             "start_date": [
                 13
             ],
             "system_id": [
-                117
+                120
             ],
             "terms_last_updated": [
                 13
             ],
             "terms_url": [
-                117
+                120
             ],
             "timezone": [
-                117
+                120
             ],
             "url": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "GbfsSystemPricingPlan": {
             "currency": [
-                117
+                120
             ],
             "description": [
-                117
+                120
             ],
             "is_taxable": [
                 6
             ],
             "name": [
-                117
+                120
             ],
             "per_km_pricing": [
                 55
@@ -1530,7 +1531,7 @@ export default {
                 55
             ],
             "plan_id": [
-                117
+                120
             ],
             "price": [
                 43
@@ -1539,32 +1540,32 @@ export default {
                 6
             ],
             "url": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "GbfsSystemRegion": {
             "name": [
-                117
+                120
             ],
             "region_id": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "GbfsSystemVersion": {
             "url": [
-                117
+                120
             ],
             "version": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "GbfsVehicleAssets": {
@@ -1572,13 +1573,13 @@ export default {
                 13
             ],
             "icon_url": [
-                117
+                120
             ],
             "icon_url_dark": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "GbfsVehicleDockAvailable": {
@@ -1589,7 +1590,7 @@ export default {
                 70
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "GbfsVehicleType": {
@@ -1600,10 +1601,10 @@ export default {
                 74
             ],
             "color": [
-                117
+                120
             ],
             "country_code": [
-                117
+                120
             ],
             "default_pricing_plan": [
                 65
@@ -1612,19 +1613,19 @@ export default {
                 74
             ],
             "eco_label": [
-                117
+                120
             ],
             "eco_sticker": [
-                117
+                120
             ],
             "form_factor": [
-                117
+                120
             ],
             "gco_2_km": [
                 74
             ],
             "make": [
-                117
+                120
             ],
             "max_permitted_speed": [
                 74
@@ -1633,16 +1634,16 @@ export default {
                 43
             ],
             "model": [
-                117
+                120
             ],
             "name": [
-                117
+                120
             ],
             "pricing_plans": [
                 65
             ],
             "propulsion_type": [
-                117
+                120
             ],
             "rated_power": [
                 74
@@ -1651,28 +1652,28 @@ export default {
                 58
             ],
             "return_constraint": [
-                117
+                120
             ],
             "rider_capacity": [
                 74
             ],
             "vehicle_accessories": [
-                118
+                121
             ],
             "vehicle_assets": [
                 68
             ],
             "vehicle_image": [
-                117
+                120
             ],
             "vehicle_type_id": [
-                117
+                120
             ],
             "wheel_count": [
                 74
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "GbfsVehicleTypeAvailable": {
@@ -1689,7 +1690,7 @@ export default {
                 70
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "Geometry": {},
@@ -1703,22 +1704,22 @@ export default {
                 18
             ],
             "end_time": [
-                120
+                123
             ],
             "from": [
-                128
+                131
             ],
             "legs": [
                 77
             ],
             "start_time": [
-                120
+                123
             ],
             "to": [
-                128
+                131
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "Key": {},
@@ -1730,48 +1731,48 @@ export default {
                 18
             ],
             "end_time": [
-                120
+                123
             ],
             "from": [
-                128
+                131
             ],
             "geometry": [
                 81
             ],
             "start_time": [
-                120
+                123
             ],
             "steps": [
-                107
+                110
             ],
             "to": [
-                128
+                131
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "Level": {
             "geometry": [
-                89
+                92
             ],
             "id": [
                 74
             ],
             "level_id": [
-                117
+                120
             ],
             "level_index": [
                 43
             ],
             "level_name": [
-                117
+                120
             ],
             "stops": [
-                109
+                112
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "LicenseFilter": {
@@ -1791,7 +1792,7 @@ export default {
                 80
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "LicenseValue": {},
@@ -1813,7 +1814,7 @@ export default {
                 }
             ],
             "file": [
-                117
+                120
             ],
             "generated": [
                 7
@@ -1822,48 +1823,48 @@ export default {
                 74
             ],
             "name": [
-                117
+                120
             ],
             "onestop_id": [
-                117
+                120
             ],
             "search_rank": [
-                117
+                120
             ],
             "short_name": [
-                117
+                120
             ],
             "tags": [
-                119
+                122
             ],
             "website": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "OperatorFilter": {
             "adm0_iso": [
-                117
+                120
             ],
             "adm0_name": [
-                117
+                120
             ],
             "adm1_iso": [
-                117
+                120
             ],
             "adm1_name": [
-                117
+                120
             ],
             "agency_id": [
-                117
+                120
             ],
             "city_name": [
-                117
+                120
             ],
             "feed_onestop_id": [
-                117
+                120
             ],
             "license": [
                 79
@@ -1872,21 +1873,21 @@ export default {
                 7
             ],
             "onestop_id": [
-                117
+                120
             ],
             "search": [
-                117
+                120
             ],
             "tags": [
-                119
+                122
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "Pathway": {
             "from_stop": [
-                109
+                112
             ],
             "id": [
                 74
@@ -1904,28 +1905,28 @@ export default {
                 43
             ],
             "pathway_id": [
-                117
+                120
             ],
             "pathway_mode": [
                 74
             ],
             "reverse_signposted_as": [
-                117
+                120
             ],
             "signposted_as": [
-                117
+                120
             ],
             "stair_count": [
                 74
             ],
             "to_stop": [
-                109
+                112
             ],
             "traversal_time": [
                 74
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "PathwayFilter": {
@@ -1933,7 +1934,45 @@ export default {
                 74
             ],
             "__typename": [
-                117
+                120
+            ]
+        },
+        "Place": {
+            "adm0_name": [
+                120
+            ],
+            "adm1_name": [
+                120
+            ],
+            "city_name": [
+                120
+            ],
+            "count": [
+                74
+            ],
+            "operators": [
+                83
+            ],
+            "__typename": [
+                120
+            ]
+        },
+        "PlaceAggregationLevel": {},
+        "PlaceFilter": {
+            "adm0_name": [
+                120
+            ],
+            "adm1_name": [
+                120
+            ],
+            "city_name": [
+                120
+            ],
+            "min_rank": [
+                43
+            ],
+            "__typename": [
+                120
             ]
         },
         "Point": {},
@@ -1948,7 +1987,7 @@ export default {
                 43
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "Polygon": {},
@@ -2056,8 +2095,25 @@ export default {
                     ]
                 }
             ],
+            "places": [
+                87,
+                {
+                    "after": [
+                        74
+                    ],
+                    "level": [
+                        88
+                    ],
+                    "limit": [
+                        74
+                    ],
+                    "where": [
+                        89
+                    ]
+                }
+            ],
             "routes": [
-                96,
+                99,
                 {
                     "after": [
                         74
@@ -2070,12 +2126,12 @@ export default {
                         74
                     ],
                     "where": [
-                        98
+                        101
                     ]
                 }
             ],
             "stops": [
-                109,
+                112,
                 {
                     "after": [
                         74
@@ -2088,12 +2144,12 @@ export default {
                         74
                     ],
                     "where": [
-                        111
+                        114
                     ]
                 }
             ],
             "trips": [
-                121,
+                124,
                 {
                     "after": [
                         74
@@ -2106,12 +2162,12 @@ export default {
                         74
                     ],
                     "where": [
-                        122
+                        125
                     ]
                 }
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "RTTimeRange": {
@@ -2122,18 +2178,18 @@ export default {
                 74
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "RTTranslation": {
             "language": [
-                117
+                120
             ],
             "text": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "RTTripDescriptor": {
@@ -2141,36 +2197,36 @@ export default {
                 74
             ],
             "route_id": [
-                117
+                120
             ],
             "schedule_relationship": [
-                117
+                120
             ],
             "start_date": [
                 13
             ],
             "start_time": [
-                105
+                108
             ],
             "trip_id": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "RTVehicleDescriptor": {
             "id": [
-                117
+                120
             ],
             "label": [
-                117
+                120
             ],
             "license_plate": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "Role": {},
@@ -2193,7 +2249,7 @@ export default {
                 10,
                 {
                     "layer": [
-                        117,
+                        120,
                         "String!"
                     ],
                     "limit": [
@@ -2211,16 +2267,16 @@ export default {
                 74
             ],
             "feed_onestop_id": [
-                117
+                120
             ],
             "feed_version": [
                 32
             ],
             "feed_version_sha1": [
-                117
+                120
             ],
             "geometries": [
-                99,
+                102,
                 {
                     "limit": [
                         74
@@ -2231,7 +2287,7 @@ export default {
                 72
             ],
             "headways": [
-                100,
+                103,
                 {
                     "limit": [
                         74
@@ -2242,34 +2298,34 @@ export default {
                 74
             ],
             "onestop_id": [
-                117
+                120
             ],
             "patterns": [
-                103
+                106
             ],
             "route_attribute": [
-                97
+                100
             ],
             "route_color": [
-                117
+                120
             ],
             "route_desc": [
-                117
+                120
             ],
             "route_id": [
-                117
+                120
             ],
             "route_long_name": [
-                117
+                120
             ],
             "route_short_name": [
-                117
+                120
             ],
             "route_sort_order": [
                 74
             ],
             "route_stop_buffer": [
-                102,
+                105,
                 {
                     "radius": [
                         43
@@ -2277,7 +2333,7 @@ export default {
                 }
             ],
             "route_stops": [
-                101,
+                104,
                 {
                     "limit": [
                         74
@@ -2285,41 +2341,41 @@ export default {
                 }
             ],
             "route_text_color": [
-                117
+                120
             ],
             "route_type": [
                 74
             ],
             "route_url": [
-                117
+                120
             ],
             "search_rank": [
-                117
+                120
             ],
             "stops": [
-                109,
+                112,
                 {
                     "limit": [
                         74
                     ],
                     "where": [
-                        111
+                        114
                     ]
                 }
             ],
             "trips": [
-                121,
+                124,
                 {
                     "limit": [
                         74
                     ],
                     "where": [
-                        122
+                        125
                     ]
                 }
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "RouteAttribute": {
@@ -2333,7 +2389,7 @@ export default {
                 74
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "RouteFilter": {
@@ -2344,40 +2400,40 @@ export default {
                 7
             ],
             "feed_onestop_id": [
-                117
+                120
             ],
             "feed_version_sha1": [
-                117
+                120
             ],
             "license": [
                 79
             ],
             "near": [
-                88
+                91
             ],
             "onestop_id": [
-                117
+                120
             ],
             "onestop_ids": [
-                117
+                120
             ],
             "operator_onestop_id": [
-                117
+                120
             ],
             "route_id": [
-                117
+                120
             ],
             "route_type": [
                 74
             ],
             "search": [
-                117
+                120
             ],
             "within": [
-                89
+                92
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "RouteGeometry": {
@@ -2400,12 +2456,12 @@ export default {
                 43
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "RouteHeadway": {
             "departures": [
-                105
+                108
             ],
             "direction_id": [
                 74
@@ -2420,13 +2476,13 @@ export default {
                 13
             ],
             "stop": [
-                109
+                112
             ],
             "stop_trip_count": [
                 74
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "RouteStop": {
@@ -2440,19 +2496,19 @@ export default {
                 74
             ],
             "route": [
-                96
+                99
             ],
             "route_id": [
                 74
             ],
             "stop": [
-                109
+                112
             ],
             "stop_id": [
                 74
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "RouteStopBuffer": {
@@ -2460,13 +2516,13 @@ export default {
                 72
             ],
             "stop_convexhull": [
-                89
+                92
             ],
             "stop_points": [
                 72
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "RouteStopPattern": {
@@ -2480,7 +2536,7 @@ export default {
                 74
             ],
             "trips": [
-                121,
+                124,
                 {
                     "limit": [
                         74
@@ -2488,7 +2544,7 @@ export default {
                 }
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "ScheduleRelationship": {},
@@ -2504,10 +2560,10 @@ export default {
                 74
             ],
             "shape_id": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "Step": {
@@ -2518,25 +2574,25 @@ export default {
                 18
             ],
             "end_time": [
-                120
+                123
             ],
             "geometry_offset": [
                 74
             ],
             "instruction": [
-                117
-            ],
-            "mode": [
-                108
-            ],
-            "start_time": [
                 120
             ],
+            "mode": [
+                111
+            ],
+            "start_time": [
+                123
+            ],
             "to": [
-                128
+                131
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "StepMode": {},
@@ -2553,13 +2609,13 @@ export default {
                 }
             ],
             "arrivals": [
-                114,
+                117,
                 {
                     "limit": [
                         74
                     ],
                     "where": [
-                        116
+                        119
                     ]
                 }
             ],
@@ -2567,7 +2623,7 @@ export default {
                 10,
                 {
                     "layer": [
-                        117,
+                        120,
                         "String!"
                     ],
                     "limit": [
@@ -2579,7 +2635,7 @@ export default {
                 }
             ],
             "children": [
-                109,
+                112,
                 {
                     "limit": [
                         74
@@ -2587,13 +2643,13 @@ export default {
                 }
             ],
             "departures": [
-                114,
+                117,
                 {
                     "limit": [
                         74
                     ],
                     "where": [
-                        116
+                        119
                     ]
                 }
             ],
@@ -2601,33 +2657,33 @@ export default {
                 15,
                 {
                     "depart_at": [
-                        120
+                        123
                     ],
                     "from": [
-                        129
+                        132
                     ],
                     "mode": [
-                        108
+                        111
                     ],
                     "to": [
-                        129
+                        132
                     ]
                 }
             ],
             "external_reference": [
-                110
+                113
             ],
             "feed_onestop_id": [
-                117
+                120
             ],
             "feed_version": [
                 32
             ],
             "feed_version_sha1": [
-                117
+                120
             ],
             "geometry": [
-                87
+                90
             ],
             "id": [
                 74
@@ -2639,7 +2695,7 @@ export default {
                 74
             ],
             "nearby_stops": [
-                109,
+                112,
                 {
                     "limit": [
                         74
@@ -2650,21 +2706,21 @@ export default {
                 }
             ],
             "observations": [
-                112,
+                115,
                 {
                     "limit": [
                         74
                     ],
                     "where": [
-                        113
+                        116
                     ]
                 }
             ],
             "onestop_id": [
-                117
+                120
             ],
             "parent": [
-                109
+                112
             ],
             "pathways_from_stop": [
                 85,
@@ -2683,10 +2739,10 @@ export default {
                 }
             ],
             "platform_code": [
-                117
+                120
             ],
             "route_stops": [
-                101,
+                104,
                 {
                     "limit": [
                         74
@@ -2694,48 +2750,48 @@ export default {
                 }
             ],
             "search_rank": [
-                117
+                120
             ],
             "stop_code": [
-                117
+                120
             ],
             "stop_desc": [
-                117
+                120
             ],
             "stop_id": [
-                117
+                120
             ],
             "stop_name": [
-                117
+                120
             ],
             "stop_times": [
-                114,
+                117,
                 {
                     "limit": [
                         74
                     ],
                     "where": [
-                        116
+                        119
                     ]
                 }
             ],
             "stop_timezone": [
-                117
+                120
             ],
             "stop_url": [
-                117
+                120
             ],
             "tts_stop_name": [
-                117
+                120
             ],
             "wheelchair_boarding": [
                 74
             ],
             "zone_id": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "StopExternalReference": {
@@ -2746,16 +2802,16 @@ export default {
                 7
             ],
             "target_active_stop": [
-                109
+                112
             ],
             "target_feed_onestop_id": [
-                117
+                120
             ],
             "target_stop_id": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "StopFilter": {
@@ -2766,10 +2822,10 @@ export default {
                 7
             ],
             "feed_onestop_id": [
-                117
+                120
             ],
             "feed_version_sha1": [
-                117
+                120
             ],
             "license": [
                 79
@@ -2778,78 +2834,78 @@ export default {
                 74
             ],
             "near": [
-                88
+                91
             ],
             "onestop_id": [
-                117
+                120
             ],
             "onestop_ids": [
-                117
+                120
             ],
             "search": [
-                117
+                120
             ],
             "served_by_onestop_ids": [
-                117
+                120
             ],
             "stop_code": [
-                117
+                120
             ],
             "stop_id": [
-                117
+                120
             ],
             "within": [
-                89
+                92
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "StopObservation": {
             "agency_id": [
-                117
+                120
             ],
             "from_stop_id": [
-                117
+                120
             ],
             "observed_arrival_time": [
-                105
+                108
             ],
             "observed_departure_time": [
-                105
+                108
             ],
             "route_id": [
-                117
+                120
             ],
             "schedule_relationship": [
-                117
+                120
             ],
             "scheduled_arrival_time": [
-                105
+                108
             ],
             "scheduled_departure_time": [
-                105
+                108
             ],
             "source": [
-                117
+                120
             ],
             "stop_sequence": [
                 74
             ],
             "to_stop_id": [
-                117
+                120
             ],
             "trip_id": [
-                117
+                120
             ],
             "trip_start_date": [
                 13
             ],
             "trip_start_time": [
-                105
+                108
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "StopObservationFilter": {
@@ -2857,21 +2913,21 @@ export default {
                 74
             ],
             "source": [
-                117
+                120
             ],
             "trip_start_date": [
                 13
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "StopTime": {
             "arrival": [
-                115
+                118
             ],
             "arrival_time": [
-                105
+                108
             ],
             "continuous_drop_off": [
                 74
@@ -2880,10 +2936,10 @@ export default {
                 74
             ],
             "departure": [
-                115
+                118
             ],
             "departure_time": [
-                105
+                108
             ],
             "drop_off_type": [
                 74
@@ -2901,10 +2957,10 @@ export default {
                 43
             ],
             "stop": [
-                109
+                112
             ],
             "stop_headsign": [
-                117
+                120
             ],
             "stop_sequence": [
                 74
@@ -2913,10 +2969,10 @@ export default {
                 74
             ],
             "trip": [
-                121
+                124
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "StopTimeEvent": {
@@ -2924,22 +2980,22 @@ export default {
                 74
             ],
             "estimated": [
-                105
+                108
             ],
             "estimated_utc": [
-                120
+                123
             ],
             "scheduled": [
-                105
+                108
             ],
             "stop_timezone": [
-                117
+                120
             ],
             "uncertainty": [
                 74
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "StopTimeFilter": {
@@ -2947,7 +3003,7 @@ export default {
                 7
             ],
             "end": [
-                105
+                108
             ],
             "end_time": [
                 74
@@ -2962,13 +3018,13 @@ export default {
                 74
             ],
             "route_onestop_ids": [
-                117
+                120
             ],
             "service_date": [
                 13
             ],
             "start": [
-                105
+                108
             ],
             "start_time": [
                 74
@@ -2977,7 +3033,7 @@ export default {
                 7
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "String": {},
@@ -3000,7 +3056,7 @@ export default {
                 74
             ],
             "block_id": [
-                117
+                120
             ],
             "calendar": [
                 8
@@ -3023,19 +3079,19 @@ export default {
                 74
             ],
             "route": [
-                96
+                99
             ],
             "schedule_relationship": [
-                104
+                107
             ],
             "shape": [
-                106
+                109
             ],
             "stop_pattern_id": [
                 74
             ],
             "stop_times": [
-                114,
+                117,
                 {
                     "limit": [
                         74
@@ -3043,30 +3099,30 @@ export default {
                 }
             ],
             "timestamp": [
-                120
+                123
             ],
             "trip_headsign": [
-                117
+                120
             ],
             "trip_id": [
-                117
+                120
             ],
             "trip_short_name": [
-                117
+                120
             ],
             "wheelchair_accessible": [
                 74
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "TripFilter": {
             "feed_onestop_id": [
-                117
+                120
             ],
             "feed_version_sha1": [
-                117
+                120
             ],
             "license": [
                 79
@@ -3075,7 +3131,7 @@ export default {
                 74
             ],
             "route_onestop_ids": [
-                117
+                120
             ],
             "service_date": [
                 13
@@ -3084,10 +3140,10 @@ export default {
                 74
             ],
             "trip_id": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "Upload": {},
@@ -3104,10 +3160,10 @@ export default {
                 13
             ],
             "errors": [
-                126
+                129
             ],
             "failure_reason": [
-                117
+                120
             ],
             "feed_infos": [
                 25,
@@ -3124,7 +3180,7 @@ export default {
                 13
             ],
             "routes": [
-                96,
+                99,
                 {
                     "limit": [
                         74
@@ -3138,15 +3194,15 @@ export default {
                         74
                     ],
                     "route_id": [
-                        117
+                        120
                     ]
                 }
             ],
             "sha1": [
-                117
+                120
             ],
             "stops": [
-                109,
+                112,
                 {
                     "limit": [
                         74
@@ -3157,33 +3213,33 @@ export default {
                 7
             ],
             "warnings": [
-                126
+                129
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "ValidationResultError": {
             "entity_id": [
-                117
+                120
             ],
             "error_type": [
-                117
+                120
             ],
             "field": [
-                117
+                120
             ],
             "filename": [
-                117
+                120
             ],
             "message": [
-                117
+                120
             ],
             "value": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "ValidationResultErrorGroup": {
@@ -3191,45 +3247,45 @@ export default {
                 74
             ],
             "error_type": [
-                117
+                120
             ],
             "errors": [
-                125
+                128
             ],
             "filename": [
-                117
+                120
             ],
             "limit": [
                 74
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "VehiclePosition": {
             "congestion_level": [
-                117
+                120
             ],
             "current_status": [
-                117
+                120
             ],
             "current_stop_sequence": [
                 74
             ],
             "position": [
-                87
+                90
             ],
             "stop_id": [
-                109
+                112
             ],
             "timestamp": [
-                120
+                123
             ],
             "vehicle": [
-                94
+                97
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "Waypoint": {
@@ -3240,10 +3296,10 @@ export default {
                 43
             ],
             "name": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         },
         "WaypointInput": {
@@ -3254,10 +3310,10 @@ export default {
                 43
             ],
             "name": [
-                117
+                120
             ],
             "__typename": [
-                117
+                120
             ]
         }
     }

@@ -1,3 +1,4 @@
+// @ts-nocheck
 export type Scalars = {
     Any: any,
     Bool: any,
@@ -724,6 +725,17 @@ export interface Pathway {
     __typename: 'Pathway'
 }
 
+export interface Place {
+    adm0_name?: Scalars['String']
+    adm1_name?: Scalars['String']
+    city_name?: Scalars['String']
+    count: Scalars['Int']
+    operators?: Operator[]
+    __typename: 'Place'
+}
+
+export type PlaceAggregationLevel = 'ADM0' | 'ADM0_ADM1' | 'ADM0_ADM1_CITY' | 'ADM0_CITY' | 'ADM1_CITY' | 'CITY'
+
 export interface Query {
     agencies: Agency[]
     bikes?: GbfsFreeBikeStatus[]
@@ -732,6 +744,7 @@ export interface Query {
     feed_versions: FeedVersion[]
     feeds: Feed[]
     operators: Operator[]
+    places?: Place[]
     routes: Route[]
     stops: Stop[]
     trips: Trip[]
@@ -1880,6 +1893,18 @@ export interface PathwayGenqlSelection{
 
 export interface PathwayFilter {pathway_mode?: (Scalars['Int'] | null)}
 
+export interface PlaceGenqlSelection{
+    adm0_name?: boolean | number
+    adm1_name?: boolean | number
+    city_name?: boolean | number
+    count?: boolean | number
+    operators?: OperatorGenqlSelection
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface PlaceFilter {adm0_name?: (Scalars['String'] | null),adm1_name?: (Scalars['String'] | null),city_name?: (Scalars['String'] | null),min_rank?: (Scalars['Float'] | null)}
+
 export interface PointRadius {lat: Scalars['Float'],lon: Scalars['Float'],radius: Scalars['Float']}
 
 export interface QueryGenqlSelection{
@@ -1890,6 +1915,7 @@ export interface QueryGenqlSelection{
     feed_versions?: (FeedVersionGenqlSelection & { __args?: {after?: (Scalars['Int'] | null), ids?: (Scalars['Int'][] | null), limit?: (Scalars['Int'] | null), where?: (FeedVersionFilter | null)} })
     feeds?: (FeedGenqlSelection & { __args?: {after?: (Scalars['Int'] | null), ids?: (Scalars['Int'][] | null), limit?: (Scalars['Int'] | null), where?: (FeedFilter | null)} })
     operators?: (OperatorGenqlSelection & { __args?: {after?: (Scalars['Int'] | null), ids?: (Scalars['Int'][] | null), limit?: (Scalars['Int'] | null), where?: (OperatorFilter | null)} })
+    places?: (PlaceGenqlSelection & { __args?: {after?: (Scalars['Int'] | null), level?: (PlaceAggregationLevel | null), limit?: (Scalars['Int'] | null), where?: (PlaceFilter | null)} })
     routes?: (RouteGenqlSelection & { __args?: {after?: (Scalars['Int'] | null), ids?: (Scalars['Int'][] | null), limit?: (Scalars['Int'] | null), where?: (RouteFilter | null)} })
     stops?: (StopGenqlSelection & { __args?: {after?: (Scalars['Int'] | null), ids?: (Scalars['Int'][] | null), limit?: (Scalars['Int'] | null), where?: (StopFilter | null)} })
     trips?: (TripGenqlSelection & { __args?: {after?: (Scalars['Int'] | null), ids?: (Scalars['Int'][] | null), limit?: (Scalars['Int'] | null), where?: (TripFilter | null)} })
@@ -2711,6 +2737,14 @@ export interface WaypointInput {lat: Scalars['Float'],lon: Scalars['Float'],name
     
 
 
+    const Place_possibleTypes: string[] = ['Place']
+    export const isPlace = (obj?: { __typename?: any } | null): obj is Place => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isPlace"')
+      return Place_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
     const Query_possibleTypes: string[] = ['Query']
     export const isQuery = (obj?: { __typename?: any } | null): obj is Query => {
       if (!obj?.__typename) throw new Error('__typename is missing in "isQuery"')
@@ -2949,6 +2983,15 @@ export const enumLicenseValue = {
    NO: 'NO' as const,
    UNKNOWN: 'UNKNOWN' as const,
    YES: 'YES' as const
+}
+
+export const enumPlaceAggregationLevel = {
+   ADM0: 'ADM0' as const,
+   ADM0_ADM1: 'ADM0_ADM1' as const,
+   ADM0_ADM1_CITY: 'ADM0_ADM1_CITY' as const,
+   ADM0_CITY: 'ADM0_CITY' as const,
+   ADM1_CITY: 'ADM1_CITY' as const,
+   CITY: 'CITY' as const
 }
 
 export const enumRole = {

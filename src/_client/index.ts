@@ -1,4 +1,5 @@
-import { QueryGenqlSelection, Query } from './schema'
+// @ts-nocheck
+import type { QueryGenqlSelection, Query } from './schema'
 import {
   linkTypeMap,
   createClient as createClientOriginal,

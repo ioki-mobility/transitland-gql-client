@@ -880,6 +880,30 @@ input PathwayFilter {
   pathway_mode: Int
 }
 
+type Place {
+  adm0_name: String
+  adm1_name: String
+  city_name: String
+  count: Int!
+  operators: [Operator!]
+}
+
+enum PlaceAggregationLevel {
+  ADM0
+  ADM0_ADM1
+  ADM0_ADM1_CITY
+  ADM0_CITY
+  ADM1_CITY
+  CITY
+}
+
+input PlaceFilter {
+  adm0_name: String
+  adm1_name: String
+  city_name: String
+  min_rank: Float
+}
+
 scalar Point
 
 input PointRadius {
@@ -898,6 +922,7 @@ type Query {
   feed_versions(after: Int, ids: [Int!], limit: Int, where: FeedVersionFilter): [FeedVersion!]!
   feeds(after: Int, ids: [Int!], limit: Int, where: FeedFilter): [Feed!]!
   operators(after: Int, ids: [Int!], limit: Int, where: OperatorFilter): [Operator!]!
+  places(after: Int, level: PlaceAggregationLevel, limit: Int, where: PlaceFilter): [Place!]
   routes(after: Int, ids: [Int!], limit: Int, where: RouteFilter): [Route!]!
   stops(after: Int, ids: [Int!], limit: Int, where: StopFilter): [Stop!]!
   trips(after: Int, ids: [Int!], limit: Int, where: TripFilter): [Trip!]!
