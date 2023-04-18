@@ -2213,7 +2213,7 @@ export interface TripGenqlSelection{
     schedule_relationship?: boolean | number
     shape?: ShapeGenqlSelection
     stop_pattern_id?: boolean | number
-    stop_times?: (StopTimeGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
+    stop_times?: (StopTimeGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), where?: (TripStopTimeFilter | null)} })
     timestamp?: boolean | number
     trip_headsign?: boolean | number
     trip_id?: boolean | number
@@ -2224,6 +2224,8 @@ export interface TripGenqlSelection{
 }
 
 export interface TripFilter {feed_onestop_id?: (Scalars['String'] | null),feed_version_sha1?: (Scalars['String'] | null),license?: (LicenseFilter | null),route_ids?: (Scalars['Int'][] | null),route_onestop_ids?: (Scalars['String'][] | null),service_date?: (Scalars['Date'] | null),stop_pattern_id?: (Scalars['Int'] | null),trip_id?: (Scalars['String'] | null)}
+
+export interface TripStopTimeFilter {end?: (Scalars['Seconds'] | null),start?: (Scalars['Seconds'] | null)}
 
 export interface ValidationResultGenqlSelection{
     agencies?: (AgencyGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })

@@ -1255,7 +1255,7 @@ type Trip {
   schedule_relationship: ScheduleRelationship
   shape: Shape
   stop_pattern_id: Int!
-  stop_times(limit: Int): [StopTime]!
+  stop_times(limit: Int, where: TripStopTimeFilter): [StopTime]!
   timestamp: Time
   trip_headsign: String!
   trip_id: String!
@@ -1272,6 +1272,11 @@ input TripFilter {
   service_date: Date
   stop_pattern_id: Int
   trip_id: String
+}
+
+input TripStopTimeFilter {
+  end: Seconds
+  start: Seconds
 }
 
 scalar Upload

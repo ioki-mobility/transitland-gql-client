@@ -27,7 +27,7 @@ export default {
         121,
         122,
         123,
-        126
+        127
     ],
     "types": {
         "Agency": {
@@ -375,13 +375,13 @@ export default {
                 123
             ],
             "from": [
-                132
+                133
             ],
             "mode": [
                 111
             ],
             "to": [
-                132
+                133
             ],
             "__typename": [
                 120
@@ -392,7 +392,7 @@ export default {
                 120
             ],
             "destination": [
-                131
+                132
             ],
             "distance": [
                 16
@@ -410,7 +410,7 @@ export default {
                 75
             ],
             "origin": [
-                131
+                132
             ],
             "start_time": [
                 123
@@ -1707,7 +1707,7 @@ export default {
                 123
             ],
             "from": [
-                131
+                132
             ],
             "legs": [
                 77
@@ -1716,7 +1716,7 @@ export default {
                 123
             ],
             "to": [
-                131
+                132
             ],
             "__typename": [
                 120
@@ -1734,7 +1734,7 @@ export default {
                 123
             ],
             "from": [
-                131
+                132
             ],
             "geometry": [
                 81
@@ -1746,7 +1746,7 @@ export default {
                 110
             ],
             "to": [
-                131
+                132
             ],
             "__typename": [
                 120
@@ -2589,7 +2589,7 @@ export default {
                 123
             ],
             "to": [
-                131
+                132
             ],
             "__typename": [
                 120
@@ -2660,13 +2660,13 @@ export default {
                         123
                     ],
                     "from": [
-                        132
+                        133
                     ],
                     "mode": [
                         111
                     ],
                     "to": [
-                        132
+                        133
                     ]
                 }
             ],
@@ -3095,6 +3095,9 @@ export default {
                 {
                     "limit": [
                         74
+                    ],
+                    "where": [
+                        126
                     ]
                 }
             ],
@@ -3146,6 +3149,17 @@ export default {
                 120
             ]
         },
+        "TripStopTimeFilter": {
+            "end": [
+                108
+            ],
+            "start": [
+                108
+            ],
+            "__typename": [
+                120
+            ]
+        },
         "Upload": {},
         "ValidationResult": {
             "agencies": [
@@ -3160,7 +3174,7 @@ export default {
                 13
             ],
             "errors": [
-                129
+                130
             ],
             "failure_reason": [
                 120
@@ -3213,7 +3227,7 @@ export default {
                 7
             ],
             "warnings": [
-                129
+                130
             ],
             "__typename": [
                 120
@@ -3250,7 +3264,7 @@ export default {
                 120
             ],
             "errors": [
-                128
+                129
             ],
             "filename": [
                 120
