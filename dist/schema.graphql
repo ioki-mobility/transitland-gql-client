@@ -1,3 +1,5 @@
+directive @goField(forceResolver: Boolean, name: String) on FIELD_DEFINITION | INPUT_FIELD_DEFINITION
+
 directive @hasRole(role: Role!) on FIELD_DEFINITION
 
 """See https://gtfs.org/schedule/reference/#agencytxt"""
