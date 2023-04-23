@@ -2429,6 +2429,9 @@ export default {
             "search": [
                 120
             ],
+            "serviced": [
+                7
+            ],
             "within": [
                 92
             ],
@@ -2847,6 +2850,9 @@ export default {
             ],
             "served_by_onestop_ids": [
                 120
+            ],
+            "serviced": [
+                7
             ],
             "stop_code": [
                 120

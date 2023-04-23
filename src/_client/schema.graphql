@@ -1018,6 +1018,7 @@ input RouteFilter {
   route_id: String
   route_type: Int
   search: String
+  serviced: Boolean
   within: Polygon
 }
 
@@ -1162,6 +1163,7 @@ input StopFilter {
   onestop_ids: [String!]
   search: String
   served_by_onestop_ids: [String!]
+  serviced: Boolean
   stop_code: String
   stop_id: String
   within: Polygon

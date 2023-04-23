@@ -2064,6 +2064,7 @@ interface RouteFilter {
     route_id?: (Scalars['String'] | null);
     route_type?: (Scalars['Int'] | null);
     search?: (Scalars['String'] | null);
+    serviced?: (Scalars['Boolean'] | null);
     within?: (Scalars['Polygon'] | null);
 }
 interface RouteGeometryGenqlSelection {
@@ -2257,6 +2258,7 @@ interface StopFilter {
     onestop_ids?: (Scalars['String'][] | null);
     search?: (Scalars['String'] | null);
     served_by_onestop_ids?: (Scalars['String'][] | null);
+    serviced?: (Scalars['Boolean'] | null);
     stop_code?: (Scalars['String'] | null);
     stop_id?: (Scalars['String'] | null);
     within?: (Scalars['Polygon'] | null);
