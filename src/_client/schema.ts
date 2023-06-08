@@ -1446,7 +1446,7 @@ export interface FeedVersionFileInfoGenqlSelection{
     __scalar?: boolean | number
 }
 
-export interface FeedVersionFilter {feed_ids?: (Scalars['Int'][] | null),feed_onestop_id?: (Scalars['String'] | null),file?: (Scalars['String'] | null),import_status?: (ImportStatus | null),sha1?: (Scalars['String'] | null)}
+export interface FeedVersionFilter {covers?: (ServiceCoversFilter | null),feed_ids?: (Scalars['Int'][] | null),feed_onestop_id?: (Scalars['String'] | null),file?: (Scalars['String'] | null),import_status?: (ImportStatus | null),sha1?: (Scalars['String'] | null)}
 
 export interface FeedVersionGtfsImportGenqlSelection{
     created_at?: boolean | number
@@ -2064,6 +2064,8 @@ export interface RouteStopPatternGenqlSelection{
     __typename?: boolean | number
     __scalar?: boolean | number
 }
+
+export interface ServiceCoversFilter {end_date?: (Scalars['Date'] | null),fetched_after?: (Scalars['Time'] | null),fetched_before?: (Scalars['Time'] | null),start_date?: (Scalars['Date'] | null)}
 
 
 /** Record from a static GTFS [shapes.txt](https://gtfs.org/schedule/reference/#shapestxt) file. */

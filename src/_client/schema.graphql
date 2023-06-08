@@ -446,6 +446,7 @@ type FeedVersionFileInfo {
 }
 
 input FeedVersionFilter {
+  covers: ServiceCoversFilter
   feed_ids: [Int!]
   feed_onestop_id: String
   file: String
@@ -1076,6 +1077,13 @@ enum ScheduleRelationship {
 }
 
 scalar Seconds
+
+input ServiceCoversFilter {
+  end_date: Date
+  fetched_after: Time
+  fetched_before: Time
+  start_date: Date
+}
 
 """
 Record from a static GTFS [shapes.txt](https://gtfs.org/schedule/reference/#shapestxt) file.
