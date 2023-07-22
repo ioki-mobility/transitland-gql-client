@@ -931,6 +931,7 @@ export interface Stop {
     parent?: Stop
     pathways_from_stop: Pathway[]
     pathways_to_stop: Pathway[]
+    place?: StopPlace
     platform_code?: Scalars['String']
     route_stops: RouteStop[]
     search_rank?: Scalars['String']
@@ -972,6 +973,14 @@ export interface StopObservation {
     trip_start_date?: Scalars['Date']
     trip_start_time?: Scalars['Seconds']
     __typename: 'StopObservation'
+}
+
+export interface StopPlace {
+    adm0_iso?: Scalars['String']
+    adm0_name?: Scalars['String']
+    adm1_iso?: Scalars['String']
+    adm1_name?: Scalars['String']
+    __typename: 'StopPlace'
 }
 
 
@@ -2114,6 +2123,7 @@ export interface StopGenqlSelection{
     parent?: StopGenqlSelection
     pathways_from_stop?: (PathwayGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
     pathways_to_stop?: (PathwayGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
+    place?: StopPlaceGenqlSelection
     platform_code?: boolean | number
     route_stops?: (RouteStopGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
     search_rank?: boolean | number
@@ -2163,6 +2173,15 @@ export interface StopObservationGenqlSelection{
 }
 
 export interface StopObservationFilter {feed_version_id: Scalars['Int'],source: Scalars['String'],trip_start_date: Scalars['Date']}
+
+export interface StopPlaceGenqlSelection{
+    adm0_iso?: boolean | number
+    adm0_name?: boolean | number
+    adm1_iso?: boolean | number
+    adm1_name?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
 
 
 /** Record from a static GTFS [stop_times.txt](https://gtfs.org/schedule/reference/#stop_timestxt) file. */
@@ -2881,6 +2900,14 @@ export interface WaypointInput {lat: Scalars['Float'],lon: Scalars['Float'],name
     export const isStopObservation = (obj?: { __typename?: any } | null): obj is StopObservation => {
       if (!obj?.__typename) throw new Error('__typename is missing in "isStopObservation"')
       return StopObservation_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const StopPlace_possibleTypes: string[] = ['StopPlace']
+    export const isStopPlace = (obj?: { __typename?: any } | null): obj is StopPlace => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isStopPlace"')
+      return StopPlace_possibleTypes.includes(obj.__typename)
     }
     
 

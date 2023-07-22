@@ -1136,6 +1136,7 @@ type Stop {
   parent: Stop
   pathways_from_stop(limit: Int): [Pathway!]!
   pathways_to_stop(limit: Int): [Pathway!]!
+  place: StopPlace
   platform_code: String
   route_stops(limit: Int): [RouteStop!]!
   search_rank: String
@@ -1198,6 +1199,13 @@ input StopObservationFilter {
   feed_version_id: Int!
   source: String!
   trip_start_date: Date!
+}
+
+type StopPlace {
+  adm0_iso: String
+  adm0_name: String
+  adm1_iso: String
+  adm1_name: String
 }
 
 """
