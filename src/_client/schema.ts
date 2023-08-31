@@ -47,7 +47,9 @@ export interface Agency {
 }
 
 export interface AgencyPlace {
+    adm0_iso?: Scalars['String']
     adm0_name?: Scalars['String']
+    adm1_iso?: Scalars['String']
     adm1_name?: Scalars['String']
     city_name?: Scalars['String']
     rank?: Scalars['Float']
@@ -1141,7 +1143,9 @@ near?: (PointRadius | null),onestop_id?: (Scalars['String'] | null),
 search?: (Scalars['String'] | null),within?: (Scalars['Polygon'] | null)}
 
 export interface AgencyPlaceGenqlSelection{
+    adm0_iso?: boolean | number
     adm0_name?: boolean | number
+    adm1_iso?: boolean | number
     adm1_name?: boolean | number
     city_name?: boolean | number
     rank?: boolean | number

@@ -179,7 +179,13 @@ export default {
             ]
         },
         "AgencyPlace": {
+            "adm0_iso": [
+                122
+            ],
             "adm0_name": [
+                122
+            ],
+            "adm1_iso": [
                 122
             ],
             "adm1_name": [

@@ -61,7 +61,9 @@ input AgencyFilter {
 }
 
 type AgencyPlace {
+  adm0_iso: String
   adm0_name: String
+  adm1_iso: String
   adm1_name: String
   city_name: String
   rank: Float

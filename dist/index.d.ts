@@ -45,7 +45,9 @@ interface Agency {
     __typename: 'Agency';
 }
 interface AgencyPlace {
+    adm0_iso?: Scalars['String'];
     adm0_name?: Scalars['String'];
+    adm1_iso?: Scalars['String'];
     adm1_name?: Scalars['String'];
     city_name?: Scalars['String'];
     rank?: Scalars['Float'];
@@ -1047,7 +1049,9 @@ interface AgencyFilter {
     within?: (Scalars['Polygon'] | null);
 }
 interface AgencyPlaceGenqlSelection {
+    adm0_iso?: boolean | number;
     adm0_name?: boolean | number;
+    adm1_iso?: boolean | number;
     adm1_name?: boolean | number;
     city_name?: boolean | number;
     rank?: boolean | number;
