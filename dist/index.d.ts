@@ -2278,6 +2278,7 @@ interface StopFilter {
     onestop_ids?: (Scalars['String'][] | null);
     search?: (Scalars['String'] | null);
     served_by_onestop_ids?: (Scalars['String'][] | null);
+    served_by_route_type?: (Scalars['Int'] | null);
     serviced?: (Scalars['Boolean'] | null);
     stop_code?: (Scalars['String'] | null);
     stop_id?: (Scalars['String'] | null);

@@ -2880,6 +2880,9 @@ export default {
             "served_by_onestop_ids": [
                 122
             ],
+            "served_by_route_type": [
+                74
+            ],
             "serviced": [
                 7
             ],

@@ -1174,6 +1174,7 @@ input StopFilter {
   onestop_ids: [String!]
   search: String
   served_by_onestop_ids: [String!]
+  served_by_route_type: Int
   serviced: Boolean
   stop_code: String
   stop_id: String

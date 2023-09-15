@@ -2155,7 +2155,7 @@ export interface StopExternalReferenceGenqlSelection{
     __scalar?: boolean | number
 }
 
-export interface StopFilter {agency_ids?: (Scalars['Int'][] | null),allow_previous_onestop_ids?: (Scalars['Boolean'] | null),feed_onestop_id?: (Scalars['String'] | null),feed_version_sha1?: (Scalars['String'] | null),license?: (LicenseFilter | null),location_type?: (Scalars['Int'] | null),near?: (PointRadius | null),onestop_id?: (Scalars['String'] | null),onestop_ids?: (Scalars['String'][] | null),search?: (Scalars['String'] | null),served_by_onestop_ids?: (Scalars['String'][] | null),serviced?: (Scalars['Boolean'] | null),stop_code?: (Scalars['String'] | null),stop_id?: (Scalars['String'] | null),within?: (Scalars['Polygon'] | null)}
+export interface StopFilter {agency_ids?: (Scalars['Int'][] | null),allow_previous_onestop_ids?: (Scalars['Boolean'] | null),feed_onestop_id?: (Scalars['String'] | null),feed_version_sha1?: (Scalars['String'] | null),license?: (LicenseFilter | null),location_type?: (Scalars['Int'] | null),near?: (PointRadius | null),onestop_id?: (Scalars['String'] | null),onestop_ids?: (Scalars['String'][] | null),search?: (Scalars['String'] | null),served_by_onestop_ids?: (Scalars['String'][] | null),served_by_route_type?: (Scalars['Int'] | null),serviced?: (Scalars['Boolean'] | null),stop_code?: (Scalars['String'] | null),stop_id?: (Scalars['String'] | null),within?: (Scalars['Polygon'] | null)}
 
 export interface StopObservationGenqlSelection{
     agency_id?: boolean | number
