@@ -44,6 +44,7 @@ input AgencyFilter {
 
   """Search for records with this GTFS agency_name"""
   agency_name: String
+  bbox: BoundingBox
 
   """Search by city name (provided by Natural Earth)"""
   city_name: String
@@ -91,6 +92,13 @@ type Alert {
 scalar Any
 
 scalar Bool
+
+input BoundingBox {
+  max_lat: Float!
+  max_lon: Float!
+  min_lat: Float!
+  min_lon: Float!
+}
 
 """
 Record from a static GTFS [calendars.txt](https://gtfs.org/schedule/reference/#calendarstxt) file.
@@ -248,12 +256,15 @@ input FeedFetchFilter {
 }
 
 input FeedFilter {
+  bbox: BoundingBox
+
   """Search for feeds with or without a fetch error"""
   fetch_error: Boolean
 
   """Search for feeds by their import status"""
   import_status: ImportStatus
   license: LicenseFilter
+  near: PointRadius
 
   """Search for feed with a specific Onestop ID"""
   onestop_id: String
@@ -269,6 +280,7 @@ input FeedFilter {
 
   """Search for feeds with a tag"""
   tags: Tags
+  within: Polygon
 }
 
 """
@@ -448,12 +460,15 @@ type FeedVersionFileInfo {
 }
 
 input FeedVersionFilter {
+  bbox: BoundingBox
   covers: ServiceCoversFilter
   feed_ids: [Int!]
   feed_onestop_id: String
   file: String
   import_status: ImportStatus
+  near: PointRadius
   sha1: String
+  within: Polygon
 }
 
 type FeedVersionGtfsImport {
@@ -853,13 +868,16 @@ input OperatorFilter {
   adm1_iso: String
   adm1_name: String
   agency_id: String
+  bbox: BoundingBox
   city_name: String
   feed_onestop_id: String
   license: LicenseFilter
   merged: Boolean
+  near: PointRadius
   onestop_id: String
   search: String
   tags: Tags
+  within: Polygon
 }
 
 """
@@ -1011,6 +1029,7 @@ type RouteAttribute {
 input RouteFilter {
   agency_ids: [Int!]
   allow_previous_onestop_ids: Boolean
+  bbox: BoundingBox
   feed_onestop_id: String
   feed_version_sha1: String
   license: LicenseFilter
@@ -1165,6 +1184,7 @@ type StopExternalReference {
 input StopFilter {
   agency_ids: [Int!]
   allow_previous_onestop_ids: Boolean
+  bbox: BoundingBox
   feed_onestop_id: String
   feed_version_sha1: String
   license: LicenseFilter

@@ -1036,6 +1036,7 @@ interface AgencyFilter {
     agency_id?: (Scalars['String'] | null);
     /** Search for records with this GTFS agency_name */
     agency_name?: (Scalars['String'] | null);
+    bbox?: (BoundingBox | null);
     /** Search by city name (provided by Natural Earth) */
     city_name?: (Scalars['String'] | null);
     feed_onestop_id?: (Scalars['String'] | null);
@@ -1074,6 +1075,12 @@ interface AlertGenqlSelection {
     url?: RTTranslationGenqlSelection;
     __typename?: boolean | number;
     __scalar?: boolean | number;
+}
+interface BoundingBox {
+    max_lat: Scalars['Float'];
+    max_lon: Scalars['Float'];
+    min_lat: Scalars['Float'];
+    min_lon: Scalars['Float'];
 }
 /** Record from a static GTFS [calendars.txt](https://gtfs.org/schedule/reference/#calendarstxt) file. */
 interface CalendarGenqlSelection {
@@ -1231,11 +1238,13 @@ interface FeedFetchFilter {
     success?: (Scalars['Boolean'] | null);
 }
 interface FeedFilter {
+    bbox?: (BoundingBox | null);
     /** Search for feeds with or without a fetch error */
     fetch_error?: (Scalars['Boolean'] | null);
     /** Search for feeds by their import status */
     import_status?: (ImportStatus | null);
     license?: (LicenseFilter | null);
+    near?: (PointRadius | null);
     /** Search for feed with a specific Onestop ID */
     onestop_id?: (Scalars['String'] | null);
     /** Full text search */
@@ -1246,6 +1255,7 @@ interface FeedFilter {
     spec?: (FeedSpecTypes[] | null);
     /** Search for feeds with a tag */
     tags?: (Scalars['Tags'] | null);
+    within?: (Scalars['Polygon'] | null);
 }
 /** Record from a static GTFS [feed_info.txt](https://gtfs.org/schedule/reference/#feed_infotxt) file. */
 interface FeedInfoGenqlSelection {
@@ -1405,12 +1415,15 @@ interface FeedVersionFileInfoGenqlSelection {
     __scalar?: boolean | number;
 }
 interface FeedVersionFilter {
+    bbox?: (BoundingBox | null);
     covers?: (ServiceCoversFilter | null);
     feed_ids?: (Scalars['Int'][] | null);
     feed_onestop_id?: (Scalars['String'] | null);
     file?: (Scalars['String'] | null);
     import_status?: (ImportStatus | null);
+    near?: (PointRadius | null);
     sha1?: (Scalars['String'] | null);
+    within?: (Scalars['Polygon'] | null);
 }
 interface FeedVersionGtfsImportGenqlSelection {
     created_at?: boolean | number;
@@ -1818,13 +1831,16 @@ interface OperatorFilter {
     adm1_iso?: (Scalars['String'] | null);
     adm1_name?: (Scalars['String'] | null);
     agency_id?: (Scalars['String'] | null);
+    bbox?: (BoundingBox | null);
     city_name?: (Scalars['String'] | null);
     feed_onestop_id?: (Scalars['String'] | null);
     license?: (LicenseFilter | null);
     merged?: (Scalars['Boolean'] | null);
+    near?: (PointRadius | null);
     onestop_id?: (Scalars['String'] | null);
     search?: (Scalars['String'] | null);
     tags?: (Scalars['Tags'] | null);
+    within?: (Scalars['Polygon'] | null);
 }
 /** The GTFS-Pathways extension uses a graph representation to describe subway or train, with nodes (the locations) and edges (the pathways). See https://gtfs.org/reference/static/#pathwaystxt */
 interface PathwayGenqlSelection {
@@ -2067,6 +2083,7 @@ interface RouteAttributeGenqlSelection {
 interface RouteFilter {
     agency_ids?: (Scalars['Int'][] | null);
     allow_previous_onestop_ids?: (Scalars['Boolean'] | null);
+    bbox?: (BoundingBox | null);
     feed_onestop_id?: (Scalars['String'] | null);
     feed_version_sha1?: (Scalars['String'] | null);
     license?: (LicenseFilter | null);
@@ -2269,6 +2286,7 @@ interface StopExternalReferenceGenqlSelection {
 interface StopFilter {
     agency_ids?: (Scalars['Int'][] | null);
     allow_previous_onestop_ids?: (Scalars['Boolean'] | null);
+    bbox?: (BoundingBox | null);
     feed_onestop_id?: (Scalars['String'] | null);
     feed_version_sha1?: (Scalars['String'] | null);
     license?: (LicenseFilter | null);
@@ -2903,4 +2921,4 @@ declare const createClient: ({ apiKey, ...options }: ClientOptions) => {
     }) => Promise<FieldsSelection<Query, R>>;
 };
 
-export { Agency, AgencyFilter, AgencyGenqlSelection, AgencyPlace, AgencyPlaceFilter, AgencyPlaceGenqlSelection, Alert, AlertGenqlSelection, Calendar, CalendarDateFilter, CalendarGenqlSelection, CensusGeography, CensusGeographyGenqlSelection, CensusTable, CensusTableGenqlSelection, CensusValue, CensusValueGenqlSelection, Client, ClientOptions, DirectionRequest, Directions, DirectionsGenqlSelection, Distance, DistanceGenqlSelection, DistanceUnit, Duration, DurationGenqlSelection, DurationUnit, Feed, FeedAuthorization, FeedAuthorizationGenqlSelection, FeedFetch, FeedFetchFilter, FeedFetchGenqlSelection, FeedFilter, FeedGenqlSelection, FeedInfo, FeedInfoGenqlSelection, FeedLicense, FeedLicenseGenqlSelection, FeedSourceUrl, FeedSourceUrlTypes, FeedSpecTypes, FeedState, FeedStateGenqlSelection, FeedUrls, FeedUrlsGenqlSelection, FeedVersion, FeedVersionDeleteResult, FeedVersionDeleteResultGenqlSelection, FeedVersionFetchResult, FeedVersionFetchResultGenqlSelection, FeedVersionFileInfo, FeedVersionFileInfoGenqlSelection, FeedVersionFilter, FeedVersionGenqlSelection, FeedVersionGtfsImport, FeedVersionGtfsImportGenqlSelection, FeedVersionImportResult, FeedVersionImportResultGenqlSelection, FeedVersionServiceLevel, FeedVersionServiceLevelFilter, FeedVersionServiceLevelGenqlSelection, FeedVersionSetInput, FeedVersionUnimportResult, FeedVersionUnimportResultGenqlSelection, FieldsSelection, Frequency, FrequencyGenqlSelection, GbfsAlertTime, GbfsAlertTimeGenqlSelection, GbfsBikeRequest, GbfsBrandAsset, GbfsBrandAssetGenqlSelection, GbfsDockRequest, GbfsFeed, GbfsFeedGenqlSelection, GbfsFreeBikeStatus, GbfsFreeBikeStatusGenqlSelection, GbfsGeofenceFeature, GbfsGeofenceFeatureGenqlSelection, GbfsGeofenceProperty, GbfsGeofencePropertyGenqlSelection, GbfsGeofenceRule, GbfsGeofenceRuleGenqlSelection, GbfsGeofenceZone, GbfsGeofenceZoneGenqlSelection, GbfsPlanPrice, GbfsPlanPriceGenqlSelection, GbfsRentalApp, GbfsRentalAppGenqlSelection, GbfsRentalApps, GbfsRentalAppsGenqlSelection, GbfsRentalUris, GbfsRentalUrisGenqlSelection, GbfsStationInformation, GbfsStationInformationGenqlSelection, GbfsStationStatus, GbfsStationStatusGenqlSelection, GbfsSystemAlert, GbfsSystemAlertGenqlSelection, GbfsSystemCalendar, GbfsSystemCalendarGenqlSelection, GbfsSystemHour, GbfsSystemHourGenqlSelection, GbfsSystemInformation, GbfsSystemInformationGenqlSelection, GbfsSystemPricingPlan, GbfsSystemPricingPlanGenqlSelection, GbfsSystemRegion, GbfsSystemRegionGenqlSelection, GbfsSystemVersion, GbfsSystemVersionGenqlSelection, GbfsVehicleAssets, GbfsVehicleAssetsGenqlSelection, GbfsVehicleDockAvailable, GbfsVehicleDockAvailableGenqlSelection, GbfsVehicleType, GbfsVehicleTypeAvailable, GbfsVehicleTypeAvailableGenqlSelection, GbfsVehicleTypeGenqlSelection, GenqlError, ImportStatus, Itinerary, ItineraryGenqlSelection, Leg, LegGenqlSelection, Level, LevelGenqlSelection, LicenseFilter, LicenseValue, Operator, OperatorFilter, OperatorGenqlSelection, Pathway, PathwayFilter, PathwayGenqlSelection, Place, PlaceAggregationLevel, PlaceFilter, PlaceGenqlSelection, PointRadius, Query, QueryGenqlSelection, QueryResult, RTTimeRange, RTTimeRangeGenqlSelection, RTTranslation, RTTranslationGenqlSelection, RTTripDescriptor, RTTripDescriptorGenqlSelection, RTVehicleDescriptor, RTVehicleDescriptorGenqlSelection, Role, Route, RouteAttribute, RouteAttributeGenqlSelection, RouteFilter, RouteGenqlSelection, RouteGeometry, RouteGeometryGenqlSelection, RouteHeadway, RouteHeadwayGenqlSelection, RouteStop, RouteStopBuffer, RouteStopBufferGenqlSelection, RouteStopGenqlSelection, RouteStopPattern, RouteStopPatternGenqlSelection, Scalars, ScheduleRelationship, ServiceCoversFilter, Shape, ShapeGenqlSelection, Step, StepGenqlSelection, StepMode, Stop, StopExternalReference, StopExternalReferenceGenqlSelection, StopFilter, StopGenqlSelection, StopObservation, StopObservationFilter, StopObservationGenqlSelection, StopPlace, StopPlaceGenqlSelection, StopTime, StopTimeEvent, StopTimeEventGenqlSelection, StopTimeFilter, StopTimeGenqlSelection, Trip, TripFilter, TripGenqlSelection, TripStopTimeFilter, ValidationResult, ValidationResultError, ValidationResultErrorGenqlSelection, ValidationResultErrorGroup, ValidationResultErrorGroupGenqlSelection, ValidationResultGenqlSelection, VehiclePosition, VehiclePositionGenqlSelection, Waypoint, WaypointGenqlSelection, WaypointInput, createClient, enumDistanceUnit, enumDurationUnit, enumFeedSourceUrlTypes, enumFeedSpecTypes, enumImportStatus, enumLicenseValue, enumPlaceAggregationLevel, enumRole, enumScheduleRelationship, enumStepMode, everything, generateQueryOp, isAgency, isAgencyPlace, isAlert, isCalendar, isCensusGeography, isCensusTable, isCensusValue, isDirections, isDistance, isDuration, isFeed, isFeedAuthorization, isFeedFetch, isFeedInfo, isFeedLicense, isFeedState, isFeedUrls, isFeedVersion, isFeedVersionDeleteResult, isFeedVersionFetchResult, isFeedVersionFileInfo, isFeedVersionGtfsImport, isFeedVersionImportResult, isFeedVersionServiceLevel, isFeedVersionUnimportResult, isFrequency, isGbfsAlertTime, isGbfsBrandAsset, isGbfsFeed, isGbfsFreeBikeStatus, isGbfsGeofenceFeature, isGbfsGeofenceProperty, isGbfsGeofenceRule, isGbfsGeofenceZone, isGbfsPlanPrice, isGbfsRentalApp, isGbfsRentalApps, isGbfsRentalUris, isGbfsStationInformation, isGbfsStationStatus, isGbfsSystemAlert, isGbfsSystemCalendar, isGbfsSystemHour, isGbfsSystemInformation, isGbfsSystemPricingPlan, isGbfsSystemRegion, isGbfsSystemVersion, isGbfsVehicleAssets, isGbfsVehicleDockAvailable, isGbfsVehicleType, isGbfsVehicleTypeAvailable, isItinerary, isLeg, isLevel, isOperator, isPathway, isPlace, isQuery, isRTTimeRange, isRTTranslation, isRTTripDescriptor, isRTVehicleDescriptor, isRoute, isRouteAttribute, isRouteGeometry, isRouteHeadway, isRouteStop, isRouteStopBuffer, isRouteStopPattern, isShape, isStep, isStop, isStopExternalReference, isStopObservation, isStopPlace, isStopTime, isStopTimeEvent, isTrip, isValidationResult, isValidationResultError, isValidationResultErrorGroup, isVehiclePosition, isWaypoint };
+export { Agency, AgencyFilter, AgencyGenqlSelection, AgencyPlace, AgencyPlaceFilter, AgencyPlaceGenqlSelection, Alert, AlertGenqlSelection, BoundingBox, Calendar, CalendarDateFilter, CalendarGenqlSelection, CensusGeography, CensusGeographyGenqlSelection, CensusTable, CensusTableGenqlSelection, CensusValue, CensusValueGenqlSelection, Client, ClientOptions, DirectionRequest, Directions, DirectionsGenqlSelection, Distance, DistanceGenqlSelection, DistanceUnit, Duration, DurationGenqlSelection, DurationUnit, Feed, FeedAuthorization, FeedAuthorizationGenqlSelection, FeedFetch, FeedFetchFilter, FeedFetchGenqlSelection, FeedFilter, FeedGenqlSelection, FeedInfo, FeedInfoGenqlSelection, FeedLicense, FeedLicenseGenqlSelection, FeedSourceUrl, FeedSourceUrlTypes, FeedSpecTypes, FeedState, FeedStateGenqlSelection, FeedUrls, FeedUrlsGenqlSelection, FeedVersion, FeedVersionDeleteResult, FeedVersionDeleteResultGenqlSelection, FeedVersionFetchResult, FeedVersionFetchResultGenqlSelection, FeedVersionFileInfo, FeedVersionFileInfoGenqlSelection, FeedVersionFilter, FeedVersionGenqlSelection, FeedVersionGtfsImport, FeedVersionGtfsImportGenqlSelection, FeedVersionImportResult, FeedVersionImportResultGenqlSelection, FeedVersionServiceLevel, FeedVersionServiceLevelFilter, FeedVersionServiceLevelGenqlSelection, FeedVersionSetInput, FeedVersionUnimportResult, FeedVersionUnimportResultGenqlSelection, FieldsSelection, Frequency, FrequencyGenqlSelection, GbfsAlertTime, GbfsAlertTimeGenqlSelection, GbfsBikeRequest, GbfsBrandAsset, GbfsBrandAssetGenqlSelection, GbfsDockRequest, GbfsFeed, GbfsFeedGenqlSelection, GbfsFreeBikeStatus, GbfsFreeBikeStatusGenqlSelection, GbfsGeofenceFeature, GbfsGeofenceFeatureGenqlSelection, GbfsGeofenceProperty, GbfsGeofencePropertyGenqlSelection, GbfsGeofenceRule, GbfsGeofenceRuleGenqlSelection, GbfsGeofenceZone, GbfsGeofenceZoneGenqlSelection, GbfsPlanPrice, GbfsPlanPriceGenqlSelection, GbfsRentalApp, GbfsRentalAppGenqlSelection, GbfsRentalApps, GbfsRentalAppsGenqlSelection, GbfsRentalUris, GbfsRentalUrisGenqlSelection, GbfsStationInformation, GbfsStationInformationGenqlSelection, GbfsStationStatus, GbfsStationStatusGenqlSelection, GbfsSystemAlert, GbfsSystemAlertGenqlSelection, GbfsSystemCalendar, GbfsSystemCalendarGenqlSelection, GbfsSystemHour, GbfsSystemHourGenqlSelection, GbfsSystemInformation, GbfsSystemInformationGenqlSelection, GbfsSystemPricingPlan, GbfsSystemPricingPlanGenqlSelection, GbfsSystemRegion, GbfsSystemRegionGenqlSelection, GbfsSystemVersion, GbfsSystemVersionGenqlSelection, GbfsVehicleAssets, GbfsVehicleAssetsGenqlSelection, GbfsVehicleDockAvailable, GbfsVehicleDockAvailableGenqlSelection, GbfsVehicleType, GbfsVehicleTypeAvailable, GbfsVehicleTypeAvailableGenqlSelection, GbfsVehicleTypeGenqlSelection, GenqlError, ImportStatus, Itinerary, ItineraryGenqlSelection, Leg, LegGenqlSelection, Level, LevelGenqlSelection, LicenseFilter, LicenseValue, Operator, OperatorFilter, OperatorGenqlSelection, Pathway, PathwayFilter, PathwayGenqlSelection, Place, PlaceAggregationLevel, PlaceFilter, PlaceGenqlSelection, PointRadius, Query, QueryGenqlSelection, QueryResult, RTTimeRange, RTTimeRangeGenqlSelection, RTTranslation, RTTranslationGenqlSelection, RTTripDescriptor, RTTripDescriptorGenqlSelection, RTVehicleDescriptor, RTVehicleDescriptorGenqlSelection, Role, Route, RouteAttribute, RouteAttributeGenqlSelection, RouteFilter, RouteGenqlSelection, RouteGeometry, RouteGeometryGenqlSelection, RouteHeadway, RouteHeadwayGenqlSelection, RouteStop, RouteStopBuffer, RouteStopBufferGenqlSelection, RouteStopGenqlSelection, RouteStopPattern, RouteStopPatternGenqlSelection, Scalars, ScheduleRelationship, ServiceCoversFilter, Shape, ShapeGenqlSelection, Step, StepGenqlSelection, StepMode, Stop, StopExternalReference, StopExternalReferenceGenqlSelection, StopFilter, StopGenqlSelection, StopObservation, StopObservationFilter, StopObservationGenqlSelection, StopPlace, StopPlaceGenqlSelection, StopTime, StopTimeEvent, StopTimeEventGenqlSelection, StopTimeFilter, StopTimeGenqlSelection, Trip, TripFilter, TripGenqlSelection, TripStopTimeFilter, ValidationResult, ValidationResultError, ValidationResultErrorGenqlSelection, ValidationResultErrorGroup, ValidationResultErrorGroupGenqlSelection, ValidationResultGenqlSelection, VehiclePosition, VehiclePositionGenqlSelection, Waypoint, WaypointGenqlSelection, WaypointInput, createClient, enumDistanceUnit, enumDurationUnit, enumFeedSourceUrlTypes, enumFeedSpecTypes, enumImportStatus, enumLicenseValue, enumPlaceAggregationLevel, enumRole, enumScheduleRelationship, enumStepMode, everything, generateQueryOp, isAgency, isAgencyPlace, isAlert, isCalendar, isCensusGeography, isCensusTable, isCensusValue, isDirections, isDistance, isDuration, isFeed, isFeedAuthorization, isFeedFetch, isFeedInfo, isFeedLicense, isFeedState, isFeedUrls, isFeedVersion, isFeedVersionDeleteResult, isFeedVersionFetchResult, isFeedVersionFileInfo, isFeedVersionGtfsImport, isFeedVersionImportResult, isFeedVersionServiceLevel, isFeedVersionUnimportResult, isFrequency, isGbfsAlertTime, isGbfsBrandAsset, isGbfsFeed, isGbfsFreeBikeStatus, isGbfsGeofenceFeature, isGbfsGeofenceProperty, isGbfsGeofenceRule, isGbfsGeofenceZone, isGbfsPlanPrice, isGbfsRentalApp, isGbfsRentalApps, isGbfsRentalUris, isGbfsStationInformation, isGbfsStationStatus, isGbfsSystemAlert, isGbfsSystemCalendar, isGbfsSystemHour, isGbfsSystemInformation, isGbfsSystemPricingPlan, isGbfsSystemRegion, isGbfsSystemVersion, isGbfsVehicleAssets, isGbfsVehicleDockAvailable, isGbfsVehicleType, isGbfsVehicleTypeAvailable, isItinerary, isLeg, isLevel, isOperator, isPathway, isPlace, isQuery, isRTTimeRange, isRTTranslation, isRTTripDescriptor, isRTVehicleDescriptor, isRoute, isRouteAttribute, isRouteGeometry, isRouteHeadway, isRouteStop, isRouteStopBuffer, isRouteStopPattern, isShape, isStep, isStop, isStopExternalReference, isStopObservation, isStopPlace, isStopTime, isStopTimeEvent, isTrip, isValidationResult, isValidationResultError, isValidationResultErrorGroup, isVehiclePosition, isWaypoint };
