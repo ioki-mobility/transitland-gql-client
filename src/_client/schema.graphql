@@ -843,6 +843,13 @@ scalar LineString
 
 scalar Map
 
+type Me {
+  email: String
+  external_data: Map
+  id: String!
+  name: String
+}
+
 """
 An agency represents a single GTFS `agencies.txt` entity that was imported from a single feed version. The metadata, routes, etc., for an agency include only the data for that specific agency in that specific feed version. 
 
@@ -944,6 +951,7 @@ type Query {
   docks(limit: Int, where: GbfsDockRequest): [GbfsStationInformation!]
   feed_versions(after: Int, ids: [Int!], limit: Int, where: FeedVersionFilter): [FeedVersion!]!
   feeds(after: Int, ids: [Int!], limit: Int, where: FeedFilter): [Feed!]!
+  me: Me!
   operators(after: Int, ids: [Int!], limit: Int, where: OperatorFilter): [Operator!]!
   places(after: Int, level: PlaceAggregationLevel, limit: Int, where: PlaceFilter): [Place!]
   routes(after: Int, ids: [Int!], limit: Int, where: RouteFilter): [Route!]!

@@ -687,6 +687,14 @@ export interface Level {
 
 export type LicenseValue = 'EXCLUDE_NO' | 'NO' | 'UNKNOWN' | 'YES'
 
+export interface Me {
+    email?: Scalars['String']
+    external_data?: Scalars['Map']
+    id: Scalars['String']
+    name?: Scalars['String']
+    __typename: 'Me'
+}
+
 
 /**
  * An agency represents a single GTFS `agencies.txt` entity that was imported from a single feed version. The metadata, routes, etc., for an agency include only the data for that specific agency in that specific feed version. 
@@ -745,6 +753,7 @@ export interface Query {
     docks?: GbfsStationInformation[]
     feed_versions: FeedVersion[]
     feeds: Feed[]
+    me: Me
     operators: Operator[]
     places?: Place[]
     routes: Route[]
@@ -1862,6 +1871,15 @@ export interface LevelGenqlSelection{
 
 export interface LicenseFilter {commercial_use_allowed?: (LicenseValue | null),create_derived_product?: (LicenseValue | null),redistribution_allowed?: (LicenseValue | null),share_alike_optional?: (LicenseValue | null),use_without_attribution?: (LicenseValue | null)}
 
+export interface MeGenqlSelection{
+    email?: boolean | number
+    external_data?: boolean | number
+    id?: boolean | number
+    name?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
 
 /**
  * An agency represents a single GTFS `agencies.txt` entity that was imported from a single feed version. The metadata, routes, etc., for an agency include only the data for that specific agency in that specific feed version. 
@@ -1929,6 +1947,7 @@ export interface QueryGenqlSelection{
     docks?: (GbfsStationInformationGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), where?: (GbfsDockRequest | null)} })
     feed_versions?: (FeedVersionGenqlSelection & { __args?: {after?: (Scalars['Int'] | null), ids?: (Scalars['Int'][] | null), limit?: (Scalars['Int'] | null), where?: (FeedVersionFilter | null)} })
     feeds?: (FeedGenqlSelection & { __args?: {after?: (Scalars['Int'] | null), ids?: (Scalars['Int'][] | null), limit?: (Scalars['Int'] | null), where?: (FeedFilter | null)} })
+    me?: MeGenqlSelection
     operators?: (OperatorGenqlSelection & { __args?: {after?: (Scalars['Int'] | null), ids?: (Scalars['Int'][] | null), limit?: (Scalars['Int'] | null), where?: (OperatorFilter | null)} })
     places?: (PlaceGenqlSelection & { __args?: {after?: (Scalars['Int'] | null), level?: (PlaceAggregationLevel | null), limit?: (Scalars['Int'] | null), where?: (PlaceFilter | null)} })
     routes?: (RouteGenqlSelection & { __args?: {after?: (Scalars['Int'] | null), ids?: (Scalars['Int'][] | null), limit?: (Scalars['Int'] | null), where?: (RouteFilter | null)} })
@@ -2746,6 +2765,14 @@ export interface WaypointInput {lat: Scalars['Float'],lon: Scalars['Float'],name
     export const isLevel = (obj?: { __typename?: any } | null): obj is Level => {
       if (!obj?.__typename) throw new Error('__typename is missing in "isLevel"')
       return Level_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const Me_possibleTypes: string[] = ['Me']
+    export const isMe = (obj?: { __typename?: any } | null): obj is Me => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isMe"')
+      return Me_possibleTypes.includes(obj.__typename)
     }
     
 
