@@ -1332,6 +1332,11 @@ input TripStopTimeFilter {
 
 scalar Upload
 
+type ValidationRealtimeResult {
+  json: Map
+  url: String!
+}
+
 type ValidationResult {
   agencies(limit: Int): [Agency!]!
   earliest_calendar_date: Date
@@ -1340,6 +1345,7 @@ type ValidationResult {
   feed_infos(limit: Int): [FeedInfo!]!
   files: [FeedVersionFileInfo!]!
   latest_calendar_date: Date
+  realtime: [ValidationRealtimeResult!]
   routes(limit: Int): [Route!]!
   service_levels(limit: Int, route_id: String): [FeedVersionServiceLevel!]!
   sha1: String!

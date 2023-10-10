@@ -401,13 +401,13 @@ export default {
                 127
             ],
             "from": [
-                137
+                138
             ],
             "mode": [
                 114
             ],
             "to": [
-                137
+                138
             ],
             "__typename": [
                 124
@@ -418,7 +418,7 @@ export default {
                 124
             ],
             "destination": [
-                136
+                137
             ],
             "distance": [
                 17
@@ -436,7 +436,7 @@ export default {
                 76
             ],
             "origin": [
-                136
+                137
             ],
             "start_time": [
                 127
@@ -1754,7 +1754,7 @@ export default {
                 127
             ],
             "from": [
-                136
+                137
             ],
             "legs": [
                 78
@@ -1763,7 +1763,7 @@ export default {
                 127
             ],
             "to": [
-                136
+                137
             ],
             "__typename": [
                 124
@@ -1781,7 +1781,7 @@ export default {
                 127
             ],
             "from": [
-                136
+                137
             ],
             "geometry": [
                 82
@@ -1793,7 +1793,7 @@ export default {
                 113
             ],
             "to": [
-                136
+                137
             ],
             "__typename": [
                 124
@@ -2688,7 +2688,7 @@ export default {
                 127
             ],
             "to": [
-                136
+                137
             ],
             "__typename": [
                 124
@@ -2759,13 +2759,13 @@ export default {
                         127
                     ],
                     "from": [
-                        137
+                        138
                     ],
                     "mode": [
                         114
                     ],
                     "to": [
-                        137
+                        138
                     ]
                 }
             ],
@@ -3289,6 +3289,17 @@ export default {
             ]
         },
         "Upload": {},
+        "ValidationRealtimeResult": {
+            "json": [
+                83
+            ],
+            "url": [
+                124
+            ],
+            "__typename": [
+                124
+            ]
+        },
         "ValidationResult": {
             "agencies": [
                 0,
@@ -3302,7 +3313,7 @@ export default {
                 14
             ],
             "errors": [
-                134
+                135
             ],
             "failure_reason": [
                 124
@@ -3320,6 +3331,9 @@ export default {
             ],
             "latest_calendar_date": [
                 14
+            ],
+            "realtime": [
+                132
             ],
             "routes": [
                 101,
@@ -3355,7 +3369,7 @@ export default {
                 7
             ],
             "warnings": [
-                134
+                135
             ],
             "__typename": [
                 124
@@ -3392,7 +3406,7 @@ export default {
                 124
             ],
             "errors": [
-                133
+                134
             ],
             "filename": [
                 124

@@ -1050,6 +1050,12 @@ export interface Trip {
     __typename: 'Trip'
 }
 
+export interface ValidationRealtimeResult {
+    json?: Scalars['Map']
+    url: Scalars['String']
+    __typename: 'ValidationRealtimeResult'
+}
+
 export interface ValidationResult {
     agencies: Agency[]
     earliest_calendar_date?: Scalars['Date']
@@ -1058,6 +1064,7 @@ export interface ValidationResult {
     feed_infos: FeedInfo[]
     files: FeedVersionFileInfo[]
     latest_calendar_date?: Scalars['Date']
+    realtime?: ValidationRealtimeResult[]
     routes: Route[]
     service_levels: FeedVersionServiceLevel[]
     sha1: Scalars['String']
@@ -2273,6 +2280,13 @@ export interface TripFilter {feed_onestop_id?: (Scalars['String'] | null),feed_v
 
 export interface TripStopTimeFilter {end?: (Scalars['Seconds'] | null),start?: (Scalars['Seconds'] | null)}
 
+export interface ValidationRealtimeResultGenqlSelection{
+    json?: boolean | number
+    url?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
 export interface ValidationResultGenqlSelection{
     agencies?: (AgencyGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
     earliest_calendar_date?: boolean | number
@@ -2281,6 +2295,7 @@ export interface ValidationResultGenqlSelection{
     feed_infos?: (FeedInfoGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
     files?: FeedVersionFileInfoGenqlSelection
     latest_calendar_date?: boolean | number
+    realtime?: ValidationRealtimeResultGenqlSelection
     routes?: (RouteGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
     service_levels?: (FeedVersionServiceLevelGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), route_id?: (Scalars['String'] | null)} })
     sha1?: boolean | number
@@ -2965,6 +2980,14 @@ export interface WaypointInput {lat: Scalars['Float'],lon: Scalars['Float'],name
     export const isTrip = (obj?: { __typename?: any } | null): obj is Trip => {
       if (!obj?.__typename) throw new Error('__typename is missing in "isTrip"')
       return Trip_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const ValidationRealtimeResult_possibleTypes: string[] = ['ValidationRealtimeResult']
+    export const isValidationRealtimeResult = (obj?: { __typename?: any } | null): obj is ValidationRealtimeResult => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isValidationRealtimeResult"')
+      return ValidationRealtimeResult_possibleTypes.includes(obj.__typename)
     }
     
 
