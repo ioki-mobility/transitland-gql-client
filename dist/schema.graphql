@@ -147,6 +147,8 @@ type CensusValue {
   values: Any!
 }
 
+scalar Counts
+
 scalar Date
 
 input DirectionRequest {
@@ -457,6 +459,8 @@ type FeedVersionFileInfo {
   rows: Int!
   sha1: String!
   size: Int!
+  values_count: Counts!
+  values_unique: Counts!
 }
 
 input FeedVersionFilter {

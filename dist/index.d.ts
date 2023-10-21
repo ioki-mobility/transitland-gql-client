@@ -2,6 +2,7 @@ type Scalars = {
     Any: any;
     Bool: any;
     Boolean: boolean;
+    Counts: any;
     Date: string;
     Float: number;
     Geometry: GeoJSON.Geometry;
@@ -289,6 +290,8 @@ interface FeedVersionFileInfo {
     rows: Scalars['Int'];
     sha1: Scalars['String'];
     size: Scalars['Int'];
+    values_count: Scalars['Counts'];
+    values_unique: Scalars['Counts'];
     __typename: 'FeedVersionFileInfo';
 }
 interface FeedVersionGtfsImport {
@@ -1425,6 +1428,8 @@ interface FeedVersionFileInfoGenqlSelection {
     rows?: boolean | number;
     sha1?: boolean | number;
     size?: boolean | number;
+    values_count?: boolean | number;
+    values_unique?: boolean | number;
     __typename?: boolean | number;
     __scalar?: boolean | number;
 }
