@@ -622,6 +622,7 @@ interface Me {
     external_data?: Scalars['Map'];
     id: Scalars['String'];
     name?: Scalars['String'];
+    roles?: Scalars['String'][];
     __typename: 'Me';
 }
 /**
@@ -1824,6 +1825,7 @@ interface MeGenqlSelection {
     external_data?: boolean | number;
     id?: boolean | number;
     name?: boolean | number;
+    roles?: boolean | number;
     __typename?: boolean | number;
     __scalar?: boolean | number;
 }

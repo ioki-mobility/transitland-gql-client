@@ -852,6 +852,7 @@ type Me {
   external_data: Map
   id: String!
   name: String
+  roles: [String!]
 }
 
 """
