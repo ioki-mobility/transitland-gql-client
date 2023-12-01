@@ -964,19 +964,24 @@ interface ValidationResult {
 }
 interface ValidationResultError {
     entity_id: Scalars['String'];
+    error_code: Scalars['String'];
     error_type: Scalars['String'];
     field: Scalars['String'];
     filename: Scalars['String'];
+    geometries?: Scalars['Geometry'][];
     message: Scalars['String'];
     value: Scalars['String'];
     __typename: 'ValidationResultError';
 }
 interface ValidationResultErrorGroup {
     count: Scalars['Int'];
+    error_code: Scalars['String'];
     error_type: Scalars['String'];
     errors: ValidationResultError[];
+    field: Scalars['String'];
     filename: Scalars['String'];
     limit: Scalars['Int'];
+    message: Scalars['String'];
     __typename: 'ValidationResultErrorGroup';
 }
 /** [Vehicle Position](https://gtfs.org/reference/realtime/v2/#message-vehicleposition) message provided by a source GTFS Realtime feed. */
@@ -2505,9 +2510,11 @@ interface ValidationResultGenqlSelection {
 }
 interface ValidationResultErrorGenqlSelection {
     entity_id?: boolean | number;
+    error_code?: boolean | number;
     error_type?: boolean | number;
     field?: boolean | number;
     filename?: boolean | number;
+    geometries?: boolean | number;
     message?: boolean | number;
     value?: boolean | number;
     __typename?: boolean | number;
@@ -2515,10 +2522,13 @@ interface ValidationResultErrorGenqlSelection {
 }
 interface ValidationResultErrorGroupGenqlSelection {
     count?: boolean | number;
+    error_code?: boolean | number;
     error_type?: boolean | number;
     errors?: ValidationResultErrorGenqlSelection;
+    field?: boolean | number;
     filename?: boolean | number;
     limit?: boolean | number;
+    message?: boolean | number;
     __typename?: boolean | number;
     __scalar?: boolean | number;
 }

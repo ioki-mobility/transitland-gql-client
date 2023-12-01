@@ -1361,19 +1361,24 @@ type ValidationResult {
 
 type ValidationResultError {
   entity_id: String!
+  error_code: String!
   error_type: String!
   field: String!
   filename: String!
+  geometries: [Geometry!]
   message: String!
   value: String!
 }
 
 type ValidationResultErrorGroup {
   count: Int!
+  error_code: String!
   error_type: String!
   errors: [ValidationResultError!]!
+  field: String!
   filename: String!
   limit: Int!
+  message: String!
 }
 
 """

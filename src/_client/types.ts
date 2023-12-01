@@ -3390,6 +3390,9 @@ export default {
             "entity_id": [
                 125
             ],
+            "error_code": [
+                125
+            ],
             "error_type": [
                 125
             ],
@@ -3398,6 +3401,9 @@ export default {
             ],
             "filename": [
                 125
+            ],
+            "geometries": [
+                74
             ],
             "message": [
                 125
@@ -3413,17 +3419,26 @@ export default {
             "count": [
                 76
             ],
+            "error_code": [
+                125
+            ],
             "error_type": [
                 125
             ],
             "errors": [
                 135
             ],
+            "field": [
+                125
+            ],
             "filename": [
                 125
             ],
             "limit": [
                 76
+            ],
+            "message": [
+                125
             ],
             "__typename": [
                 125

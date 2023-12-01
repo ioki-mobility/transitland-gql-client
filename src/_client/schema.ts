@@ -1080,9 +1080,11 @@ export interface ValidationResult {
 
 export interface ValidationResultError {
     entity_id: Scalars['String']
+    error_code: Scalars['String']
     error_type: Scalars['String']
     field: Scalars['String']
     filename: Scalars['String']
+    geometries?: Scalars['Geometry'][]
     message: Scalars['String']
     value: Scalars['String']
     __typename: 'ValidationResultError'
@@ -1090,10 +1092,13 @@ export interface ValidationResultError {
 
 export interface ValidationResultErrorGroup {
     count: Scalars['Int']
+    error_code: Scalars['String']
     error_type: Scalars['String']
     errors: ValidationResultError[]
+    field: Scalars['String']
     filename: Scalars['String']
     limit: Scalars['Int']
+    message: Scalars['String']
     __typename: 'ValidationResultErrorGroup'
 }
 
@@ -2315,9 +2320,11 @@ export interface ValidationResultGenqlSelection{
 
 export interface ValidationResultErrorGenqlSelection{
     entity_id?: boolean | number
+    error_code?: boolean | number
     error_type?: boolean | number
     field?: boolean | number
     filename?: boolean | number
+    geometries?: boolean | number
     message?: boolean | number
     value?: boolean | number
     __typename?: boolean | number
@@ -2326,10 +2333,13 @@ export interface ValidationResultErrorGenqlSelection{
 
 export interface ValidationResultErrorGroupGenqlSelection{
     count?: boolean | number
+    error_code?: boolean | number
     error_type?: boolean | number
     errors?: ValidationResultErrorGenqlSelection
+    field?: boolean | number
     filename?: boolean | number
     limit?: boolean | number
+    message?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
 }
