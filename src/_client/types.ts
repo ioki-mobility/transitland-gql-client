@@ -403,13 +403,13 @@ export default {
                 128
             ],
             "from": [
-                139
+                141
             ],
             "mode": [
                 115
             ],
             "to": [
-                139
+                141
             ],
             "__typename": [
                 125
@@ -420,7 +420,7 @@ export default {
                 125
             ],
             "destination": [
-                138
+                140
             ],
             "distance": [
                 18
@@ -438,7 +438,7 @@ export default {
                 77
             ],
             "origin": [
-                138
+                140
             ],
             "start_time": [
                 128
@@ -1762,7 +1762,7 @@ export default {
                 128
             ],
             "from": [
-                138
+                140
             ],
             "legs": [
                 79
@@ -1771,7 +1771,7 @@ export default {
                 128
             ],
             "to": [
-                138
+                140
             ],
             "__typename": [
                 125
@@ -1789,7 +1789,7 @@ export default {
                 128
             ],
             "from": [
-                138
+                140
             ],
             "geometry": [
                 83
@@ -1801,7 +1801,7 @@ export default {
                 114
             ],
             "to": [
-                138
+                140
             ],
             "__typename": [
                 125
@@ -2699,7 +2699,7 @@ export default {
                 128
             ],
             "to": [
-                138
+                140
             ],
             "__typename": [
                 125
@@ -2770,13 +2770,13 @@ export default {
                         128
                     ],
                     "from": [
-                        139
+                        141
                     ],
                     "mode": [
                         115
                     ],
                     "to": [
-                        139
+                        141
                     ]
                 }
             ],
@@ -3311,7 +3311,38 @@ export default {
                 125
             ]
         },
+        "ValidationReportFilter": {
+            "success": [
+                7
+            ],
+            "validator": [
+                125
+            ],
+            "__typename": [
+                125
+            ]
+        },
         "ValidationResult": {
+            "details": [
+                136
+            ],
+            "errors": [
+                138
+            ],
+            "failure_reason": [
+                125
+            ],
+            "success": [
+                7
+            ],
+            "warnings": [
+                138
+            ],
+            "__typename": [
+                125
+            ]
+        },
+        "ValidationResultDetails": {
             "agencies": [
                 0,
                 {
@@ -3322,12 +3353,6 @@ export default {
             ],
             "earliest_calendar_date": [
                 15
-            ],
-            "errors": [
-                136
-            ],
-            "failure_reason": [
-                125
             ],
             "feed_infos": [
                 27,
@@ -3376,12 +3401,6 @@ export default {
                     ]
                 }
             ],
-            "success": [
-                7
-            ],
-            "warnings": [
-                136
-            ],
             "__typename": [
                 125
             ]
@@ -3402,8 +3421,11 @@ export default {
             "filename": [
                 125
             ],
-            "geometries": [
+            "geometry": [
                 74
+            ],
+            "line": [
+                76
             ],
             "message": [
                 125
@@ -3426,7 +3448,7 @@ export default {
                 125
             ],
             "errors": [
-                135
+                137
             ],
             "field": [
                 125

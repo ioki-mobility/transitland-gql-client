@@ -1342,11 +1342,22 @@ type ValidationRealtimeResult {
   url: String!
 }
 
+input ValidationReportFilter {
+  success: Boolean
+  validator: String
+}
+
 type ValidationResult {
-  agencies(limit: Int): [Agency!]!
-  earliest_calendar_date: Date
+  details: ValidationResultDetails
   errors: [ValidationResultErrorGroup!]!
   failure_reason: String!
+  success: Boolean!
+  warnings: [ValidationResultErrorGroup!]!
+}
+
+type ValidationResultDetails {
+  agencies(limit: Int): [Agency!]!
+  earliest_calendar_date: Date
   feed_infos(limit: Int): [FeedInfo!]!
   files: [FeedVersionFileInfo!]!
   latest_calendar_date: Date
@@ -1355,8 +1366,6 @@ type ValidationResult {
   service_levels(limit: Int, route_id: String): [FeedVersionServiceLevel!]!
   sha1: String!
   stops(limit: Int): [Stop!]!
-  success: Boolean!
-  warnings: [ValidationResultErrorGroup!]!
 }
 
 type ValidationResultError {
@@ -1365,7 +1374,8 @@ type ValidationResultError {
   error_type: String!
   field: String!
   filename: String!
-  geometries: [Geometry!]
+  geometry: Geometry
+  line: Int!
   message: String!
   value: String!
 }

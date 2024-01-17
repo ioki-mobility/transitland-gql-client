@@ -1061,10 +1061,17 @@ export interface ValidationRealtimeResult {
 }
 
 export interface ValidationResult {
-    agencies: Agency[]
-    earliest_calendar_date?: Scalars['Date']
+    details?: ValidationResultDetails
     errors: ValidationResultErrorGroup[]
     failure_reason: Scalars['String']
+    success: Scalars['Boolean']
+    warnings: ValidationResultErrorGroup[]
+    __typename: 'ValidationResult'
+}
+
+export interface ValidationResultDetails {
+    agencies: Agency[]
+    earliest_calendar_date?: Scalars['Date']
     feed_infos: FeedInfo[]
     files: FeedVersionFileInfo[]
     latest_calendar_date?: Scalars['Date']
@@ -1073,9 +1080,7 @@ export interface ValidationResult {
     service_levels: FeedVersionServiceLevel[]
     sha1: Scalars['String']
     stops: Stop[]
-    success: Scalars['Boolean']
-    warnings: ValidationResultErrorGroup[]
-    __typename: 'ValidationResult'
+    __typename: 'ValidationResultDetails'
 }
 
 export interface ValidationResultError {
@@ -1084,7 +1089,8 @@ export interface ValidationResultError {
     error_type: Scalars['String']
     field: Scalars['String']
     filename: Scalars['String']
-    geometries?: Scalars['Geometry'][]
+    geometry?: Scalars['Geometry']
+    line: Scalars['Int']
     message: Scalars['String']
     value: Scalars['String']
     __typename: 'ValidationResultError'
@@ -2299,11 +2305,21 @@ export interface ValidationRealtimeResultGenqlSelection{
     __scalar?: boolean | number
 }
 
+export interface ValidationReportFilter {success?: (Scalars['Boolean'] | null),validator?: (Scalars['String'] | null)}
+
 export interface ValidationResultGenqlSelection{
-    agencies?: (AgencyGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
-    earliest_calendar_date?: boolean | number
+    details?: ValidationResultDetailsGenqlSelection
     errors?: ValidationResultErrorGroupGenqlSelection
     failure_reason?: boolean | number
+    success?: boolean | number
+    warnings?: ValidationResultErrorGroupGenqlSelection
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface ValidationResultDetailsGenqlSelection{
+    agencies?: (AgencyGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
+    earliest_calendar_date?: boolean | number
     feed_infos?: (FeedInfoGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
     files?: FeedVersionFileInfoGenqlSelection
     latest_calendar_date?: boolean | number
@@ -2312,8 +2328,6 @@ export interface ValidationResultGenqlSelection{
     service_levels?: (FeedVersionServiceLevelGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), route_id?: (Scalars['String'] | null)} })
     sha1?: boolean | number
     stops?: (StopGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
-    success?: boolean | number
-    warnings?: ValidationResultErrorGroupGenqlSelection
     __typename?: boolean | number
     __scalar?: boolean | number
 }
@@ -2324,7 +2338,8 @@ export interface ValidationResultErrorGenqlSelection{
     error_type?: boolean | number
     field?: boolean | number
     filename?: boolean | number
-    geometries?: boolean | number
+    geometry?: boolean | number
+    line?: boolean | number
     message?: boolean | number
     value?: boolean | number
     __typename?: boolean | number
@@ -3013,6 +3028,14 @@ export interface WaypointInput {lat: Scalars['Float'],lon: Scalars['Float'],name
     export const isValidationResult = (obj?: { __typename?: any } | null): obj is ValidationResult => {
       if (!obj?.__typename) throw new Error('__typename is missing in "isValidationResult"')
       return ValidationResult_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const ValidationResultDetails_possibleTypes: string[] = ['ValidationResultDetails']
+    export const isValidationResultDetails = (obj?: { __typename?: any } | null): obj is ValidationResultDetails => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isValidationResultDetails"')
+      return ValidationResultDetails_possibleTypes.includes(obj.__typename)
     }
     
 
