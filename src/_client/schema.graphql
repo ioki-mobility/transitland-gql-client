@@ -1,7 +1,5 @@
 directive @goField(forceResolver: Boolean, name: String) on FIELD_DEFINITION | INPUT_FIELD_DEFINITION
 
-directive @hasRole(role: Role!) on FIELD_DEFINITION
-
 """See https://gtfs.org/schedule/reference/#agencytxt"""
 type Agency {
   agency_email: String!
@@ -991,12 +989,6 @@ type RTVehicleDescriptor {
   id: String
   label: String
   license_plate: String
-}
-
-enum Role {
-  ADMIN
-  ANON
-  USER
 }
 
 """See https://gtfs.org/schedule/reference/#routestxt"""

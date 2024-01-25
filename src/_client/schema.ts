@@ -803,8 +803,6 @@ export interface RTVehicleDescriptor {
     __typename: 'RTVehicleDescriptor'
 }
 
-export type Role = 'ADMIN' | 'ANON' | 'USER'
-
 
 /** See https://gtfs.org/schedule/reference/#routestxt */
 export interface Route {
@@ -3119,12 +3117,6 @@ export const enumPlaceAggregationLevel = {
    ADM0_CITY: 'ADM0_CITY' as const,
    ADM1_CITY: 'ADM1_CITY' as const,
    CITY: 'CITY' as const
-}
-
-export const enumRole = {
-   ADMIN: 'ADMIN' as const,
-   ANON: 'ANON' as const,
-   USER: 'USER' as const
 }
 
 export const enumScheduleRelationship = {
