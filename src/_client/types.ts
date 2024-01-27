@@ -868,6 +868,17 @@ export default {
             "url": [
                 124
             ],
+            "validation_reports": [
+                133,
+                {
+                    "limit": [
+                        76
+                    ],
+                    "where": [
+                        137
+                    ]
+                }
+            ],
             "__typename": [
                 124
             ]
@@ -3309,38 +3320,40 @@ export default {
                 124
             ]
         },
-        "ValidationReportFilter": {
-            "success": [
-                7
-            ],
-            "validator": [
-                124
-            ],
-            "__typename": [
-                124
-            ]
-        },
-        "ValidationResult": {
+        "ValidationReport": {
             "details": [
-                135
+                134
             ],
             "errors": [
-                137
+                136,
+                {
+                    "limit": [
+                        76
+                    ]
+                }
             ],
             "failure_reason": [
                 124
+            ],
+            "id": [
+                76
             ],
             "success": [
                 7
             ],
             "warnings": [
-                137
+                136,
+                {
+                    "limit": [
+                        76
+                    ]
+                }
             ],
             "__typename": [
                 124
             ]
         },
-        "ValidationResultDetails": {
+        "ValidationReportDetails": {
             "agencies": [
                 0,
                 {
@@ -3403,7 +3416,7 @@ export default {
                 124
             ]
         },
-        "ValidationResultError": {
+        "ValidationReportError": {
             "entity_id": [
                 124
             ],
@@ -3435,7 +3448,7 @@ export default {
                 124
             ]
         },
-        "ValidationResultErrorGroup": {
+        "ValidationReportErrorGroup": {
             "count": [
                 76
             ],
@@ -3446,7 +3459,12 @@ export default {
                 124
             ],
             "errors": [
-                136
+                135,
+                {
+                    "limit": [
+                        76
+                    ]
+                }
             ],
             "field": [
                 124
@@ -3458,6 +3476,17 @@ export default {
                 76
             ],
             "message": [
+                124
+            ],
+            "__typename": [
+                124
+            ]
+        },
+        "ValidationReportFilter": {
+            "success": [
+                7
+            ],
+            "validator": [
                 124
             ],
             "__typename": [

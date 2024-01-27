@@ -436,6 +436,7 @@ type FeedVersion {
   trips(limit: Int, where: TripFilter): [Trip!]!
   updated_by: String
   url: String!
+  validation_reports(limit: Int, where: ValidationReportFilter): [ValidationReport!]
 }
 
 type FeedVersionDeleteResult {
@@ -1334,20 +1335,16 @@ type ValidationRealtimeResult {
   url: String!
 }
 
-input ValidationReportFilter {
-  success: Boolean
-  validator: String
-}
-
-type ValidationResult {
-  details: ValidationResultDetails
-  errors: [ValidationResultErrorGroup!]!
+type ValidationReport {
+  details: ValidationReportDetails
+  errors(limit: Int): [ValidationReportErrorGroup!]!
   failure_reason: String!
+  id: Int!
   success: Boolean!
-  warnings: [ValidationResultErrorGroup!]!
+  warnings(limit: Int): [ValidationReportErrorGroup!]!
 }
 
-type ValidationResultDetails {
+type ValidationReportDetails {
   agencies(limit: Int): [Agency!]!
   earliest_calendar_date: Date
   feed_infos(limit: Int): [FeedInfo!]!
@@ -1360,7 +1357,7 @@ type ValidationResultDetails {
   stops(limit: Int): [Stop!]!
 }
 
-type ValidationResultError {
+type ValidationReportError {
   entity_id: String!
   error_code: String!
   error_type: String!
@@ -1372,15 +1369,20 @@ type ValidationResultError {
   value: String!
 }
 
-type ValidationResultErrorGroup {
+type ValidationReportErrorGroup {
   count: Int!
   error_code: String!
   error_type: String!
-  errors: [ValidationResultError!]!
+  errors(limit: Int): [ValidationReportError!]!
   field: String!
   filename: String!
   limit: Int!
   message: String!
+}
+
+input ValidationReportFilter {
+  success: Boolean
+  validator: String
 }
 
 """

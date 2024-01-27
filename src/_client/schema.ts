@@ -301,6 +301,7 @@ export interface FeedVersion {
     trips: Trip[]
     updated_by?: Scalars['String']
     url: Scalars['String']
+    validation_reports?: ValidationReport[]
     __typename: 'FeedVersion'
 }
 
@@ -1058,16 +1059,17 @@ export interface ValidationRealtimeResult {
     __typename: 'ValidationRealtimeResult'
 }
 
-export interface ValidationResult {
-    details?: ValidationResultDetails
-    errors: ValidationResultErrorGroup[]
+export interface ValidationReport {
+    details?: ValidationReportDetails
+    errors: ValidationReportErrorGroup[]
     failure_reason: Scalars['String']
+    id: Scalars['Int']
     success: Scalars['Boolean']
-    warnings: ValidationResultErrorGroup[]
-    __typename: 'ValidationResult'
+    warnings: ValidationReportErrorGroup[]
+    __typename: 'ValidationReport'
 }
 
-export interface ValidationResultDetails {
+export interface ValidationReportDetails {
     agencies: Agency[]
     earliest_calendar_date?: Scalars['Date']
     feed_infos: FeedInfo[]
@@ -1078,10 +1080,10 @@ export interface ValidationResultDetails {
     service_levels: FeedVersionServiceLevel[]
     sha1: Scalars['String']
     stops: Stop[]
-    __typename: 'ValidationResultDetails'
+    __typename: 'ValidationReportDetails'
 }
 
-export interface ValidationResultError {
+export interface ValidationReportError {
     entity_id: Scalars['String']
     error_code: Scalars['String']
     error_type: Scalars['String']
@@ -1091,19 +1093,19 @@ export interface ValidationResultError {
     line: Scalars['Int']
     message: Scalars['String']
     value: Scalars['String']
-    __typename: 'ValidationResultError'
+    __typename: 'ValidationReportError'
 }
 
-export interface ValidationResultErrorGroup {
+export interface ValidationReportErrorGroup {
     count: Scalars['Int']
     error_code: Scalars['String']
     error_type: Scalars['String']
-    errors: ValidationResultError[]
+    errors: ValidationReportError[]
     field: Scalars['String']
     filename: Scalars['String']
     limit: Scalars['Int']
     message: Scalars['String']
-    __typename: 'ValidationResultErrorGroup'
+    __typename: 'ValidationReportErrorGroup'
 }
 
 
@@ -1459,6 +1461,7 @@ export interface FeedVersionGenqlSelection{
     trips?: (TripGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), where?: (TripFilter | null)} })
     updated_by?: boolean | number
     url?: boolean | number
+    validation_reports?: (ValidationReportGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null), where?: (ValidationReportFilter | null)} })
     __typename?: boolean | number
     __scalar?: boolean | number
 }
@@ -2303,19 +2306,18 @@ export interface ValidationRealtimeResultGenqlSelection{
     __scalar?: boolean | number
 }
 
-export interface ValidationReportFilter {success?: (Scalars['Boolean'] | null),validator?: (Scalars['String'] | null)}
-
-export interface ValidationResultGenqlSelection{
-    details?: ValidationResultDetailsGenqlSelection
-    errors?: ValidationResultErrorGroupGenqlSelection
+export interface ValidationReportGenqlSelection{
+    details?: ValidationReportDetailsGenqlSelection
+    errors?: (ValidationReportErrorGroupGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
     failure_reason?: boolean | number
+    id?: boolean | number
     success?: boolean | number
-    warnings?: ValidationResultErrorGroupGenqlSelection
+    warnings?: (ValidationReportErrorGroupGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface ValidationResultDetailsGenqlSelection{
+export interface ValidationReportDetailsGenqlSelection{
     agencies?: (AgencyGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
     earliest_calendar_date?: boolean | number
     feed_infos?: (FeedInfoGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
@@ -2330,7 +2332,7 @@ export interface ValidationResultDetailsGenqlSelection{
     __scalar?: boolean | number
 }
 
-export interface ValidationResultErrorGenqlSelection{
+export interface ValidationReportErrorGenqlSelection{
     entity_id?: boolean | number
     error_code?: boolean | number
     error_type?: boolean | number
@@ -2344,11 +2346,11 @@ export interface ValidationResultErrorGenqlSelection{
     __scalar?: boolean | number
 }
 
-export interface ValidationResultErrorGroupGenqlSelection{
+export interface ValidationReportErrorGroupGenqlSelection{
     count?: boolean | number
     error_code?: boolean | number
     error_type?: boolean | number
-    errors?: ValidationResultErrorGenqlSelection
+    errors?: (ValidationReportErrorGenqlSelection & { __args?: {limit?: (Scalars['Int'] | null)} })
     field?: boolean | number
     filename?: boolean | number
     limit?: boolean | number
@@ -2356,6 +2358,8 @@ export interface ValidationResultErrorGroupGenqlSelection{
     __typename?: boolean | number
     __scalar?: boolean | number
 }
+
+export interface ValidationReportFilter {success?: (Scalars['Boolean'] | null),validator?: (Scalars['String'] | null)}
 
 
 /** [Vehicle Position](https://gtfs.org/reference/realtime/v2/#message-vehicleposition) message provided by a source GTFS Realtime feed. */
@@ -3022,34 +3026,34 @@ export interface WaypointInput {lat: Scalars['Float'],lon: Scalars['Float'],name
     
 
 
-    const ValidationResult_possibleTypes: string[] = ['ValidationResult']
-    export const isValidationResult = (obj?: { __typename?: any } | null): obj is ValidationResult => {
-      if (!obj?.__typename) throw new Error('__typename is missing in "isValidationResult"')
-      return ValidationResult_possibleTypes.includes(obj.__typename)
+    const ValidationReport_possibleTypes: string[] = ['ValidationReport']
+    export const isValidationReport = (obj?: { __typename?: any } | null): obj is ValidationReport => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isValidationReport"')
+      return ValidationReport_possibleTypes.includes(obj.__typename)
     }
     
 
 
-    const ValidationResultDetails_possibleTypes: string[] = ['ValidationResultDetails']
-    export const isValidationResultDetails = (obj?: { __typename?: any } | null): obj is ValidationResultDetails => {
-      if (!obj?.__typename) throw new Error('__typename is missing in "isValidationResultDetails"')
-      return ValidationResultDetails_possibleTypes.includes(obj.__typename)
+    const ValidationReportDetails_possibleTypes: string[] = ['ValidationReportDetails']
+    export const isValidationReportDetails = (obj?: { __typename?: any } | null): obj is ValidationReportDetails => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isValidationReportDetails"')
+      return ValidationReportDetails_possibleTypes.includes(obj.__typename)
     }
     
 
 
-    const ValidationResultError_possibleTypes: string[] = ['ValidationResultError']
-    export const isValidationResultError = (obj?: { __typename?: any } | null): obj is ValidationResultError => {
-      if (!obj?.__typename) throw new Error('__typename is missing in "isValidationResultError"')
-      return ValidationResultError_possibleTypes.includes(obj.__typename)
+    const ValidationReportError_possibleTypes: string[] = ['ValidationReportError']
+    export const isValidationReportError = (obj?: { __typename?: any } | null): obj is ValidationReportError => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isValidationReportError"')
+      return ValidationReportError_possibleTypes.includes(obj.__typename)
     }
     
 
 
-    const ValidationResultErrorGroup_possibleTypes: string[] = ['ValidationResultErrorGroup']
-    export const isValidationResultErrorGroup = (obj?: { __typename?: any } | null): obj is ValidationResultErrorGroup => {
-      if (!obj?.__typename) throw new Error('__typename is missing in "isValidationResultErrorGroup"')
-      return ValidationResultErrorGroup_possibleTypes.includes(obj.__typename)
+    const ValidationReportErrorGroup_possibleTypes: string[] = ['ValidationReportErrorGroup']
+    export const isValidationReportErrorGroup = (obj?: { __typename?: any } | null): obj is ValidationReportErrorGroup => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isValidationReportErrorGroup"')
+      return ValidationReportErrorGroup_possibleTypes.includes(obj.__typename)
     }
     
 
